@@ -23,7 +23,7 @@ function Navbar() {
     setIsOpen(false);
   }, [location.pathname]);
 
-  const navLinks = ["Home", "Menu", "Cart", "About", "Reviews", "Contact"];
+  const navLinks = ["Home", "Menu", "About", "Reviews", "Contact"];
 
   return (
     <nav
@@ -42,18 +42,18 @@ function Navbar() {
             />
           </div>
           <div className="flex flex-col">
-            <span className="text-xl font-extrabold tracking-tighter text-white uppercase leading-none">
+            <span className="text-xl font-extrabold tracking-tight text-white uppercase leading-none font-heading">
               Bread <span className="text-yellow-400">&</span> Bite
             </span>
-            <span className="text-[10px] text-zinc-400 font-medium tracking-[0.2em] uppercase group-hover:text-yellow-400 transition-colors">
+            <span className="text-xs text-zinc-400 font-medium tracking-[0.25em] uppercase group-hover:text-yellow-400 transition-colors">
               Navi Mumbai Only • Delivery
             </span>
           </div>
         </NavLink>
 
         {/* DESKTOP MENU */}
-        <div className="hidden lg:flex items-center gap-8">
-          <ul className="flex gap-8 text-sm font-medium tracking-wide">
+        <div className="hidden lg:flex items-center gap-10">
+          <ul className="flex gap-8 text-[13px] font-bold tracking-widest uppercase">
             {navLinks.map((text) => (
               <li key={text} className="relative">
                 <NavLink
@@ -82,12 +82,12 @@ function Navbar() {
 
           {/* CART ICON */}
           <button
-            onClick={toggleCart}
+            onClick={() => navigate("/cart")}
             className="relative text-white hover:text-yellow-400 transition-colors"
           >
             <FaShoppingCart size={22} />
             {cartCount > 0 && (
-              <span className="absolute -top-2 -right-2 bg-yellow-400 text-black text-[10px] font-black w-5 h-5 flex items-center justify-center rounded-full border border-black/10 shadow-lg">
+              <span className="absolute -top-2 -right-2 bg-yellow-400 text-black text-[12px] font-black w-6 h-6 flex items-center justify-center rounded-full border border-black/10 shadow-lg">
                 {cartCount}
               </span>
             )}
@@ -97,12 +97,12 @@ function Navbar() {
         {/* MOBILE TOGGLE & CART */}
         <div className="lg:hidden flex items-center gap-4">
           <button
-            onClick={toggleCart}
+            onClick={() => navigate("/cart")}
             className="relative text-white hover:text-yellow-400 transition-colors"
           >
             <FaShoppingCart size={22} />
             {cartCount > 0 && (
-              <span className="absolute -top-2 -right-2 bg-yellow-400 text-black text-[10px] font-black w-5 h-5 flex items-center justify-center rounded-full border border-black/10 shadow-lg">
+              <span className="absolute -top-2 -right-2 bg-yellow-400 text-black text-[12px] font-black w-6 h-6 flex items-center justify-center rounded-full border border-black/10 shadow-lg">
                 {cartCount}
               </span>
             )}

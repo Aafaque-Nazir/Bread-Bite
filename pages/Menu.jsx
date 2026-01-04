@@ -35,7 +35,7 @@ const cardVariants = {
 
 const Menu = () => {
     const { addToCart } = useCart();
-    const [selectedCategory, setSelectedCategory] = useState("All");
+    const [selectedCategory, setSelectedCategory] = useState("Sandwiches");
     const [filterType, setFilterType] = useState("All");
     const [searchQuery, setSearchQuery] = useState("");
     const [selectedItem, setSelectedItem] = useState(null);
@@ -49,7 +49,7 @@ const Menu = () => {
 
     const filteredItems = useMemo(() => {
         return menuItems.filter(item => {
-            const matchCategory = selectedCategory === "All" || item.category === selectedCategory;
+            const matchCategory = item.category === selectedCategory;
             const matchType = filterType === "All" || item.type === filterType;
             const matchSearch = item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
                 item.description.toLowerCase().includes(searchQuery.toLowerCase());
@@ -80,14 +80,14 @@ const Menu = () => {
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-zinc-900 border border-white/10 text-yellow-400 text-[10px] font-black tracking-[0.4em] uppercase mb-8"
+                        className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-zinc-900 border border-white/10 text-yellow-400 text-xs font-black tracking-[0.4em] uppercase mb-8"
                     >
                         <FaMotorcycle className="text-xs" /> Free Delivery in Navi Mumbai
                     </motion.div>
                     <motion.h1
                         initial={{ opacity: 0, scale: 0.95 }}
                         animate={{ opacity: 1, scale: 1 }}
-                        className="text-6xl md:text-9xl font-black text-white mb-6 uppercase tracking-tighter leading-none"
+                        className="text-6xl md:text-9xl font-extrabold text-white mb-6 uppercase tracking-tight leading-none font-heading italic"
                     >
                         OUR <br /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 via-yellow-400 to-amber-600">MENU</span>
                     </motion.h1>
@@ -145,7 +145,7 @@ const Menu = () => {
                                     )}
                                 </div>
                                 <span className={clsx(
-                                    "text-[10px] md:text-xs font-black uppercase tracking-[0.3em] transition-all",
+                                    "text-xs font-bold uppercase tracking-widest transition-all",
                                     selectedCategory === cat.id ? "text-yellow-400" : "text-zinc-600 group-hover:text-zinc-300"
                                 )}>
                                     {cat.name}
@@ -162,7 +162,7 @@ const Menu = () => {
                                     key={type}
                                     onClick={() => setFilterType(type)}
                                     className={clsx(
-                                        "px-6 py-3 rounded-xl text-[10px] font-black uppercase tracking-[0.2em] transition-all",
+                                        "px-6 py-3 rounded-xl text-xs font-black uppercase tracking-[0.2em] transition-all",
                                         filterType === type
                                             ? "bg-yellow-400 text-black shadow-xl"
                                             : "text-zinc-500 hover:text-white"
@@ -198,74 +198,74 @@ const Menu = () => {
                             <motion.div
                                 key={item.id}
                                 layout
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                exit={{ opacity: 0 }}
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={{ opacity: 0, scale: 0.95 }}
                                 transition={{ duration: 0.4 }}
+                                className="h-full"
                             >
-                                <Tilt
-                                    tiltMaxAngleX={2}
-                                    tiltMaxAngleY={2}
-                                    scale={1.01}
-                                    transitionSpeed={2000}
-                                    className="h-full"
+                                <div
+                                    className="group relative h-full bg-[#050505] rounded-[2.5rem] overflow-hidden flex flex-col border border-white/5 hover:border-yellow-400/20 transition-all duration-700 shadow-2xl shadow-black"
+                                    onClick={() => setSelectedItem(item)}
                                 >
-                                    <div
-                                        className="h-full bg-zinc-900/40 rounded-3xl overflow-hidden flex flex-col group cursor-pointer border border-white/5 hover:border-white/10 transition-all duration-500"
-                                        onClick={() => setSelectedItem(item)}
-                                    >
-                                        <div className="relative h-48 overflow-hidden grayscale-[0.2] group-hover:grayscale-0 transition-all duration-700">
-                                            <ImageWithLoader
-                                                src={item.image}
-                                                alt={item.name}
-                                                className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
-                                            />
-                                            <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/80 to-transparent opacity-60" />
-                                            
-                                            {/* Minimal Badges */}
-                                            <div className="absolute top-3 left-3 flex flex-wrap gap-2">
-                                                {item.isBestSeller && (
-                                                    <span className="bg-yellow-400 text-black text-[7px] font-black px-2 py-0.5 rounded-sm uppercase tracking-widest flex items-center gap-1.5">
-                                                        Best
-                                                    </span>
-                                                )}
-                                                {item.type && (
-                                                    <span className="bg-black/50 backdrop-blur-md text-white/70 text-[7px] font-bold px-2 py-0.5 rounded-sm uppercase tracking-widest border border-white/5">
-                                                        {item.type}
-                                                    </span>
-                                                )}
-                                            </div>
-                                        </div>
-
-                                        <div className="p-5 flex flex-col flex-grow">
-                                            <div className="flex justify-between items-start gap-4 mb-2">
-                                                <h3 className="text-base font-bold text-white/90 group-hover:text-yellow-400 transition-colors tracking-tight line-clamp-2">
-                                                    {item.name}
-                                                </h3>
-                                                <span className="text-lg font-black text-white shrink-0">₹{Math.floor(item.price)}</span>
-                                            </div>
-                                            
-                                            <p className="text-zinc-600 text-[10px] mb-6 line-clamp-2 flex-grow leading-relaxed font-medium">
-                                                {item.description}
-                                            </p>
-
-                                            <div className="flex items-center justify-between mt-auto">
-                                                <div className="flex items-center gap-1.5 text-yellow-400/80 text-[10px] font-bold">
-                                                    <FaStar size={8} /> {item.rating}
+                                    {/* Professional Image Container */}
+                                    <div className="relative h-64 overflow-hidden">
+                                        <ImageWithLoader
+                                            src={item.image}
+                                            alt={item.name}
+                                            className="w-full h-full object-cover grayscale-[0.3] group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-110"
+                                        />
+                                        <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent opacity-80" />
+                                        
+                                        {/* Minimal Corner Badge */}
+                                        {item.isBestSeller && (
+                                            <div className="absolute top-6 right-6">
+                                                <div className="bg-yellow-400 text-black text-xs font-black px-3 py-1.5 rounded-full uppercase tracking-[0.2em] shadow-2xl shadow-yellow-400/20 flex items-center gap-2">
+                                                    <div className="w-1 h-1 rounded-full bg-black animate-pulse" /> Popular
                                                 </div>
-                                                <button
-                                                    onClick={(e) => {
-                                                        e.stopPropagation();
-                                                        addToCart(item);
-                                                    }}
-                                                    className="px-4 py-2 rounded-xl bg-white/5 text-white/50 text-[10px] font-black uppercase tracking-widest hover:bg-yellow-400 hover:text-black hover:scale-105 transition-all active:scale-95 border border-white/5"
-                                                >
-                                                    Add
-                                                </button>
                                             </div>
+                                        )}
+
+                                        {/* Floating Price Tag */}
+                                        <div className="absolute bottom-6 left-8 bg-black/60 backdrop-blur-xl border border-white/10 px-4 py-2 rounded-2xl">
+                                            <span className="text-xl font-black text-white tracking-tighter">₹{Math.floor(item.price)}</span>
                                         </div>
                                     </div>
-                                </Tilt>
+
+                                    <div className="p-8 pt-4 flex flex-col flex-grow">
+                                        <div className="mb-4">
+                                            <div className="flex items-center gap-3 mb-2">
+                                                <span className={`w-2 h-2 rounded-full ${item.type === 'Veg' ? 'bg-green-500' : 'bg-red-500'}`} />
+                                                <span className="text-xs text-zinc-600 font-bold uppercase tracking-widest">{item.type}</span>
+                                            </div>
+                                            <h3 className="text-2xl font-bold text-white group-hover:text-yellow-400 transition-colors tracking-tight leading-tight uppercase italic font-heading">
+                                                {item.name}
+                                            </h3>
+                                        </div>
+                                        
+                                        <p className="text-zinc-500 text-[13px] mb-8 line-clamp-2 leading-relaxed font-medium tracking-normal">
+                                            {item.description}
+                                        </p>
+
+                                        <div className="mt-auto flex items-center justify-between">
+                                            <div className="flex items-center gap-2 text-zinc-700 text-xs font-black uppercase tracking-widest">
+                                                <FaStar size={10} className="text-yellow-400/40" /> {item.rating}
+                                            </div>
+                                            <button
+                                                onClick={(e) => {
+                                                    e.stopPropagation();
+                                                    addToCart(item);
+                                                }}
+                                                className="h-14 px-8 rounded-2xl bg-white text-black text-xs font-black uppercase tracking-[0.2em] hover:bg-yellow-400 transition-all active:scale-95 shadow-xl shadow-black"
+                                            >
+                                                Add To Cart
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    {/* Hover Shine Effect */}
+                                    <div className="absolute inset-0 pointer-events-none bg-gradient-to-tr from-transparent via-white/[0.02] to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
+                                </div>
                             </motion.div>
                         ))}
                     </motion.div>
@@ -302,10 +302,10 @@ const Menu = () => {
                         </div>
                     </div>
                     <div className="flex gap-4">
-                        <div className="flex items-center gap-2 px-4 py-2 bg-green-500/10 text-green-500 rounded-full text-[10px] font-black uppercase tracking-widest">
+                        <div className="flex items-center gap-2 px-4 py-2 bg-green-500/10 text-green-500 rounded-full text-xs font-black uppercase tracking-widest">
                             <FaCheckCircle /> Free Delivery
                         </div>
-                        <div className="flex items-center gap-2 px-4 py-2 bg-blue-500/10 text-blue-500 rounded-full text-[10px] font-black uppercase tracking-widest">
+                        <div className="flex items-center gap-2 px-4 py-2 bg-blue-500/10 text-blue-500 rounded-full text-xs font-black uppercase tracking-widest">
                             <FaBolt /> 25m Avg.
                         </div>
                     </div>

@@ -27,7 +27,7 @@ const FloatingCartBtn = () => {
                         exit={{ y: 100, opacity: 0, scale: 0.8 }}
                         whileHover={{ scale: 1.05, y: -5 }}
                         whileTap={{ scale: 0.95 }}
-                        onClick={toggleCart}
+                        onClick={() => navigate("/cart")}
                         className="group relative flex items-center gap-4 bg-zinc-950/40 backdrop-blur-2xl border border-white/10 px-8 py-5 rounded-[2rem] shadow-[0_30px_60px_rgba(0,0,0,0.6)] hover:border-yellow-400/30 transition-all duration-500 overflow-hidden"
                     >
                         {/* Subtle Shine Reflection */}

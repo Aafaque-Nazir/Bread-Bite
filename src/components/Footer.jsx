@@ -15,13 +15,13 @@ const Footer = () => {
                              <span className="text-xl font-extrabold tracking-tighter text-white uppercase leading-none">
                                 Bread <span className="text-yellow-400">&</span> Bite
                             </span>
-                            <span className="text-[10px] text-zinc-500 font-medium tracking-[0.2em] uppercase">
+                            <span className="text-xs text-zinc-500 font-medium tracking-[0.2em] uppercase">
                                 Navi Mumbai Only • Delivery
                             </span>
                         </div>
                     </div>
                     <p className="text-sm leading-relaxed text-zinc-400">
-                        Crafting the perfect grilled sandwiches with love, cheese, and the freshest ingredients. Taste the difference in every bite.
+                        Crafting the perfect grilled sandwiches, cheesy pizzas, and street-style snacks with fresh ingredients. Taste the difference in every bite.
                     </p>
                     <div className="flex gap-4 pt-2">
                         {[FaFacebookF, FaInstagram, FaTwitter, FaWhatsapp].map((Icon, i) => (

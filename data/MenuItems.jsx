@@ -255,7 +255,6 @@ const menuItems = [
 ];
 
 export const CATEGORIES_DATA = [
-  { id: "All", name: "All", image: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=300&h=300&auto=format&fit=crop", description: "All Items" },
   { id: "Sandwiches", name: "Sandwiches", image: "https://images.unsplash.com/photo-1528735602780-2552fd46c7af?q=80&w=300&h=300&auto=format&fit=crop", description: "Grilled Sandwiches" },
   { id: "Pizza", name: "Pizza", image: "https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=300&h=300&auto=format&fit=crop", description: "Cheese Pizza" },
   { id: "Snacks", name: "Snacks", image: "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?q=80&w=300&h=300&auto=format&fit=crop", description: "Quick Bites" },

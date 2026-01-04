@@ -14,7 +14,6 @@ import { Route, Routes } from 'react-router-dom';
 
 
 import FloatingCartBtn from './components/FloatingCartBtn';
-import CartSidebar from './components/CartSidebar';
 import Cart from '../pages/Cart';
 
 function App() {
@@ -38,7 +37,6 @@ function App() {
         </main>
         <Footer />
         <FloatingCartBtn />
-        <CartSidebar />
       </div>
     </>
   );

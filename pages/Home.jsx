@@ -32,8 +32,8 @@ const Home = () => {
     return (
         <>
             <SEO
-                title="Premium Grilled Sandwiches & Pizza - Bread & Bite"
-                description="Welcome to Bread & Bite - The ultimate gourmet experience in Navi Mumbai. Experience premium grilled sandwiches, artisan pizzas, and street-style snacks with free delivery in Navi Mumbai."
+                title="Premium Sandwiches, Pizzas & Comfort Food - Bread & Bite"
+                description="Welcome to Bread & Bite - Navi Mumbai's ultimate comfort food destination. Enjoy premium grilled sandwiches, artisan pizzas, creamy pastas, and street-style snacks with free delivery."
             />
 
             {/* Elite Marquee - Navi Mumbai Focus */}
@@ -41,7 +41,7 @@ const Home = () => {
                 <Marquee gradient={false} speed={40} className="bg-yellow-400 text-black py-1.5 font-black text-[10px] uppercase tracking-[0.2em]">
                     <span className="mx-8 flex items-center gap-2"><FaMotorcycle className="text-sm" /> Exclusive Free Delivery across Navi Mumbai only</span>
                     <span className="mx-8 flex items-center gap-2">•</span>
-                    <span className="mx-8 flex items-center gap-2"><FaFire className="text-sm" /> 50+ Gourmet Recipes Crafted Daily</span>
+                    <span className="mx-8 flex items-center gap-2"><FaFire className="text-sm" /> Sandwiches • Pizzas • Pastas • Street Style</span>
                     <span className="mx-8 flex items-center gap-2">•</span>
                     <span className="mx-8 flex items-center gap-2"><FaCheckCircle className="text-sm" /> Gold Standard Hygiene Certified</span>
                     <span className="mx-8 flex items-center gap-2">•</span>
@@ -74,11 +74,11 @@ const Home = () => {
                             <h1 className="text-6xl md:text-[8.5rem] font-black leading-[0.85] text-white tracking-tighter mb-10">
                                 BEYOND <br />
                                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 via-yellow-400 to-amber-600">
-                                    ORDINARY
+                                    CRAVINGS
                                 </span>
                             </h1>
                             <p className="text-xl md:text-2xl text-zinc-500 max-w-xl mx-auto lg:mx-0 leading-relaxed font-medium tracking-tight">
-                                Revolutionizing the humble sandwich into a gourmet masterpiece. Premium ingredients, unapologetic flavor, and zero compromises.
+                                From loaded grilled sandwiches to cheesy pizzas and creamy pastas. We redefine comfort food with premium ingredients and unapologetic flavor.
                             </p>
                         </motion.div>
 
@@ -282,9 +282,9 @@ const Home = () => {
 
                     <div className="grid md:grid-cols-3 gap-20">
                         {[
-                            { name: "Aarav M.", text: "The Tandoori Grilled sandwich is life-changing. Best spot in Navi Mumbai for real foodies.", loc: "Kharghar" },
-                            { name: "Priya S.", text: "Hygienic, fast, and insanely delicious. The packaging is as premium as the food itself.", loc: "Taloja" },
-                            { name: "Karan D.", text: "Elite taste without the elite price tag. Their cheese pull is legendary. 10/10 recommended.", loc: "Panvel" }
+                            { name: "Aarav M.", text: "The Tandoori Grilled sandwich is life-changing, and their Pizzas are better than the big chains!", loc: "Kharghar" },
+                            { name: "Priya S.", text: "Finally found a place that makes authentic Chicken Pasta and hygienic street food. My go-to spot.", loc: "Taloja" },
+                            { name: "Karan D.", text: "Elite taste without the elite price tag. The cheese pull on the pizza is legendary. 10/10 recommended.", loc: "Panvel" }
                         ].map((rev, i) => (
                             <div key={i} className="flex flex-col items-center group">
                                 <p className="text-zinc-500 text-xl font-medium leading-relaxed italic mb-12 group-hover:text-white transition-colors duration-500">

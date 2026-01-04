@@ -8,7 +8,7 @@ import SEO from "../src/components/SEO";
 const testimonials = [
     {
         name: "Aarav Mehta",
-        text: "The Tandoori Chicken Grilled Sandwich is life-changing. The perfect balance of spice and cheese. Best in Navi Mumbai, hands down!",
+        text: "The Tandoori Chicken Grilled Sandwich is life-changing. But honestly? Their Butter Chicken Pasta is the real underdog. Best in Navi Mumbai!",
         rating: 5,
         location: "Kharghar"
     },
@@ -32,7 +32,7 @@ const testimonials = [
     },
     {
         name: "Rohan Khanna",
-        text: "Artisan quality at street prices. The cheese pull on the pizza is legendary. Highly recommended!",
+        text: "Artisan quality at street prices. The cheese pull on the pizza is legendary, and their classic Maggi is just pure nostalgia.",
         rating: 5,
         location: "Panvel"
     }
@@ -43,7 +43,7 @@ const Reviews = () => {
         <section className="relative min-h-screen bg-black pt-32 pb-20 px-6 overflow-hidden text-white">
             <SEO
                 title="Customer Reviews - Bread & Bite"
-                description="See what 500+ happy customers are saying about Bread & Bite. Real reviews, real cravings, real deliciousness."
+                description="See what 500+ happy customers are saying about Bread & Bite. From cheesy pizzas to loaded sandwiches, see why we are Navi Mumbai's favorite."
             />
 
             {/* Visual Accents */}
@@ -59,7 +59,7 @@ const Reviews = () => {
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="inline-block px-4 py-1 rounded-full bg-zinc-900 border border-white/10 text-yellow-400 text-xs font-black tracking-[0.3em] uppercase mb-6"
+                        className="inline-block px-4 py-1.5 rounded-full bg-zinc-900 border border-white/10 text-yellow-400 text-xs font-bold tracking-[0.3em] uppercase mb-6"
                     >
                         Verified Taste
                     </motion.div>
@@ -68,7 +68,7 @@ const Reviews = () => {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.1 }}
-                        className="text-5xl md:text-8xl font-black tracking-tighter mb-6 leading-none"
+                        className="text-5xl md:text-8xl font-black tracking-tight mb-6 leading-none font-heading italic uppercase"
                     >
                         LOVED BY <br />
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 via-yellow-400 to-amber-600">
@@ -99,10 +99,10 @@ const Reviews = () => {
                         { label: "Repeat Rate", value: "98%", sub: "Customers come back", color: "text-green-500" }
                     ].map((stat, i) => (
                         <div key={i} className="glass-card p-12 rounded-[2.5rem] text-center group border-white/5 hover:border-white/10">
-                            <div className={`text-6xl font-black mb-4 tracking-tighter ${stat.color} group-hover:scale-110 transition-transform duration-500`}>
+                            <div className={`text-6xl font-bold mb-4 tracking-tight font-heading italic ${stat.color} group-hover:scale-110 transition-transform duration-500`}>
                                 {stat.value}
                             </div>
-                            <div className="text-white font-black uppercase tracking-widest text-sm mb-1">{stat.label}</div>
+                            <div className="text-white font-bold uppercase tracking-widest text-sm mb-1 font-heading">{stat.label}</div>
                             <div className="text-zinc-500 text-xs font-bold uppercase tracking-widest">{stat.sub}</div>
                         </div>
                     ))}
@@ -138,12 +138,12 @@ const Reviews = () => {
                                 </p>
                             </div>
                             <div className="flex items-center gap-4 pt-6 border-t border-white/5">
-                                <div className="w-12 h-12 rounded-full bg-zinc-900 border border-white/10 flex items-center justify-center text-yellow-500 font-black">
+                                <div className="w-12 h-12 rounded-full bg-zinc-900 border border-white/10 flex items-center justify-center text-yellow-500 font-bold font-heading text-xl">
                                     {review.name[0]}
                                 </div>
                                 <div>
-                                    <div className="font-black text-white text-sm uppercase tracking-widest">{review.name}</div>
-                                    <div className="text-zinc-500 text-[10px] font-bold uppercase tracking-[0.2em]">{review.location}</div>
+                                    <div className="font-bold text-white text-sm uppercase tracking-widest font-heading">{review.name}</div>
+                                    <div className="text-zinc-500 text-xs font-bold uppercase tracking-[0.2em]">{review.location}</div>
                                 </div>
                             </div>
                         </motion.div>
@@ -158,7 +158,7 @@ const Reviews = () => {
                     className="bg-zinc-900 rounded-[3.5rem] p-16 md:p-24 border border-white/5 relative overflow-hidden text-center"
                 >
                     <div className="absolute top-0 left-0 w-full h-full opacity-[0.03] pointer-events-none bg-[radial-gradient(circle_at_center,_white_1px,_transparent_1px)] bg-[size:30px_30px]" />
-                    <h2 className="text-4xl md:text-7xl font-black text-white mb-8 tracking-tighter leading-none">
+                    <h2 className="text-4xl md:text-7xl font-bold text-white mb-8 tracking-tight leading-none font-heading uppercase italic">
                         JOIN THE <span className="text-yellow-400">ELITE</span> <br /> CRAVING CLUB
                     </h2>
                     <p className="text-zinc-500 text-xl font-medium mb-12 max-w-xl mx-auto">
