@@ -69,7 +69,9 @@ const Cart = () => {
     return (
         <div className="min-h-screen bg-black text-white pt-24 pb-20 px-6">
             <div className="max-w-7xl mx-auto">
-                <h1 className="text-5xl md:text-7xl font-bold mb-16 tracking-tight font-heading">YOUR BAG</h1>
+                <h1 className="text-5xl md:text-7xl font-bold mb-16 tracking-tight font-heading uppercase">
+                    Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 via-yellow-400 to-amber-600">Bag</span>
+                </h1>
 
                 <div className="grid lg:grid-cols-12 gap-16">
                     {/* Left: Minimalist Item List */}
@@ -84,11 +86,11 @@ const Cart = () => {
                                     exit={{ opacity: 0, opacity: 0 }}
                                     className="flex gap-6 items-start group"
                                 >
-                                    <div className="w-24 h-24 bg-zinc-900 rounded-xl overflow-hidden shrink-0">
+                                    <div className="w-24 h-24 bg-zinc-900 rounded-xl overflow-hidden shrink-0 border border-white/5 group-hover:border-yellow-400/30 transition-colors">
                                         <img 
                                             src={item.image} 
                                             alt={item.name} 
-                                            className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+                                            className="w-full h-full object-cover group-hover:scale-105 transition-all duration-500"
                                             onError={(e) => {
                                                 e.target.src = 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=300&h=300&auto=format&fit=crop';
                                             }}
@@ -185,10 +187,10 @@ const Cart = () => {
 
                             <button
                                 onClick={handleCheckout}
-                                className="w-full bg-white text-black font-bold py-4 rounded-xl hover:bg-yellow-400 transition-colors flex items-center justify-center gap-3"
+                                className="w-full bg-gradient-to-r from-yellow-400 to-amber-600 text-black font-black uppercase tracking-widest py-4 rounded-xl hover:scale-[1.02] transition-transform shadow-lg shadow-yellow-400/20 flex items-center justify-center gap-3"
                             >
                                 <FaWhatsapp size={20} />
-                                <span>PROCEED TO ORDER</span>
+                                <span>Proceed to Order</span>
                             </button>
                         </div>
                     </div>
