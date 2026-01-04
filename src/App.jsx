@@ -15,6 +15,7 @@ import { Route, Routes } from 'react-router-dom';
 
 import FloatingCartBtn from './components/FloatingCartBtn';
 import CartSidebar from './components/CartSidebar';
+import Cart from '../pages/Cart';
 
 function App() {
   return (
@@ -27,6 +28,8 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/menu" element={<Menu />} />
+            {/* Checkout Route */}
+            <Route path="/cart" element={<Cart />} />
             <Route path="/reviews" element={<Reviews />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/thank-you" element={<TQ />} />

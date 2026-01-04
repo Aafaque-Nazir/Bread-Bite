@@ -16,7 +16,7 @@ const Footer = () => {
                                 Bread <span className="text-yellow-400">&</span> Bite
                             </span>
                             <span className="text-[10px] text-zinc-500 font-medium tracking-[0.2em] uppercase">
-                                Navi Mumbai Only • Premium
+                                Navi Mumbai Only • Delivery
                             </span>
                         </div>
                     </div>

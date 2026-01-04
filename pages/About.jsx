@@ -16,7 +16,7 @@ const About = () => {
         <section className="relative min-h-screen bg-zinc-950 pt-32 pb-20 px-6 overflow-hidden">
             <SEO
                 title="Our Story - Bread & Bite"
-                description="Learn about Bread & Bite's journey, our commitment to quality, and why we are Navi Mumbai's favorite spot for gourmet grilled sandwiches."
+                description="Learn about Bread & Bite's journey, our commitment to quality, and why we are Navi Mumbai's favorite spot for delicious grilled sandwiches."
             />
 
             {/* Premium Background Elements */}
@@ -48,13 +48,13 @@ const About = () => {
                             CRAVINGS
                         </h1>
                         <p className="text-xl text-zinc-400 leading-relaxed max-w-xl font-medium">
-                            At <span className="text-white">Bread & Bite</span>, we believe a sandwich isn't just a meal—it's a masterpiece. Born from a passion for perfect grilling and premium ingredients, we've redefined street-style comfort into a gourmet experience.
+                            At <span className="text-white">Bread & Bite</span>, we believe a sandwich isn't just a meal—it's an experience. Born from a passion for perfect grilling and fresh ingredients, we've redefined street-style comfort into something better.
                         </p>
 
                         <div className="flex flex-wrap gap-10 pt-6">
                             {[
                                 { label: "Happy Eaters", value: "500+" },
-                                { label: "Elite Rating", value: "4.9/5" },
+                                { label: "Rating", value: "4.9/5" },
                                 { label: "Avg Delivery", value: "25m" }
                             ].map((stat, i) => (
                                 <div key={i} className="flex flex-col">
@@ -75,7 +75,7 @@ const About = () => {
                         <div className="relative z-10 rounded-[3rem] overflow-hidden border border-white/10 shadow-2xl group">
                             <img
                                 src="https://images.unsplash.com/photo-1550507992-eb63ffee0847?q=80&w=1200&h=1200&auto=format&fit=crop"
-                                alt="Gourmet Sandwich Preparation"
+                                alt="Sandwich Preparation"
                                 className="w-full aspect-square object-cover transform group-hover:scale-110 transition-transform duration-[1.5s]"
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60"></div>
@@ -94,10 +94,10 @@ const About = () => {
 
                     <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
                         {[
-                            { icon: <FaCheckCircle />, title: "Premium Sourcing", desc: "Only the finest artisanal breads and freshest produce make the cut." },
-                            { icon: <FaHandsWash />, title: "Gold Standard", desc: "Our hygiene protocols exceed industry standards. Spotless. Always." },
-                            { icon: <FaTruck />, title: "Navi Mumbai Core", desc: "Swift delivery across Navi Mumbai, keeping your cravings hot." },
-                            { icon: <FaRupeeSign />, title: "Fair Pricing", desc: "Gourmet taste shouldn't mean a gourmet price tag. Best value guaranteed." }
+                            { icon: <FaCheckCircle />, title: "Fresh Sourcing", desc: "Only the finest breads and freshest produce make the cut." },
+                            { icon: <FaHandsWash />, title: "High Standard", desc: "Our hygiene protocols exceed industry standards. Spotless. Always." },
+                            { icon: <FaTruck />, title: "Navi Mumbai Delivery", desc: "Swift delivery across Navi Mumbai, keeping your cravings hot." },
+                            { icon: <FaRupeeSign />, title: "Fair Pricing", desc: "Great taste shouldn't mean a high price tag. Best value guaranteed." }
                         ].map((item, i) => (
                             <motion.div
                                 key={i}

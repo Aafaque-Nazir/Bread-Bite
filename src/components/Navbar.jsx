@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { FaBars, FaTimes, FaShoppingCart } from "react-icons/fa";
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { useCart } from "../context/CartContext";
 
@@ -8,6 +8,7 @@ function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
   const { toggleCart, cartCount } = useCart();
 
   useEffect(() => {
@@ -22,7 +23,7 @@ function Navbar() {
     setIsOpen(false);
   }, [location.pathname]);
 
-  const navLinks = ["Home", "Menu", "About", "Reviews", "Contact"];
+  const navLinks = ["Home", "Menu", "Cart", "About", "Reviews", "Contact"];
 
   return (
     <nav
@@ -45,7 +46,7 @@ function Navbar() {
               Bread <span className="text-yellow-400">&</span> Bite
             </span>
             <span className="text-[10px] text-zinc-400 font-medium tracking-[0.2em] uppercase group-hover:text-yellow-400 transition-colors">
-              Navi Mumbai Only • Premium
+              Navi Mumbai Only • Delivery
             </span>
           </div>
         </NavLink>
@@ -86,7 +87,7 @@ function Navbar() {
           >
             <FaShoppingCart size={22} />
             {cartCount > 0 && (
-              <span className="absolute -top-2 -right-2 bg-red-600 text-white text-xs font-bold w-5 h-5 flex items-center justify-center rounded-full border-2 border-black">
+              <span className="absolute -top-2 -right-2 bg-yellow-400 text-black text-[10px] font-black w-5 h-5 flex items-center justify-center rounded-full border border-black/10 shadow-lg">
                 {cartCount}
               </span>
             )}
@@ -101,7 +102,7 @@ function Navbar() {
           >
             <FaShoppingCart size={22} />
             {cartCount > 0 && (
-              <span className="absolute -top-2 -right-2 bg-red-600 text-white text-xs font-bold w-5 h-5 flex items-center justify-center rounded-full border-2 border-black">
+              <span className="absolute -top-2 -right-2 bg-yellow-400 text-black text-[10px] font-black w-5 h-5 flex items-center justify-center rounded-full border border-black/10 shadow-lg">
                 {cartCount}
               </span>
             )}

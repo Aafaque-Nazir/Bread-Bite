@@ -229,39 +229,38 @@ const Home = () => {
                             <motion.div
                                 key={index}
                                 variants={itemVariant}
-                                className="group h-[650px] rounded-[3.5rem] overflow-hidden bg-zinc-900 border border-white/5 transition-all duration-700 hover:border-yellow-400/30 relative"
+                                className="group h-[550px] rounded-[2.5rem] overflow-hidden bg-zinc-900 border border-white/5 transition-all duration-700 hover:border-yellow-400/30 relative"
                             >
                                 <div className="absolute inset-0">
-                                    {/* Using a placeholder if specific image logic is complex, but mapping correctly */}
                                     <ImageWithLoader
                                         src={item.image}
                                         alt={item.name}
                                         className="w-full h-full object-cover grayscale-[0.3] group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-110"
                                     />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent opacity-90" />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent opacity-80" />
                                 </div>
 
-                                <div className="absolute top-10 left-10">
-                                    <div className="px-6 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-xl text-white text-[10px] font-black uppercase tracking-widest">
+                                <div className="absolute top-8 left-8">
+                                    <div className="px-5 py-1.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-xl text-white text-[8px] font-black uppercase tracking-widest">
                                         Elite Choice
                                     </div>
                                 </div>
 
-                                <div className="absolute bottom-12 left-12 right-12">
-                                    <div className="flex items-center gap-2 text-yellow-500 text-xs font-black mb-4">
+                                <div className="absolute bottom-10 left-10 right-10">
+                                    <div className="flex items-center gap-2 text-yellow-500 text-[10px] font-black mb-3">
                                         <FaStar /> {item.rating} • <span className="text-zinc-500 font-bold uppercase underline underline-offset-4 decoration-yellow-400/30">{item.category}</span>
                                     </div>
-                                    <h3 className="text-4xl font-black text-white mb-8 tracking-tighter group-hover:text-yellow-400 transition-colors uppercase leading-[0.9]">
+                                    <h3 className="text-3xl font-black text-white mb-6 tracking-tighter group-hover:text-yellow-400 transition-colors uppercase leading-[0.9] line-clamp-2">
                                         {item.name}
                                     </h3>
                                     
-                                    <div className="flex items-center justify-between pt-8 border-t border-white/10">
-                                        <span className="text-4xl font-black text-white">₹{item.price}</span>
+                                    <div className="flex items-center justify-between pt-6 border-t border-white/10">
+                                        <span className="text-3xl font-black text-white">₹{item.price}</span>
                                         <NavLink
                                             to="/menu"
-                                            className="w-16 h-16 rounded-full bg-white text-black flex items-center justify-center group-hover:bg-yellow-400 transition-all shadow-2xl scale-0 group-hover:scale-100 duration-500"
+                                            className="w-12 h-12 rounded-full bg-white text-black flex items-center justify-center group-hover:bg-yellow-400 transition-all shadow-2xl scale-0 group-hover:scale-100 duration-500"
                                         >
-                                            <FaBolt className="text-xl" />
+                                            <FaBolt className="text-lg" />
                                         </NavLink>
                                     </div>
                                 </div>

@@ -10,7 +10,7 @@ const menuItems = [
     category: "Sandwiches",
     type: "Non-Veg",
     rating: 4.9,
-    image: "tandoori.jpg",
+    image: "https://images.unsplash.com/photo-1528735602780-2552fd46c7af?q=80&w=800&auto=format&fit=crop",
     isBestSeller: true,
     isNew: false,
     tags: ["Halal", "Spicy"]
@@ -23,7 +23,7 @@ const menuItems = [
     category: "Sandwiches",
     type: "Non-Veg",
     rating: 4.8,
-    image: "chickencheese.jpg",
+    image: "https://images.unsplash.com/photo-1550507992-eb63ffee0847?q=80&w=800&auto=format&fit=crop",
     isBestSeller: false,
     isNew: false,
     tags: ["Halal"]
@@ -36,7 +36,7 @@ const menuItems = [
     category: "Sandwiches",
     type: "Veg",
     rating: 4.7,
-    image: "mayoveggie.jpg",
+    image: "https://images.unsplash.com/photo-1539252554452-da37612c37bc?q=80&w=800&auto=format&fit=crop",
     isBestSeller: false,
     isNew: false,
     tags: []
@@ -49,7 +49,7 @@ const menuItems = [
     category: "Sandwiches",
     type: "Egg",
     rating: 4.8,
-    image: "Egg.jpg",
+    image: "https://images.unsplash.com/photo-1600454021970-351feb4a1743?q=80&w=800&auto=format&fit=crop",
     isBestSeller: true,
     isNew: false,
     tags: []
@@ -66,7 +66,7 @@ const menuItems = [
     category: "Pizza",
     type: "Non-Veg",
     rating: 4.9,
-    image: "tandooripizza.jpg",
+    image: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?q=80&w=800&auto=format&fit=crop",
     isBestSeller: true,
     isNew: false,
     tags: ["Halal", "Spicy"]
@@ -79,7 +79,7 @@ const menuItems = [
     category: "Pizza",
     type: "Non-Veg",
     rating: 4.8,
-    image: "tandooripizzaplain.jpg",
+    image: "https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=800&auto=format&fit=crop",
     isBestSeller: false,
     isNew: false,
     tags: ["Halal"]
@@ -92,7 +92,7 @@ const menuItems = [
     category: "Pizza",
     type: "Veg",
     rating: 4.7,
-    image: "margherita.jpg",
+    image: "https://images.unsplash.com/photo-1574071318508-1cdbad80ad50?q=80&w=800&auto=format&fit=crop",
     isBestSeller: true,
     isNew: false,
     tags: []
@@ -105,7 +105,7 @@ const menuItems = [
     category: "Pizza",
     type: "Veg",
     rating: 4.6,
-    image: "onionpizza.jpg",
+    image: "https://images.unsplash.com/photo-1593504049359-7b797444ad97?q=80&w=800&auto=format&fit=crop",
     isBestSeller: false,
     isNew: false,
     tags: []
@@ -118,7 +118,7 @@ const menuItems = [
     category: "Pizza",
     type: "Veg",
     rating: 4.7,
-    image: "sweetcorn.jpg",
+    image: "https://images.unsplash.com/photo-1566843972142-a7fcb70de55a?q=80&w=800&auto=format&fit=crop",
     isBestSeller: false,
     isNew: false,
     tags: []
@@ -131,7 +131,7 @@ const menuItems = [
     category: "Pizza",
     type: "Veg",
     rating: 4.6,
-    image: "onioncapsicum.jpg",
+    image: "https://images.unsplash.com/photo-1594007654729-407eedc4be65?q=80&w=800&auto=format&fit=crop",
     isBestSeller: false,
     isNew: false,
     tags: []
@@ -146,7 +146,7 @@ const menuItems = [
     category: "Pizza",
     type: "Veg",
     rating: 4.9,
-    image: "paneertikka.jpg",
+    image: "https://images.unsplash.com/photo-1541745537411-b8046dc6d66c?q=80&w=800&auto=format&fit=crop",
     isBestSeller: true,
     isNew: false,
     tags: []
@@ -161,7 +161,7 @@ const menuItems = [
     category: "Snacks",
     type: "Veg",
     rating: 4.5,
-    image: "frenchfries.jpg",
+    image: "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?q=80&w=800&auto=format&fit=crop",
     isBestSeller: false,
     isNew: false,
     tags: []
@@ -174,7 +174,7 @@ const menuItems = [
     category: "Snacks",
     type: "Veg",
     rating: 4.6,
-    image: "maggi.jpg",
+    image: "https://images.unsplash.com/photo-1612929633738-8fe44f7ec841?q=80&w=800&auto=format&fit=crop",
     isBestSeller: false,
     isNew: false,
     tags: []
@@ -189,7 +189,7 @@ const menuItems = [
     category: "Continentals",
     type: "Non-Veg",
     rating: 4.8,
-    image: "alfredo.jpg",
+    image: "https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?q=80&w=800&auto=format&fit=crop",
     isBestSeller: true,
     isNew: false,
     tags: ["Halal"]
@@ -202,7 +202,7 @@ const menuItems = [
     category: "Continentals",
     type: "Veg",
     rating: 4.7,
-    image: "whitepasta.jpg",
+    image: "https://images.unsplash.com/photo-1473093226795-af9932fe5856?q=80&w=800&auto=format&fit=crop",
     isBestSeller: false,
     isNew: false,
     tags: []
@@ -217,7 +217,7 @@ const menuItems = [
     category: "Continentals",
     type: "Non-Veg",
     rating: 4.9,
-    image: "macaroni.jpg",
+    image: "https://images.unsplash.com/photo-1555507036-ab1f4038808a?q=80&w=800&auto=format&fit=crop",
     isBestSeller: false,
     isNew: false,
     tags: ["Halal"]
@@ -232,7 +232,7 @@ const menuItems = [
     category: "Street Style",
     type: "Veg",
     rating: 4.6,
-    image: "ragadapav.jpg",
+    image: "https://images.unsplash.com/photo-1626074353765-517a681e40be?q=80&w=800&auto=format&fit=crop",
     isBestSeller: false,
     isNew: false,
     tags: []
@@ -247,7 +247,7 @@ const menuItems = [
     category: "Street Style",
     type: "Non-Veg",
     rating: 4.9,
-    image: "tawachicken.jpg",
+    image: "https://images.unsplash.com/photo-1516714435131-44d6b64dc3a2?q=80&w=800&auto=format&fit=crop",
     isBestSeller: true,
     isNew: false,
     tags: ["Halal", "Spicy"]
