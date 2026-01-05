@@ -1,3 +1,5 @@
+@import "tailwindcss";
+
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&family=Syne:wght@400;500;600;700;800&display=swap');
 
 :root {
@@ -30,7 +32,14 @@ body {
     background-color: var(--color-bg);
     color: var(--color-text);
     overflow-x: hidden;
-    @apply antialiased selection:bg-yellow-400 selection:text-black;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+    background-color: #facc15;
+    /* yellow-400 */
+    color: black;
 }
 
 h1,
@@ -87,11 +96,20 @@ h6 {
 
 /* Button Utilities */
 .btn-primary {
-    @apply bg-yellow-400 text-black font-bold uppercase tracking-wide px-6 py-3 rounded-full transition-all duration-300;
+    background-color: #facc15;
+    color: black;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+    padding: 0.75rem 1.5rem;
+    border-radius: 9999px;
+    transition: all 0.3s ease;
 }
 
 .btn-primary:hover {
-    @apply bg-yellow-500 scale-105 shadow-[0_0_20px_rgba(251, 191, 36, 0.4)];
+    background-color: #eab308;
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(251, 191, 36, 0.4);
 }
 
 .btn-outline {
@@ -113,12 +131,18 @@ h6 {
 
 /* Typography Utilities */
 .text-gradient {
-    @apply text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-amber-600;
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+    background-image: linear-gradient(to right, #facc15, #d97706);
 }
 
 /* Layout Utilities */
 .section-padding {
-    @apply py-20 px-6;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
 }
 
 /* Animations */
