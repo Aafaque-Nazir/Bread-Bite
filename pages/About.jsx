@@ -15,8 +15,10 @@ const About = () => {
     return (
         <section className="relative min-h-screen bg-zinc-950 pt-32 pb-20 px-6 overflow-hidden">
             <SEO
-                title="Our Story - Bread & Bite"
-                description="Learn about Bread & Bite's journey, our commitment to quality, and why we are Navi Mumbai's favorite spot for delicious comfort food."
+                title="About Us - Bread & Bite"
+                description="Learn about Bread & Bite's journey, our commitment to quality, and why we are Navi Mumbai's favorite spot for delicious comfort food. Est. 2025 in Taloja."
+                url="/about"
+                keywords="about bread and bite, navi mumbai restaurant story, taloja food, best restaurant kharghar"
             />
 
             {/* Premium Background Elements */}

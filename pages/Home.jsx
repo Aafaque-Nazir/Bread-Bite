@@ -36,6 +36,8 @@ const Home = () => {
             <SEO
                 title="Bread & Bite | Premium Comfort Food - Navi Mumbai"
                 description="Experience Navi Mumbai's finest comfort food. Premium grilled sandwiches, artisan pizzas, creamy pastas, and street-style snacks. Free delivery across Navi Mumbai."
+                url="/"
+                keywords="bread and bite, navi mumbai food delivery, grilled sandwich kharghar, pizza panvel, pasta taloja, comfort food navi mumbai, fast food delivery"
             />
 
             {/* ═══════════════════════════════════════════════════════════════════

@@ -73,24 +73,6 @@ const Footer = () => {
                     </ul>
                 </div>
 
-                {/* Newsletter */}
-                <div>
-                    <h3 className="text-white font-bold text-lg mb-6">Newsletter</h3>
-                    <p className="text-sm text-zinc-400 mb-4">Subscribe to get the latest offers and updates.</p>
-                    <form className="space-y-3" onSubmit={(e) => e.preventDefault()}>
-                        <input
-                            type="email"
-                            placeholder="Your email address"
-                            className="w-full bg-zinc-900 border border-zinc-800 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-yellow-400 transition-colors"
-                        />
-                        <button
-                            type="submit"
-                            className="w-full bg-yellow-400 text-black font-bold py-3 rounded-lg hover:bg-yellow-500 transition-colors text-sm"
-                        >
-                            Subscribe
-                        </button>
-                    </form>
-                </div>
             </div>
 
             <div className="max-w-7xl mx-auto px-6 mt-16 pt-8 border-t border-zinc-900 text-center text-sm text-zinc-500">

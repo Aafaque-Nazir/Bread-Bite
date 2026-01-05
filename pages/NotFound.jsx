@@ -2,10 +2,17 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { FaHome } from 'react-icons/fa';
+import SEO from '../src/components/SEO';
 
 const NotFound = () => {
     return (
-        <section className="min-h-screen bg-black flex items-center justify-center px-6 relative overflow-hidden">
+        <>
+            <SEO
+                title="404 - Page Not Found | Bread & Bite"
+                description="The page you're looking for doesn't exist. Return to Bread & Bite homepage."
+                noindex={true}
+            />
+            <section className="min-h-screen bg-black flex items-center justify-center px-6 relative overflow-hidden">
             {/* Background Elements */}
             <div className="absolute inset-0 pointer-events-none">
                 <div className="absolute top-1/2 left-1/2 w-[600px] h-[600px] bg-yellow-400/5 rounded-full blur-[120px] -translate-x-1/2 -translate-y-1/2"></div>
@@ -49,6 +56,7 @@ const NotFound = () => {
                 </motion.div>
             </div>
         </section>
+        </>
     );
 };
 

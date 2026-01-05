@@ -19,8 +19,10 @@ const Contact = () => {
     return (
         <section className="relative min-h-screen bg-black pt-32 pb-20 px-6 overflow-hidden text-white">
             <SEO
-                title="Contact Us - Bread & Bite"
-                description="Get in touch with Bread & Bite. Order via WhatsApp, find our location in Taloja, or send us a message directly. Serving Navi Mumbai with passion."
+                title="Contact Us - Bread & Bite Navi Mumbai"
+                description="Get in touch with Bread & Bite. Order via WhatsApp at +91 93256 29256, find our location in Taloja Phase 1, or send us a message. Serving all of Navi Mumbai."
+                url="/contact"
+                keywords="bread and bite contact, food delivery taloja, whatsapp food order navi mumbai, restaurant contact kharghar"
             />
 
             {/* Premium Background Elements */}

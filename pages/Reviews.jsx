@@ -42,8 +42,10 @@ const Reviews = () => {
     return (
         <section className="relative min-h-screen bg-black pt-32 pb-20 px-6 overflow-hidden text-white">
             <SEO
-                title="Customer Reviews - Bread & Bite"
-                description="See what 500+ happy customers are saying about Bread & Bite. From cheesy pizzas to loaded sandwiches, see why we are Navi Mumbai's favorite."
+                title="Customer Reviews & Testimonials - Bread & Bite"
+                description="See what 500+ happy customers are saying about Bread & Bite. 4.9 star rating, 98% repeat customers. Read real reviews from Kharghar, Panvel, Taloja & more!"
+                url="/reviews"
+                keywords="bread and bite reviews, food reviews navi mumbai, customer testimonials kharghar, best rated restaurant panvel"
             />
 
             {/* Visual Accents */}

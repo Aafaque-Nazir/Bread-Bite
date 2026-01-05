@@ -1,0 +1,23 @@
+# Robots.txt for Bread & Bite
+# https://breadandbite.in
+
+User-agent: *
+Allow: /
+Disallow: /cart
+Disallow: /thank-you
+
+# Sitemap Location
+Sitemap: https://breadandbite.in/sitemap.xml
+
+# Allow all major search engines
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+# Crawl-delay for bots
+Crawl-delay: 10

@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useCart } from '../src/context/CartContext';
 import { FaTrash, FaMinus, FaPlus, FaWhatsapp, FaArrowLeft, FaShoppingBag, FaCheckCircle } from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router-dom';
+import SEO from '../src/components/SEO';
 
 const Cart = () => {
     const { cart, removeFromCart, updateQuantity, cartTotal, grandTotal, clearCart } = useCart();
@@ -68,6 +69,12 @@ const Cart = () => {
 
     return (
         <div className="min-h-screen bg-black text-white pt-24 pb-20 px-6">
+            <SEO
+                title="Your Cart - Bread & Bite"
+                description="Review your cart and complete your order. Free delivery across Navi Mumbai!"
+                url="/cart"
+                noindex={true}
+            />
             <div className="max-w-7xl mx-auto">
                 <h1 className="text-5xl md:text-7xl font-bold mb-16 tracking-tight font-heading uppercase">
                     Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 via-yellow-400 to-amber-600">Bag</span>

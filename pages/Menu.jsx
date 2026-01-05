@@ -25,8 +25,10 @@ const Menu = () => {
     return (
         <section className="min-h-screen bg-black pt-32 pb-20 px-6">
             <SEO
-                title="Menu - Bread & Bite"
-                description="Explore our minimalist menu. Pure taste, no distractions."
+                title="Menu - Bread & Bite | Sandwiches, Pizza, Pasta & More"
+                description="Explore our full menu - grilled sandwiches, cheesy pizzas, creamy pastas, Maggi, and street-style snacks. Order online in Navi Mumbai. Free delivery!"
+                url="/menu"
+                keywords="bread and bite menu, food menu navi mumbai, sandwich menu kharghar, pizza menu panvel, pasta menu taloja, maggi near me"
             />
 
             <div className="max-w-7xl mx-auto">
