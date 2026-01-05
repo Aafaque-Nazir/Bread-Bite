@@ -1,5 +1,5 @@
 # Robots.txt for Bread & Bite
-# https://breadandbite.in
+# https://bread-and-bite.netlify.app
 
 User-agent: *
 Allow: /
@@ -7,7 +7,7 @@ Disallow: /cart
 Disallow: /thank-you
 
 # Sitemap Location
-Sitemap: https://breadandbite.in/sitemap.xml
+Sitemap: https://bread-and-bite.netlify.app/sitemap.xml
 
 # Allow all major search engines
 User-agent: Googlebot
