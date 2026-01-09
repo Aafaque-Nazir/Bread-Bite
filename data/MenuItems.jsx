@@ -55,7 +55,7 @@ const menuItems = [
     tags: []
   },
 
-  // ==================== PIZZA ====================
+  /* ==================== PIZZA ====================
   {
     id: 101,
     name: "Double Topping Tandoori Pizza [7.5 inches]",
@@ -151,6 +151,7 @@ const menuItems = [
     isNew: false,
     tags: []
   },
+  */
 
   // ==================== SNACKS ====================
   {
@@ -256,7 +257,7 @@ const menuItems = [
 
 export const CATEGORIES_DATA = [
   { id: "Sandwiches", name: "Sandwiches", image: "https://images.unsplash.com/photo-1528735602780-2552fd46c7af?q=80&w=300&h=300&auto=format&fit=crop", description: "Grilled Sandwiches" },
-  { id: "Pizza", name: "Pizza", image: "https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=300&h=300&auto=format&fit=crop", description: "Cheese Pizza" },
+  // { id: "Pizza", name: "Pizza", image: "https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=300&h=300&auto=format&fit=crop", description: "Cheese Pizza" },
   { id: "Snacks", name: "Snacks", image: "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?q=80&w=300&h=300&auto=format&fit=crop", description: "Quick Bites" },
   { id: "Continentals", name: "Continentals", image: "https://images.unsplash.com/photo-1473093226795-af9932fe5856?q=80&w=300&h=300&auto=format&fit=crop", description: "Continental" },
   { id: "Street Style", name: "Street Style", image: "https://images.unsplash.com/photo-1626074353765-517a681e40be?q=80&w=300&h=300&auto=format&fit=crop", description: "Street Food" }

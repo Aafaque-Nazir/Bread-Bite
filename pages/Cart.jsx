@@ -29,7 +29,7 @@ const Cart = () => {
         if (Object.keys(formErrors).length > 0) {
             setErrors(formErrors);
             return;
-        }
+        } 
 
         const message = cart.map(item => `• ${item.name} (x${item.quantity}) - ₹${item.price * item.quantity}`).join('\n');
         const customerInfo = `\n\n👤 *Customer Details:*\nName: ${details.name}\nPhone: ${details.phone}\nAddress: ${details.address}, ${details.landmark || ''}`;
@@ -90,7 +90,7 @@ const Cart = () => {
                                     layout
                                     initial={{ opacity: 0, scale: 0.9 }}
                                     animate={{ opacity: 1, scale: 1 }}
-                                    exit={{ opacity: 0, opacity: 0 }}
+                                    exit={{ opacity: 0 }}
                                     className="flex gap-6 items-start group"
                                 >
                                     <div className="w-24 h-24 bg-zinc-900 rounded-xl overflow-hidden shrink-0 border border-white/5 group-hover:border-yellow-400/30 transition-colors">
