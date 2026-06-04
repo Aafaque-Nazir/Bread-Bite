@@ -23,7 +23,7 @@ const Menu = () => {
     }, [selectedCategory, searchQuery]);
 
     return (
-        <section className="min-h-screen bg-[#FFFAF5] pt-28 pb-20 px-6">
+        <section className="min-h-screen bg-[#FFFAF5] pt-8 lg:pt-12 pb-20 px-6">
             <SEO
                 title="Menu - Bread & Bite | Pizza, Sandwich, Pasta & Drinks"
                 description="Explore our curated menu — artisan pizzas, grilled sandwiches, creamy pastas, and refreshing drinks. Order online in Navi Mumbai. Free delivery!"

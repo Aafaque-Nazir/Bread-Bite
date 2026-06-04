@@ -1,11 +1,20 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaWhatsapp, FaMapMarkerAlt, FaClock, FaPhone, FaPaperPlane, FaCheckCircle, FaExclamationCircle } from 'react-icons/fa';
+import { FaWhatsapp, FaMapMarkerAlt, FaClock, FaPaperPlane, FaCheckCircle, FaExclamationCircle, FaChevronDown } from 'react-icons/fa';
 import SEO from "../src/components/SEO";
+
+// FAQ Data
+const faqs = [
+    { question: "What are your delivery zones?", answer: "We currently deliver across all major sectors of Navi Mumbai including Kharghar, Taloja, Panvel, Belapur, and Vashi." },
+    { question: "Do you have vegan or gluten-free options?", answer: "Yes! We have a dedicated section for vegan pizzas and gluten-free sandwich bread. Please mention your preferences in the order notes." },
+    { question: "How long does delivery usually take?", answer: "Our standard delivery time is 25-40 minutes depending on your exact location and traffic conditions." },
+    { question: "Do you cater for large events or parties?", answer: "Absolutely. We offer bulk catering for corporate events and parties. Please reach out to us on WhatsApp at least 24 hours in advance." }
+];
 
 const Contact = () => {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isSubmitted, setIsSubmitted] = useState(false);
+    const [openFaq, setOpenFaq] = useState(null);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -16,7 +25,7 @@ const Contact = () => {
     };
 
     return (
-        <section className="relative min-h-screen bg-[#FFFAF5] pt-28 pb-20 px-6 overflow-hidden text-stone-900">
+        <section className="relative min-h-screen bg-[#FFFAF5] pt-8 lg:pt-12 pb-20 px-6 overflow-hidden text-stone-900">
             <SEO
                 title="Contact Us - Bread & Bite Navi Mumbai"
                 description="Get in touch with Bread & Bite. Order via WhatsApp at +91 93256 29256, find our location in Taloja Phase 1, or send us a message. Serving all of Navi Mumbai."
@@ -54,7 +63,7 @@ const Contact = () => {
                     </p>
                 </div>
 
-                <div className="grid lg:grid-cols-2 gap-10 items-start">
+                <div className="grid lg:grid-cols-2 gap-10 items-start mb-24">
                     {/* Information Column */}
                     <motion.div
                         initial={{ opacity: 0, x: -30 }}
@@ -62,17 +71,24 @@ const Contact = () => {
                         viewport={{ once: true }}
                         className="space-y-6"
                     >
-                        <div className="bg-white p-10 rounded-3xl border border-stone-100 shadow-[0_4px_24px_rgba(0,0,0,0.04)] space-y-8">
+                        <div className="bg-white p-10 rounded-3xl border border-stone-100 shadow-[0_4px_24px_rgba(0,0,0,0.04)] space-y-8 relative overflow-hidden">
+                            {/* Decorative map watermark */}
+                            <div className="absolute -bottom-20 -right-20 opacity-[0.03] pointer-events-none">
+                                <svg width="300" height="300" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 2C8.13 2 5 5.13 5 9C5 14.25 12 22 12 22C12 22 19 14.25 19 9C19 5.13 15.87 2 12 2ZM12 11.5C10.62 11.5 9.5 10.38 9.5 9C9.5 7.62 10.62 6.5 12 6.5C13.38 6.5 14.5 7.62 14.5 9C14.5 10.38 13.38 11.5 12 11.5Z" />
+                                </svg>
+                            </div>
+
                             <h3 className="text-xl font-bold tracking-tight text-stone-900 font-heading">Quick Access</h3>
                             
-                            <div className="space-y-6">
+                            <div className="space-y-6 relative z-10">
                                 <div className="flex items-start gap-5 group">
                                     <div className="w-12 h-12 rounded-xl bg-green-50 flex items-center justify-center text-green-600 group-hover:bg-green-600 group-hover:text-white transition-all duration-300 text-xl shrink-0">
                                         <FaWhatsapp />
                                     </div>
                                     <div>
                                         <p className="text-xs font-semibold text-stone-400 uppercase tracking-wider mb-0.5">Direct Order</p>
-                                        <a href="https://wa.me/919325629256" className="text-xl font-bold text-stone-900 hover:text-orange-600 transition-colors tracking-tight">+91 93256 29256</a>
+                                        <a href="https://wa.me/919325629256" target="_blank" rel="noopener noreferrer" className="text-xl font-bold text-stone-900 hover:text-orange-600 transition-colors tracking-tight">+91 93256 29256</a>
                                     </div>
                                 </div>
 
@@ -98,19 +114,18 @@ const Contact = () => {
                             </div>
                         </div>
 
-                        {/* Delivery Banner */}
-                        <div className="relative rounded-2xl bg-gradient-to-r from-orange-600 to-amber-600 p-8 overflow-hidden group">
-                            <div className="relative z-10 flex items-center gap-5">
-                                <div className="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center text-white text-xl shrink-0">
-                                    <FaExclamationCircle />
-                                </div>
+                        {/* Visual Map graphic (New) */}
+                        <div className="relative rounded-3xl overflow-hidden shadow-md border border-stone-100 aspect-[21/9] bg-stone-200 group">
+                            <img src="https://images.unsplash.com/photo-1524661135-423995f22d0b?q=80&w=800&auto=format&fit=crop" alt="Navi Mumbai Map Area" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-80" />
+                            <div className="absolute inset-0 bg-gradient-to-t from-stone-900/80 to-transparent"></div>
+                            <div className="absolute bottom-4 left-6 right-6 flex justify-between items-end">
                                 <div className="text-white">
-                                    <h4 className="font-bold text-base uppercase tracking-tight mb-0.5 leading-none">Free Delivery Areas</h4>
-                                    <p className="font-medium text-sm text-white/80">Kharghar, Taloja, Panvel, and all of Navi Mumbai.</p>
+                                    <h4 className="font-bold text-lg font-heading">Navi Mumbai</h4>
+                                    <p className="text-sm text-stone-300">Central Kitchen Location</p>
                                 </div>
-                            </div>
-                            <div className="absolute top-0 right-0 p-6 opacity-10 group-hover:scale-110 transition-transform">
-                                <FaMapMarkerAlt className="text-7xl text-white" />
+                                <div className="w-10 h-10 bg-orange-600 text-white rounded-full flex items-center justify-center shadow-[0_0_20px_rgba(232,89,12,0.6)] animate-pulse">
+                                    <FaMapMarkerAlt />
+                                </div>
                             </div>
                         </div>
                     </motion.div>
@@ -208,6 +223,54 @@ const Contact = () => {
                         </AnimatePresence>
                     </motion.div>
                 </div>
+
+                {/* ═══════════════════════════════════════════════════════════════════
+                    FAQ SECTION (NEW)
+                ═══════════════════════════════════════════════════════════════════ */}
+                <div className="max-w-3xl mx-auto">
+                    <div className="text-center mb-10">
+                        <span className="text-orange-600 text-xs font-semibold tracking-[0.2em] uppercase mb-3 block">Got Questions?</span>
+                        <h2 className="text-3xl font-bold text-stone-900 tracking-tight font-heading">Frequently Asked Questions</h2>
+                    </div>
+
+                    <div className="space-y-4">
+                        {faqs.map((faq, index) => (
+                            <motion.div 
+                                key={index}
+                                initial={{ opacity: 0, y: 10 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: index * 0.1 }}
+                                className="bg-white border border-stone-200 rounded-2xl overflow-hidden transition-all duration-300"
+                            >
+                                <button
+                                    onClick={() => setOpenFaq(openFaq === index ? null : index)}
+                                    className="w-full text-left px-6 py-5 flex items-center justify-between focus:outline-none"
+                                >
+                                    <span className="font-bold text-stone-900 pr-4">{faq.question}</span>
+                                    <FaChevronDown 
+                                        className={`text-stone-400 transition-transform duration-300 shrink-0 ${openFaq === index ? 'rotate-180 text-orange-600' : ''}`} 
+                                    />
+                                </button>
+                                <AnimatePresence>
+                                    {openFaq === index && (
+                                        <motion.div
+                                            initial={{ height: 0, opacity: 0 }}
+                                            animate={{ height: "auto", opacity: 1 }}
+                                            exit={{ height: 0, opacity: 0 }}
+                                            transition={{ duration: 0.3 }}
+                                        >
+                                            <div className="px-6 pb-5 pt-0 text-stone-500 text-sm leading-relaxed border-t border-stone-100 mt-2 pt-4">
+                                                {faq.answer}
+                                            </div>
+                                        </motion.div>
+                                    )}
+                                </AnimatePresence>
+                            </motion.div>
+                        ))}
+                    </div>
+                </div>
+
             </div>
         </section>
     );

@@ -41,7 +41,7 @@ const Home = () => {
             {/* ═══════════════════════════════════════════════════════════════════
                 HERO SECTION — Fixed layout to prevent content pushing down
             ═══════════════════════════════════════════════════════════════════ */}
-            <section className="relative pt-12 pb-24 lg:pt-20 lg:pb-32 bg-[#FFFAF5] overflow-hidden">
+            <section className="relative pt-6 pb-24 lg:pt-12 lg:pb-32 bg-[#FFFAF5] overflow-hidden">
                 {/* Subtle Warm Orbs */}
                 <div className="absolute inset-0 pointer-events-none">
                     <div className="absolute -top-32 -right-32 w-[500px] h-[500px] bg-orange-200/30 rounded-full blur-[120px]" />
@@ -241,6 +241,49 @@ const Home = () => {
             </section>
 
             {/* ═══════════════════════════════════════════════════════════════════
+                CATEGORY EXPLORATION
+            ═══════════════════════════════════════════════════════════════════ */}
+            <section className="py-20 lg:py-24 bg-white relative overflow-hidden border-t border-stone-100">
+                <div className="max-w-7xl mx-auto px-6">
+                    <motion.div
+                        initial={{ opacity: 0, y: 25 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.6 }}
+                        className="text-center mb-12 lg:mb-16"
+                    >
+                        <span className="text-orange-600 text-[11px] font-semibold tracking-[0.15em] uppercase mb-2 block">Menu Highlights</span>
+                        <h2 className="text-3xl lg:text-4xl font-bold text-stone-900 tracking-tight font-heading">
+                            Explore Our <span className="text-orange-600 italic">Menu</span>
+                        </h2>
+                    </motion.div>
+
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 lg:gap-6">
+                        {[
+                            { name: "Pizzas", img: "https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=600&auto=format&fit=crop", count: "4 Items" },
+                            { name: "Sandwiches", img: "https://images.unsplash.com/photo-1528735602780-2552fd46c7af?q=80&w=600&auto=format&fit=crop", count: "4 Items" },
+                            { name: "Pastas", img: "https://images.unsplash.com/photo-1473093295043-cdd812d0e601?q=80&w=600&auto=format&fit=crop", count: "4 Items" },
+                            { name: "Drinks", img: "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?q=80&w=600&auto=format&fit=crop", count: "4 Items" }
+                        ].map((category, idx) => (
+                            <NavLink to="/menu" key={idx} className="group relative rounded-2xl overflow-hidden aspect-square flex items-end p-5 lg:p-6 shadow-[0_4px_20px_rgba(0,0,0,0.04)] hover:shadow-[0_10px_40px_rgba(232,89,12,0.15)] transition-all duration-500 block border border-stone-100">
+                                <ImageWithLoader src={category.img} alt={category.name} className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                                <div className="relative z-10 w-full flex items-end justify-between">
+                                    <div>
+                                        <h3 className="text-white font-bold text-lg lg:text-xl font-heading mb-0.5">{category.name}</h3>
+                                        <p className="text-orange-300 text-[10px] uppercase tracking-wider font-semibold">{category.count}</p>
+                                    </div>
+                                    <div className="w-8 h-8 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center group-hover:bg-orange-600 transition-colors">
+                                        <FaArrowRight className="text-white text-[10px]" />
+                                    </div>
+                                </div>
+                            </NavLink>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* ═══════════════════════════════════════════════════════════════════
                 BESTSELLERS SECTION
             ═══════════════════════════════════════════════════════════════════ */}
             <section className="py-20 lg:py-24 bg-[#FFFAF5] relative overflow-hidden">
@@ -317,6 +360,82 @@ const Home = () => {
                             </motion.div>
                         ))}
                     </motion.div>
+                </div>
+            </section>
+
+            {/* ═══════════════════════════════════════════════════════════════════
+                ARTISAN QUALITY SECTION
+            ═══════════════════════════════════════════════════════════════════ */}
+            <section className="py-20 lg:py-32 bg-white relative overflow-hidden border-t border-stone-100">
+                <div className="max-w-7xl mx-auto px-6">
+                    <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+                        <motion.div
+                            initial={{ opacity: 0, x: -40 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                            className="relative"
+                        >
+                            <div className="relative z-10 rounded-3xl overflow-hidden aspect-[4/3] lg:aspect-square shadow-[0_20px_60px_rgba(0,0,0,0.08)]">
+                                <ImageWithLoader src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=1000&auto=format&fit=crop" alt="Fresh ingredients" className="w-full h-full object-cover" />
+                            </div>
+                            {/* Decorative elements */}
+                            <div className="absolute -bottom-6 -right-6 lg:-bottom-10 lg:-right-10 w-40 h-40 lg:w-56 lg:h-56 bg-orange-100/50 rounded-full blur-[40px] -z-10" />
+                            <div className="absolute top-1/2 -left-6 -translate-y-1/2 w-20 h-40 bg-amber-100/40 rounded-full blur-[30px] -z-10" />
+                            
+                            <div className="absolute -bottom-5 -left-5 bg-white p-5 rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.1)] border border-stone-100 hidden sm:block">
+                                <div className="flex items-center gap-4">
+                                    <div className="w-12 h-12 rounded-full bg-green-50 flex items-center justify-center text-green-600">
+                                        <FaLeaf size={20} />
+                                    </div>
+                                    <div>
+                                        <p className="text-stone-900 font-bold text-sm font-heading">100% Fresh</p>
+                                        <p className="text-stone-500 text-[10px]">Farm to Table</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </motion.div>
+
+                        <motion.div
+                            initial={{ opacity: 0, x: 40 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
+                        >
+                            <span className="text-orange-600 text-[11px] font-semibold tracking-[0.15em] uppercase mb-4 block">Our Promise</span>
+                            <h2 className="text-3xl lg:text-5xl font-bold text-stone-900 tracking-tight font-heading leading-tight mb-6">
+                                Quality you can <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-amber-600">taste</span>.
+                            </h2>
+                            <div className="space-y-6 text-stone-500 text-sm lg:text-base leading-relaxed">
+                                <p>
+                                    At Bread & Bite, we don't do fast food. We do good food, fast. Our philosophy is rooted in the belief that convenience shouldn't compromise quality.
+                                </p>
+                                <p>
+                                    Every pizza dough is hand-stretched, every sandwich is grilled to golden perfection, and every pasta is tossed in rich, house-made sauces. We source our vegetables fresh daily and use only premium, authentic cheeses to ensure every bite delivers an unforgettable experience.
+                                </p>
+                            </div>
+
+                            <ul className="mt-8 space-y-4">
+                                {[
+                                    "Hand-crafted recipes with signature spices",
+                                    "Zero artificial flavor enhancers",
+                                    "Strict hygiene and premium packaging"
+                                ].map((item, idx) => (
+                                    <li key={idx} className="flex items-center gap-3">
+                                        <div className="w-6 h-6 rounded-full bg-orange-100 flex items-center justify-center text-orange-600 shrink-0">
+                                            <FaCheckCircle size={12} />
+                                        </div>
+                                        <span className="text-stone-700 font-medium text-sm">{item}</span>
+                                    </li>
+                                ))}
+                            </ul>
+
+                            <NavLink to="/about" className="inline-flex items-center gap-2 mt-10 text-orange-600 font-bold hover:text-orange-700 transition-colors group text-sm uppercase tracking-wider">
+                                <span>Read Our Story</span>
+                                <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
+                            </NavLink>
+                        </motion.div>
+                    </div>
                 </div>
             </section>
 

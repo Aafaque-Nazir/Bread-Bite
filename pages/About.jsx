@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { FaCheckCircle, FaTruck, FaHandsWash, FaRupeeSign, FaQuoteLeft, FaArrowRight } from 'react-icons/fa';
+import { FaCheckCircle, FaTruck, FaHandsWash, FaRupeeSign, FaQuoteLeft, FaArrowRight, FaLeaf, FaFireAlt, FaSeedling } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import SEO from "../src/components/SEO";
 
@@ -13,7 +13,7 @@ const About = () => {
     };
 
     return (
-        <section className="relative min-h-screen bg-[#FFFAF5] pt-28 pb-20 px-6 overflow-hidden">
+        <section className="relative min-h-screen bg-[#FFFAF5] pt-8 lg:pt-12 pb-20 px-6 overflow-hidden">
             <SEO
                 title="About Us - Bread & Bite"
                 description="Learn about Bread & Bite's journey, our commitment to quality, and why we are Navi Mumbai's favorite spot for delicious comfort food. Est. 2025 in Taloja."
@@ -29,7 +29,7 @@ const About = () => {
 
             <div className="relative z-10 max-w-7xl mx-auto">
                 {/* Hero Section */}
-                <div className="flex flex-col lg:flex-row items-center gap-16 mb-28">
+                <div className="flex flex-col lg:flex-row items-center gap-16 mb-28 mt-8">
                     <motion.div
                         initial={{ opacity: 0, x: -40 }}
                         whileInView={{ opacity: 1, x: 0 }}
@@ -85,6 +85,41 @@ const About = () => {
                     </motion.div>
                 </div>
 
+                {/* ═══════════════════════════════════════════════════════════════════
+                    THE CRAFT / INGREDIENT SPOTLIGHT (NEW)
+                ═══════════════════════════════════════════════════════════════════ */}
+                <div className="mb-28 bg-white rounded-3xl p-10 md:p-16 border border-stone-100 shadow-[0_4px_30px_rgba(0,0,0,0.03)]">
+                    <motion.div {...fadeIn} className="text-center mb-12">
+                        <span className="text-orange-600 text-xs font-semibold tracking-[0.2em] uppercase mb-3 block">Ingredient Spotlight</span>
+                        <h2 className="text-3xl md:text-4xl font-bold text-stone-900 tracking-tight font-heading">
+                            The Anatomy of <span className="text-orange-600 italic">Flavor</span>
+                        </h2>
+                    </motion.div>
+
+                    <div className="grid md:grid-cols-3 gap-8">
+                        {[
+                            { icon: <FaSeedling />, title: "Farm-Fresh Produce", desc: "Crisp vegetables sourced daily from local farmers to ensure maximum crunch and nutrition." },
+                            { icon: <FaFireAlt />, title: "Artisan Dough", desc: "Hand-stretched, 24-hour fermented dough that creates the perfect airy, crispy crust." },
+                            { icon: <FaLeaf />, title: "Signature Sauces", desc: "Simmered slow and low with secret spice blends. Zero artificial colors or preservatives." }
+                        ].map((item, i) => (
+                            <motion.div
+                                key={i}
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: i * 0.15, duration: 0.6 }}
+                                className="flex flex-col items-center text-center p-6"
+                            >
+                                <div className="w-16 h-16 rounded-full bg-orange-50 flex items-center justify-center text-orange-600 text-2xl mb-6 shadow-sm border border-orange-100">
+                                    {item.icon}
+                                </div>
+                                <h3 className="text-lg font-bold text-stone-900 mb-3 tracking-tight font-heading">{item.title}</h3>
+                                <p className="text-stone-500 text-sm leading-relaxed">{item.desc}</p>
+                            </motion.div>
+                        ))}
+                    </div>
+                </div>
+
                 {/* Values Section */}
                 <div className="mb-28">
                     <motion.div {...fadeIn} className="text-center mb-16">
@@ -119,6 +154,38 @@ const About = () => {
                                 </div>
                                 <h3 className="text-xl font-bold text-stone-900 mb-2 tracking-tight font-heading">{item.title}</h3>
                                 <p className="text-stone-500 text-sm leading-relaxed">{item.desc}</p>
+                            </motion.div>
+                        ))}
+                    </div>
+                </div>
+
+                {/* ═══════════════════════════════════════════════════════════════════
+                    KITCHEN GALLERY (NEW)
+                ═══════════════════════════════════════════════════════════════════ */}
+                <div className="mb-28 relative">
+                    <motion.div {...fadeIn} className="text-center mb-12">
+                        <span className="text-orange-600 text-xs font-semibold tracking-[0.2em] uppercase mb-3 block">Behind The Scenes</span>
+                        <h2 className="text-3xl md:text-4xl font-bold text-stone-900 tracking-tight font-heading">
+                            Inside The <span className="text-orange-600 italic">Kitchen</span>
+                        </h2>
+                    </motion.div>
+                    
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        {[
+                            "https://images.unsplash.com/photo-1590947132387-155cc02f3212?q=80&w=800&auto=format&fit=crop", // Pizza oven
+                            "https://images.unsplash.com/photo-1589302168068-964664d93dc0?q=80&w=800&auto=format&fit=crop", // Chef
+                            "https://images.unsplash.com/photo-1607532941433-304659e8198a?q=80&w=800&auto=format&fit=crop", // Ingredients
+                            "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=800&auto=format&fit=crop"  // Pasta prep
+                        ].map((img, idx) => (
+                            <motion.div 
+                                key={idx}
+                                initial={{ opacity: 0, scale: 0.9 }}
+                                whileInView={{ opacity: 1, scale: 1 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: idx * 0.1, duration: 0.5 }}
+                                className={`rounded-2xl overflow-hidden shadow-md ${idx === 0 || idx === 3 ? 'md:translate-y-6' : ''}`}
+                            >
+                                <img src={img} alt="Kitchen scene" className="w-full aspect-[4/5] object-cover hover:scale-110 transition-transform duration-700" />
                             </motion.div>
                         ))}
                     </div>
@@ -191,14 +258,20 @@ const About = () => {
                     initial={{ opacity: 0, scale: 0.97 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
-                    className="text-center bg-gradient-to-r from-orange-600 to-amber-600 rounded-3xl p-14 md:p-20 group relative overflow-hidden"
+                    className="text-center bg-gradient-to-r from-orange-600 to-amber-600 rounded-3xl p-14 md:p-20 group relative overflow-hidden shadow-2xl"
                 >
-                    <h2 className="text-4xl md:text-6xl font-bold text-white tracking-tight mb-8 leading-none font-heading">
+                    {/* Decorative abstract shapes inside CTA */}
+                    <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+                        <div className="absolute -top-10 -left-10 w-40 h-40 bg-white/10 rounded-full blur-2xl"></div>
+                        <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-black/10 rounded-full blur-2xl"></div>
+                    </div>
+                    
+                    <h2 className="text-4xl md:text-6xl font-bold text-white tracking-tight mb-8 leading-none font-heading relative z-10">
                         Taste The<br />Revolution
                     </h2>
                     <Link
                         to="/menu"
-                        className="inline-flex items-center gap-3 px-10 py-5 bg-white text-orange-600 font-bold rounded-2xl hover:scale-105 transition-transform shadow-lg uppercase tracking-wider text-sm"
+                        className="inline-flex items-center gap-3 px-10 py-5 bg-white text-orange-600 font-bold rounded-full hover:scale-105 transition-transform shadow-[0_10px_30px_rgba(0,0,0,0.15)] uppercase tracking-wider text-sm relative z-10"
                     >
                         Explore Menu <FaArrowRight />
                     </Link>

@@ -19,7 +19,7 @@ function App() {
       <ToastProvider />
       <div className="flex flex-col min-h-screen bg-[#FFFAF5] text-stone-900">
         <Navbar />
-        <main className="flex-grow pt-[80px]">
+        <main className="flex-grow">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
