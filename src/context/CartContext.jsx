@@ -9,14 +9,14 @@ export const useCart = () => {
 
 export const CartProvider = ({ children }) => {
     const [cart, setCart] = useState(() => {
-        const savedCart = localStorage.getItem('foodiezz_cart');
+        const savedCart = localStorage.getItem('bread_and_bite_cart');
         return savedCart ? JSON.parse(savedCart) : [];
     });
 
     const [isCartOpen, setIsCartOpen] = useState(false);
 
     useEffect(() => {
-        localStorage.setItem('foodiezz_cart', JSON.stringify(cart));
+        localStorage.setItem('bread_and_bite_cart', JSON.stringify(cart));
     }, [cart]);
 
     const addToCart = (item) => {

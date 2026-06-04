@@ -27,7 +27,8 @@ const Cart = () => {
     const validateForm = () => {
         const newErrors = {};
         if (!details.name.trim()) newErrors.name = 'Name is required';
-        if (!details.phone.trim() || details.phone.length < 10) newErrors.phone = 'Valid phone is required';
+        const phoneRegex = /^[0-9]{10}$/;
+        if (!details.phone.trim() || !phoneRegex.test(details.phone.replace(/\s+/g, ''))) newErrors.phone = 'Valid 10-digit phone is required';
         if (!details.address.trim()) newErrors.address = 'Delivery address is required';
         return newErrors;
     };
