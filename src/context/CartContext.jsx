@@ -59,9 +59,6 @@ export const CartProvider = ({ children }) => {
 
     const cartTotal = cart.reduce((total, item) => total + item.price * item.quantity, 0);
     const cartCount = cart.reduce((count, item) => count + item.quantity, 0);
-    const DELIVERY_CHARGE = 0; // Free Delivery Worldwide (Navi Mumbai)
-    const grandTotal = cartTotal + DELIVERY_CHARGE;
-
     const value = {
         cart,
         isCartOpen,
@@ -72,8 +69,6 @@ export const CartProvider = ({ children }) => {
         toggleCart,
         cartTotal,
         cartCount,
-        DELIVERY_CHARGE,
-        grandTotal,
     };
 
     return <CartContext.Provider value={value}>{children}</CartContext.Provider>;

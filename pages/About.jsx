@@ -42,14 +42,13 @@ const About = () => {
                             Est. 2025 · Taloja, Navi Mumbai
                         </div>
                         <h1 className="text-5xl lg:text-7xl font-bold text-stone-900 leading-[1] tracking-tight font-heading">
-                            The{" "}
+                            Our{" "}
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-amber-600 italic">
-                                Soul
-                            </span>{" "}of<br />
-                            Cravings
+                                Story
+                            </span>
                         </h1>
                         <p className="text-lg text-stone-500 leading-relaxed max-w-xl">
-                            At <span className="text-stone-900 font-semibold">Bread & Bite</span>, we believe comfort food is an art form. From our signature grilled sandwiches to hand-tossed pizzas and creamy pastas, we've redefined cravings into a premium experience.
+                            At <span className="text-stone-900 font-semibold">Bread & Bite</span>, we love making good food. From our hot grilled sandwiches to handmade pizzas and creamy pastas, we focus on serving fresh, delicious meals that make you smile.
                         </p>
 
                         <div className="flex flex-wrap gap-10 pt-4">
@@ -90,9 +89,9 @@ const About = () => {
                 ═══════════════════════════════════════════════════════════════════ */}
                 <div className="mb-28 bg-white rounded-3xl p-10 md:p-16 border border-stone-100 shadow-[0_4px_30px_rgba(0,0,0,0.03)]">
                     <motion.div {...fadeIn} className="text-center mb-12">
-                        <span className="text-orange-600 text-xs font-semibold tracking-[0.2em] uppercase mb-3 block">Ingredient Spotlight</span>
+                        <span className="text-orange-600 text-xs font-semibold tracking-[0.2em] uppercase mb-3 block">Our Ingredients</span>
                         <h2 className="text-3xl md:text-4xl font-bold text-stone-900 tracking-tight font-heading">
-                            The Anatomy of <span className="text-orange-600 italic">Flavor</span>
+                            Made from <span className="text-orange-600 italic">Scratch</span>
                         </h2>
                     </motion.div>
 
@@ -123,9 +122,9 @@ const About = () => {
                 {/* Values Section */}
                 <div className="mb-28">
                     <motion.div {...fadeIn} className="text-center mb-16">
-                        <span className="text-orange-600 text-xs font-semibold tracking-[0.2em] uppercase mb-3 block">Our Philosophy</span>
+                        <span className="text-orange-600 text-xs font-semibold tracking-[0.2em] uppercase mb-3 block">What We Believe In</span>
                         <h2 className="text-3xl md:text-5xl font-bold text-stone-900 tracking-tight font-heading">
-                            Why We <span className="text-orange-600">Stand Out</span>
+                            Our <span className="text-orange-600">Commitment</span>
                         </h2>
                     </motion.div>
 
@@ -191,41 +190,19 @@ const About = () => {
                     </div>
                 </div>
 
-                {/* Founder's Vision */}
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    className="relative rounded-3xl bg-white border border-stone-100 p-12 md:p-20 text-center mb-28 overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.04)]"
-                >
-                    <div className="absolute top-0 right-0 p-8 opacity-[0.06]">
-                        <FaQuoteLeft className="text-8xl text-orange-600" />
-                    </div>
-                    <blockquote className="text-2xl md:text-4xl font-bold text-stone-900 mb-10 tracking-tight leading-[1.2] relative z-10 font-heading">
-                        "We don't just serve food. We craft <span className="text-orange-600">core memories</span> through every bite."
-                    </blockquote>
-                    <div className="flex flex-col items-center gap-3 relative z-10">
-                        <div className="w-16 h-16 rounded-full bg-gradient-to-br from-orange-500 to-amber-600 flex items-center justify-center text-white font-bold text-2xl shadow-lg font-heading">
-                            B
-                        </div>
-                        <div className="text-center">
-                            <div className="text-stone-900 font-bold uppercase tracking-wider text-sm font-heading">Visionary Team</div>
-                            <div className="text-orange-500 text-xs font-semibold uppercase tracking-[0.2em] mt-0.5">Bread & Bite Founders</div>
-                        </div>
-                    </div>
-                </motion.div>
+
 
                 {/* Timeline */}
                 <div className="max-w-4xl mx-auto mb-28 hidden md:block">
                     <motion.div {...fadeIn} className="text-center mb-16">
-                        <h2 className="text-3xl font-bold text-stone-900 tracking-tight font-heading">Our <span className="text-orange-600">Momentum</span></h2>
+                        <h2 className="text-3xl font-bold text-stone-900 tracking-tight font-heading">Our <span className="text-orange-600">Journey</span></h2>
                     </motion.div>
 
                     <div className="relative h-px bg-stone-200 w-full mb-20">
                         {[
-                            { year: "2025 JAN", title: "The Spark", desc: "First kitchen opened in Taloja Phase 1." },
-                            { year: "2025 MAR", title: "Scale", desc: "Hit 1000+ orders milestone." },
-                            { year: "FUTURE", title: "Expand", desc: "Taking Bread & Bite to every corner of Navi Mumbai." }
+                            { year: "2025 JAN", title: "The Beginning", desc: "First kitchen opened in Taloja Phase 1." },
+                            { year: "2025 MAR", title: "Growing", desc: "Hit our 1000+ orders milestone." },
+                            { year: "FUTURE", title: "The Future", desc: "Bringing Bread & Bite to every corner of Navi Mumbai." }
                         ].map((item, i) => (
                             <motion.div
                                 key={i}
@@ -267,7 +244,7 @@ const About = () => {
                     </div>
                     
                     <h2 className="text-4xl md:text-6xl font-bold text-white tracking-tight mb-8 leading-none font-heading relative z-10">
-                        Taste The<br />Revolution
+                        Hungry<br />Yet?
                     </h2>
                     <Link
                         to="/menu"

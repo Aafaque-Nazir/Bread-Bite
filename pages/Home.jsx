@@ -1,12 +1,37 @@
 import React, { useMemo } from "react";
 import { motion } from "framer-motion";
-import { FaWhatsapp, FaUtensils, FaStar, FaCheckCircle, FaFire, FaBolt, FaMotorcycle, FaArrowRight, FaMapMarkerAlt, FaLeaf, FaShieldAlt } from "react-icons/fa";
+import { FaWhatsapp, FaUtensils, FaStar, FaCheckCircle, FaFire, FaBolt, FaMotorcycle, FaArrowRight, FaMapMarkerAlt, FaLeaf, FaShieldAlt, FaPlus } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 import SEO from "../src/components/SEO";
 import ImageWithLoader from "../src/components/ImageWithLoader";
 import menuItems from "../data/MenuItems";
+import { useCart } from '../src/context/CartContext';
+
+const HOME_COMBOS = [
+    {
+        id: 'combo_1',
+        name: 'The Veg Classic Combo',
+        description: '1 Classic Margherita Pizza + 1 Classic Veg Grilled Sandwich + 2 Fresh Lime Sodas.',
+        price: 369,
+        discount: 'Save ₹47',
+        image: 'https://images.unsplash.com/photo-1565299507177-b0ac66763828?q=80&w=800&auto=format&fit=crop',
+        category: 'Combo',
+        type: 'Veg'
+    },
+    {
+        id: 'combo_2',
+        name: 'Chicken Lovers Feast',
+        description: '(Halal) 1 Tandoori Chicken Pizza + 1 Creamy Chicken Pasta + 2 Classic Cold Coffees.',
+        price: 549,
+        discount: 'Save ₹87',
+        image: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=800&auto=format&fit=crop',
+        category: 'Combo',
+        type: 'Non-Veg'
+    }
+];
 
 const Home = () => {
+    const { addToCart } = useCart();
     const whatsappLink = "https://wa.me/919325629256?text=Hi%2C%20I%20want%20to%20order%20from%20Bread%20%26%20Bite!";
 
     const randomBestsellers = useMemo(() => {
@@ -55,7 +80,7 @@ const Home = () => {
                             initial="hidden"
                             animate="show"
                             variants={staggerContainer}
-                            className="space-y-6 lg:space-y-7"
+                            className="space-y-6 lg:space-y-7 lg:-mt-16"
                         >
                             {/* Badge */}
                             <motion.div variants={fadeUp} className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-orange-50 border border-orange-200/70">
@@ -68,15 +93,15 @@ const Home = () => {
 
                             {/* Main Headline */}
                             <motion.h1 variants={fadeUp} className="text-[3.2rem] sm:text-[4rem] lg:text-[4.5rem] xl:text-[5.5rem] font-bold leading-[1] tracking-tight font-heading text-stone-900">
-                                Taste The{" "}
+                                Fresh &{" "}
                                 <span className="text-transparent bg-clip-text bg-gradient-to-br from-orange-500 via-orange-600 to-amber-600">
-                                    Difference.
+                                    Tasty.
                                 </span>
                             </motion.h1>
 
                             {/* Subheadline */}
                             <motion.p variants={fadeUp} className="text-base sm:text-lg text-stone-500 max-w-md leading-relaxed">
-                                Premium sandwiches, artisan pizzas, creamy pastas & refreshing drinks — crafted with passion, delivered with love.
+                                Hot sandwiches, handmade pizzas, creamy pastas & refreshing drinks — made fresh, delivered fast.
                             </motion.p>
 
                             {/* CTA Buttons */}
@@ -181,62 +206,80 @@ const Home = () => {
             </section>
 
             {/* ═══════════════════════════════════════════════════════════════════
-                BENTO GRID - Features Section
+                SIGNATURE COMBOS - Replaced Bento Grid
             ═══════════════════════════════════════════════════════════════════ */}
-            <section className="py-20 lg:py-24 bg-white relative overflow-hidden">
+            <section className="py-20 lg:py-24 bg-[#FFFAF5] relative overflow-hidden border-t border-stone-100">
                 <div className="max-w-7xl mx-auto px-6">
-                    <motion.div
-                        initial="hidden"
-                        whileInView="show"
-                        viewport={{ once: true, margin: "-80px" }}
-                        variants={staggerContainer}
-                        className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-5"
-                    >
-                        {/* Large Feature Card */}
-                        <motion.div
-                            variants={scaleIn}
-                            className="col-span-2 row-span-2 relative group bg-gradient-to-br from-orange-50 to-amber-50/50 rounded-2xl p-7 lg:p-9 border border-orange-100/50 overflow-hidden hover:shadow-[0_10px_35px_rgba(232,89,12,0.06)] transition-all duration-500"
-                        >
-                            <div className="absolute top-0 right-0 w-44 h-44 bg-orange-200/15 rounded-full blur-[60px] group-hover:bg-orange-200/25 transition-all duration-700" />
-                            <div className="relative z-10 h-full flex flex-col justify-between">
-                                <div>
-                                    <div className="w-12 h-12 rounded-xl bg-orange-100 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
-                                        <FaMapMarkerAlt className="text-orange-600 text-lg" />
-                                    </div>
-                                    <h3 className="text-xl lg:text-2xl font-bold text-stone-900 mb-2 tracking-tight font-heading">Navi Mumbai<br/>Exclusive</h3>
-                                    <p className="text-stone-500 text-sm leading-relaxed">Premium delivery across Kharghar, Panvel, Taloja, Kamothe & more.</p>
-                                </div>
-                                <div className="flex items-center gap-2 text-orange-600 text-[11px] font-semibold uppercase tracking-wider mt-6 group-hover:gap-3 transition-all">
-                                    <span>View Areas</span>
-                                    <FaArrowRight className="text-[9px]" />
-                                </div>
-                            </div>
-                        </motion.div>
+                    <div className="text-center mb-12 lg:mb-16">
+                        <span className="text-orange-600 text-[11px] font-semibold tracking-[0.15em] uppercase mb-2 block">Value Deals</span>
+                        <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-stone-900 font-heading">
+                            Signature <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-amber-600">Combos</span>
+                        </h2>
+                        <p className="text-stone-500 mt-4 max-w-xl mx-auto">
+                            Handpicked meals designed to satisfy your cravings while giving you the best value. Add a complete meal to your cart in one click!
+                        </p>
+                    </div>
 
-                        {[
-                            { icon: <FaBolt />, title: "Lightning Fast", desc: "Delivered in 25-30 mins", color: "green" },
-                            { icon: <FaLeaf />, title: "Fresh Daily", desc: "100% fresh ingredients", color: "blue" },
-                            { icon: <FaShieldAlt />, title: "Gold Standard", desc: "Hygiene certified kitchen", color: "purple" },
-                            { icon: <FaUtensils />, title: "4 Categories", desc: "Pizza, Sandwich, Pasta & Drinks", color: "orange" }
-                        ].map((item, i) => (
+                    <div className="grid md:grid-cols-2 gap-8 lg:gap-10">
+                        {HOME_COMBOS.map((combo, idx) => (
                             <motion.div
-                                key={i}
-                                variants={scaleIn}
-                                className={`group bg-white rounded-2xl p-5 lg:p-6 border border-stone-100 hover:shadow-[0_6px_24px_rgba(0,0,0,0.05)] hover:border-${item.color}-200 transition-all duration-500`}
+                                key={combo.id}
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: idx * 0.1 }}
+                                className="group bg-white rounded-3xl p-3 sm:p-4 border border-stone-100 hover:shadow-[0_12px_40px_rgba(232,89,12,0.08)] hover:border-orange-200 transition-all duration-500 flex flex-col sm:flex-row gap-5"
                             >
-                                <div className={`w-10 h-10 rounded-lg flex items-center justify-center mb-3 group-hover:scale-110 transition-transform ${
-                                    item.color === 'green' ? 'bg-green-50 text-green-600' :
-                                    item.color === 'blue' ? 'bg-blue-50 text-blue-600' :
-                                    item.color === 'purple' ? 'bg-purple-50 text-purple-600' :
-                                    'bg-orange-50 text-orange-600'
-                                }`}>
-                                    {item.icon}
+                                {/* Image Box */}
+                                <div className="w-full sm:w-48 h-48 sm:h-auto rounded-2xl overflow-hidden relative shrink-0">
+                                    <ImageWithLoader
+                                        src={combo.image}
+                                        alt={combo.name}
+                                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                                    />
+                                    <div className="absolute top-3 left-3">
+                                        <span className={`px-2.5 py-1 rounded-full text-[9px] font-bold uppercase tracking-wider ${
+                                            combo.type === 'Veg' ? 'bg-green-50 text-green-700 border border-green-200' : 'bg-red-50 text-red-700 border border-red-200'
+                                        }`}>
+                                            {combo.type}
+                                        </span>
+                                    </div>
+                                    <div className="absolute top-3 right-3">
+                                        <span className="px-2.5 py-1 rounded-full bg-orange-600 text-white text-[9px] font-bold uppercase tracking-wider shadow-sm">
+                                            {combo.discount}
+                                        </span>
+                                    </div>
                                 </div>
-                                <h4 className="text-base font-bold text-stone-900 mb-0.5 font-heading">{item.title}</h4>
-                                <p className="text-stone-400 text-xs">{item.desc}</p>
+
+                                {/* Content */}
+                                <div className="flex flex-col justify-between p-2 flex-1">
+                                    <div>
+                                        <h3 className="text-xl font-bold text-stone-900 mb-2 font-heading leading-tight group-hover:text-orange-600 transition-colors">
+                                            {combo.name}
+                                        </h3>
+                                        <p className="text-stone-500 text-sm leading-relaxed mb-4">
+                                            {combo.description}
+                                        </p>
+                                    </div>
+                                    <div className="flex items-center justify-between mt-auto">
+                                        <div className="flex flex-col">
+                                            <span className="text-xl font-bold text-stone-900">₹{combo.price}</span>
+                                        </div>
+                                        <button
+                                            onClick={(e) => {
+                                                e.preventDefault();
+                                                addToCart(combo);
+                                            }}
+                                            className="h-10 px-5 bg-orange-50 text-orange-600 hover:bg-orange-600 hover:text-white rounded-xl text-xs font-bold uppercase tracking-wider transition-all duration-300 flex items-center justify-center gap-2"
+                                        >
+                                            Add
+                                            <FaPlus size={10} />
+                                        </button>
+                                    </div>
+                                </div>
                             </motion.div>
                         ))}
-                    </motion.div>
+                    </div>
                 </div>
             </section>
 
@@ -404,22 +447,22 @@ const Home = () => {
                         >
                             <span className="text-orange-600 text-[11px] font-semibold tracking-[0.15em] uppercase mb-4 block">Our Promise</span>
                             <h2 className="text-3xl lg:text-5xl font-bold text-stone-900 tracking-tight font-heading leading-tight mb-6">
-                                Quality you can <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-amber-600">taste</span>.
+                                Fresh <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-amber-600">Ingredients</span>.
                             </h2>
                             <div className="space-y-6 text-stone-500 text-sm lg:text-base leading-relaxed">
                                 <p>
-                                    At Bread & Bite, we don't do fast food. We do good food, fast. Our philosophy is rooted in the belief that convenience shouldn't compromise quality.
+                                    We believe in serving good, fresh food that satisfies your cravings. No shortcuts, just great taste.
                                 </p>
                                 <p>
-                                    Every pizza dough is hand-stretched, every sandwich is grilled to golden perfection, and every pasta is tossed in rich, house-made sauces. We source our vegetables fresh daily and use only premium, authentic cheeses to ensure every bite delivers an unforgettable experience.
+                                    From our handmade pizza dough to our fresh veggies, we make sure every meal is prepared with care and high-quality ingredients, so you always get the best.
                                 </p>
                             </div>
 
                             <ul className="mt-8 space-y-4">
                                 {[
-                                    "Hand-crafted recipes with signature spices",
-                                    "Zero artificial flavor enhancers",
-                                    "Strict hygiene and premium packaging"
+                                    "Made fresh every day",
+                                    "No artificial flavor enhancers",
+                                    "Clean and hygienic kitchen"
                                 ].map((item, idx) => (
                                     <li key={idx} className="flex items-center gap-3">
                                         <div className="w-6 h-6 rounded-full bg-orange-100 flex items-center justify-center text-orange-600 shrink-0">
@@ -512,7 +555,7 @@ const Home = () => {
                 >
                     <span className="text-orange-600 text-[11px] font-semibold tracking-[0.15em] uppercase mb-4 block">Ready to Order?</span>
                     <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-stone-900 tracking-tight mb-5 leading-tight font-heading">
-                        Your Cravings <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-amber-600">Await</span>
+                        Let's <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-amber-600">Eat</span>
                     </h2>
                     <p className="text-stone-500 text-base max-w-lg mx-auto mb-8">
                         Skip the wait. Order via WhatsApp and get your favorite food delivered hot & fresh across Navi Mumbai.

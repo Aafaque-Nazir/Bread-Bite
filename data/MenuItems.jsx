@@ -49,7 +49,7 @@ const menuItems = [
     category: "Pizza",
     type: "Non-Veg",
     rating: 4.8,
-    image: "https://images.unsplash.com/photo-1534308983496-4fabb1a015ce?q=80&w=800&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?q=80&w=800&auto=format&fit=crop",
     isBestSeller: false,
     isNew: true,
     tags: ["Halal"]

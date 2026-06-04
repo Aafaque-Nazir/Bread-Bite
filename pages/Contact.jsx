@@ -33,11 +33,7 @@ const Contact = () => {
                 keywords="bread and bite contact, food delivery taloja, whatsapp food order navi mumbai, restaurant contact kharghar"
             />
 
-            {/* Background accents */}
-            <div className="absolute inset-0 pointer-events-none">
-                <div className="absolute top-1/4 -left-20 w-80 h-80 bg-orange-100/40 rounded-full blur-[100px]"></div>
-                <div className="absolute bottom-1/4 -right-20 w-72 h-72 bg-amber-100/30 rounded-full blur-[100px]"></div>
-            </div>
+
 
             <div className="relative z-10 max-w-7xl mx-auto">
                 <div className="text-center mb-16">
@@ -54,12 +50,12 @@ const Contact = () => {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.1 }}
-                        className="text-4xl md:text-6xl font-bold tracking-tight mb-4 leading-none font-heading"
+                        className="text-4xl md:text-5xl font-bold tracking-tight mb-4 leading-none font-heading"
                     >
-                        Let's <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-amber-600">Connect</span>
+                        Contact <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-amber-600">Us</span>
                     </motion.h1>
                     <p className="text-stone-500 text-base max-w-xl mx-auto">
-                        Have a question? A special request? Or just want to talk about food? We're always ready to hear from you.
+                        Need help with an order or have a question? We're here for you.
                     </p>
                 </div>
 
@@ -72,12 +68,7 @@ const Contact = () => {
                         className="space-y-6"
                     >
                         <div className="bg-white p-10 rounded-3xl border border-stone-100 shadow-[0_4px_24px_rgba(0,0,0,0.04)] space-y-8 relative overflow-hidden">
-                            {/* Decorative map watermark */}
-                            <div className="absolute -bottom-20 -right-20 opacity-[0.03] pointer-events-none">
-                                <svg width="300" height="300" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M12 2C8.13 2 5 5.13 5 9C5 14.25 12 22 12 22C12 22 19 14.25 19 9C19 5.13 15.87 2 12 2ZM12 11.5C10.62 11.5 9.5 10.38 9.5 9C9.5 7.62 10.62 6.5 12 6.5C13.38 6.5 14.5 7.62 14.5 9C14.5 10.38 13.38 11.5 12 11.5Z" />
-                                </svg>
-                            </div>
+
 
                             <h3 className="text-xl font-bold tracking-tight text-stone-900 font-heading">Quick Access</h3>
                             

@@ -9,10 +9,6 @@ const Footer = () => {
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-7xl overflow-hidden pointer-events-none">
                 <div className="absolute top-[-20%] left-[-10%] w-[500px] h-[500px] bg-orange-600/10 rounded-full blur-[120px]" />
                 <div className="absolute bottom-[-20%] right-[-10%] w-[600px] h-[600px] bg-orange-600/10 rounded-full blur-[150px]" />
-                {/* Large watermark text */}
-                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 text-[15vw] font-bold text-stone-800/30 whitespace-nowrap select-none font-heading leading-none pointer-events-none">
-                    BREAD & BITE
-                </div>
             </div>
 
             <div className="max-w-7xl mx-auto px-6 relative z-10">
@@ -38,7 +34,7 @@ const Footer = () => {
                             </div>
                         </div>
                         <p className="text-sm leading-relaxed text-stone-400 max-w-sm">
-                            Crafting the perfect grilled sandwiches, artisan pizzas, creamy pastas, and refreshing drinks with fresh ingredients. Taste the difference in every bite.
+                            Making great food from scratch. Fresh ingredients, handmade daily, and delivered hot to your door in Navi Mumbai.
                         </p>
                         <div className="flex gap-3 pt-2">
                             {[FaFacebookF, FaInstagram, FaTwitter, FaWhatsapp].map((Icon, i) => (

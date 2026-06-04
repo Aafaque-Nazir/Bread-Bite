@@ -15,10 +15,16 @@ const Menu = () => {
 
     const filteredItems = useMemo(() => {
         return menuItems.filter(item => {
-            const matchCategory = item.category === selectedCategory;
             const matchSearch = item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
                 item.description.toLowerCase().includes(searchQuery.toLowerCase());
-            return matchCategory && matchSearch;
+            
+            // If the user is searching for something, show all matching items regardless of category
+            if (searchQuery.trim() !== "") {
+                return matchSearch;
+            }
+            
+            // Otherwise, just show the selected category
+            return item.category === selectedCategory;
         });
     }, [selectedCategory, searchQuery]);
 
@@ -26,7 +32,7 @@ const Menu = () => {
         <section className="min-h-screen bg-[#FFFAF5] pt-8 lg:pt-12 pb-20 px-6">
             <SEO
                 title="Menu - Bread & Bite | Pizza, Sandwich, Pasta & Drinks"
-                description="Explore our curated menu — artisan pizzas, grilled sandwiches, creamy pastas, and refreshing drinks. Order online in Navi Mumbai. Free delivery!"
+                description="Explore our menu — fresh pizzas, hot grilled sandwiches, creamy pastas, and refreshing drinks. Order online in Navi Mumbai. Free delivery!"
                 url="/menu"
                 keywords="bread and bite menu, food menu navi mumbai, pizza menu kharghar, sandwich menu panvel, pasta menu taloja"
             />
@@ -58,7 +64,7 @@ const Menu = () => {
                         </div>
 
                         {/* Category Tabs */}
-                        <div className="flex gap-6 overflow-x-auto no-scrollbar -mx-2 px-2 pb-1">
+                        <div className={`flex gap-6 overflow-x-auto no-scrollbar -mx-2 px-2 pb-1 transition-opacity duration-300 ${searchQuery.trim() !== "" ? "opacity-30 pointer-events-none" : "opacity-100"}`}>
                             {CATEGORIES_DATA.map(cat => (
                                 <button
                                     key={cat.id}
