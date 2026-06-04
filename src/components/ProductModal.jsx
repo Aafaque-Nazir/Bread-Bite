@@ -18,7 +18,7 @@ const ProductModal = ({ item, isOpen, onClose }) => {
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                         onClick={onClose}
-                        className="fixed inset-0 bg-black/95 backdrop-blur-md z-[60]"
+                        className="fixed inset-0 bg-black/40 backdrop-blur-sm z-[60]"
                     />
 
                     {/* Modal Container */}
@@ -28,62 +28,62 @@ const ProductModal = ({ item, isOpen, onClose }) => {
                         exit={{ opacity: 0, scale: 0.95, y: 30 }}
                         className="fixed inset-0 z-[70] flex items-center justify-center p-4 md:p-8 pointer-events-none"
                     >
-                        <div className="bg-[#050505] border border-white/5 rounded-[3rem] overflow-hidden max-w-6xl w-full shadow-[0_50px_100px_rgba(0,0,0,0.9)] pointer-events-auto flex flex-col md:flex-row max-h-[90vh] relative">
+                        <div className="bg-white rounded-[2rem] overflow-hidden max-w-5xl w-full shadow-[0_25px_60px_rgba(0,0,0,0.15)] pointer-events-auto flex flex-col md:flex-row max-h-[90vh] relative border border-stone-100">
                             
-                            {/* Professional Close button */}
+                            {/* Close button */}
                             <button
                                 onClick={onClose}
-                                className="absolute top-8 right-8 z-[80] w-12 h-12 rounded-2xl bg-zinc-900/50 backdrop-blur-xl border border-white/10 flex items-center justify-center text-zinc-400 hover:bg-white hover:text-black transition-all duration-500 hover:scale-105 active:scale-95 group"
+                                className="absolute top-6 right-6 z-[80] w-10 h-10 rounded-xl bg-white/90 backdrop-blur border border-stone-200 flex items-center justify-center text-stone-400 hover:bg-orange-600 hover:text-white hover:border-orange-600 transition-all duration-300 group"
                             >
-                                <FaTimes size={16} className="group-hover:rotate-90 transition-transform duration-500" />
+                                <FaTimes size={14} className="group-hover:rotate-90 transition-transform duration-300" />
                             </button>
 
                             {/* Image Section */}
-                            <div className="w-full md:w-1/2 h-80 md:h-auto relative overflow-hidden">
+                            <div className="w-full md:w-1/2 h-72 md:h-auto relative overflow-hidden">
                                 <img
                                     src={item.image}
                                     alt={item.name}
-                                    className="w-full h-full object-cover grayscale-[0.2]"
+                                    className="w-full h-full object-cover"
                                 />
-                                <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent opacity-80" />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
                                 
-                                <div className="absolute bottom-12 left-12 flex flex-col gap-4">
-                                     <div className="bg-yellow-400 text-black px-5 py-2 rounded-full text-xs font-black uppercase tracking-[0.2em] shadow-2xl shadow-yellow-400/30 w-fit">
+                                <div className="absolute bottom-8 left-8 flex flex-col gap-3">
+                                     <div className="bg-orange-600 text-white px-4 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-[0.15em] shadow-lg w-fit">
                                         {item.category}
                                     </div>
-                                    <div className="bg-black/40 backdrop-blur-2xl border border-white/10 px-5 py-2 rounded-full text-xs font-black text-white uppercase tracking-widest w-fit">
-                                        {item.type} • NAVI MUMBAI DELIVERED
+                                    <div className="bg-white/20 backdrop-blur-xl border border-white/20 px-4 py-1.5 rounded-full text-[10px] font-bold text-white uppercase tracking-widest w-fit">
+                                        {item.type} • Navi Mumbai Delivered
                                     </div>
                                 </div>
                             </div>
 
                             {/* Content Section */}
-                            <div className="w-full md:w-1/2 p-12 md:p-16 flex flex-col overflow-y-auto">
-                                <div className="mb-12">
-                                    <div className="flex items-center gap-4 mb-6">
-                                        <div className="flex items-center gap-2 text-yellow-400 text-xs font-black">
+                            <div className="w-full md:w-1/2 p-8 md:p-12 flex flex-col overflow-y-auto">
+                                <div className="mb-8">
+                                    <div className="flex items-center gap-3 mb-4">
+                                        <div className="flex items-center gap-1.5 text-orange-500 text-xs font-bold">
                                             <FaStar size={12} /> {item.rating || "4.8"}
                                         </div>
-                                        <div className="h-3 w-px bg-white/10" />
-                                        <span className="text-zinc-600 text-xs font-black uppercase tracking-[0.2em]">Crafted Pure</span>
+                                        <div className="h-3 w-px bg-stone-200" />
+                                        <span className="text-stone-400 text-xs font-semibold uppercase tracking-[0.15em]">Crafted Fresh</span>
                                     </div>
-                                    <h2 className="text-5xl md:text-7xl font-bold text-white mb-8 uppercase tracking-tight leading-[0.85] italic font-heading">{item.name}</h2>
-                                    <div className="w-20 h-1 bg-yellow-400/50 rounded-full" />
+                                    <h2 className="text-3xl md:text-4xl font-bold text-stone-900 mb-4 leading-tight font-heading">{item.name}</h2>
+                                    <div className="w-12 h-1 bg-orange-500 rounded-full" />
                                 </div>
 
-                                <p className="text-zinc-500 text-base leading-relaxed mb-16 font-medium tracking-normal">
-                                    {item.description || "A signature blend of fresh ingredients and artisan recipes. Perfectly toasted and prepared to satisfy your deepest cravings."}
+                                <p className="text-stone-500 text-base leading-relaxed mb-10 font-medium">
+                                    {item.description || "A signature blend of fresh ingredients and artisan recipes. Perfectly prepared to satisfy your deepest cravings."}
                                 </p>
 
                                 <div className="mt-auto">
-                                    <div className="flex items-end justify-between mb-12 pb-12 border-b border-white/5">
-                                        <div className="space-y-3">
-                                            <p className="text-xs text-zinc-700 font-bold uppercase tracking-[0.4em]">Net Total</p>
-                                            <span className="text-7xl font-bold text-white tracking-tight italic font-heading">₹{Math.floor(item.price)}</span>
+                                    <div className="flex items-end justify-between mb-8 pb-8 border-b border-stone-100">
+                                        <div className="space-y-1">
+                                            <p className="text-xs text-stone-400 font-semibold uppercase tracking-[0.2em]">Price</p>
+                                            <span className="text-5xl font-bold text-stone-900 tracking-tight font-heading">₹{Math.floor(item.price)}</span>
                                         </div>
                                         <div className="text-right">
-                                            <p className="text-xs text-zinc-600 font-bold uppercase tracking-[0.2em] mb-2 text-green-500">Live Status</p>
-                                            <p className="text-white text-[12px] font-black uppercase tracking-widest">READY TO DISPATCH</p>
+                                            <p className="text-xs text-green-600 font-semibold uppercase tracking-[0.15em] mb-1">Status</p>
+                                            <p className="text-stone-900 text-[11px] font-bold uppercase tracking-widest">Ready to Dispatch</p>
                                         </div>
                                     </div>
 
@@ -92,10 +92,10 @@ const ProductModal = ({ item, isOpen, onClose }) => {
                                             addToCart(item);
                                             onClose();
                                         }}
-                                        className="w-full py-8 bg-white hover:bg-yellow-400 text-black font-black uppercase text-xs tracking-[0.4em] rounded-[2rem] flex items-center justify-center gap-4 transition-all duration-700 shadow-2xl active:scale-[0.98] group"
+                                        className="w-full py-5 bg-orange-600 hover:bg-orange-700 text-white font-bold uppercase text-xs tracking-[0.2em] rounded-2xl flex items-center justify-center gap-3 transition-all duration-300 shadow-lg shadow-orange-600/20 active:scale-[0.98] group"
                                     >
                                         <FaShoppingCart className="group-hover:-translate-x-1 transition-transform" /> 
-                                        <span>Add To Selection</span>
+                                        <span>Add to Cart</span>
                                     </button>
                                 </div>
                             </div>

@@ -9,11 +9,11 @@ const About = () => {
         initial: { opacity: 0, y: 20 },
         whileInView: { opacity: 1, y: 0 },
         viewport: { once: true },
-        transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] }
+        transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] }
     };
 
     return (
-        <section className="relative min-h-screen bg-zinc-950 pt-32 pb-20 px-6 overflow-hidden">
+        <section className="relative min-h-screen bg-[#FFFAF5] pt-28 pb-20 px-6 overflow-hidden">
             <SEO
                 title="About Us - Bread & Bite"
                 description="Learn about Bread & Bite's journey, our commitment to quality, and why we are Navi Mumbai's favorite spot for delicious comfort food. Est. 2025 in Taloja."
@@ -21,99 +21,104 @@ const About = () => {
                 keywords="about bread and bite, navi mumbai restaurant story, taloja food, best restaurant kharghar"
             />
 
-            {/* Premium Background Elements */}
+            {/* Background accents */}
             <div className="absolute inset-0 pointer-events-none">
-                <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-yellow-500/5 rounded-full blur-[120px] -translate-y-1/2"></div>
-                <div className="absolute bottom-0 right-1/4 w-[700px] h-[700px] bg-amber-600/5 rounded-full blur-[120px] translate-y-1/2"></div>
-                <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-[0.03]"></div>
+                <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-orange-100/40 rounded-full blur-[120px] -translate-y-1/2"></div>
+                <div className="absolute bottom-0 right-1/4 w-[600px] h-[600px] bg-amber-100/30 rounded-full blur-[120px] translate-y-1/2"></div>
             </div>
 
             <div className="relative z-10 max-w-7xl mx-auto">
                 {/* Hero Section */}
-                <div className="flex flex-col lg:flex-row items-center gap-20 mb-32">
+                <div className="flex flex-col lg:flex-row items-center gap-16 mb-28">
                     <motion.div
-                        initial={{ opacity: 0, x: -60 }}
+                        initial={{ opacity: 0, x: -40 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
-                        transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-                        className="lg:w-1/2 space-y-10"
+                        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                        className="lg:w-1/2 space-y-8"
                     >
-                        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-yellow-400/10 border border-yellow-400/20 text-yellow-400 text-xs font-bold tracking-widest uppercase">
-                            <span className="w-2 h-2 rounded-full bg-yellow-400 animate-pulse"></span>
-                            Est. 2025 • Taloja, Navi Mumbai
+                        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-orange-200/60 text-orange-600 text-xs font-semibold tracking-[0.15em] uppercase shadow-sm">
+                            <span className="w-2 h-2 rounded-full bg-orange-500 animate-pulse"></span>
+                            Est. 2025 · Taloja, Navi Mumbai
                         </div>
-                        <h1 className="text-6xl lg:text-8xl font-black text-white leading-[0.9] tracking-tighter font-heading uppercase italic">
-                            THE <br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 via-yellow-400 to-amber-600">
-                                SOUL
-                            </span> OF <br />
-                            CRAVINGS
+                        <h1 className="text-5xl lg:text-7xl font-bold text-stone-900 leading-[1] tracking-tight font-heading">
+                            The{" "}
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-amber-600 italic">
+                                Soul
+                            </span>{" "}of<br />
+                            Cravings
                         </h1>
-                        <p className="text-xl text-zinc-400 leading-relaxed max-w-xl font-medium font-body">
-                            At <span className="text-white">Bread & Bite</span>, we believe comfort food is an art form. From our signature grilled sandwiches to hand-tossed pizzas and creamy pastas, we've redefined street-style cravings into a premium experience.
+                        <p className="text-lg text-stone-500 leading-relaxed max-w-xl">
+                            At <span className="text-stone-900 font-semibold">Bread & Bite</span>, we believe comfort food is an art form. From our signature grilled sandwiches to hand-tossed pizzas and creamy pastas, we've redefined cravings into a premium experience.
                         </p>
 
-                        <div className="flex flex-wrap gap-10 pt-6">
+                        <div className="flex flex-wrap gap-10 pt-4">
                             {[
                                 { label: "Happy Eaters", value: "500+" },
                                 { label: "Rating", value: "4.9/5" },
                                 { label: "Avg Delivery", value: "25m" }
                             ].map((stat, i) => (
                                 <div key={i} className="flex flex-col">
-                                    <span className="text-4xl font-bold text-white tracking-tight font-heading italic">{stat.value}</span>
-                                    <span className="text-xs text-zinc-500 uppercase tracking-[0.2em] font-bold mt-1">{stat.label}</span>
+                                    <span className="text-3xl font-bold text-stone-900 tracking-tight font-heading">{stat.value}</span>
+                                    <span className="text-xs text-stone-400 uppercase tracking-[0.15em] font-semibold mt-1">{stat.label}</span>
                                 </div>
                             ))}
                         </div>
                     </motion.div>
 
                     <motion.div
-                        initial={{ opacity: 0, scale: 0.8, rotate: 5 }}
-                        whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: true }}
-                        transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+                        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
                         className="lg:w-1/2 relative"
                     >
-                        <div className="relative z-10 rounded-[3rem] overflow-hidden border border-white/10 shadow-2xl group">
+                        <div className="relative z-10 rounded-3xl overflow-hidden border border-stone-200/50 shadow-[0_20px_60px_rgba(0,0,0,0.08)] group">
                             <img
                                 src="https://images.unsplash.com/photo-1550507992-eb63ffee0847?q=80&w=1200&h=1200&auto=format&fit=crop"
                                 alt="Sandwich Preparation"
-                                className="w-full aspect-square object-cover transform group-hover:scale-110 transition-transform duration-[1.5s]"
+                                className="w-full aspect-square object-cover transform group-hover:scale-105 transition-transform duration-[1s]"
                             />
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60"></div>
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent"></div>
                         </div>
-                        {/* Decorative background shape */}
-                        <div className="absolute -inset-4 bg-yellow-400/10 rounded-[4rem] -z-10 blur-2xl"></div>
+                        <div className="absolute -inset-3 bg-orange-100/30 rounded-[2.5rem] -z-10 blur-xl"></div>
                     </motion.div>
                 </div>
 
                 {/* Values Section */}
-                <div className="mb-40">
-                    <motion.div {...fadeIn} className="text-center mb-20">
-                        <span className="text-yellow-400 text-xs font-bold tracking-[0.4em] uppercase mb-4 block">Our Philosophy</span>
-                        <h2 className="text-4xl md:text-6xl font-black text-white tracking-tight font-heading uppercase italic">WHY WE <span className="text-yellow-400">STAND OUT</span></h2>
+                <div className="mb-28">
+                    <motion.div {...fadeIn} className="text-center mb-16">
+                        <span className="text-orange-600 text-xs font-semibold tracking-[0.2em] uppercase mb-3 block">Our Philosophy</span>
+                        <h2 className="text-3xl md:text-5xl font-bold text-stone-900 tracking-tight font-heading">
+                            Why We <span className="text-orange-600">Stand Out</span>
+                        </h2>
                     </motion.div>
 
-                    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
                         {[
-                            { icon: <FaCheckCircle />, title: "Fresh Sourcing", desc: "Only the finest breads, freshest veggies, and premium cheeses make the cut." },
-                            { icon: <FaHandsWash />, title: "High Standard", desc: "Our hygiene protocols exceed industry standards. Spotless kitchens. Always." },
-                            { icon: <FaTruck />, title: "Navi Mumbai Delivery", desc: "Swift delivery across Navi Mumbai, keeping your cravings hot." },
-                            { icon: <FaRupeeSign />, title: "Fair Pricing", desc: "Great taste shouldn't mean a high price tag. Best value guaranteed." }
+                            { icon: <FaCheckCircle />, title: "Fresh Sourcing", desc: "Only the finest breads, freshest veggies, and premium cheeses make the cut.", color: "orange" },
+                            { icon: <FaHandsWash />, title: "High Standard", desc: "Our hygiene protocols exceed industry standards. Spotless kitchens. Always.", color: "blue" },
+                            { icon: <FaTruck />, title: "Fast Delivery", desc: "Swift delivery across Navi Mumbai, keeping your cravings hot.", color: "green" },
+                            { icon: <FaRupeeSign />, title: "Fair Pricing", desc: "Great taste shouldn't mean a high price tag. Best value guaranteed.", color: "purple" }
                         ].map((item, i) => (
                             <motion.div
                                 key={i}
-                                initial={{ opacity: 0, y: 30 }}
+                                initial={{ opacity: 0, y: 20 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
-                                transition={{ delay: i * 0.1, duration: 0.8 }}
-                                className="glass-card p-10 rounded-[2.5rem] group hover:-translate-y-3"
+                                transition={{ delay: i * 0.1, duration: 0.6 }}
+                                className="bg-white p-8 rounded-2xl border border-stone-100 group hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] hover:border-orange-200 hover:-translate-y-1 transition-all duration-500"
                             >
-                                <div className="w-14 h-14 bg-zinc-900 rounded-2xl flex items-center justify-center text-yellow-400 text-2xl mb-8 group-hover:bg-yellow-400 group-hover:text-black transition-all duration-500">
+                                <div className={`w-12 h-12 rounded-xl flex items-center justify-center text-lg mb-6 transition-all duration-300 ${
+                                    item.color === 'orange' ? 'bg-orange-50 text-orange-600 group-hover:bg-orange-600 group-hover:text-white' :
+                                    item.color === 'blue' ? 'bg-blue-50 text-blue-600 group-hover:bg-blue-600 group-hover:text-white' :
+                                    item.color === 'green' ? 'bg-green-50 text-green-600 group-hover:bg-green-600 group-hover:text-white' :
+                                    'bg-purple-50 text-purple-600 group-hover:bg-purple-600 group-hover:text-white'
+                                }`}>
                                     {item.icon}
                                 </div>
-                                <h3 className="text-2xl font-bold text-white mb-4 tracking-tight uppercase font-heading italic">{item.title}</h3>
-                                <p className="text-zinc-500 text-sm leading-relaxed font-medium">{item.desc}</p>
+                                <h3 className="text-xl font-bold text-stone-900 mb-2 tracking-tight font-heading">{item.title}</h3>
+                                <p className="text-stone-500 text-sm leading-relaxed">{item.desc}</p>
                             </motion.div>
                         ))}
                     </div>
@@ -121,35 +126,35 @@ const About = () => {
 
                 {/* Founder's Vision */}
                 <motion.div
-                    initial={{ opacity: 0, y: 40 }}
+                    initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="relative rounded-[4rem] bg-zinc-900/50 border border-white/5 p-16 md:p-24 text-center mb-40 overflow-hidden"
+                    className="relative rounded-3xl bg-white border border-stone-100 p-12 md:p-20 text-center mb-28 overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.04)]"
                 >
-                    <div className="absolute top-0 right-0 p-10 opacity-10">
-                        <FaQuoteLeft className="text-9xl text-yellow-400" />
+                    <div className="absolute top-0 right-0 p-8 opacity-[0.06]">
+                        <FaQuoteLeft className="text-8xl text-orange-600" />
                     </div>
-                    <blockquote className="text-3xl md:text-5xl font-bold text-white mb-12 tracking-tight leading-[1.1] relative z-10 font-heading italic">
-                        "WE DON'T JUST SERVE FOOD. WE CRAFT <span className="text-yellow-400">CORE MEMORIES</span> THROUGH EVERY BITE."
+                    <blockquote className="text-2xl md:text-4xl font-bold text-stone-900 mb-10 tracking-tight leading-[1.2] relative z-10 font-heading">
+                        "We don't just serve food. We craft <span className="text-orange-600">core memories</span> through every bite."
                     </blockquote>
-                    <div className="flex flex-col items-center gap-4 relative z-10">
-                        <div className="w-20 h-20 rounded-full bg-gradient-to-br from-yellow-300 to-amber-600 flex items-center justify-center text-black font-black text-3xl shadow-xl">
+                    <div className="flex flex-col items-center gap-3 relative z-10">
+                        <div className="w-16 h-16 rounded-full bg-gradient-to-br from-orange-500 to-amber-600 flex items-center justify-center text-white font-bold text-2xl shadow-lg font-heading">
                             B
                         </div>
                         <div className="text-center">
-                            <div className="text-white font-bold uppercase tracking-widest text-sm font-heading">Visionary Team</div>
-                            <div className="text-yellow-400/60 text-xs font-bold uppercase tracking-[0.3em] mt-1">Bread & Bite Founders</div>
+                            <div className="text-stone-900 font-bold uppercase tracking-wider text-sm font-heading">Visionary Team</div>
+                            <div className="text-orange-500 text-xs font-semibold uppercase tracking-[0.2em] mt-0.5">Bread & Bite Founders</div>
                         </div>
                     </div>
                 </motion.div>
 
-                {/* Timeline - Desktop only for best experience */}
-                <div className="max-w-5xl mx-auto mb-40 hidden md:block">
-                    <motion.div {...fadeIn} className="text-center mb-20">
-                        <h2 className="text-4xl font-black text-white tracking-tighter uppercase">Our <span className="text-yellow-400">Momentum</span></h2>
+                {/* Timeline */}
+                <div className="max-w-4xl mx-auto mb-28 hidden md:block">
+                    <motion.div {...fadeIn} className="text-center mb-16">
+                        <h2 className="text-3xl font-bold text-stone-900 tracking-tight font-heading">Our <span className="text-orange-600">Momentum</span></h2>
                     </motion.div>
 
-                    <div className="relative h-px bg-zinc-800 w-full mb-20">
+                    <div className="relative h-px bg-stone-200 w-full mb-20">
                         {[
                             { year: "2025 JAN", title: "The Spark", desc: "First kitchen opened in Taloja Phase 1." },
                             { year: "2025 MAR", title: "Scale", desc: "Hit 1000+ orders milestone." },
@@ -168,33 +173,32 @@ const About = () => {
                                 }`}
                                 style={{ left: `${(i / 2) * 100}%` }}
                             >
-                                <div className={`w-4 h-4 rounded-full bg-yellow-400 shadow-[0_0_15px_rgba(251,191,36,0.5)] mb-6 ${
-                                    i === 0 ? '-ml-2' : i === 2 ? '-mr-2' : ''
+                                <div className={`w-3 h-3 rounded-full bg-orange-500 shadow-[0_0_10px_rgba(232,89,12,0.3)] mb-6 ${
+                                    i === 0 ? '-ml-1.5' : i === 2 ? '-mr-1.5' : ''
                                 }`}></div>
-                                <div className={`w-64 ${i === 0 ? 'text-left' : i === 2 ? 'text-right' : 'text-center'}`}>
-                                    <div className="text-yellow-400 font-bold text-xl mb-2 tracking-tight font-heading italic">{item.year}</div>
-                                    <h4 className="text-white font-black uppercase text-sm mb-2">{item.title}</h4>
-                                    <p className="text-zinc-500 text-xs font-medium leading-relaxed">{item.desc}</p>
+                                <div className={`w-56 ${i === 0 ? 'text-left' : i === 2 ? 'text-right' : 'text-center'}`}>
+                                    <div className="text-orange-600 font-bold text-lg mb-1 tracking-tight font-heading">{item.year}</div>
+                                    <h4 className="text-stone-900 font-bold uppercase text-sm mb-1">{item.title}</h4>
+                                    <p className="text-stone-400 text-xs leading-relaxed">{item.desc}</p>
                                 </div>
                             </motion.div>
                         ))}
                     </div>
                 </div>
 
-                {/* CTA Full Width */}
+                {/* CTA */}
                 <motion.div
-                    initial={{ opacity: 0, scale: 0.95 }}
+                    initial={{ opacity: 0, scale: 0.97 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
-                    className="text-center bg-yellow-400 rounded-[3rem] p-16 md:p-24 group relative overflow-hidden"
+                    className="text-center bg-gradient-to-r from-orange-600 to-amber-600 rounded-3xl p-14 md:p-20 group relative overflow-hidden"
                 >
-                    <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-[0.03] transition-opacity"></div>
-                    <h2 className="text-5xl md:text-7xl font-bold text-black tracking-tight mb-10 leading-none font-heading italic uppercase">
-                        TASTE THE <br /> REVOLUTION
+                    <h2 className="text-4xl md:text-6xl font-bold text-white tracking-tight mb-8 leading-none font-heading">
+                        Taste The<br />Revolution
                     </h2>
                     <Link
                         to="/menu"
-                        className="inline-flex items-center gap-4 px-12 py-6 bg-black text-yellow-400 font-black rounded-full hover:scale-110 transition-transform shadow-2xl uppercase tracking-tighter text-xl"
+                        className="inline-flex items-center gap-3 px-10 py-5 bg-white text-orange-600 font-bold rounded-2xl hover:scale-105 transition-transform shadow-lg uppercase tracking-wider text-sm"
                     >
                         Explore Menu <FaArrowRight />
                     </Link>

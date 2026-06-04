@@ -11,13 +11,13 @@ const FloatingCartBtn = () => {
     return (
         <AnimatePresence>
             {cartCount > 0 && (
-                <div className="fixed bottom-10 right-10 z-[100] flex items-center justify-center">
+                <div className="fixed bottom-8 right-8 z-[100] flex items-center justify-center">
                     {/* Pulse Glow Effect */}
                     <motion.div
                         initial={{ opacity: 0, scale: 0.8 }}
-                        animate={{ opacity: [0.1, 0.2, 0.1], scale: [1, 1.2, 1] }}
+                        animate={{ opacity: [0.08, 0.15, 0.08], scale: [1, 1.15, 1] }}
                         transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                        className="absolute inset-[-20px] bg-yellow-400/20 blur-[30px] rounded-full pointer-events-none"
+                        className="absolute inset-[-16px] bg-orange-500/20 blur-[25px] rounded-full pointer-events-none"
                     />
 
                     <motion.button
@@ -25,32 +25,29 @@ const FloatingCartBtn = () => {
                         initial={{ y: 100, opacity: 0, scale: 0.8 }}
                         animate={{ y: 0, opacity: 1, scale: 1 }}
                         exit={{ y: 100, opacity: 0, scale: 0.8 }}
-                        whileHover={{ scale: 1.05, y: -5 }}
+                        whileHover={{ scale: 1.05, y: -3 }}
                         whileTap={{ scale: 0.95 }}
                         onClick={() => navigate("/cart")}
-                        className="group relative flex items-center gap-4 bg-zinc-950/40 backdrop-blur-2xl border border-white/10 px-8 py-5 rounded-[2rem] shadow-[0_30px_60px_rgba(0,0,0,0.6)] hover:border-yellow-400/30 transition-all duration-500 overflow-hidden"
+                        className="group relative flex items-center gap-4 bg-white/90 backdrop-blur-xl border border-stone-200 px-7 py-4 rounded-2xl shadow-[0_8px_30px_rgba(0,0,0,0.08)] hover:border-orange-300 hover:shadow-[0_12px_40px_rgba(232,89,12,0.12)] transition-all duration-500 overflow-hidden"
                     >
-                        {/* Subtle Shine Reflection */}
-                        <div className="absolute inset-0 bg-gradient-to-tr from-white/[0.05] to-transparent pointer-events-none" />
-                        
                         <div className="relative flex items-center justify-center">
-                            <FaShoppingCart size={18} className="text-white group-hover:text-yellow-400 transition-colors duration-500" />
+                            <FaShoppingCart size={16} className="text-stone-700 group-hover:text-orange-600 transition-colors duration-300" />
                             <motion.span 
                                 key={cartCount}
                                 initial={{ scale: 1.5, opacity: 0 }}
                                 animate={{ scale: 1, opacity: 1 }}
-                                className="absolute -top-3 -right-4 bg-yellow-400 text-black text-[9px] font-black w-5 h-5 flex items-center justify-center rounded-full border border-black/10 shadow-lg"
+                                className="absolute -top-2.5 -right-3 bg-orange-600 text-white text-[8px] font-bold w-4 h-4 flex items-center justify-center rounded-full"
                             >
                                 {cartCount}
                             </motion.span>
                         </div>
 
-                        <div className="flex flex-col items-start translate-y-0.5">
-                            <span className="text-sm font-black text-white tracking-tighter leading-none italic">₹{cartTotal}</span>
+                        <div className="flex flex-col items-start">
+                            <span className="text-sm font-bold text-stone-900 tracking-tight leading-none">₹{cartTotal}</span>
                         </div>
 
-                        {/* Animated Border Reveal */}
-                        <div className="absolute bottom-0 left-0 h-[2px] w-0 bg-yellow-400 transition-all duration-700 group-hover:w-full" />
+                        {/* Bottom border reveal */}
+                        <div className="absolute bottom-0 left-0 h-[2px] w-0 bg-orange-500 transition-all duration-500 group-hover:w-full" />
                     </motion.button>
                 </div>
             )}

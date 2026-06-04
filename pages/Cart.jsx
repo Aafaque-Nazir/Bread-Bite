@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useCart } from '../src/context/CartContext';
-import { FaTrash, FaMinus, FaPlus, FaWhatsapp, FaArrowLeft, FaShoppingBag, FaCheckCircle } from 'react-icons/fa';
+import { FaTrash, FaMinus, FaPlus, FaWhatsapp, FaArrowLeft, FaShoppingBag } from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router-dom';
 import SEO from '../src/components/SEO';
 
@@ -43,24 +43,24 @@ const Cart = () => {
 
     if (cart.length === 0) {
         return (
-            <div className="min-h-[80vh] flex flex-col items-center justify-center px-6">
+            <div className="min-h-[80vh] flex flex-col items-center justify-center px-6 bg-[#FFFAF5]">
                 <motion.div 
-                    initial={{ opacity: 0, scale: 0.9 }}
+                    initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
                     className="text-center"
                 >
-                    <div className="w-24 h-24 rounded-full bg-zinc-900 border border-white/5 flex items-center justify-center text-zinc-700 mx-auto mb-8">
-                        <FaShoppingBag size={40} />
+                    <div className="w-20 h-20 rounded-full bg-stone-100 border border-stone-200 flex items-center justify-center text-stone-300 mx-auto mb-6">
+                        <FaShoppingBag size={32} />
                     </div>
-                    <h2 className="text-3xl font-black text-white uppercase tracking-tighter mb-4">Your Bag is Empty</h2>
-                    <p className="text-zinc-500 mb-10 max-w-sm mx-auto font-medium">
-                        Looks like you haven't added any gourmet delights yet. Let's find something delicious for you.
+                    <h2 className="text-2xl font-bold text-stone-900 tracking-tight mb-3 font-heading">Your Cart is Empty</h2>
+                    <p className="text-stone-500 mb-8 max-w-sm mx-auto text-sm">
+                        Looks like you haven't added any delights yet. Let's find something delicious for you.
                     </p>
                     <Link 
                         to="/menu"
-                        className="inline-flex items-center gap-3 px-10 py-5 bg-yellow-400 text-black font-black text-sm uppercase tracking-[0.2em] rounded-2xl hover:bg-yellow-300 transition-all active:scale-95 shadow-2xl shadow-yellow-400/20"
+                        className="inline-flex items-center gap-2 px-8 py-4 bg-orange-600 text-white font-semibold text-sm uppercase tracking-wider rounded-2xl hover:bg-orange-700 transition-all shadow-lg shadow-orange-600/20"
                     >
-                        Explore Menu <FaArrowLeft className="rotate-180" />
+                        Explore Menu <FaArrowLeft className="rotate-180 text-xs" />
                     </Link>
                 </motion.div>
             </div>
@@ -68,7 +68,7 @@ const Cart = () => {
     }
 
     return (
-        <div className="min-h-screen bg-black text-white pt-24 pb-20 px-6">
+        <div className="min-h-screen bg-[#FFFAF5] text-stone-900 pt-28 pb-20 px-6">
             <SEO
                 title="Your Cart - Bread & Bite"
                 description="Review your cart and complete your order. Free delivery across Navi Mumbai!"
@@ -76,62 +76,65 @@ const Cart = () => {
                 noindex={true}
             />
             <div className="max-w-7xl mx-auto">
-                <h1 className="text-5xl md:text-7xl font-bold mb-16 tracking-tight font-heading uppercase">
-                    Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 via-yellow-400 to-amber-600">Bag</span>
-                </h1>
+                <div className="mb-12">
+                    <span className="text-orange-600 text-xs font-semibold tracking-[0.2em] uppercase mb-3 block">Checkout</span>
+                    <h1 className="text-4xl md:text-5xl font-bold tracking-tight font-heading">
+                        Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-amber-600">Cart</span>
+                    </h1>
+                </div>
 
-                <div className="grid lg:grid-cols-12 gap-16">
-                    {/* Left: Minimalist Item List */}
-                    <div className="lg:col-span-7 space-y-12">
+                <div className="grid lg:grid-cols-12 gap-10">
+                    {/* Left: Item List */}
+                    <div className="lg:col-span-7 space-y-4">
                         <AnimatePresence mode="popLayout">
                             {cart.map((item) => (
                                 <motion.div
                                     key={item.id}
                                     layout
-                                    initial={{ opacity: 0, scale: 0.9 }}
+                                    initial={{ opacity: 0, scale: 0.95 }}
                                     animate={{ opacity: 1, scale: 1 }}
                                     exit={{ opacity: 0 }}
-                                    className="flex gap-6 items-start group"
+                                    className="flex gap-5 items-center p-4 bg-white rounded-2xl border border-stone-100 hover:border-orange-200 hover:shadow-sm transition-all group"
                                 >
-                                    <div className="w-24 h-24 bg-zinc-900 rounded-xl overflow-hidden shrink-0 border border-white/5 group-hover:border-yellow-400/30 transition-colors">
+                                    <div className="w-20 h-20 bg-stone-50 rounded-xl overflow-hidden shrink-0 border border-stone-100">
                                         <img 
                                             src={item.image} 
                                             alt={item.name} 
-                                            className="w-full h-full object-cover group-hover:scale-105 transition-all duration-500"
+                                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                                             onError={(e) => {
                                                 e.target.src = 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=300&h=300&auto=format&fit=crop';
                                             }}
                                         />
                                     </div>
-                                    <div className="flex-1 min-w-0 pt-1">
-                                        <div className="flex justify-between items-start mb-2">
-                                            <h3 className="text-xl font-bold font-heading leading-tight max-w-[80%]">{item.name}</h3>
-                                            <span className="text-xl font-bold font-heading">₹{item.price * item.quantity}</span>
+                                    <div className="flex-1 min-w-0">
+                                        <div className="flex justify-between items-start mb-1">
+                                            <h3 className="text-base font-bold font-heading leading-tight max-w-[75%]">{item.name}</h3>
+                                            <span className="text-base font-bold">₹{item.price * item.quantity}</span>
                                         </div>
                                         <div className="flex items-center justify-between">
-                                            <span className="text-sm text-zinc-500 font-medium">₹{item.price} each</span>
+                                            <span className="text-xs text-stone-400">₹{item.price} each</span>
                                             
-                                            <div className="flex items-center gap-4">
-                                                <div className="flex items-center gap-3 bg-zinc-900 rounded-lg px-2 py-1">
+                                            <div className="flex items-center gap-3">
+                                                <div className="flex items-center gap-2 bg-stone-50 border border-stone-200 rounded-lg px-2 py-1">
                                                     <button 
                                                         onClick={() => updateQuantity(item.id, -1)}
-                                                        className="w-6 h-6 flex items-center justify-center text-zinc-500 hover:text-white transition-colors"
+                                                        className="w-5 h-5 flex items-center justify-center text-stone-400 hover:text-red-500 transition-colors"
                                                     >
                                                         <FaMinus size={8} />
                                                     </button>
                                                     <span className="text-sm font-bold w-4 text-center">{item.quantity}</span>
                                                     <button 
                                                         onClick={() => updateQuantity(item.id, 1)}
-                                                        className="w-6 h-6 flex items-center justify-center text-zinc-500 hover:text-white transition-colors"
+                                                        className="w-5 h-5 flex items-center justify-center text-stone-400 hover:text-orange-600 transition-colors"
                                                     >
                                                         <FaPlus size={8} />
                                                     </button>
                                                 </div>
                                                 <button 
                                                     onClick={() => removeFromCart(item.id)}
-                                                    className="text-zinc-600 hover:text-red-500 transition-colors p-2"
+                                                    className="text-stone-300 hover:text-red-500 transition-colors p-1.5"
                                                 >
-                                                    <FaTrash size={12} />
+                                                    <FaTrash size={11} />
                                                 </button>
                                             </div>
                                         </div>
@@ -141,52 +144,55 @@ const Cart = () => {
                         </AnimatePresence>
                     </div>
 
-                    {/* Right: Sleek Checkout Panel */}
+                    {/* Right: Checkout Panel */}
                     <div className="lg:col-span-5">
-                        <div className="bg-zinc-900 rounded-3xl p-8 lg:p-10 sticky top-24">
-                            <h2 className="text-xl font-bold mb-8 font-heading">DELIVERY DETAILS</h2>
+                        <div className="bg-white rounded-3xl p-8 border border-stone-100 shadow-[0_4px_24px_rgba(0,0,0,0.04)] sticky top-24">
+                            <h2 className="text-lg font-bold mb-6 font-heading">Delivery Details</h2>
                             
-                            <div className="space-y-4 mb-10">
+                            <div className="space-y-3 mb-8">
                                 <input
                                     type="text"
-                                    placeholder="Name"
+                                    placeholder="Your Name"
                                     value={details.name}
-                                    onChange={(e) => setDetails({ ...details, name: e.target.value })}
-                                    className={`w-full bg-black border ${errors.name ? 'border-red-500' : 'border-zinc-800'} rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-yellow-400 transition-colors`}
+                                    onChange={(e) => { setDetails({ ...details, name: e.target.value }); setErrors({...errors, name: ''}) }}
+                                    className={`w-full bg-stone-50 border ${errors.name ? 'border-red-400' : 'border-stone-200'} rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-orange-400 focus:shadow-[0_0_0_3px_rgba(232,89,12,0.06)] transition-all`}
                                 />
+                                {errors.name && <p className="text-red-500 text-xs font-medium ml-1">{errors.name}</p>}
                                 <input
                                     type="tel"
                                     placeholder="Phone Number"
                                     value={details.phone}
-                                    onChange={(e) => setDetails({ ...details, phone: e.target.value })}
-                                    className={`w-full bg-black border ${errors.phone ? 'border-red-500' : 'border-zinc-800'} rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-yellow-400 transition-colors`}
+                                    onChange={(e) => { setDetails({ ...details, phone: e.target.value }); setErrors({...errors, phone: ''}) }}
+                                    className={`w-full bg-stone-50 border ${errors.phone ? 'border-red-400' : 'border-stone-200'} rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-orange-400 focus:shadow-[0_0_0_3px_rgba(232,89,12,0.06)] transition-all`}
                                 />
+                                {errors.phone && <p className="text-red-500 text-xs font-medium ml-1">{errors.phone}</p>}
                                 <textarea
                                     placeholder="Full Address"
                                     rows="2"
                                     value={details.address}
-                                    onChange={(e) => setDetails({ ...details, address: e.target.value })}
-                                    className={`w-full bg-black border ${errors.address ? 'border-red-500' : 'border-zinc-800'} rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-yellow-400 transition-colors resize-none`}
+                                    onChange={(e) => { setDetails({ ...details, address: e.target.value }); setErrors({...errors, address: ''}) }}
+                                    className={`w-full bg-stone-50 border ${errors.address ? 'border-red-400' : 'border-stone-200'} rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-orange-400 focus:shadow-[0_0_0_3px_rgba(232,89,12,0.06)] transition-all resize-none`}
                                 />
+                                {errors.address && <p className="text-red-500 text-xs font-medium ml-1">{errors.address}</p>}
                                 <input
                                     type="text"
                                     placeholder="Landmark (Optional)"
                                     value={details.landmark}
                                     onChange={(e) => setDetails({ ...details, landmark: e.target.value })}
-                                    className="w-full bg-black border border-zinc-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-yellow-400 transition-colors"
+                                    className="w-full bg-stone-50 border border-stone-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-orange-400 focus:shadow-[0_0_0_3px_rgba(232,89,12,0.06)] transition-all"
                                 />
                             </div>
 
-                            <div className="space-y-3 mb-8 pt-8 border-t border-white/5">
-                                <div className="flex justify-between text-zinc-400 text-sm">
+                            <div className="space-y-2 mb-6 pt-6 border-t border-stone-100">
+                                <div className="flex justify-between text-stone-500 text-sm">
                                     <span>Subtotal</span>
-                                    <span>₹{cartTotal}</span>
+                                    <span className="text-stone-700">₹{cartTotal}</span>
                                 </div>
-                                <div className="flex justify-between text-zinc-400 text-sm">
+                                <div className="flex justify-between text-stone-500 text-sm">
                                     <span>Delivery</span>
-                                    <span className="text-white">Free</span>
+                                    <span className="text-green-600 font-semibold">Free</span>
                                 </div>
-                                <div className="flex justify-between text-xl font-bold text-white pt-4 mt-4 border-t border-white/5 font-heading">
+                                <div className="flex justify-between text-lg font-bold text-stone-900 pt-4 mt-3 border-t border-stone-100 font-heading">
                                     <span>Total</span>
                                     <span>₹{grandTotal}</span>
                                 </div>
@@ -194,10 +200,10 @@ const Cart = () => {
 
                             <button
                                 onClick={handleCheckout}
-                                className="w-full bg-gradient-to-r from-yellow-400 to-amber-600 text-black font-black uppercase tracking-widest py-4 rounded-xl hover:scale-[1.02] transition-transform shadow-lg shadow-yellow-400/20 flex items-center justify-center gap-3"
+                                className="w-full bg-orange-600 hover:bg-orange-700 text-white font-bold uppercase tracking-wider py-4 rounded-xl transition-all shadow-lg shadow-orange-600/20 flex items-center justify-center gap-2 text-sm"
                             >
-                                <FaWhatsapp size={20} />
-                                <span>Proceed to Order</span>
+                                <FaWhatsapp size={18} />
+                                <span>Place Order via WhatsApp</span>
                             </button>
                         </div>
                     </div>

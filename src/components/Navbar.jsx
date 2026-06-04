@@ -23,18 +23,31 @@ function Navbar() {
     setIsOpen(false);
   }, [location.pathname]);
 
-  const navLinks = ["Home", "Menu", "About", "Reviews", "Contact"];
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => { document.body.style.overflow = ""; };
+  }, [isOpen]);
+
+  const navLinks = ["Home", "Menu", "About", "Contact"];
 
   return (
     <nav
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${scrolled ? "glass py-3" : "bg-transparent py-5"
-        }`}
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
+        scrolled
+          ? "glass py-3"
+          : "bg-[#FFFAF5]/80 backdrop-blur-sm py-5"
+      }`}
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between px-6">
         {/* LOGO */}
         <NavLink to="/" className="flex items-center gap-3 group">
-          <div className="relative w-12 h-12">
-            <div className="absolute inset-0 bg-yellow-400 rounded-full blur-md opacity-20 group-hover:opacity-40 transition-opacity"></div>
+          <div className="relative w-11 h-11">
+            <div className="absolute inset-0 bg-orange-500 rounded-full blur-md opacity-0 group-hover:opacity-20 transition-opacity duration-500"></div>
             <img
               src="/Logo.png"
               alt="Bread & Bite"
@@ -42,24 +55,25 @@ function Navbar() {
             />
           </div>
           <div className="flex flex-col">
-            <span className="text-xl font-extrabold tracking-tight text-white uppercase leading-none font-heading">
-              Bread <span className="text-yellow-400">&</span> Bite
+            <span className="text-lg font-bold tracking-tight text-stone-900 uppercase leading-none font-heading">
+              Bread <span className="text-orange-600">&</span> Bite
             </span>
-            <span className="text-xs text-zinc-400 font-medium tracking-[0.25em] uppercase group-hover:text-yellow-400 transition-colors">
-              Navi Mumbai Only • Delivery
+            <span className="text-[10px] text-stone-400 font-medium tracking-[0.2em] uppercase group-hover:text-orange-500 transition-colors duration-300">
+              Navi Mumbai · Delivery
             </span>
           </div>
         </NavLink>
 
         {/* DESKTOP MENU */}
         <div className="hidden lg:flex items-center gap-10">
-          <ul className="flex gap-8 text-[13px] font-bold tracking-widest uppercase">
+          <ul className="flex gap-8 text-[13px] font-semibold tracking-widest uppercase">
             {navLinks.map((text) => (
               <li key={text} className="relative">
                 <NavLink
                   to={text === "Home" ? "/" : `/${text.toLowerCase()}`}
                   className={({ isActive }) =>
-                    `transition-all duration-300 relative py-1 hover:text-yellow-400 ${isActive ? "text-yellow-400" : "text-zinc-300"
+                    `transition-all duration-300 relative py-1 hover:text-orange-600 ${
+                      isActive ? "text-orange-600" : "text-stone-600"
                     }`
                   }
                 >
@@ -69,7 +83,7 @@ function Navbar() {
                       {isActive && (
                         <motion.span
                           layoutId="activeLink"
-                          className="absolute left-0 -bottom-1 h-[2px] w-full bg-yellow-400 rounded-full"
+                          className="absolute left-0 -bottom-1 h-[2px] w-full bg-orange-500 rounded-full"
                           transition={{ type: "spring", stiffness: 300, damping: 30 }}
                         />
                       )}
@@ -83,11 +97,11 @@ function Navbar() {
           {/* CART ICON */}
           <button
             onClick={() => navigate("/cart")}
-            className="relative text-white hover:text-yellow-400 transition-colors"
+            className="relative text-stone-700 hover:text-orange-600 transition-colors duration-300"
           >
-            <FaShoppingCart size={22} />
+            <FaShoppingCart size={20} />
             {cartCount > 0 && (
-              <span className="absolute -top-2 -right-2 bg-yellow-400 text-black text-[12px] font-black w-6 h-6 flex items-center justify-center rounded-full border border-black/10 shadow-lg">
+              <span className="absolute -top-2 -right-2.5 bg-orange-600 text-white text-[10px] font-bold w-5 h-5 flex items-center justify-center rounded-full shadow-lg">
                 {cartCount}
               </span>
             )}
@@ -98,20 +112,20 @@ function Navbar() {
         <div className="lg:hidden flex items-center gap-4">
           <button
             onClick={() => navigate("/cart")}
-            className="relative text-white hover:text-yellow-400 transition-colors"
+            className="relative text-stone-700 hover:text-orange-600 transition-colors"
           >
-            <FaShoppingCart size={22} />
+            <FaShoppingCart size={20} />
             {cartCount > 0 && (
-              <span className="absolute -top-2 -right-2 bg-yellow-400 text-black text-[12px] font-black w-6 h-6 flex items-center justify-center rounded-full border border-black/10 shadow-lg">
+              <span className="absolute -top-2 -right-2.5 bg-orange-600 text-white text-[10px] font-bold w-5 h-5 flex items-center justify-center rounded-full shadow-lg">
                 {cartCount}
               </span>
             )}
           </button>
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="text-white hover:text-yellow-400 transition-colors p-2"
+            className="text-stone-700 hover:text-orange-600 transition-colors p-2"
           >
-            {isOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
+            {isOpen ? <FaTimes size={22} /> : <FaBars size={22} />}
           </button>
         </div>
       </div>
@@ -124,19 +138,20 @@ function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 h-screen w-screen bg-zinc-950 z-40 flex flex-col items-center pt-32 space-y-8"
+            className="fixed inset-0 h-screen w-screen bg-[#FFFAF5] z-40 flex flex-col items-center justify-center gap-8"
           >
             {navLinks.map((text, index) => (
               <motion.div
                 key={text}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
+                transition={{ delay: index * 0.08 }}
               >
                 <NavLink
                   to={text === "Home" ? "/" : `/${text.toLowerCase()}`}
                   className={({ isActive }) =>
-                    `text-2xl font-bold tracking-wider ${isActive ? "text-yellow-400" : "text-white"
+                    `text-3xl font-bold tracking-wider font-heading ${
+                      isActive ? "text-orange-600" : "text-stone-800"
                     }`
                   }
                 >

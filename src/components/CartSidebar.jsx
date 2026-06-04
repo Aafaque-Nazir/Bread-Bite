@@ -3,7 +3,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { FaTimes, FaTrash, FaPlus, FaMinus, FaShoppingBag, FaArrowRight } from 'react-icons/fa';
 import { useCart } from '../context/CartContext';
-import clsx from 'clsx';
 
 const CartSidebar = () => {
     const { isCartOpen, toggleCart, cart, removeFromCart, updateQuantity, cartTotal, DELIVERY_CHARGE, grandTotal, clearCart } = useCart();
@@ -24,7 +23,7 @@ const CartSidebar = () => {
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                         onClick={toggleCart}
-                        className="fixed inset-0 bg-black/90 backdrop-blur-md z-[100]"
+                        className="fixed inset-0 bg-black/30 backdrop-blur-sm z-[100]"
                     />
 
                     {/* Sidebar Container */}
@@ -33,32 +32,32 @@ const CartSidebar = () => {
                         animate={{ x: 0, opacity: 1 }}
                         exit={{ x: '100%', opacity: 0 }}
                         transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-                        className="fixed top-4 bottom-4 right-4 w-full max-w-md bg-zinc-950/40 backdrop-blur-3xl border border-white/10 z-[101] rounded-[2.5rem] shadow-[0_40px_100px_rgba(0,0,0,0.8)] flex flex-col overflow-hidden"
+                        className="fixed top-4 bottom-4 right-4 w-full max-w-md bg-white/95 backdrop-blur-xl border border-stone-200 z-[101] rounded-3xl shadow-[0_20px_60px_rgba(0,0,0,0.1)] flex flex-col overflow-hidden"
                     >
-                        {/* Neo-Lux Header */}
-                        <div className="px-8 pt-10 pb-6 border-b border-white/5 relative bg-gradient-to-b from-white/[0.02] to-transparent">
-                            <div className="flex items-center justify-between mb-4">
+                        {/* Header */}
+                        <div className="px-8 pt-8 pb-6 border-b border-stone-100">
+                            <div className="flex items-center justify-between mb-1">
                                 <div className="flex flex-col">
-                                    <h2 className="text-3xl font-black text-white tracking-tighter uppercase italic leading-none">Cart</h2>
-                                    <div className="w-8 h-1 bg-yellow-400 mt-2" />
+                                    <h2 className="text-2xl font-bold text-stone-900 tracking-tight font-heading">Your Cart</h2>
+                                    <div className="w-8 h-0.5 bg-orange-500 mt-2 rounded-full" />
                                 </div>
                                 <button 
                                     onClick={toggleCart} 
-                                    className="w-12 h-12 rounded-2xl bg-zinc-900 border border-white/10 flex items-center justify-center text-zinc-400 hover:bg-white hover:text-black transition-all duration-500 hover:scale-105 active:scale-95 group"
+                                    className="w-10 h-10 rounded-xl bg-stone-100 flex items-center justify-center text-stone-400 hover:bg-orange-600 hover:text-white transition-all duration-300 group"
                                 >
-                                    <FaTimes size={16} className="group-hover:rotate-90 transition-transform duration-500" />
+                                    <FaTimes size={14} className="group-hover:rotate-90 transition-transform duration-300" />
                                 </button>
                             </div>
                         </div>
 
-                        {/* Staggered Item List */}
-                        <div className="flex-1 overflow-y-auto px-6 py-8 custom-scrollbar space-y-4">
+                        {/* Item List */}
+                        <div className="flex-1 overflow-y-auto px-6 py-6 custom-scrollbar space-y-3">
                             {cart.length === 0 ? (
-                                <div className="h-full flex flex-col items-center justify-center text-center opacity-20">
-                                    <div className="w-16 h-16 rounded-full border border-dashed border-white/20 flex items-center justify-center mb-6">
+                                <div className="h-full flex flex-col items-center justify-center text-center">
+                                    <div className="w-16 h-16 rounded-full border-2 border-dashed border-stone-200 flex items-center justify-center mb-6 text-stone-300">
                                         <FaShoppingBag size={20} />
                                     </div>
-                                    <p className="text-[10px] font-bold uppercase tracking-[0.3em]">Selection is Empty</p>
+                                    <p className="text-xs font-semibold uppercase tracking-[0.2em] text-stone-400">Your cart is empty</p>
                                 </div>
                             ) : (
                                 <AnimatePresence mode="popLayout">
@@ -70,45 +69,44 @@ const CartSidebar = () => {
                                             exit={{ opacity: 0, scale: 0.95 }}
                                             transition={{ delay: index * 0.05 }}
                                             key={item.id}
-                                            className="group relative flex items-center gap-5 p-4 rounded-3xl bg-white/[0.02] border border-white/5 hover:bg-white/[0.04] hover:border-white/10 transition-all duration-300"
+                                            className="group relative flex items-center gap-4 p-3 rounded-2xl hover:bg-orange-50/50 transition-all duration-300"
                                         >
-                                            {/* Petit Image */}
-                                            <div className="w-16 h-16 rounded-2xl overflow-hidden shrink-0 border border-white/5 bg-zinc-900 shadow-2xl relative">
+                                            {/* Image */}
+                                            <div className="w-14 h-14 rounded-xl overflow-hidden shrink-0 border border-stone-100 bg-stone-50 shadow-sm">
                                                 <img 
                                                     src={item.image} 
                                                     alt={item.name} 
-                                                    className="w-full h-full object-cover grayscale-[0.5] group-hover:grayscale-0 transition-all duration-700"
+                                                    className="w-full h-full object-cover"
                                                     onError={(e) => {
                                                         e.target.src = 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=120&h=120&auto=format&fit=crop';
                                                     }}
                                                 />
-                                                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                                             </div>
                                             
                                             <div className="flex-1 min-w-0">
-                                                <h4 className="text-sm font-bold text-white/90 truncate mb-1 uppercase tracking-tight">
+                                                <h4 className="text-sm font-semibold text-stone-800 truncate mb-0.5">
                                                     {item.name}
                                                 </h4>
-                                                <div className="flex items-center gap-3">
-                                                    <span className="text-base font-black text-white tracking-tighter">₹{item.price * item.quantity}</span>
-                                                    <div className="h-3 w-px bg-white/10" />
-                                                    <span className="text-[9px] text-zinc-500 font-bold uppercase tracking-widest">{item.quantity} Unit</span>
+                                                <div className="flex items-center gap-2">
+                                                    <span className="text-sm font-bold text-stone-900">₹{item.price * item.quantity}</span>
+                                                    <span className="text-[10px] text-stone-400 font-medium">× {item.quantity}</span>
                                                 </div>
                                             </div>
 
-                                            {/* Minimal Controls */}
-                                            <div className="flex flex-col gap-1 items-center bg-black/40 p-1 rounded-xl border border-white/5 opacity-0 group-hover:opacity-100 transition-all translate-x-2 group-hover:translate-x-0">
-                                                <button
-                                                    onClick={() => updateQuantity(item.id, 1)}
-                                                    className="w-7 h-7 flex items-center justify-center text-zinc-500 hover:text-yellow-400 transition-colors"
-                                                >
-                                                    <FaPlus size={10} />
-                                                </button>
+                                            {/* Controls */}
+                                            <div className="flex items-center gap-1 bg-stone-100 rounded-lg p-1">
                                                 <button
                                                     onClick={() => updateQuantity(item.id, -1)}
-                                                    className="w-7 h-7 flex items-center justify-center text-zinc-500 hover:text-red-400 transition-colors"
+                                                    className="w-6 h-6 flex items-center justify-center text-stone-400 hover:text-red-500 transition-colors rounded"
                                                 >
-                                                    {item.quantity === 1 ? <FaTrash size={10} /> : <FaMinus size={10} />}
+                                                    {item.quantity === 1 ? <FaTrash size={9} /> : <FaMinus size={9} />}
+                                                </button>
+                                                <span className="text-xs font-bold w-5 text-center text-stone-700">{item.quantity}</span>
+                                                <button
+                                                    onClick={() => updateQuantity(item.id, 1)}
+                                                    className="w-6 h-6 flex items-center justify-center text-stone-400 hover:text-orange-600 transition-colors rounded"
+                                                >
+                                                    <FaPlus size={9} />
                                                 </button>
                                             </div>
                                         </motion.div>
@@ -117,47 +115,43 @@ const CartSidebar = () => {
                             )}
                         </div>
 
-                        {/* Neo-Lux Summary */}
+                        {/* Summary */}
                         {cart.length > 0 && (
-                            <div className="p-10 bg-black/60 border-t border-white/5 backdrop-blur-md">
-                                <div className="space-y-4 mb-10">
-                                    <div className="flex justify-between items-center text-zinc-500 text-[9px] font-black uppercase tracking-[0.3em]">
-                                        <span>Items</span>
-                                        <span className="text-white/60">₹{cartTotal}</span>
+                            <div className="p-8 bg-stone-50/80 border-t border-stone-100">
+                                <div className="space-y-3 mb-6">
+                                    <div className="flex justify-between items-center text-stone-500 text-xs font-semibold uppercase tracking-wider">
+                                        <span>Subtotal</span>
+                                        <span className="text-stone-700">₹{cartTotal}</span>
                                     </div>
-                                    <div className="flex justify-between items-center text-zinc-500 text-[9px] font-black uppercase tracking-[0.3em]">
+                                    <div className="flex justify-between items-center text-stone-500 text-xs font-semibold uppercase tracking-wider">
                                         <span>Delivery</span>
-                                        <span className="text-green-500/80">FREE</span>
+                                        <span className="text-green-600">Free</span>
                                     </div>
                                     
-                                    <div className="pt-8 mt-4 border-t border-white/5 flex justify-between items-end">
+                                    <div className="pt-4 mt-2 border-t border-stone-200 flex justify-between items-end">
                                         <div>
-                                            <p className="text-[10px] text-zinc-600 font-bold uppercase tracking-[0.4em] mb-3">Total</p>
-                                            <span className="text-5xl font-black text-white tracking-tighter italic">₹{grandTotal}</span>
+                                            <p className="text-[10px] text-stone-400 font-semibold uppercase tracking-[0.2em] mb-1">Total</p>
+                                            <span className="text-3xl font-bold text-stone-900 tracking-tight font-heading">₹{grandTotal}</span>
                                         </div>
                                         <button 
                                             onClick={() => clearCart()}
-                                            className="text-[8px] text-zinc-700 font-black uppercase tracking-[0.4em] hover:text-red-500 transition-colors py-2 border-b border-white/5 mb-2"
+                                            className="text-[10px] text-stone-400 font-semibold uppercase tracking-wider hover:text-red-500 transition-colors pb-1"
                                         >
-                                            Reset
+                                            Clear All
                                         </button>
                                     </div>
                                 </div>
 
                                 <button
                                     onClick={handleProceedToCheckout}
-                                    className="relative w-full group overflow-hidden rounded-3xl"
+                                    className="relative w-full group overflow-hidden rounded-2xl"
                                 >
-                                    <div className="absolute inset-0 bg-yellow-400 transition-transform duration-700 group-hover:scale-105" />
-                                    <div className="relative py-7 flex items-center justify-center gap-4 text-black font-black text-xs uppercase tracking-[0.4em]">
-                                        <span>Proceed to Checkout</span>
-                                        <FaArrowRight size={14} className="group-hover:translate-x-2 transition-transform duration-500" />
+                                    <div className="absolute inset-0 bg-orange-600 transition-all duration-500 group-hover:bg-orange-700" />
+                                    <div className="relative py-5 flex items-center justify-center gap-3 text-white font-bold text-xs uppercase tracking-[0.2em]">
+                                        <span>Checkout</span>
+                                        <FaArrowRight size={12} className="group-hover:translate-x-1.5 transition-transform duration-300" />
                                     </div>
                                 </button>
-                                
-                                <p className="text-center text-[7px] text-zinc-800 font-bold uppercase tracking-[0.6em] mt-8">
-                                    Navi Mumbai • Premium Cuisine
-                                </p>
                             </div>
                         )}
                     </motion.div>
@@ -169,24 +163,3 @@ const CartSidebar = () => {
 };
 
 export default CartSidebar;
-
-// Add this to your index.css or keep it here for now if needed.
-// This is a CSS-in-JS injection for the scrollbar.
-const style = document.createElement('style');
-style.textContent = `
-    .custom-scrollbar::-webkit-scrollbar {
-        width: 4px;
-    }
-    .custom-scrollbar::-webkit-scrollbar-track {
-        background: rgba(255, 255, 255, 0.02);
-    }
-    .custom-scrollbar::-webkit-scrollbar-thumb {
-        background: rgba(255, 255, 255, 0.1);
-        border-radius: 10px;
-    }
-    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-        background: rgba(251, 191, 36, 0.3);
-    }
-`;
-document.head.appendChild(style);
-

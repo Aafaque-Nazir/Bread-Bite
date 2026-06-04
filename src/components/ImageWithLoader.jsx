@@ -7,7 +7,7 @@ const ImageWithLoader = ({ src, alt, className }) => {
     return (
         <div className={`relative overflow-hidden ${className}`}>
             {!isLoaded && (
-                <div className="absolute inset-0 bg-zinc-800 animate-pulse" />
+                <div className="absolute inset-0 bg-stone-100 animate-pulse" />
             )}
             <motion.img
                 src={src}

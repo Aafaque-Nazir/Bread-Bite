@@ -2,14 +2,14 @@ import React, { useState, useMemo } from "react";
 import { useCart } from '../src/context/CartContext';
 import { motion, AnimatePresence } from "framer-motion";
 import menuItems, { CATEGORIES_DATA } from "../data/MenuItems";
-import { FaPlus, FaSearch } from "react-icons/fa";
+import { FaPlus, FaSearch, FaStar } from "react-icons/fa";
 import ProductModal from '../src/components/ProductModal';
 import SEO from '../src/components/SEO';
 import ImageWithLoader from '../src/components/ImageWithLoader';
 
 const Menu = () => {
     const { addToCart } = useCart();
-    const [selectedCategory, setSelectedCategory] = useState("Sandwiches");
+    const [selectedCategory, setSelectedCategory] = useState("Pizza");
     const [searchQuery, setSearchQuery] = useState("");
     const [selectedItem, setSelectedItem] = useState(null);
 
@@ -23,53 +23,54 @@ const Menu = () => {
     }, [selectedCategory, searchQuery]);
 
     return (
-        <section className="min-h-screen bg-black pt-32 pb-20 px-6">
+        <section className="min-h-screen bg-[#FFFAF5] pt-28 pb-20 px-6">
             <SEO
-                title="Menu - Bread & Bite | Sandwiches, Pizza, Pasta & More"
-                description="Explore our full menu - grilled sandwiches, cheesy pizzas, creamy pastas, Maggi, and street-style snacks. Order online in Navi Mumbai. Free delivery!"
+                title="Menu - Bread & Bite | Pizza, Sandwich, Pasta & Drinks"
+                description="Explore our curated menu — artisan pizzas, grilled sandwiches, creamy pastas, and refreshing drinks. Order online in Navi Mumbai. Free delivery!"
                 url="/menu"
-                keywords="bread and bite menu, food menu navi mumbai, sandwich menu kharghar, pizza menu panvel, pasta menu taloja, maggi near me"
+                keywords="bread and bite menu, food menu navi mumbai, pizza menu kharghar, sandwich menu panvel, pasta menu taloja"
             />
 
             <div className="max-w-7xl mx-auto">
-                {/* Minimalist Header & Controls */}
-                <div className="flex flex-col md:flex-row md:items-end justify-between gap-10 mb-20">
+                {/* Header & Controls */}
+                <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-14">
                     <div>
-                        <h1 className="text-6xl md:text-9xl font-bold text-white tracking-tighter leading-none font-heading uppercase">
-                            Our <br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 via-yellow-400 to-amber-600">
+                        <span className="text-orange-600 text-xs font-semibold tracking-[0.2em] uppercase mb-3 block">Explore</span>
+                        <h1 className="text-5xl md:text-7xl font-bold text-stone-900 tracking-tight leading-none font-heading">
+                            Our{" "}
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-amber-600">
                                 Menu
                             </span>
                         </h1>
                     </div>
                     
-                    <div className="flex flex-col gap-8 w-full md:w-auto">
+                    <div className="flex flex-col gap-6 w-full md:w-auto">
                         {/* Search */}
                         <div className="relative group">
-                            <FaSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-500 text-sm group-focus-within:text-yellow-400 transition-colors" />
+                            <FaSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-stone-400 text-sm group-focus-within:text-orange-500 transition-colors" />
                             <input
                                 type="text"
-                                placeholder="SEARCH..."
+                                placeholder="Search dishes..."
                                 value={searchQuery}
                                 onChange={(e) => setSearchQuery(e.target.value)}
-                                className="w-full md:w-80 bg-zinc-900/50 border border-white/5 rounded-full py-3.5 pl-12 pr-6 text-sm font-bold text-white placeholder-zinc-600 focus:outline-none focus:border-yellow-400/50 transition-all uppercase tracking-widest"
+                                className="w-full md:w-72 bg-white border border-stone-200 rounded-xl py-3 pl-11 pr-5 text-sm font-medium text-stone-800 placeholder-stone-400 focus:outline-none focus:border-orange-400 focus:shadow-[0_0_0_3px_rgba(232,89,12,0.08)] transition-all"
                             />
                         </div>
 
-                        {/* Visual Categories */}
-                        <div className="flex overflow-x-auto no-scrollbar gap-8 p-4 mask-image-r -mx-4 px-4">
+                        {/* Category Tabs */}
+                        <div className="flex gap-6 overflow-x-auto no-scrollbar -mx-2 px-2 pb-1">
                             {CATEGORIES_DATA.map(cat => (
                                 <button
                                     key={cat.id}
                                     onClick={() => setSelectedCategory(cat.id)}
-                                    className="flex flex-col items-center gap-4 group flex-shrink-0 min-w-[5rem]"
+                                    className="flex flex-col items-center gap-3 group flex-shrink-0 min-w-[4.5rem]"
                                 >
-                                    <div className={`relative w-20 h-20 rounded-full p-1 transition-all duration-300 ${
+                                    <div className={`relative w-16 h-16 rounded-full p-0.5 transition-all duration-300 ${
                                         selectedCategory === cat.id
-                                            ? "ring-2 ring-yellow-400 ring-offset-4 ring-offset-black scale-110"
+                                            ? "ring-2 ring-orange-500 ring-offset-2 ring-offset-[#FFFAF5] scale-110"
                                             : "opacity-60 hover:opacity-100 hover:scale-105"
                                     }`}>
-                                        <div className="w-full h-full rounded-full overflow-hidden border border-white/10 bg-zinc-900">
+                                        <div className="w-full h-full rounded-full overflow-hidden border border-stone-200 bg-white">
                                             <ImageWithLoader
                                                 src={cat.image}
                                                 alt={cat.name}
@@ -77,8 +78,8 @@ const Menu = () => {
                                             />
                                         </div>
                                     </div>
-                                    <span className={`text-[10px] font-black uppercase tracking-widest transition-colors ${
-                                        selectedCategory === cat.id ? "text-yellow-400" : "text-zinc-600 group-hover:text-white"
+                                    <span className={`text-[10px] font-bold uppercase tracking-wider transition-colors ${
+                                        selectedCategory === cat.id ? "text-orange-600" : "text-stone-400 group-hover:text-stone-700"
                                     }`}>
                                         {cat.name}
                                     </span>
@@ -88,15 +89,15 @@ const Menu = () => {
                     </div>
                 </div>
 
-                {/* Minimalist Grid */}
+                {/* Products Grid */}
                 <AnimatePresence mode="wait">
                     <motion.div
                         key={selectedCategory}
-                        initial={{ opacity: 0, y: 20 }}
+                        initial={{ opacity: 0, y: 15 }}
                         animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: 20 }}
+                        exit={{ opacity: 0, y: 15 }}
                         transition={{ duration: 0.3 }}
-                        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-20 mt-12"
+                        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mt-8"
                     >
                         {filteredItems.map(item => (
                             <div 
@@ -104,38 +105,73 @@ const Menu = () => {
                                 className="group cursor-pointer"
                                 onClick={() => setSelectedItem(item)}
                             >
-                                {/* Image Area */}
-                                <div className="aspect-[4/3] bg-zinc-900 rounded-2xl overflow-hidden mb-6 relative border border-white/5 group-hover:border-yellow-400/30 transition-colors">
-                                    <ImageWithLoader
-                                        src={item.image}
-                                        alt={item.name}
-                                        className="w-full h-full object-cover group-hover:scale-105 transition-all duration-700"
-                                    />
-                                    {/* Minimal Price Tag */}
-                                    <div className="absolute bottom-4 left-4 bg-black/80 backdrop-blur px-3 py-1.5 rounded-lg border border-white/10">
-                                        <span className="text-white font-bold text-lg font-heading">₹{item.price}</span>
+                                {/* Card */}
+                                <div className="bg-white rounded-2xl overflow-hidden border border-stone-100 hover:border-orange-200 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] transition-all duration-500">
+                                    {/* Image */}
+                                    <div className="aspect-[4/3] overflow-hidden relative">
+                                        <ImageWithLoader
+                                            src={item.image}
+                                            alt={item.name}
+                                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                                        />
+                                        {/* Badges */}
+                                        <div className="absolute top-3 left-3 flex gap-2">
+                                            {item.isBestSeller && (
+                                                <span className="px-2.5 py-1 rounded-full bg-orange-600 text-white text-[9px] font-bold uppercase tracking-wider">
+                                                    Bestseller
+                                                </span>
+                                            )}
+                                            {item.isNew && (
+                                                <span className="px-2.5 py-1 rounded-full bg-green-600 text-white text-[9px] font-bold uppercase tracking-wider">
+                                                    New
+                                                </span>
+                                            )}
+                                        </div>
+                                        {/* Type badge */}
+                                        <div className="absolute top-3 right-3">
+                                            <span className={`px-2 py-1 rounded-full text-[9px] font-bold uppercase tracking-wider ${
+                                                item.type === 'Veg' ? 'bg-green-50 text-green-700 border border-green-200' :
+                                                item.type === 'Non-Veg' ? 'bg-red-50 text-red-700 border border-red-200' :
+                                                'bg-yellow-50 text-yellow-700 border border-yellow-200'
+                                            }`}>
+                                                {item.type}
+                                            </span>
+                                        </div>
                                     </div>
-                                </div>
 
-                                {/* Content */}
-                                <div className="flex justify-between items-start gap-4">
-                                    <div>
-                                        <h3 className="text-xl font-bold text-white leading-tight font-heading mb-2 group-hover:text-yellow-400 transition-colors">
+                                    {/* Content */}
+                                    <div className="p-4">
+                                        <div className="flex items-center gap-1.5 text-orange-500 text-xs font-semibold mb-1.5">
+                                            <FaStar className="text-[10px]" />
+                                            <span>{item.rating}</span>
+                                        </div>
+                                        <h3 className="text-base font-bold text-stone-900 leading-snug mb-1 group-hover:text-orange-600 transition-colors font-heading">
                                             {item.name}
                                         </h3>
-                                        <p className="text-zinc-600 text-sm line-clamp-2 leading-relaxed">
+                                        <p className="text-stone-400 text-xs line-clamp-2 leading-relaxed mb-3">
                                             {item.description}
                                         </p>
+                                        <div className="flex items-center justify-between">
+                                            <div className="flex items-center gap-2">
+                                                <span className="text-lg font-bold text-stone-900">₹{item.price}</span>
+                                                {item.originalPrice && (
+                                                    <span className="text-xs text-stone-400 line-through">₹{item.originalPrice}</span>
+                                                )}
+                                                {item.discount && (
+                                                    <span className="text-[10px] font-bold text-green-600 bg-green-50 px-1.5 py-0.5 rounded">{item.discount}</span>
+                                                )}
+                                            </div>
+                                            <button
+                                                onClick={(e) => {
+                                                    e.stopPropagation();
+                                                    addToCart(item);
+                                                }}
+                                                className="w-8 h-8 rounded-full bg-orange-50 border border-orange-200 flex items-center justify-center text-orange-600 hover:bg-orange-600 hover:text-white hover:border-orange-600 transition-all duration-300"
+                                            >
+                                                <FaPlus size={9} />
+                                            </button>
+                                        </div>
                                     </div>
-                                    <button
-                                        onClick={(e) => {
-                                            e.stopPropagation();
-                                            addToCart(item);
-                                        }}
-                                        className="mt-1 w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-black transition-all shrink-0"
-                                    >
-                                        <FaPlus size={10} />
-                                    </button>
                                 </div>
                             </div>
                         ))}
@@ -143,8 +179,8 @@ const Menu = () => {
                 </AnimatePresence>
                 
                 {filteredItems.length === 0 && (
-                    <div className="text-center py-40 border-t border-white/10 mt-20">
-                        <p className="text-zinc-500 font-bold uppercase tracking-widest">No items found</p>
+                    <div className="text-center py-32">
+                        <p className="text-stone-400 font-semibold uppercase tracking-wider text-sm">No items found</p>
                     </div>
                 )}
             </div>
