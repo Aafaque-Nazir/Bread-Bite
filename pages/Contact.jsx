@@ -29,7 +29,7 @@ const Contact = () => {
         title="Contact Us - Bread & Bite Navi Mumbai"
         description="Get in touch with Bread & Bite. Order via WhatsApp at +91 93256 29256, find our kitchen in Taloja Phase 1, or message our team. Serving all of Navi Mumbai."
         url="/contact"
-        keywords="bread and bite contact, food delivery taloja, whatsapp food order navi mumbai, restaurant contact kharghar"
+        keywords="bread and bite contact, food delivery taloja phase 1, whatsapp food order navi mumbai, restaurant contact kharghar, cloud kitchen address taloja, tiffin service taloja navi mumbai, panvel food delivery hotline"
         faqs={FAQS}
       />
 

@@ -1,1 +1,15 @@
-/*    /index.html   200
+# ==============================================================================
+# BREAD & BITE - SEO CANONICAL REDIRECTS & ROUTING RULES
+# ==============================================================================
+
+# 1. Force 301 Permanent Redirect from Netlify default subdomain to Custom Domain
+https://bread-and-bite.netlify.app/*  https://breadandbite.in/:splat  301!
+http://bread-and-bite.netlify.app/*   https://breadandbite.in/:splat  301!
+
+# 2. Canonicalize www to apex domain
+https://www.breadandbite.in/*         https://breadandbite.in/:splat  301!
+http://www.breadandbite.in/*          https://breadandbite.in/:splat  301!
+http://breadandbite.in/*              https://breadandbite.in/:splat  301!
+
+# 3. SPA Client-Side Routing Fallback
+/*                                    /index.html                     200

@@ -65,7 +65,7 @@ const Menu = () => {
         title="Kitchen Menu & Online Order | Bread & Bite - Navi Mumbai"
         description="Order 500g Chicken Keema Boneless, Chicken Korma, hot Tandoori Roti, fresh Pav, Burgers, and Fries. Cooked fresh, delivered hot in Taloja, Kharghar & Panvel."
         url="/menu"
-        keywords="bread and bite menu, chicken keema taloja, chicken korma kharghar, keema pav navi mumbai, tandoori roti delivery"
+        keywords="bread and bite menu, chicken keema taloja, chicken korma kharghar, keema pav navi mumbai, tandoori roti delivery, chicken burger taloja phase 1, late night food delivery panvel, cloud kitchen menu navi mumbai"
       />
 
       <div className="max-w-7xl mx-auto">

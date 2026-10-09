@@ -60,7 +60,7 @@ const Home = () => {
         title="Bread & Bite | 500g Chicken Keema, Korma, Roti & Pav - Navi Mumbai"
         description="Fresh homestyle Chicken Keema (500g), Chicken Korma, hot Tandoori Roti, soft Pav, Burgers, and Fries delivered hot across Taloja, Kharghar & Panvel."
         url="/"
-        keywords="bread and bite, chicken keema 500g, keema pav taloja, chicken korma kharghar, tandoori roti delivery, burgers navi mumbai"
+        keywords="bread and bite, bread and bite taloja, chicken keema 500g, keema pav taloja, chicken korma kharghar, cloud kitchen taloja phase 1, food delivery navi mumbai, tandoori roti delivery panvel, halal chicken gravy kamothe"
         faqs={FAQS}
       />
 
