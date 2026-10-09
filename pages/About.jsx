@@ -66,7 +66,7 @@ const About = () => {
             <div className="artisan-card rounded-3xl p-2.5 sm:p-3 shadow-tactile-lg max-w-md mx-auto lg:max-w-none">
               <div className="rounded-2xl overflow-hidden aspect-square relative bg-[#F5EFE6]">
                 <img
-                  src="https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?q=80&w=1200&auto=format&fit=crop"
+                  src="/images/chicken-keema.webp"
                   alt="Bread and Bite Chicken Keema and Pav Preparation"
                   loading="lazy"
                   decoding="async"
@@ -180,12 +180,13 @@ const About = () => {
             </h2>
           </motion.div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4">
             {[
-              { img: "https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?q=80&w=800&auto=format&fit=crop", label: "Chicken Keema" },
-              { img: "https://images.unsplash.com/photo-1588166524941-3bf61a9c41db?q=80&w=800&auto=format&fit=crop", label: "Chicken Korma" },
-              { img: "https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?q=80&w=800&auto=format&fit=crop", label: "Tandoori Roti" },
-              { img: "https://images.unsplash.com/photo-1576107232684-1279f3908594?q=80&w=800&auto=format&fit=crop", label: "Crispy Fries" }
+              { img: "/images/chicken-keema.webp", label: "Chicken Keema" },
+              { img: "/images/chicken-korma.webp", label: "Chicken Korma" },
+              { img: "/images/tandoori-roti.webp", label: "Tandoori Roti" },
+              { img: "/images/pav.webp", label: "Soft Pav" },
+              { img: "/images/french-fries.webp", label: "Crispy Fries" }
             ].map((item, idx) => (
               <div key={idx} className="artisan-card rounded-2xl overflow-hidden p-2 bg-white">
                 <div className="aspect-[4/5] rounded-xl overflow-hidden relative">

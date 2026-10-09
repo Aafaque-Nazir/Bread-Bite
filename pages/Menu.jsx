@@ -37,7 +37,7 @@ const Menu = () => {
 
   const handleCategoryChange = (catId) => {
     setSelectedCategory(catId);
-    setSearchParams({ category: catId });
+    setSearchParams({ category: catId }, { replace: true });
   };
 
   const filteredItems = useMemo(() => {

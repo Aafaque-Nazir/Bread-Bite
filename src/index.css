@@ -50,6 +50,10 @@
   --color-border-strong: #D9D1C7;
 }
 
+html {
+  scroll-behavior: auto !important;
+}
+
 html.lenis,
 html.lenis body {
   height: auto;

@@ -17,7 +17,7 @@ const HOME_COMBOS = [
     price: 219,
     originalPrice: 229,
     discount: 'Save ₹10',
-    image: 'https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?q=80&w=800&auto=format&fit=crop',
+    image: '/images/keema-pav-meal.jpg',
     category: 'Combos',
     type: 'Non-Veg'
   },
@@ -28,7 +28,7 @@ const HOME_COMBOS = [
     price: 249,
     originalPrice: 259,
     discount: 'Save ₹10',
-    image: 'https://images.unsplash.com/photo-1588166524941-3bf61a9c41db?q=80&w=800&auto=format&fit=crop',
+    image: '/images/chicken-korma-roti-meal.jpg',
     category: 'Combos',
     type: 'Non-Veg'
   }
@@ -152,7 +152,7 @@ const Home = () => {
                 <div className="relative z-10 rounded-3xl overflow-hidden bg-white border border-[#EAE4DC] p-2.5 sm:p-3 shadow-tactile-md">
                   <div className="relative aspect-[4/4.1] sm:aspect-[4/4.2] max-h-[380px] lg:max-h-[420px] rounded-2xl overflow-hidden">
                     <img
-                      src="https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?q=80&w=1200&auto=format&fit=crop"
+                      src="/images/chicken-keema.webp"
                       alt="Bread & Bite Chicken Keema Boneless 500g"
                       fetchPriority="high"
                       decoding="async"
@@ -332,9 +332,9 @@ const Home = () => {
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3.5 sm:gap-5">
             {[
-              { name: "Chicken Gravies", id: "Gravy", img: "https://images.unsplash.com/photo-1588166524941-3bf61a9c41db?q=80&w=600&auto=format&fit=crop", count: "500g Portions", note: "Keema & Korma" },
-              { name: "Roti & Pav", id: "Roti", img: "https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?q=80&w=600&auto=format&fit=crop", count: "Fresh Baked", note: "Tandoori & Ladi Pav" },
-              { name: "Snacks", id: "Snacks", img: "https://images.unsplash.com/photo-1576107232684-1279f3908594?q=80&w=600&auto=format&fit=crop", count: "Fries & Maggi", note: "Crispy & Hot" },
+              { name: "Chicken Gravies", id: "Gravy", img: "/images/chicken-korma.webp", count: "500g Portions", note: "Keema & Korma" },
+              { name: "Roti & Pav", id: "Roti", img: "/images/tandoori-roti.webp", count: "Fresh Baked", note: "Tandoori & Ladi Pav" },
+              { name: "Snacks", id: "Snacks", img: "/images/french-fries.webp", count: "Fries & Maggi", note: "Crispy & Hot" },
               { name: "Burgers", id: "Burgers", img: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=600&auto=format&fit=crop", count: "Juicy Patty", note: "Crispy Chicken" }
             ].map((cat, i) => (
               <NavLink
@@ -501,7 +501,7 @@ const Home = () => {
               <div className="artisan-card rounded-3xl p-2.5 sm:p-3 shadow-tactile-lg max-w-md mx-auto lg:max-w-none">
                 <div className="rounded-2xl overflow-hidden aspect-[4/5]">
                   <ImageWithLoader
-                    src="https://images.unsplash.com/photo-1588166524941-3bf61a9c41db?q=80&w=1000&auto=format&fit=crop"
+                    src="/images/chicken-korma.webp"
                     alt="Kitchen cooking at Bread & Bite"
                     className="w-full h-full object-cover"
                   />

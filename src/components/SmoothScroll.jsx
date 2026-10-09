@@ -7,26 +7,24 @@ import Lenis from 'lenis';
  */
 const SmoothScroll = () => {
   useEffect(() => {
-    // Keep native 120Hz hardware momentum scrolling on phones & touch devices
-    const isTouchDevice = typeof window !== 'undefined' && window.matchMedia('(pointer: coarse)').matches;
-    if (isTouchDevice) {
-      return;
-    }
-
     const lenis = new Lenis({
-      duration: 1.0,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      orientation: 'vertical',
-      gestureOrientation: 'vertical',
-      smoothWheel: true,
+      lerp: 0.08,
       wheelMultiplier: 1.0,
-      autoRaf: true,
-      respectReducedMotion: true,
+      smoothWheel: true,
+      syncTouch: false,
     });
 
     window.__lenis = lenis;
 
+    let rafId;
+    function raf(time) {
+      lenis.raf(time);
+      rafId = requestAnimationFrame(raf);
+    }
+    rafId = requestAnimationFrame(raf);
+
     return () => {
+      cancelAnimationFrame(rafId);
       lenis.destroy();
       delete window.__lenis;
     };

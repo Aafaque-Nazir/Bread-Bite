@@ -7,10 +7,10 @@ import { useLocation } from 'react-router-dom';
  * preventing users from landing at the bottom/footer of the target page.
  */
 const ScrollToTop = () => {
-  const { pathname, search } = useLocation();
+  const { pathname } = useLocation();
 
   useEffect(() => {
-    // Reset scroll immediately upon navigation via Lenis or native fallback
+    // Reset scroll immediately upon page route navigation via Lenis or native fallback
     if (window.__lenis) {
       window.__lenis.scrollTo(0, { immediate: true });
     } else {
@@ -20,7 +20,7 @@ const ScrollToTop = () => {
         behavior: 'instant'
       });
     }
-  }, [pathname, search]);
+  }, [pathname]);
 
   return null;
 };

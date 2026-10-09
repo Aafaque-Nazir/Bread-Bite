@@ -8,7 +8,7 @@ const menuItems = [
     category: "Gravy",
     type: "Non-Veg",
     portion: "500gms",
-    image: "https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?q=80&w=800&auto=format&fit=crop",
+    image: "/images/chicken-keema.webp",
     isBestSeller: true,
     isNew: false,
     tags: ["500g", "Boneless", "Halal"]
@@ -21,7 +21,7 @@ const menuItems = [
     category: "Gravy",
     type: "Non-Veg",
     portion: "500gms",
-    image: "https://images.unsplash.com/photo-1588166524941-3bf61a9c41db?q=80&w=800&auto=format&fit=crop",
+    image: "/images/chicken-korma.webp",
     isBestSeller: true,
     isNew: false,
     tags: ["500g", "Halal"]
@@ -34,7 +34,7 @@ const menuItems = [
     category: "Gravy",
     type: "Non-Veg",
     portion: "500gms",
-    image: "https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?q=80&w=800&auto=format&fit=crop",
+    image: "/images/random-chicken-gravy.webp",
     isBestSeller: false,
     isNew: true,
     tags: ["500g", "Daily Special", "Halal"]
@@ -48,7 +48,7 @@ const menuItems = [
     price: 30,
     category: "Roti",
     type: "Veg",
-    image: "https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?q=80&w=800&auto=format&fit=crop",
+    image: "/images/tandoori-roti.webp",
     isBestSeller: true,
     isNew: false,
     tags: ["Fresh Baked"]
@@ -61,7 +61,7 @@ const menuItems = [
     category: "Roti",
     type: "Veg",
     portion: "4 pcs",
-    image: "https://images.unsplash.com/photo-1606491956689-2ea866880c84?q=80&w=800&auto=format&fit=crop",
+    image: "/images/pav.webp",
     isBestSeller: true,
     isNew: false,
     tags: ["4 Pcs", "Soft & Fresh"]
@@ -76,7 +76,7 @@ const menuItems = [
     category: "Snacks",
     type: "Veg",
     portion: "200g",
-    image: "https://images.unsplash.com/photo-1576107232684-1279f3908594?q=80&w=800&auto=format&fit=crop",
+    image: "/images/french-fries.webp",
     isBestSeller: true,
     isNew: false,
     tags: ["200g", "Crispy"]
@@ -88,7 +88,7 @@ const menuItems = [
     price: 99,
     category: "Snacks",
     type: "Veg",
-    image: "https://images.unsplash.com/photo-1612927601601-6638404737ce?q=80&w=800&auto=format&fit=crop",
+    image: "/images/plain-maggi.webp",
     isBestSeller: false,
     isNew: false,
     tags: ["Comfort Food"]
@@ -118,7 +118,7 @@ const menuItems = [
     discount: "Save ₹10",
     category: "Combos",
     type: "Non-Veg",
-    image: "https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?q=80&w=800&auto=format&fit=crop",
+    image: "/images/keema-pav-meal.jpg",
     isBestSeller: true,
     isNew: true,
     tags: ["Bestseller Meal", "500g Keema + 4 Pav"]
@@ -132,7 +132,7 @@ const menuItems = [
     discount: "Save ₹10",
     category: "Combos",
     type: "Non-Veg",
-    image: "https://images.unsplash.com/photo-1588166524941-3bf61a9c41db?q=80&w=800&auto=format&fit=crop",
+    image: "/images/chicken-korma-roti-meal.jpg",
     isBestSeller: true,
     isNew: false,
     tags: ["500g Korma + 2 Roti"]
@@ -154,11 +154,11 @@ const menuItems = [
 ];
 
 export const CATEGORIES_DATA = [
-  { id: "Gravy", name: "Gravy (500g)", image: "https://images.unsplash.com/photo-1588166524941-3bf61a9c41db?q=80&w=400&auto=format&fit=crop", description: "500g Chicken Gravies" },
-  { id: "Roti", name: "Roti & Pav", image: "https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?q=80&w=400&auto=format&fit=crop", description: "Tandoori Roti & Fresh Pav" },
-  { id: "Snacks", name: "Snacks", image: "https://images.unsplash.com/photo-1576107232684-1279f3908594?q=80&w=400&auto=format&fit=crop", description: "Fries & Hot Maggi" },
+  { id: "Gravy", name: "Gravy (500g)", image: "/images/chicken-korma.webp", description: "500g Chicken Gravies" },
+  { id: "Roti", name: "Roti & Pav", image: "/images/tandoori-roti.webp", description: "Tandoori Roti & Fresh Pav" },
+  { id: "Snacks", name: "Snacks", image: "/images/french-fries.webp", description: "Fries & Hot Maggi" },
   { id: "Burgers", name: "Burgers", image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=400&auto=format&fit=crop", description: "Crispy Chicken Burgers" },
-  { id: "Combos", name: "Combos", image: "https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?q=80&w=400&auto=format&fit=crop", description: "Meals & Combos" }
+  { id: "Combos", name: "Combos", image: "/images/keema-pav-meal.jpg", description: "Meals & Combos" }
 ];
 
 export const CATEGORIES = CATEGORIES_DATA.map(cat => cat.id);
