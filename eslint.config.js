@@ -34,6 +34,7 @@ export default [
           ignoreRestSiblings: true,
         },
       ],
+      'no-undef': 'error',
       'react-refresh/only-export-components': [
         'warn',
         { allowConstantExport: true },
