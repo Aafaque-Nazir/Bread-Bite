@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { FaBars, FaTimes, FaShoppingCart, FaWhatsapp } from "react-icons/fa";
-import { NavLink, useLocation, useNavigate } from "react-router-dom";
+import { FaBars, FaTimes, FaShoppingBag, FaWhatsapp } from "react-icons/fa";
+import { NavLink, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { useCart } from "../context/CartContext";
 
@@ -8,7 +8,6 @@ function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
-  const navigate = useNavigate();
   const { toggleCart, cartCount } = useCart();
   const whatsappLink = "https://wa.me/919325629256?text=Hi%2C%20I%20want%20to%20order%20from%20Bread%20%26%20Bite!";
 
@@ -24,76 +23,88 @@ function Navbar() {
     setIsOpen(false);
   }, [location.pathname]);
 
-  // Lock body scroll when mobile menu is open
+  // Lock body scroll and pause Lenis when mobile menu is open
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden";
+      window.__lenis?.stop();
     } else {
       document.body.style.overflow = "";
+      window.__lenis?.start();
     }
-    return () => { document.body.style.overflow = ""; };
+    return () => {
+      document.body.style.overflow = "";
+      window.__lenis?.start();
+    };
   }, [isOpen]);
 
-  const navLinks = ["Home", "Menu", "About", "Contact"];
+  const navLinks = [
+    { name: "Home", path: "/" },
+    { name: "Menu", path: "/menu" },
+    { name: "About", path: "/about" },
+    { name: "Reviews", path: "/reviews" },
+    { name: "Contact", path: "/contact" }
+  ];
 
   return (
     <>
-      {/* ANNOUNCEMENT BAR */}
-      <div className="bg-[#1C1917] text-stone-300 text-xs font-semibold tracking-wide py-2.5 px-6 text-center w-full z-50 relative">
-        <span className="text-orange-500 mr-2">✦</span>
-        Free Delivery on all orders above ₹499 across Navi Mumbai!
-        <span className="text-orange-500 ml-2">✦</span>
+      {/* REFINED ANNOUNCEMENT BAR */}
+      <div className="bg-[#181411] text-[#EAE4DC] text-[11px] font-medium tracking-[0.14em] uppercase py-2 px-6 text-center w-full z-50 relative flex items-center justify-center gap-2">
+        <span className="text-[#B84A1C] text-[10px]">✦</span>
+        <span>Free Delivery On Orders Above ₹499 Across Navi Mumbai</span>
+        <span className="text-[#B84A1C] text-[10px]">✦</span>
       </div>
 
       <nav
-        className={`sticky top-0 left-0 w-full z-40 transition-all duration-500 ${
+        className={`sticky top-0 left-0 w-full z-40 transition-all duration-300 ${
           scrolled
-            ? "glass py-3 shadow-sm"
-            : "bg-[#FFFAF5] py-5 border-b border-stone-200/50"
+            ? "glass py-3.5 shadow-sm"
+            : "bg-[#FAF7F2] py-4.5 border-b border-[#EAE4DC]"
         }`}
       >
         <div className="max-w-7xl mx-auto flex items-center justify-between px-6">
           {/* LOGO */}
-          <NavLink to="/" className="flex items-center gap-3 group relative z-50">
-            <div className="relative w-11 h-11 shrink-0">
-              <div className="absolute inset-0 bg-orange-500 rounded-full blur-md opacity-0 group-hover:opacity-20 transition-opacity duration-500"></div>
+          <NavLink to="/" className="flex items-center gap-3.5 group relative z-50">
+            <div className="w-10 h-10 rounded-xl bg-white border border-[#EAE4DC] flex items-center justify-center p-1.5 shadow-xs transition-transform duration-300 group-hover:scale-105">
               <img
                 src="/Logo.png"
                 alt="Bread & Bite"
-                className="relative w-full h-full object-contain transition-transform duration-500 group-hover:rotate-12"
+                className="w-full h-full object-contain"
               />
             </div>
             <div className="flex flex-col">
-              <span className="text-[1.1rem] lg:text-lg font-bold tracking-tight text-stone-900 uppercase leading-none font-heading whitespace-nowrap">
-                Bread <span className="text-orange-600">&</span> Bite
+              <span className="text-[1.35rem] tracking-tight text-[#181411] leading-none font-heading whitespace-nowrap">
+                Bread <span className="font-italic-accent text-xl text-[#B84A1C]">&</span> Bite
               </span>
-              <span className="text-[9px] lg:text-[10px] text-stone-400 font-medium tracking-[0.2em] uppercase group-hover:text-orange-500 transition-colors duration-300 whitespace-nowrap">
-                Navi Mumbai
+              <span className="text-[9.5px] text-[#8C827A] font-semibold tracking-[0.24em] uppercase mt-0.5 whitespace-nowrap">
+                Cloud Kitchen · Navi Mumbai
               </span>
             </div>
           </NavLink>
 
           {/* DESKTOP MENU */}
           <div className="hidden lg:flex items-center flex-1 justify-center">
-            <ul className="flex gap-8 text-[13px] font-semibold tracking-widest uppercase">
-              {navLinks.map((text) => (
-                <li key={text} className="relative">
+            <ul className="flex items-center gap-9 text-[12.5px] font-semibold tracking-[0.12em] uppercase">
+              {navLinks.map(({ name, path }) => (
+                <li key={name} className="relative">
                   <NavLink
-                    to={text === "Home" ? "/" : `/${text.toLowerCase()}`}
+                    to={path}
                     className={({ isActive }) =>
-                      `transition-all duration-300 relative py-1 hover:text-orange-600 ${
-                        isActive ? "text-orange-600" : "text-stone-500"
+                      `transition-colors duration-200 py-1 flex items-center gap-1.5 ${
+                        isActive
+                          ? "text-[#B84A1C] font-bold"
+                          : "text-[#574F4A] hover:text-[#181411]"
                       }`
                     }
                   >
                     {({ isActive }) => (
                       <>
-                        {text}
+                        <span>{name}</span>
                         {isActive && (
                           <motion.span
-                            layoutId="activeLink"
-                            className="absolute left-0 -bottom-1 h-[2px] w-full bg-orange-500 rounded-full"
-                            transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                            layoutId="activeNavIndicator"
+                            className="absolute -bottom-1 left-0 right-0 h-[2px] bg-[#B84A1C] rounded-full"
+                            transition={{ type: "spring", stiffness: 350, damping: 30 }}
                           />
                         )}
                       </>
@@ -105,98 +116,104 @@ function Navbar() {
           </div>
 
           {/* DESKTOP ACTIONS */}
-          <div className="hidden lg:flex items-center gap-6">
-            {/* CART ICON */}
+          <div className="hidden lg:flex items-center gap-5">
+            {/* CART TRIGGER */}
             <button
-              onClick={() => navigate("/cart")}
-              className="relative text-stone-700 hover:text-orange-600 transition-colors duration-300"
+              onClick={toggleCart}
+              aria-label="View shopping bag"
+              className="relative p-2.5 rounded-full text-[#181411] hover:text-[#B84A1C] hover:bg-white border border-transparent hover:border-[#EAE4DC] transition-all duration-200"
             >
-              <FaShoppingCart size={20} />
+              <FaShoppingBag size={17} />
               {cartCount > 0 && (
-                <span className="absolute -top-2.5 -right-2.5 bg-orange-600 text-white text-[10px] font-bold w-5 h-5 flex items-center justify-center rounded-full shadow-lg">
+                <span className="absolute -top-1 -right-1 bg-[#B84A1C] text-white text-[10px] font-bold w-4.5 h-4.5 flex items-center justify-center rounded-full shadow-xs">
                   {cartCount}
                 </span>
               )}
             </button>
 
-            {/* ORDER CTA */}
+            {/* ORDER ON WHATSAPP CTA */}
             <a
               href={whatsappLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 bg-stone-900 text-white px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider hover:bg-orange-600 transition-colors shadow-lg hover:shadow-orange-600/20"
+              className="btn-primary py-2.5 px-5 text-xs font-semibold tracking-wider uppercase"
             >
-              <FaWhatsapp className="text-[14px]" /> Order Now
+              <FaWhatsapp className="text-[14px]" />
+              <span>Order Direct</span>
             </a>
           </div>
 
           {/* MOBILE TOGGLE & CART */}
-          <div className="lg:hidden flex items-center gap-4">
+          <div className="lg:hidden flex items-center gap-2">
             <button
-              onClick={() => navigate("/cart")}
-              className="relative text-stone-700 hover:text-orange-600 transition-colors"
+              onClick={toggleCart}
+              aria-label="View shopping bag"
+              className="relative p-2 rounded-xl text-[#181411] hover:text-[#B84A1C]"
             >
-              <FaShoppingCart size={20} />
+              <FaShoppingBag size={18} />
               {cartCount > 0 && (
-                <span className="absolute -top-2 -right-2.5 bg-orange-600 text-white text-[10px] font-bold w-5 h-5 flex items-center justify-center rounded-full shadow-lg">
+                <span className="absolute -top-1 -right-1 bg-[#B84A1C] text-white text-[9px] font-bold w-4 h-4 flex items-center justify-center rounded-full">
                   {cartCount}
                 </span>
               )}
             </button>
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-stone-700 hover:text-orange-600 transition-colors p-2 z-50 relative"
+              aria-label={isOpen ? "Close menu" : "Open menu"}
+              className="p-2 rounded-xl text-[#181411] hover:text-[#B84A1C] z-50 relative"
             >
-              {isOpen ? <FaTimes size={22} className="text-stone-800" /> : <FaBars size={22} />}
+              {isOpen ? <FaTimes size={20} /> : <FaBars size={20} />}
             </button>
           </div>
         </div>
 
-        {/* MOBILE MENU */}
+        {/* MOBILE MENU DRAWER */}
         <AnimatePresence>
           {isOpen && (
             <motion.div
-              initial={{ opacity: 0, y: -20 }}
+              data-lenis-prevent
+              initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.3 }}
-              className="fixed inset-0 h-screen w-screen bg-[#FFFAF5] z-40 flex flex-col items-center justify-center gap-8"
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.25 }}
+              className="fixed inset-0 top-[88px] h-[calc(100vh-88px)] w-screen bg-[#FAF7F2] z-40 flex flex-col justify-between px-8 py-10 overflow-y-auto"
             >
-              {navLinks.map((text, index) => (
-                <motion.div
-                  key={text}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.08 }}
-                >
-                  <NavLink
-                    to={text === "Home" ? "/" : `/${text.toLowerCase()}`}
-                    className={({ isActive }) =>
-                      `text-3xl font-bold tracking-wider font-heading ${
-                        isActive ? "text-orange-600" : "text-stone-800"
-                      }`
-                    }
+              <div className="flex flex-col gap-6 pt-4">
+                <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#8C827A]">Navigation</span>
+                {navLinks.map(({ name, path }, index) => (
+                  <motion.div
+                    key={name}
+                    initial={{ opacity: 0, x: -15 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.05 }}
                   >
-                    {text}
-                  </NavLink>
-                </motion.div>
-              ))}
-              
-              <motion.div 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4 }}
-                className="mt-8"
-              >
+                    <NavLink
+                      to={path}
+                      className={({ isActive }) =>
+                        `text-3xl font-heading tracking-tight block py-1 ${
+                          isActive ? "text-[#B84A1C] italic font-semibold" : "text-[#181411]"
+                        }`
+                      }
+                    >
+                      {name}
+                    </NavLink>
+                  </motion.div>
+                ))}
+              </div>
+
+              <div className="pt-8 border-t border-[#EAE4DC] space-y-4">
                 <a
                   href={whatsappLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 bg-orange-600 text-white px-8 py-4 rounded-full text-sm font-bold uppercase tracking-wider shadow-lg shadow-orange-600/30"
+                  className="w-full btn-primary py-3.5 text-sm"
                 >
-                  <FaWhatsapp size={20} /> Order Now
+                  <FaWhatsapp size={18} /> Order on WhatsApp
                 </a>
-              </motion.div>
+                <p className="text-center text-xs text-[#8C827A]">
+                  Taloja Phase 1 · Delivering across Navi Mumbai
+                </p>
+              </div>
             </motion.div>
           )}
         </AnimatePresence>

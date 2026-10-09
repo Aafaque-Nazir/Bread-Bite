@@ -9,14 +9,28 @@ export const useCart = () => {
 
 export const CartProvider = ({ children }) => {
     const [cart, setCart] = useState(() => {
-        const savedCart = localStorage.getItem('bread_and_bite_cart');
-        return savedCart ? JSON.parse(savedCart) : [];
+        try {
+            const savedCart = localStorage.getItem('bread_and_bite_cart');
+            return savedCart ? JSON.parse(savedCart) : [];
+        } catch (error) {
+            console.warn('Corrupted cart data reset:', error);
+            try {
+                localStorage.removeItem('bread_and_bite_cart');
+            } catch {
+                // ignore
+            }
+            return [];
+        }
     });
 
     const [isCartOpen, setIsCartOpen] = useState(false);
 
     useEffect(() => {
-        localStorage.setItem('bread_and_bite_cart', JSON.stringify(cart));
+        try {
+            localStorage.setItem('bread_and_bite_cart', JSON.stringify(cart));
+        } catch (error) {
+            console.warn('Unable to persist cart:', error);
+        }
     }, [cart]);
 
     const addToCart = (item) => {
@@ -57,6 +71,9 @@ export const CartProvider = ({ children }) => {
         setIsCartOpen((prev) => !prev);
     };
 
+    const openCart = () => setIsCartOpen(true);
+    const closeCart = () => setIsCartOpen(false);
+
     const cartTotal = cart.reduce((total, item) => total + item.price * item.quantity, 0);
     const cartCount = cart.reduce((count, item) => count + item.quantity, 0);
     const value = {
@@ -67,6 +84,8 @@ export const CartProvider = ({ children }) => {
         updateQuantity,
         clearCart,
         toggleCart,
+        openCart,
+        closeCart,
         cartTotal,
         cartCount,
     };

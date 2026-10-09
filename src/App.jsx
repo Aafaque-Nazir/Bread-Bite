@@ -11,13 +11,20 @@ import ToastProvider from './components/ToastProvider';
 import { Route, Routes } from 'react-router-dom';
 
 import FloatingCartBtn from './components/FloatingCartBtn';
+import CartSidebar from './components/CartSidebar';
 import Cart from '../pages/Cart';
+import Reviews from '../pages/Reviews';
+import ScrollToTop from './components/ScrollToTop';
+import SmoothScroll from './components/SmoothScroll';
 
 function App() {
   return (
     <>
+      <SmoothScroll />
+      <ScrollToTop />
       <ToastProvider />
-      <div className="flex flex-col min-h-screen bg-[#FFFAF5] text-stone-900">
+      <CartSidebar />
+      <div className="flex flex-col min-h-screen bg-[#FAF7F2] text-[#181411] selection:bg-[#B84A1C] selection:text-white">
         <Navbar />
         <main className="flex-grow">
           <Routes>
@@ -25,6 +32,7 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/menu" element={<Menu />} />
             <Route path="/cart" element={<Cart />} />
+            <Route path="/reviews" element={<Reviews />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/thank-you" element={<TQ />} />
             <Route path="*" element={<NotFound />} />

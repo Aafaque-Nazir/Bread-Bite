@@ -1,58 +1,43 @@
 import React from 'react';
-import { FaShoppingCart } from 'react-icons/fa';
+import { FaShoppingBag } from 'react-icons/fa';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 
 const FloatingCartBtn = () => {
-    const navigate = useNavigate();
-    const { toggleCart, cartCount, cartTotal } = useCart();
+  const { toggleCart, cartCount, cartTotal } = useCart();
 
-    return (
-        <AnimatePresence>
-            {cartCount > 0 && (
-                <div className="fixed bottom-8 right-8 z-[100] flex items-center justify-center">
-                    {/* Pulse Glow Effect */}
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        animate={{ opacity: [0.08, 0.15, 0.08], scale: [1, 1.15, 1] }}
-                        transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                        className="absolute inset-[-16px] bg-orange-500/20 blur-[25px] rounded-full pointer-events-none"
-                    />
+  return (
+    <AnimatePresence>
+      {cartCount > 0 && (
+        <div className="fixed bottom-6 right-6 z-[90]">
+          <motion.button
+            initial={{ y: 60, opacity: 0, scale: 0.9 }}
+            animate={{ y: 0, opacity: 1, scale: 1 }}
+            exit={{ y: 60, opacity: 0, scale: 0.9 }}
+            whileHover={{ scale: 1.03, y: -2 }}
+            whileTap={{ scale: 0.97 }}
+            onClick={toggleCart}
+            aria-label="View Cart"
+            className="flex items-center gap-3.5 bg-[#181411] text-white px-5 py-3.5 rounded-full shadow-warm-lg border border-white/10 hover:bg-[#26211D] transition-colors cursor-pointer group"
+          >
+            <div className="relative flex items-center justify-center">
+              <FaShoppingBag size={15} className="text-[#EAE4DC] group-hover:text-white" />
+              <span className="absolute -top-2 -right-2 bg-[#B84A1C] text-white text-[9px] font-bold w-4 h-4 flex items-center justify-center rounded-full">
+                {cartCount}
+              </span>
+            </div>
 
-                    <motion.button
-                        layoutId="floating-cart"
-                        initial={{ y: 100, opacity: 0, scale: 0.8 }}
-                        animate={{ y: 0, opacity: 1, scale: 1 }}
-                        exit={{ y: 100, opacity: 0, scale: 0.8 }}
-                        whileHover={{ scale: 1.05, y: -3 }}
-                        whileTap={{ scale: 0.95 }}
-                        onClick={() => navigate("/cart")}
-                        className="group relative flex items-center gap-4 bg-white/90 backdrop-blur-xl border border-stone-200 px-7 py-4 rounded-2xl shadow-[0_8px_30px_rgba(0,0,0,0.08)] hover:border-orange-300 hover:shadow-[0_12px_40px_rgba(232,89,12,0.12)] transition-all duration-500 overflow-hidden"
-                    >
-                        <div className="relative flex items-center justify-center">
-                            <FaShoppingCart size={16} className="text-stone-700 group-hover:text-orange-600 transition-colors duration-300" />
-                            <motion.span 
-                                key={cartCount}
-                                initial={{ scale: 1.5, opacity: 0 }}
-                                animate={{ scale: 1, opacity: 1 }}
-                                className="absolute -top-2.5 -right-3 bg-orange-600 text-white text-[8px] font-bold w-4 h-4 flex items-center justify-center rounded-full"
-                            >
-                                {cartCount}
-                            </motion.span>
-                        </div>
+            <div className="h-4 w-px bg-white/20" />
 
-                        <div className="flex flex-col items-start">
-                            <span className="text-sm font-bold text-stone-900 tracking-tight leading-none">₹{cartTotal}</span>
-                        </div>
-
-                        {/* Bottom border reveal */}
-                        <div className="absolute bottom-0 left-0 h-[2px] w-0 bg-orange-500 transition-all duration-500 group-hover:w-full" />
-                    </motion.button>
-                </div>
-            )}
-        </AnimatePresence>
-    );
+            <div className="flex items-center gap-1.5">
+              <span className="text-[11px] uppercase tracking-wider text-[#8C827A] font-semibold hidden sm:inline">Cart Total:</span>
+              <span className="text-sm font-bold font-heading text-white">₹{cartTotal}</span>
+            </div>
+          </motion.button>
+        </div>
+      )}
+    </AnimatePresence>
+  );
 };
 
 export default FloatingCartBtn;

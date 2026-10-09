@@ -1,600 +1,619 @@
-import React, { useMemo } from "react";
+import React, { useState, useMemo } from "react";
 import { motion } from "framer-motion";
-import { FaWhatsapp, FaUtensils, FaStar, FaCheckCircle, FaFire, FaBolt, FaMotorcycle, FaArrowRight, FaMapMarkerAlt, FaLeaf, FaShieldAlt, FaPlus } from "react-icons/fa";
+import { FaWhatsapp, FaUtensils, FaStar, FaCheckCircle, FaFire, FaMotorcycle, FaArrowRight, FaPlus } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 import SEO from "../src/components/SEO";
 import ImageWithLoader from "../src/components/ImageWithLoader";
 import menuItems from "../data/MenuItems";
 import { useCart } from '../src/context/CartContext';
+import ProductModal from '../src/components/ProductModal';
 
 const HOME_COMBOS = [
-    {
-        id: 'combo_1',
-        name: 'The Veg Classic Combo',
-        description: '1 Classic Margherita Pizza + 1 Classic Veg Grilled Sandwich + 2 Fresh Lime Sodas.',
-        price: 369,
-        discount: 'Save ₹47',
-        image: 'https://images.unsplash.com/photo-1565299507177-b0ac66763828?q=80&w=800&auto=format&fit=crop',
-        category: 'Combo',
-        type: 'Veg'
-    },
-    {
-        id: 'combo_2',
-        name: 'Chicken Lovers Feast',
-        description: '(Halal) 1 Tandoori Chicken Pizza + 1 Creamy Chicken Pasta + 2 Classic Cold Coffees.',
-        price: 549,
-        discount: 'Save ₹87',
-        image: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=800&auto=format&fit=crop',
-        category: 'Combo',
-        type: 'Non-Veg'
-    }
+  {
+    id: 'combo_1',
+    name: 'Veg Super Saver Combo',
+    description: '1 Classic Margherita Pizza + 1 Veg Grilled Sandwich + 2 Fresh Lime Sodas.',
+    price: 369,
+    discount: 'Save ₹47',
+    image: 'https://images.unsplash.com/photo-1565299507177-b0ac66763828?q=80&w=800&auto=format&fit=crop',
+    category: 'Combo',
+    type: 'Veg'
+  },
+  {
+    id: 'combo_2',
+    name: 'Chicken Lovers Combo',
+    description: '(Halal) 1 Tandoori Chicken Pizza + 1 Creamy Chicken Pasta + 2 Classic Cold Coffees.',
+    price: 549,
+    discount: 'Save ₹87',
+    image: 'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=800&auto=format&fit=crop',
+    category: 'Combo',
+    type: 'Non-Veg'
+  }
 ];
 
 const Home = () => {
-    const { addToCart } = useCart();
-    const whatsappLink = "https://wa.me/919325629256?text=Hi%2C%20I%20want%20to%20order%20from%20Bread%20%26%20Bite!";
+  const { addToCart } = useCart();
+  const [selectedItem, setSelectedItem] = useState(null);
+  const whatsappLink = "https://wa.me/919325629256?text=Hi%2C%20I%20want%20to%20order%20from%20Bread%20%26%20Bite!";
 
-    const randomBestsellers = useMemo(() => {
-        const bestsellers = menuItems.filter(item => item.isBestSeller);
-        return [...bestsellers].sort(() => 0.5 - Math.random()).slice(0, 4);
-    }, []);
+  const bestsellers = useMemo(() => {
+    return menuItems.filter(item => item.isBestSeller).slice(0, 4);
+  }, []);
 
-    const fadeUp = {
-        hidden: { opacity: 0, y: 40 },
-        show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] } }
-    };
+  const fadeUp = {
+    hidden: { opacity: 0, y: 30 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } }
+  };
 
-    const staggerContainer = {
-        hidden: { opacity: 0 },
-        show: { opacity: 1, transition: { staggerChildren: 0.1 } }
-    };
+  const staggerContainer = {
+    hidden: { opacity: 0 },
+    show: { opacity: 1, transition: { staggerChildren: 0.1 } }
+  };
 
-    const scaleIn = {
-        hidden: { opacity: 0, scale: 0.9 },
-        show: { opacity: 1, scale: 1, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] } }
-    };
+  return (
+    <>
+      <SEO
+        title="Bread & Bite | Fresh Pizzas, Sandwiches & Pastas - Navi Mumbai"
+        description="Delicious comfort food delivered hot in Navi Mumbai. Freshly baked pizzas, crispy grilled sandwiches, creamy pastas, and cool drinks delivered fast."
+        url="/"
+        keywords="bread and bite, cloud kitchen navi mumbai, pizza delivery taloja, sandwich kharghar, pasta panvel"
+      />
 
-    return (
-        <>
-            <SEO
-                title="Bread & Bite | Premium Comfort Food - Navi Mumbai"
-                description="Experience Navi Mumbai's finest comfort food. Premium grilled sandwiches, artisan pizzas, creamy pastas, and refreshing drinks. Free delivery across Navi Mumbai."
-                url="/"
-                keywords="bread and bite, navi mumbai food delivery, grilled sandwich kharghar, pizza panvel, pasta taloja, comfort food navi mumbai, fast food delivery"
-            />
+      {/* ═══════════════════════════════════════════════════════════════════
+          HERO SECTION — Commanding, Tall Proportions & Dimensional Depth
+      ═══════════════════════════════════════════════════════════════════ */}
+      <section className="relative pt-12 pb-24 lg:pt-20 lg:pb-32 bg-[#FAF7F2] overflow-hidden border-b border-[#EAE4DC]">
+        {/* Soft Ambient Linen Glow */}
+        <div className="absolute inset-0 pointer-events-none opacity-50">
+          <div className="absolute top-0 right-1/4 w-[550px] h-[550px] bg-[#F4EFE6] rounded-full blur-[120px]" />
+          <div className="absolute bottom-0 left-10 w-[450px] h-[450px] bg-[#FDF3ED] rounded-full blur-[120px]" />
+        </div>
 
-            {/* ═══════════════════════════════════════════════════════════════════
-                HERO SECTION — Fixed layout to prevent content pushing down
-            ═══════════════════════════════════════════════════════════════════ */}
-            <section className="relative pt-6 pb-24 lg:pt-12 lg:pb-32 bg-[#FFFAF5] overflow-hidden">
-                {/* Subtle Warm Orbs */}
-                <div className="absolute inset-0 pointer-events-none">
-                    <div className="absolute -top-32 -right-32 w-[500px] h-[500px] bg-orange-200/30 rounded-full blur-[120px]" />
-                    <div className="absolute bottom-0 -left-20 w-[400px] h-[400px] bg-amber-100/40 rounded-full blur-[100px]" />
-                </div>
+        <div className="relative z-10 max-w-7xl mx-auto px-6 w-full">
+          <div className="grid lg:grid-cols-12 gap-14 lg:gap-10 items-center">
+            {/* Left: Content (7 cols) */}
+            <motion.div
+              initial="hidden"
+              animate="show"
+              variants={staggerContainer}
+              className="lg:col-span-7 space-y-8"
+            >
+              {/* Eyebrow Badge */}
+              <motion.div variants={fadeUp} className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white border border-[#EAE4DC] shadow-tactile-sm">
+                <span className="w-2 h-2 rounded-full bg-[#B84A1C]" />
+                <span className="text-[#181411] text-[11px] font-bold tracking-[0.16em] uppercase">
+                  Cloud Kitchen · Taloja, Navi Mumbai
+                </span>
+              </motion.div>
 
-                <div className="relative z-10 max-w-7xl mx-auto px-6 w-full">
-                    <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-start lg:items-center">
-                        {/* Left: Content */}
-                        <motion.div
-                            initial="hidden"
-                            animate="show"
-                            variants={staggerContainer}
-                            className="space-y-6 lg:space-y-7 lg:-mt-16"
-                        >
-                            {/* Badge */}
-                            <motion.div variants={fadeUp} className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-orange-50 border border-orange-200/70">
-                                <span className="relative flex h-2 w-2">
-                                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-500 opacity-75"></span>
-                                    <span className="relative inline-flex rounded-full h-2 w-2 bg-orange-500"></span>
-                                </span>
-                                <span className="text-orange-700 text-[11px] font-semibold tracking-[0.12em] uppercase">Navi Mumbai Exclusive</span>
-                            </motion.div>
+              {/* Main Headline with Stately Tall Proportions */}
+              <motion.h1 variants={fadeUp} className="text-4xl sm:text-6xl lg:text-[4.5rem] font-normal text-[#181411] leading-[1.14] tracking-tight font-heading">
+                Comfort food, <br />
+                <span className="font-italic-accent text-5xl sm:text-7xl lg:text-[4.85rem] text-[#B84A1C] font-normal tracking-wide">made fresh</span> on every order.
+              </motion.h1>
 
-                            {/* Main Headline */}
-                            <motion.h1 variants={fadeUp} className="text-[3.2rem] sm:text-[4rem] lg:text-[4.5rem] xl:text-[5.5rem] font-bold leading-[1] tracking-tight font-heading text-stone-900">
-                                Fresh &{" "}
-                                <span className="text-transparent bg-clip-text bg-gradient-to-br from-orange-500 via-orange-600 to-amber-600">
-                                    Tasty.
-                                </span>
-                            </motion.h1>
+              {/* Subheadline */}
+              <motion.p variants={fadeUp} className="text-base sm:text-lg text-[#574F4A] max-w-xl leading-relaxed">
+                Cheesy pizzas, crispy grilled sandwiches, creamy pastas, and cold shakes — cooked fresh and delivered hot to your doorstep across Navi Mumbai.
+              </motion.p>
 
-                            {/* Subheadline */}
-                            <motion.p variants={fadeUp} className="text-base sm:text-lg text-stone-500 max-w-md leading-relaxed">
-                                Hot sandwiches, handmade pizzas, creamy pastas & refreshing drinks — made fresh, delivered fast.
-                            </motion.p>
-
-                            {/* CTA Buttons */}
-                            <motion.div variants={fadeUp} className="flex flex-wrap gap-3 pt-1">
-                                <a
-                                    href={whatsappLink}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="group inline-flex items-center justify-center gap-2.5 px-6 py-3.5 bg-orange-600 text-white font-semibold text-sm tracking-wide rounded-xl transition-all duration-300 hover:bg-orange-700 hover:shadow-[0_10px_30px_rgba(232,89,12,0.25)] hover:-translate-y-0.5"
-                                >
-                                    <FaWhatsapp className="text-lg" />
-                                    <span>Order Now</span>
-                                </a>
-                                <NavLink
-                                    to="/menu"
-                                    className="group inline-flex items-center justify-center gap-2.5 px-6 py-3.5 bg-white border border-stone-200 text-stone-700 font-semibold text-sm tracking-wide rounded-xl hover:border-orange-300 hover:text-orange-600 transition-all duration-300 shadow-sm"
-                                >
-                                    <FaUtensils className="text-orange-500 text-xs" />
-                                    <span>Explore Menu</span>
-                                </NavLink>
-                            </motion.div>
-
-                            {/* Social Proof */}
-                            <motion.div variants={fadeUp} className="flex items-center gap-4 pt-4">
-                                <div className="flex -space-x-2">
-                                    {[1, 2, 3, 4].map((i) => (
-                                        <div key={i} className="w-8 h-8 rounded-full border-2 border-[#FFFAF5] bg-stone-100 overflow-hidden">
-                                            <img src={`https://i.pravatar.cc/64?img=${i + 20}`} alt="" className="w-full h-full object-cover" />
-                                        </div>
-                                    ))}
-                                </div>
-                                <div className="h-8 w-px bg-stone-200" />
-                                <div>
-                                    <div className="flex items-center gap-0.5 text-orange-500 mb-0.5">
-                                        {[...Array(5)].map((_, i) => <FaStar key={i} className="text-[9px]" />)}
-                                        <span className="text-stone-900 font-bold text-xs ml-1">4.9</span>
-                                    </div>
-                                    <p className="text-[10px] text-stone-400 font-medium">500+ Happy Customers</p>
-                                </div>
-                            </motion.div>
-                        </motion.div>
-
-                        {/* Right: Hero Visual */}
-                        <motion.div
-                            initial={{ opacity: 0, scale: 0.95 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
-                            className="relative mt-8 lg:mt-0"
-                        >
-                            <div className="relative">
-                                {/* Main Image Container */}
-                                <div className="relative z-10 rounded-3xl overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.1)] border border-stone-200/30 aspect-[4/5] sm:aspect-[3/4] lg:aspect-[4/5]">
-                                    <img
-                                        src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?q=80&w=1200&auto=format&fit=crop"
-                                        alt="Bread & Bite Signature Dish"
-                                        className="w-full h-full object-cover"
-                                    />
-                                    {/* Subtle gradient overlay on bottom */}
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
-                                </div>
-
-                                {/* Decorative orange glow behind image */}
-                                <div className="absolute -inset-4 bg-orange-200/20 rounded-[2rem] -z-10 blur-2xl" />
-
-                                {/* Floating Card - Delivery */}
-                                <motion.div
-                                    animate={{ y: [0, -6, 0] }}
-                                    transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
-                                    className="absolute -bottom-3 -left-3 sm:bottom-6 sm:-left-6 z-20 bg-white border border-stone-100 rounded-xl px-4 py-3 shadow-[0_8px_25px_rgba(0,0,0,0.08)]"
-                                >
-                                    <div className="flex items-center gap-2.5">
-                                        <div className="w-9 h-9 rounded-lg bg-green-50 flex items-center justify-center">
-                                            <FaMotorcycle className="text-green-600" />
-                                        </div>
-                                        <div>
-                                            <p className="text-stone-900 font-bold text-xs">Free Delivery</p>
-                                            <p className="text-stone-400 text-[10px]">Under 30 mins</p>
-                                        </div>
-                                    </div>
-                                </motion.div>
-
-                                {/* Floating Card - Bestseller */}
-                                <motion.div
-                                    animate={{ y: [0, 6, 0] }}
-                                    transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 0.8 }}
-                                    className="absolute -top-3 -right-3 sm:top-6 sm:-right-6 z-20 bg-white border border-orange-100 rounded-xl px-4 py-3 shadow-[0_8px_25px_rgba(232,89,12,0.08)]"
-                                >
-                                    <div className="flex items-center gap-2.5">
-                                        <div className="w-9 h-9 rounded-lg bg-orange-50 flex items-center justify-center">
-                                            <FaFire className="text-orange-500" />
-                                        </div>
-                                        <div>
-                                            <p className="text-stone-900 font-bold text-xs">#1 Bestseller</p>
-                                            <p className="text-stone-400 text-[10px]">Tandoori Grilled</p>
-                                        </div>
-                                    </div>
-                                </motion.div>
-                            </div>
-                        </motion.div>
-                    </div>
-                </div>
-            </section>
-
-            {/* ═══════════════════════════════════════════════════════════════════
-                SIGNATURE COMBOS - Replaced Bento Grid
-            ═══════════════════════════════════════════════════════════════════ */}
-            <section className="py-20 lg:py-24 bg-[#FFFAF5] relative overflow-hidden border-t border-stone-100">
-                <div className="max-w-7xl mx-auto px-6">
-                    <div className="text-center mb-12 lg:mb-16">
-                        <span className="text-orange-600 text-[11px] font-semibold tracking-[0.15em] uppercase mb-2 block">Value Deals</span>
-                        <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-stone-900 font-heading">
-                            Signature <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-amber-600">Combos</span>
-                        </h2>
-                        <p className="text-stone-500 mt-4 max-w-xl mx-auto">
-                            Handpicked meals designed to satisfy your cravings while giving you the best value. Add a complete meal to your cart in one click!
-                        </p>
-                    </div>
-
-                    <div className="grid md:grid-cols-2 gap-8 lg:gap-10">
-                        {HOME_COMBOS.map((combo, idx) => (
-                            <motion.div
-                                key={combo.id}
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: idx * 0.1 }}
-                                className="group bg-white rounded-3xl p-3 sm:p-4 border border-stone-100 hover:shadow-[0_12px_40px_rgba(232,89,12,0.08)] hover:border-orange-200 transition-all duration-500 flex flex-col sm:flex-row gap-5"
-                            >
-                                {/* Image Box */}
-                                <div className="w-full sm:w-48 h-48 sm:h-auto rounded-2xl overflow-hidden relative shrink-0">
-                                    <ImageWithLoader
-                                        src={combo.image}
-                                        alt={combo.name}
-                                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                                    />
-                                    <div className="absolute top-3 left-3">
-                                        <span className={`px-2.5 py-1 rounded-full text-[9px] font-bold uppercase tracking-wider ${
-                                            combo.type === 'Veg' ? 'bg-green-50 text-green-700 border border-green-200' : 'bg-red-50 text-red-700 border border-red-200'
-                                        }`}>
-                                            {combo.type}
-                                        </span>
-                                    </div>
-                                    <div className="absolute top-3 right-3">
-                                        <span className="px-2.5 py-1 rounded-full bg-orange-600 text-white text-[9px] font-bold uppercase tracking-wider shadow-sm">
-                                            {combo.discount}
-                                        </span>
-                                    </div>
-                                </div>
-
-                                {/* Content */}
-                                <div className="flex flex-col justify-between p-2 flex-1">
-                                    <div>
-                                        <h3 className="text-xl font-bold text-stone-900 mb-2 font-heading leading-tight group-hover:text-orange-600 transition-colors">
-                                            {combo.name}
-                                        </h3>
-                                        <p className="text-stone-500 text-sm leading-relaxed mb-4">
-                                            {combo.description}
-                                        </p>
-                                    </div>
-                                    <div className="flex items-center justify-between mt-auto">
-                                        <div className="flex flex-col">
-                                            <span className="text-xl font-bold text-stone-900">₹{combo.price}</span>
-                                        </div>
-                                        <button
-                                            onClick={(e) => {
-                                                e.preventDefault();
-                                                addToCart(combo);
-                                            }}
-                                            className="h-10 px-5 bg-orange-50 text-orange-600 hover:bg-orange-600 hover:text-white rounded-xl text-xs font-bold uppercase tracking-wider transition-all duration-300 flex items-center justify-center gap-2"
-                                        >
-                                            Add
-                                            <FaPlus size={10} />
-                                        </button>
-                                    </div>
-                                </div>
-                            </motion.div>
-                        ))}
-                    </div>
-                </div>
-            </section>
-
-            {/* ═══════════════════════════════════════════════════════════════════
-                CATEGORY EXPLORATION
-            ═══════════════════════════════════════════════════════════════════ */}
-            <section className="py-20 lg:py-24 bg-white relative overflow-hidden border-t border-stone-100">
-                <div className="max-w-7xl mx-auto px-6">
-                    <motion.div
-                        initial={{ opacity: 0, y: 25 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.6 }}
-                        className="text-center mb-12 lg:mb-16"
-                    >
-                        <span className="text-orange-600 text-[11px] font-semibold tracking-[0.15em] uppercase mb-2 block">Menu Highlights</span>
-                        <h2 className="text-3xl lg:text-4xl font-bold text-stone-900 tracking-tight font-heading">
-                            Explore Our <span className="text-orange-600 italic">Menu</span>
-                        </h2>
-                    </motion.div>
-
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 lg:gap-6">
-                        {[
-                            { name: "Pizzas", img: "https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=600&auto=format&fit=crop", count: "4 Items" },
-                            { name: "Sandwiches", img: "https://images.unsplash.com/photo-1528735602780-2552fd46c7af?q=80&w=600&auto=format&fit=crop", count: "4 Items" },
-                            { name: "Pastas", img: "https://images.unsplash.com/photo-1473093295043-cdd812d0e601?q=80&w=600&auto=format&fit=crop", count: "4 Items" },
-                            { name: "Drinks", img: "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?q=80&w=600&auto=format&fit=crop", count: "4 Items" }
-                        ].map((category, idx) => (
-                            <NavLink to="/menu" key={idx} className="group relative rounded-2xl overflow-hidden aspect-square flex items-end p-5 lg:p-6 shadow-[0_4px_20px_rgba(0,0,0,0.04)] hover:shadow-[0_10px_40px_rgba(232,89,12,0.15)] transition-all duration-500 block border border-stone-100">
-                                <ImageWithLoader src={category.img} alt={category.name} className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                                <div className="relative z-10 w-full flex items-end justify-between">
-                                    <div>
-                                        <h3 className="text-white font-bold text-lg lg:text-xl font-heading mb-0.5">{category.name}</h3>
-                                        <p className="text-orange-300 text-[10px] uppercase tracking-wider font-semibold">{category.count}</p>
-                                    </div>
-                                    <div className="w-8 h-8 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center group-hover:bg-orange-600 transition-colors">
-                                        <FaArrowRight className="text-white text-[10px]" />
-                                    </div>
-                                </div>
-                            </NavLink>
-                        ))}
-                    </div>
-                </div>
-            </section>
-
-            {/* ═══════════════════════════════════════════════════════════════════
-                BESTSELLERS SECTION
-            ═══════════════════════════════════════════════════════════════════ */}
-            <section className="py-20 lg:py-24 bg-[#FFFAF5] relative overflow-hidden">
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-orange-100/25 rounded-full blur-[120px]" />
-
-                <div className="max-w-7xl mx-auto px-6 relative z-10">
-                    <motion.div
-                        initial={{ opacity: 0, y: 25 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.6 }}
-                        className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10"
-                    >
-                        <div>
-                            <span className="text-orange-600 text-[11px] font-semibold tracking-[0.15em] uppercase mb-2 block">Featured</span>
-                            <h2 className="text-3xl lg:text-4xl font-bold text-stone-900 tracking-tight leading-tight font-heading">
-                                Crowd <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-amber-600">Favorites</span>
-                            </h2>
-                        </div>
-                        <NavLink
-                            to="/menu"
-                            className="group inline-flex items-center gap-2 text-stone-500 font-semibold text-sm hover:text-orange-600 transition-colors"
-                        >
-                            <span>View All</span>
-                            <FaArrowRight className="text-[10px] group-hover:translate-x-1 transition-transform" />
-                        </NavLink>
-                    </motion.div>
-
-                    <motion.div
-                        initial="hidden"
-                        whileInView="show"
-                        viewport={{ once: true }}
-                        variants={staggerContainer}
-                        className="grid grid-cols-2 lg:grid-cols-4 gap-4"
-                    >
-                        {randomBestsellers.map((item, index) => (
-                            <motion.div
-                                key={index}
-                                variants={fadeUp}
-                                className="group"
-                            >
-                                <NavLink to="/menu" className="block">
-                                    <div className="relative aspect-[3/4] rounded-2xl overflow-hidden bg-white border border-stone-100 group-hover:shadow-[0_10px_35px_rgba(0,0,0,0.07)] group-hover:border-orange-200/60 transition-all duration-500">
-                                        <ImageWithLoader
-                                            src={item.image}
-                                            alt={item.name}
-                                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                                        />
-                                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
-                                        
-                                        <div className="absolute top-3 left-3">
-                                            <div className="px-2.5 py-1 rounded-full bg-orange-600 text-white text-[9px] font-bold uppercase tracking-wider">
-                                                Bestseller
-                                            </div>
-                                        </div>
-
-                                        <div className="absolute bottom-0 left-0 right-0 p-3.5">
-                                            <div className="flex items-center gap-1 text-orange-300 text-[10px] font-semibold mb-1">
-                                                <FaStar className="text-[8px]" />
-                                                <span>{item.rating}</span>
-                                            </div>
-                                            <h3 className="text-sm font-bold text-white leading-snug mb-1.5 line-clamp-2">
-                                                {item.name}
-                                            </h3>
-                                            <div className="flex items-center justify-between">
-                                                <span className="text-base font-bold text-white">₹{item.price}</span>
-                                                <div className="w-7 h-7 rounded-full bg-white/20 backdrop-blur flex items-center justify-center group-hover:bg-orange-600 transition-all duration-300">
-                                                    <FaArrowRight className="text-[8px] text-white" />
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </NavLink>
-                            </motion.div>
-                        ))}
-                    </motion.div>
-                </div>
-            </section>
-
-            {/* ═══════════════════════════════════════════════════════════════════
-                ARTISAN QUALITY SECTION
-            ═══════════════════════════════════════════════════════════════════ */}
-            <section className="py-20 lg:py-32 bg-white relative overflow-hidden border-t border-stone-100">
-                <div className="max-w-7xl mx-auto px-6">
-                    <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-                        <motion.div
-                            initial={{ opacity: 0, x: -40 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                            className="relative"
-                        >
-                            <div className="relative z-10 rounded-3xl overflow-hidden aspect-[4/3] lg:aspect-square shadow-[0_20px_60px_rgba(0,0,0,0.08)]">
-                                <ImageWithLoader src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=1000&auto=format&fit=crop" alt="Fresh ingredients" className="w-full h-full object-cover" />
-                            </div>
-                            {/* Decorative elements */}
-                            <div className="absolute -bottom-6 -right-6 lg:-bottom-10 lg:-right-10 w-40 h-40 lg:w-56 lg:h-56 bg-orange-100/50 rounded-full blur-[40px] -z-10" />
-                            <div className="absolute top-1/2 -left-6 -translate-y-1/2 w-20 h-40 bg-amber-100/40 rounded-full blur-[30px] -z-10" />
-                            
-                            <div className="absolute -bottom-5 -left-5 bg-white p-5 rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.1)] border border-stone-100 hidden sm:block">
-                                <div className="flex items-center gap-4">
-                                    <div className="w-12 h-12 rounded-full bg-green-50 flex items-center justify-center text-green-600">
-                                        <FaLeaf size={20} />
-                                    </div>
-                                    <div>
-                                        <p className="text-stone-900 font-bold text-sm font-heading">100% Fresh</p>
-                                        <p className="text-stone-500 text-[10px]">Farm to Table</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </motion.div>
-
-                        <motion.div
-                            initial={{ opacity: 0, x: 40 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
-                        >
-                            <span className="text-orange-600 text-[11px] font-semibold tracking-[0.15em] uppercase mb-4 block">Our Promise</span>
-                            <h2 className="text-3xl lg:text-5xl font-bold text-stone-900 tracking-tight font-heading leading-tight mb-6">
-                                Fresh <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-amber-600">Ingredients</span>.
-                            </h2>
-                            <div className="space-y-6 text-stone-500 text-sm lg:text-base leading-relaxed">
-                                <p>
-                                    We believe in serving good, fresh food that satisfies your cravings. No shortcuts, just great taste.
-                                </p>
-                                <p>
-                                    From our handmade pizza dough to our fresh veggies, we make sure every meal is prepared with care and high-quality ingredients, so you always get the best.
-                                </p>
-                            </div>
-
-                            <ul className="mt-8 space-y-4">
-                                {[
-                                    "Made fresh every day",
-                                    "No artificial flavor enhancers",
-                                    "Clean and hygienic kitchen"
-                                ].map((item, idx) => (
-                                    <li key={idx} className="flex items-center gap-3">
-                                        <div className="w-6 h-6 rounded-full bg-orange-100 flex items-center justify-center text-orange-600 shrink-0">
-                                            <FaCheckCircle size={12} />
-                                        </div>
-                                        <span className="text-stone-700 font-medium text-sm">{item}</span>
-                                    </li>
-                                ))}
-                            </ul>
-
-                            <NavLink to="/about" className="inline-flex items-center gap-2 mt-10 text-orange-600 font-bold hover:text-orange-700 transition-colors group text-sm uppercase tracking-wider">
-                                <span>Read Our Story</span>
-                                <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
-                            </NavLink>
-                        </motion.div>
-                    </div>
-                </div>
-            </section>
-
-            {/* ═══════════════════════════════════════════════════════════════════
-                TESTIMONIALS SECTION
-            ═══════════════════════════════════════════════════════════════════ */}
-            <section className="py-20 lg:py-24 bg-white relative overflow-hidden">
-                <div className="max-w-7xl mx-auto px-6">
-                    <motion.div
-                        initial={{ opacity: 0, y: 25 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.6 }}
-                        className="text-center mb-12"
-                    >
-                        <span className="text-stone-400 text-[11px] font-semibold tracking-[0.15em] uppercase mb-2 block">Testimonials</span>
-                        <h2 className="text-3xl lg:text-4xl font-bold text-stone-900 tracking-tight font-heading">
-                            What They <span className="text-orange-600 italic">Say</span>
-                        </h2>
-                    </motion.div>
-
-                    <motion.div
-                        initial="hidden"
-                        whileInView="show"
-                        viewport={{ once: true }}
-                        variants={staggerContainer}
-                        className="grid md:grid-cols-3 gap-5"
-                    >
-                        {[
-                            { name: "Aarav M.", text: "The Tandoori Grilled sandwich changed my life. Best food delivery in Kharghar, hands down!", loc: "Kharghar", rating: 5 },
-                            { name: "Priya S.", text: "Finally found a place that does authentic pasta AND amazing pizzas. 10/10 hygiene too.", loc: "Taloja", rating: 5 },
-                            { name: "Karan D.", text: "The cheese pull on their pizza is INSANE. Fast delivery, hot food, zero complaints.", loc: "Panvel", rating: 5 }
-                        ].map((review, i) => (
-                            <motion.div
-                                key={i}
-                                variants={fadeUp}
-                                className="group p-6 rounded-2xl bg-[#FFFAF5] border border-stone-100 hover:border-orange-200 hover:shadow-[0_6px_24px_rgba(232,89,12,0.05)] transition-all duration-500"
-                            >
-                                <div className="flex gap-0.5 text-orange-500 mb-4">
-                                    {[...Array(review.rating)].map((_, j) => <FaStar key={j} className="text-[10px]" />)}
-                                </div>
-                                <p className="text-stone-600 text-sm leading-relaxed mb-6 group-hover:text-stone-700 transition-colors">
-                                    "{review.text}"
-                                </p>
-                                <div className="flex items-center gap-3">
-                                    <div className="w-9 h-9 rounded-full bg-orange-100 flex items-center justify-center text-orange-600 font-bold text-sm group-hover:bg-orange-600 group-hover:text-white transition-all duration-300 font-heading">
-                                        {review.name[0]}
-                                    </div>
-                                    <div>
-                                        <p className="text-stone-900 font-semibold text-sm">{review.name}</p>
-                                        <p className="text-stone-400 text-[11px]">{review.loc}</p>
-                                    </div>
-                                </div>
-                            </motion.div>
-                        ))}
-                    </motion.div>
-                </div>
-            </section>
-
-            {/* ═══════════════════════════════════════════════════════════════════
-                FINAL CTA SECTION
-            ═══════════════════════════════════════════════════════════════════ */}
-            <section className="py-20 lg:py-24 px-6 bg-[#FFFAF5] relative overflow-hidden">
-                <div className="absolute inset-0 pointer-events-none">
-                    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-orange-100/30 rounded-full blur-[120px]" />
-                </div>
-
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.7 }}
-                    className="max-w-3xl mx-auto relative z-10 text-center"
+              {/* Action Buttons with Tactile Depth */}
+              <motion.div variants={fadeUp} className="flex flex-wrap items-center gap-4 pt-2">
+                <NavLink
+                  to="/menu"
+                  className="btn-primary px-8 py-4 text-sm"
                 >
-                    <span className="text-orange-600 text-[11px] font-semibold tracking-[0.15em] uppercase mb-4 block">Ready to Order?</span>
-                    <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-stone-900 tracking-tight mb-5 leading-tight font-heading">
-                        Let's <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-amber-600">Eat</span>
-                    </h2>
-                    <p className="text-stone-500 text-base max-w-lg mx-auto mb-8">
-                        Skip the wait. Order via WhatsApp and get your favorite food delivered hot & fresh across Navi Mumbai.
-                    </p>
+                  <FaUtensils className="text-xs" />
+                  <span>Explore Menu</span>
+                </NavLink>
 
-                    <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-                        <a
-                            href={whatsappLink}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center justify-center gap-2.5 px-7 py-4 bg-orange-600 text-white font-bold text-sm tracking-wide rounded-xl transition-all duration-300 hover:bg-orange-700 hover:shadow-[0_12px_35px_rgba(232,89,12,0.25)] hover:-translate-y-0.5"
-                        >
-                            <FaWhatsapp className="text-lg" />
-                            <span>Order on WhatsApp</span>
-                        </a>
-                        <NavLink
-                            to="/menu"
-                            className="inline-flex items-center justify-center gap-2.5 px-7 py-4 bg-white border border-stone-200 text-stone-700 font-bold text-sm tracking-wide rounded-xl hover:border-orange-300 hover:text-orange-600 transition-all duration-300 shadow-sm"
-                        >
-                            <span>Browse Menu</span>
-                        </NavLink>
-                    </div>
+                <a
+                  href={whatsappLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-outline px-7 py-4 text-sm hover:border-[#25D366] hover:text-[#25D366]"
+                >
+                  <FaWhatsapp className="text-base text-[#25D366]" />
+                  <span>Order via WhatsApp</span>
+                </a>
+              </motion.div>
 
-                    <div className="flex items-center justify-center gap-6 mt-10 flex-wrap">
-                        {[
-                            { icon: <FaMotorcycle />, text: "Free Delivery" },
-                            { icon: <FaCheckCircle />, text: "Hygiene Certified" },
-                            { icon: <FaStar />, text: "4.9 Rating" }
-                        ].map((badge, i) => (
-                            <div key={i} className="flex items-center gap-1.5 text-stone-400 text-xs">
-                                <span className="text-orange-500">{badge.icon}</span>
-                                <span>{badge.text}</span>
-                            </div>
-                        ))}
+              {/* Proof Points */}
+              <motion.div variants={fadeUp} className="pt-8 border-t border-[#EAE4DC] flex flex-wrap items-center gap-8">
+                <div className="flex items-center gap-2.5">
+                  <div className="flex text-[#D97706] text-xs">
+                    {[...Array(5)].map((_, i) => (
+                      <FaStar key={i} />
+                    ))}
+                  </div>
+                  <span className="text-[#181411] font-bold text-sm">4.9/5</span>
+                  <span className="text-[#8C827A] text-xs">· 500+ Happy Customers</span>
+                </div>
+
+                <div className="h-4 w-px bg-[#EAE4DC] hidden sm:block" />
+
+                <div className="flex items-center gap-2 text-xs font-semibold text-[#574F4A]">
+                  <FaMotorcycle className="text-[#B84A1C] text-sm" />
+                  <span>Avg Delivery 25–35 Mins</span>
+                </div>
+
+                <div className="h-4 w-px bg-[#EAE4DC] hidden sm:block" />
+
+                <div className="flex items-center gap-2 text-xs font-semibold text-[#2A6A4E]">
+                  <FaCheckCircle className="text-sm" />
+                  <span>100% Hygienic Kitchen</span>
+                </div>
+              </motion.div>
+            </motion.div>
+
+            {/* Right: Framed Food Artwork with Tactile Depth */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.96 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
+              className="lg:col-span-5 relative"
+            >
+              <div className="relative">
+                {/* Framed Image Container with Multi-layer Shadow */}
+                <div className="relative z-10 rounded-3xl overflow-hidden bg-white border border-[#EAE4DC] p-3 shadow-tactile-lg">
+                  <div className="relative aspect-[4/5] rounded-2xl overflow-hidden">
+                    <img
+                      src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?q=80&w=1200&auto=format&fit=crop"
+                      alt="Bread & Bite Signature Dish"
+                      className="w-full h-full object-cover transition-transform duration-700 hover:scale-103"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#181411]/70 via-transparent to-transparent" />
+
+                    <div className="absolute bottom-6 left-6 right-6 text-white">
+                      <span className="badge-veg bg-white/20 text-white backdrop-blur-md border-white/30 text-[9px] mb-2">
+                        Must Try
+                      </span>
+                      <h4 className="text-xl font-bold font-heading">Tandoori Chicken Pizza</h4>
+                      <p className="text-xs text-white/80 mt-1">Crispy base with smoky chicken, crunchy capsicum & double cheese</p>
                     </div>
+                  </div>
+                </div>
+
+                {/* Floating Badge: Fresh Dough */}
+                <motion.div
+                  animate={{ y: [0, -6, 0] }}
+                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                  className="absolute -top-4 -left-4 sm:top-6 sm:-left-6 z-20 bg-white/95 backdrop-blur-md border border-[#EAE4DC] rounded-2xl px-4.5 py-3.5 shadow-tactile-md hidden sm:flex items-center gap-3"
+                >
+                  <div className="w-10 h-10 rounded-xl bg-[#FDF3ED] text-[#B84A1C] flex items-center justify-center font-bold text-sm">
+                    <FaFire />
+                  </div>
+                  <div>
+                    <p className="text-[#181411] font-bold text-xs">Made Fresh</p>
+                    <p className="text-[#8C827A] text-[10px]">Cooked on Order</p>
+                  </div>
                 </motion.div>
-            </section>
-        </>
-    );
+
+                {/* Floating Badge: Fast Delivery */}
+                <motion.div
+                  animate={{ y: [0, 6, 0] }}
+                  transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                  className="absolute -bottom-4 -right-4 sm:bottom-6 sm:-right-6 z-20 bg-white/95 backdrop-blur-md border border-[#EAE4DC] rounded-2xl px-4.5 py-3.5 shadow-tactile-md hidden sm:flex items-center gap-3"
+                >
+                  <div className="w-10 h-10 rounded-xl bg-[#EEF6F2] text-[#2A6A4E] flex items-center justify-center font-bold text-sm">
+                    <FaMotorcycle />
+                  </div>
+                  <div>
+                    <p className="text-[#181411] font-bold text-xs">Navi Mumbai</p>
+                    <p className="text-[#8C827A] text-[10px]">Hot Doorstep Delivery</p>
+                  </div>
+                </motion.div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════════════════════════
+          CHEF'S PAIRINGS & SIGNATURE COMBOS
+      ═══════════════════════════════════════════════════════════════════ */}
+      <section className="py-24 lg:py-32 bg-white relative border-b border-[#EAE4DC]">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
+            <div>
+              <span className="eyebrow-tag mb-3.5">Special Deals</span>
+              <h2 className="text-3xl md:text-5xl font-bold text-[#181411] tracking-tight font-heading leading-tight">
+                Popular Combos <span className="font-italic-accent text-[#B84A1C]">& Offers</span>
+              </h2>
+              <p className="text-[#574F4A] mt-3 text-sm md:text-base max-w-xl leading-relaxed">
+                Delicious food combos at discount prices — perfect for lunch, dinner, or sharing with friends.
+              </p>
+            </div>
+            <NavLink
+              to="/menu"
+              className="btn-outline self-start md:self-auto text-xs"
+            >
+              <span>View Full Menu</span>
+              <FaArrowRight className="text-[10px]" />
+            </NavLink>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8 lg:gap-10">
+            {HOME_COMBOS.map((combo, idx) => (
+              <motion.div
+                key={combo.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.12 }}
+                className="artisan-card rounded-3xl p-6 sm:p-7 flex flex-col sm:flex-row gap-6 items-center"
+              >
+                {/* Image */}
+                <div className="w-full sm:w-56 h-56 rounded-2xl overflow-hidden relative shrink-0 border border-[#EAE4DC] shadow-tactile-sm">
+                  <ImageWithLoader
+                    src={combo.image}
+                    alt={combo.name}
+                    className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                  />
+                  <div className="absolute top-3 left-3">
+                    <span className={combo.type === 'Veg' ? 'badge-veg' : 'badge-nonveg'}>
+                      {combo.type}
+                    </span>
+                  </div>
+                  <div className="absolute top-3 right-3 bg-[#181411] text-white px-2.5 py-1 rounded-full text-[9px] font-bold uppercase tracking-wider">
+                    {combo.discount}
+                  </div>
+                </div>
+
+                {/* Details */}
+                <div className="flex flex-col justify-between flex-1 w-full h-full">
+                  <div>
+                    <h3 className="text-2xl font-bold text-[#181411] font-heading mb-2 leading-snug">
+                      {combo.name}
+                    </h3>
+                    <p className="text-[#574F4A] text-sm leading-relaxed mb-6">
+                      {combo.description}
+                    </p>
+                  </div>
+
+                  <div className="flex items-center justify-between pt-5 border-t border-[#EAE4DC] mt-auto">
+                    <div>
+                      <span className="text-[11px] text-[#8C827A] uppercase font-bold tracking-wider block">Special Price</span>
+                      <span className="text-2xl font-bold text-[#181411] font-heading">₹{combo.price}</span>
+                    </div>
+
+                    <button
+                      onClick={(e) => {
+                        e.preventDefault();
+                        addToCart(combo);
+                      }}
+                      className="btn-primary py-2.5 px-5.5 text-xs"
+                    >
+                      <span>Add to Bag</span>
+                      <FaPlus size={10} />
+                    </button>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════════════════════════
+          CATEGORIES SHOWCASE — Tall & Structured
+      ═══════════════════════════════════════════════════════════════════ */}
+      <section className="py-24 lg:py-32 bg-[#FAF7F2] relative border-b border-[#EAE4DC]">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center max-w-2xl mx-auto mb-16">
+            <span className="eyebrow-tag mb-3.5">Our Menu</span>
+            <h2 className="text-3xl md:text-5xl font-bold text-[#181411] font-heading leading-tight">
+              Browse By <span className="font-italic-accent text-[#B84A1C]">Category</span>
+            </h2>
+            <p className="text-[#574F4A] mt-3 text-sm md:text-base leading-relaxed">
+              Everything is prepared fresh on order using quality ingredients and delivered hot.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-5 lg:gap-6">
+            {[
+              { name: "Pizzas", id: "Pizza", img: "https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=600&auto=format&fit=crop", count: "4 Varieties", note: "Hot & Cheesy" },
+              { name: "Sandwiches", id: "Sandwich", img: "https://images.unsplash.com/photo-1528735602780-2552fd46c7af?q=80&w=600&auto=format&fit=crop", count: "4 Varieties", note: "Crispy & Loaded" },
+              { name: "Pastas", id: "Pasta", img: "https://images.unsplash.com/photo-1473093295043-cdd812d0e601?q=80&w=600&auto=format&fit=crop", count: "4 Varieties", note: "Creamy & Saucy" },
+              { name: "Drinks", id: "Drinks", img: "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?q=80&w=600&auto=format&fit=crop", count: "4 Varieties", note: "Cool & Refreshing" }
+            ].map((cat, i) => (
+              <NavLink
+                to={`/menu?category=${cat.id}`}
+                key={i}
+                className="group artisan-card rounded-2xl overflow-hidden p-3.5 block"
+              >
+                <div className="relative aspect-square rounded-xl overflow-hidden mb-4 bg-[#F4EFE6] shadow-tactile-sm">
+                  <ImageWithLoader
+                    src={cat.img}
+                    alt={cat.name}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-106"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#181411]/75 via-transparent to-transparent" />
+                  <div className="absolute bottom-3.5 left-3.5 right-3.5 text-white">
+                    <span className="text-[10px] text-white/80 uppercase font-semibold tracking-wider block mb-0.5">
+                      {cat.note}
+                    </span>
+                    <h3 className="text-xl font-bold font-heading">{cat.name}</h3>
+                  </div>
+                </div>
+                <div className="flex items-center justify-between px-1.5 py-1">
+                  <span className="text-xs text-[#8C827A] font-semibold">{cat.count}</span>
+                  <div className="w-6.5 h-6.5 rounded-full bg-[#FAF7F2] text-[#181411] flex items-center justify-center group-hover:bg-[#B84A1C] group-hover:text-white transition-colors duration-200">
+                    <FaArrowRight size={9} />
+                  </div>
+                </div>
+              </NavLink>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════════════════════════
+          CROWD FAVORITES — Restaurant Menu Cards
+      ═══════════════════════════════════════════════════════════════════ */}
+      <section className="py-24 lg:py-32 bg-white relative border-b border-[#EAE4DC]">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-14">
+            <div>
+              <span className="eyebrow-tag mb-3.5">Popular Dishes</span>
+              <h2 className="text-3xl md:text-5xl font-bold text-[#181411] font-heading leading-tight">
+                Customer <span className="font-italic-accent text-[#B84A1C]">Favorites</span>
+              </h2>
+            </div>
+            <NavLink
+              to="/menu"
+              className="text-[#181411] hover:text-[#B84A1C] font-semibold text-sm flex items-center gap-2 group transition-colors"
+            >
+              <span>See Full Menu</span>
+              <FaArrowRight className="text-xs group-hover:translate-x-1 transition-transform" />
+            </NavLink>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {bestsellers.map((item) => (
+              <div
+                key={item.id}
+                onClick={() => setSelectedItem(item)}
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    setSelectedItem(item);
+                  }
+                }}
+                className="artisan-card rounded-2xl overflow-hidden flex flex-col group cursor-pointer"
+              >
+                {/* Photo container */}
+                <div className="relative aspect-[4/3] overflow-hidden bg-[#FAF7F2]">
+                  <ImageWithLoader
+                    src={item.image}
+                    alt={item.name}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div className="absolute top-3 left-3">
+                    <span className={item.type === 'Veg' ? 'badge-veg' : 'badge-nonveg'}>
+                      {item.type}
+                    </span>
+                  </div>
+                  <div className="absolute top-3 right-3 bg-white/95 backdrop-blur px-2.5 py-1 rounded-full text-[10px] font-bold text-[#181411] flex items-center gap-1 shadow-tactile-sm border border-[#EAE4DC]">
+                    <FaStar className="text-[#D97706] text-[9px]" />
+                    <span>{item.rating}</span>
+                  </div>
+                </div>
+
+                {/* Content */}
+                <div className="p-5.5 flex flex-col flex-1 justify-between">
+                  <div>
+                    <span className="text-[10px] uppercase font-bold tracking-wider text-[#8C827A] mb-1 block">
+                      {item.category}
+                    </span>
+                    <h3 className="text-base font-bold text-[#181411] font-heading line-clamp-1 mb-2">
+                      {item.name}
+                    </h3>
+                    <p className="text-xs text-[#574F4A] line-clamp-2 leading-relaxed mb-4">
+                      {item.description}
+                    </p>
+                  </div>
+
+                  <div className="pt-3.5 border-t border-[#EAE4DC] flex items-center justify-between mt-auto">
+                    <span className="text-lg font-bold text-[#181411] font-heading">
+                      ₹{item.price}
+                    </span>
+                    <button
+                      type="button"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        addToCart(item);
+                      }}
+                      className="btn-primary py-2 px-3.5 text-xs"
+                      aria-label={`Add ${item.name} to cart`}
+                    >
+                      <FaPlus size={9} />
+                      <span>Add</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════════════════════════
+          OUR QUALITY PROMISE
+      ═══════════════════════════════════════════════════════════════════ */}
+      <section className="py-24 lg:py-32 bg-[#FAF7F2] relative border-b border-[#EAE4DC]">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid lg:grid-cols-12 gap-14 lg:gap-16 items-center">
+            {/* Visual Left (5 cols) */}
+            <div className="lg:col-span-5 relative">
+              <div className="artisan-card rounded-3xl p-3 shadow-tactile-lg">
+                <div className="rounded-2xl overflow-hidden aspect-[4/5]">
+                  <ImageWithLoader
+                    src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=1000&auto=format&fit=crop"
+                    alt="Kitchen craft at Bread & Bite"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* Content Right (7 cols) */}
+            <div className="lg:col-span-7 space-y-8">
+              <span className="eyebrow-tag">Our Quality Promise</span>
+              <h2 className="text-3xl md:text-5xl font-bold text-[#181411] font-heading leading-tight">
+                Made fresh to order, <br />
+                <span className="font-italic-accent text-[#B84A1C]">never frozen or pre-made.</span>
+              </h2>
+
+              <p className="text-[#574F4A] text-base leading-relaxed">
+                At Bread & Bite, we make food the right way. We prepare our pizza dough daily, chop fresh vegetables, and use real cheese and tasty house sauces — no shortcuts, just great food you will love.
+              </p>
+
+              <div className="grid sm:grid-cols-2 gap-6 pt-2">
+                {[
+                  { title: "Fresh Pizza Dough", desc: "Soft inside and crispy outside, hand-stretched for every single pizza." },
+                  { title: "Fresh Veggies & Meat", desc: "Crisp vegetables, fresh dairy, and 100% Halal meat prepared daily." },
+                  { title: "Real Cheese & Sauces", desc: "Melted mozzarella cheese, flavorful marinara, and creamy dressings." },
+                  { title: "Clean & Hygienic Kitchen", desc: "Strict hygiene and cleanliness maintained at every step of cooking." }
+                ].map((item, i) => (
+                  <div key={i} className="flex gap-3.5">
+                    <div className="w-5 h-5 rounded-full bg-[#EEF6F2] text-[#2A6A4E] flex items-center justify-center shrink-0 mt-0.5">
+                      <FaCheckCircle size={11} />
+                    </div>
+                    <div>
+                      <h4 className="text-sm font-bold text-[#181411] font-heading">{item.title}</h4>
+                      <p className="text-xs text-[#574F4A] mt-1 leading-relaxed">{item.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="pt-4">
+                <NavLink
+                  to="/about"
+                  className="btn-outline text-xs"
+                >
+                  <span>More About Us</span>
+                  <FaArrowRight size={10} />
+                </NavLink>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════════════════════════
+          GUEST WORDS (TESTIMONIALS) — Clean Warm Editorial
+      ═══════════════════════════════════════════════════════════════════ */}
+      <section className="py-24 lg:py-32 bg-white relative border-b border-[#EAE4DC]">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center max-w-xl mx-auto mb-16">
+            <span className="eyebrow-tag mb-3.5">Customer Reviews</span>
+            <h2 className="text-3xl md:text-5xl font-bold text-[#181411] font-heading leading-tight">
+              What Customers <span className="font-italic-accent text-[#B84A1C]">Say</span>
+            </h2>
+            <p className="text-[#574F4A] mt-3 text-sm md:text-base leading-relaxed">
+              Real reviews from food lovers across Navi Mumbai.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
+            {[
+              {
+                quote: "The Tandoori Grilled sandwich changed my definition of comfort food. Hot, crispy, and the filling wasn't greasy at all.",
+                author: "Aarav Mehta",
+                loc: "Kharghar, Navi Mumbai",
+                favorite: "Tandoori Grilled Sandwich"
+              },
+              {
+                quote: "Finally found a kitchen that makes delicious pasta and fresh pizzas. Super clean packaging, arrived in 25 minutes flat.",
+                author: "Priya Sharma",
+                loc: "Taloja Phase 1",
+                favorite: "Creamy Chicken Pasta"
+              },
+              {
+                quote: "The cheese pull on their pizza is insane. Consistent quality every single weekend. Best comfort food in the area.",
+                author: "Karan Desai",
+                loc: "Panvel",
+                favorite: "Margherita Supreme"
+              }
+            ].map((t, idx) => (
+              <div
+                key={idx}
+                className="artisan-card rounded-2xl p-8 flex flex-col justify-between"
+              >
+                <div>
+                  <div className="flex text-[#D97706] text-xs gap-1 mb-4.5">
+                    {[...Array(5)].map((_, i) => (
+                      <FaStar key={i} />
+                    ))}
+                  </div>
+                  <p className="text-[#181411] text-base leading-relaxed italic mb-6">
+                    "{t.quote}"
+                  </p>
+                </div>
+
+                <div className="pt-4.5 border-t border-[#EAE4DC] flex items-center justify-between">
+                  <div>
+                    <h4 className="text-sm font-bold text-[#181411] font-heading">{t.author}</h4>
+                    <p className="text-[11px] text-[#8C827A]">{t.loc}</p>
+                  </div>
+                  <span className="text-[10px] font-semibold px-2.5 py-1 rounded-full bg-[#FAF7F2] text-[#B84A1C] border border-[#EAE4DC]">
+                    {t.favorite}
+                  </span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════════════════════════
+          FINAL CONCIERGE CALLOUT
+      ═══════════════════════════════════════════════════════════════════ */}
+      <section className="py-24 lg:py-32 bg-[#FAF7F2] relative">
+        <div className="max-w-4xl mx-auto px-6 text-center">
+          <span className="eyebrow-tag mb-4.5">Craving Something Tasty?</span>
+          <h2 className="text-3xl md:text-5xl font-bold text-[#181411] font-heading tracking-tight mb-4 leading-tight">
+            Hungry? We're ready to <span className="font-italic-accent text-[#B84A1C]">cook for you.</span>
+          </h2>
+          <p className="text-[#574F4A] text-base max-w-xl mx-auto mb-9 leading-relaxed">
+            Order directly on WhatsApp for super fast delivery, custom instructions, and live updates.
+          </p>
+
+          <div className="flex flex-wrap items-center justify-center gap-4">
+            <a
+              href={whatsappLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-primary py-4 px-9 text-sm"
+            >
+              <FaWhatsapp size={18} />
+              <span>Order on WhatsApp</span>
+            </a>
+            <NavLink
+              to="/menu"
+              className="btn-outline py-4 px-8 text-sm"
+            >
+              <span>Explore Full Menu</span>
+            </NavLink>
+          </div>
+
+          <p className="text-xs text-[#8C827A] mt-7">
+            Open daily: 8:00 AM – 11:45 PM · Delivering across Taloja, Kharghar, Panvel & Belapur
+          </p>
+        </div>
+      </section>
+
+      <ProductModal
+        item={selectedItem}
+        isOpen={!!selectedItem}
+        onClose={() => setSelectedItem(null)}
+      />
+    </>
+  );
 };
 
 export default Home;

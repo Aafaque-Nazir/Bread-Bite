@@ -3,7 +3,7 @@ const menuItems = [
   {
     id: 101,
     name: "Classic Margherita",
-    description: "Hand-stretched dough topped with San Marzano sauce, fresh mozzarella, and aromatic basil leaves.",
+    description: "Crispy crust topped with rich tomato sauce, melted mozzarella cheese, and fresh basil leaves.",
     price: 169,
     category: "Pizza",
     type: "Veg",
@@ -115,7 +115,7 @@ const menuItems = [
   {
     id: 301,
     name: "Creamy Chicken Pasta",
-    description: "(Halal) Al dente penne in a rich, creamy white sauce with tender chicken strips and Italian herbs.",
+    description: "(Halal) Penne pasta in a rich, creamy white sauce with tender chicken pieces and Italian herbs.",
     price: 219,
     category: "Pasta",
     type: "Non-Veg",
@@ -128,7 +128,7 @@ const menuItems = [
   {
     id: 302,
     name: "Penne Arrabbiata",
-    description: "Classic Italian penne in a fiery tomato-garlic sauce with chilli flakes, basil, and parmesan.",
+    description: "Penne pasta tossed in spicy tomato-garlic sauce with chilli flakes, basil, and cheese.",
     price: 189,
     category: "Pasta",
     type: "Veg",
@@ -141,7 +141,7 @@ const menuItems = [
   {
     id: 303,
     name: "Classic White Sauce Pasta",
-    description: "Silky béchamel with mushrooms, corn, and herbs tossed with perfectly cooked fusilli.",
+    description: "Creamy white sauce pasta with fresh mushrooms, sweet corn, and herbs tossed with fusilli.",
     price: 199,
     category: "Pasta",
     type: "Veg",
@@ -154,7 +154,7 @@ const menuItems = [
   {
     id: 304,
     name: "Alfredo Chicken Pasta",
-    description: "(Halal) Rich and creamy Alfredo sauce with grilled chicken, garlic bread crumbs, and fresh parsley.",
+    description: "(Halal) Creamy white sauce pasta loaded with grilled chicken, garlic, and herbs.",
     price: 239,
     originalPrice: 269,
     discount: "11% OFF",
@@ -197,7 +197,7 @@ const menuItems = [
   {
     id: 403,
     name: "Oreo Shake",
-    description: "Crushed Oreo cookies blended with vanilla ice cream and milk — the ultimate indulgence.",
+    description: "Thick, creamy milkshake blended with crunchy Oreo cookies and chocolate.",
     price: 119,
     category: "Drinks",
     type: "Veg",
@@ -223,10 +223,10 @@ const menuItems = [
 ];
 
 export const CATEGORIES_DATA = [
-  { id: "Pizza", name: "Pizza", image: "https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=300&h=300&auto=format&fit=crop", description: "Artisan Pizzas" },
-  { id: "Sandwich", name: "Sandwich", image: "https://images.unsplash.com/photo-1528735602780-2552fd46c7af?q=80&w=300&h=300&auto=format&fit=crop", description: "Grilled Sandwiches" },
-  { id: "Pasta", name: "Pasta", image: "https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?q=80&w=300&h=300&auto=format&fit=crop", description: "Creamy Pastas" },
-  { id: "Drinks", name: "Drinks", image: "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?q=80&w=300&h=300&auto=format&fit=crop", description: "Cool Beverages" }
+  { id: "Pizza", name: "Pizza", image: "https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=300&h=300&auto=format&fit=crop", description: "Pizzas" },
+  { id: "Sandwich", name: "Sandwich", image: "https://images.unsplash.com/photo-1528735602780-2552fd46c7af?q=80&w=300&h=300&auto=format&fit=crop", description: "Sandwiches" },
+  { id: "Pasta", name: "Pasta", image: "https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?q=80&w=300&h=300&auto=format&fit=crop", description: "Pastas" },
+  { id: "Drinks", name: "Drinks", image: "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?q=80&w=300&h=300&auto=format&fit=crop", description: "Cold Drinks" }
 ];
 
 export const CATEGORIES = CATEGORIES_DATA.map(cat => cat.id);
