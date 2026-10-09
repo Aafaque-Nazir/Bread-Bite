@@ -1,99 +1,231 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 
-const SITE_URL = 'https://breadandbite.in'; // Update this with your actual domain
+const SITE_URL = 'https://breadandbite.in';
 const SITE_NAME = 'Bread & Bite';
-const DEFAULT_IMAGE = `${SITE_URL}/og-image.jpg`; // Add an og-image.jpg to public folder
+const DEFAULT_IMAGE = `${SITE_URL}/og-image.jpg`;
 
-const SEO = ({ 
-    title, 
-    description, 
-    keywords = '',
-    image = DEFAULT_IMAGE,
-    url = '',
-    type = 'website',
-    noindex = false,
-    schema = null
+/**
+ * Senior SEO Component for Bread & Bite
+ * Emits complete Meta, OpenGraph, Twitter, Geo-targeting, and Schema.org @graph
+ * including Restaurant LocalBusiness, WebSite Sitelinks, SiteNavigationElement,
+ * Breadcrumbs, and FAQ rich snippets.
+ */
+const SEO = ({
+  title,
+  description,
+  keywords = '',
+  image = DEFAULT_IMAGE,
+  url = '',
+  type = 'website',
+  noindex = false,
+  faqs = null,
+  customSchema = null,
+  breadcrumbs = null,
 }) => {
-    const fullTitle = title ? `${title}` : `${SITE_NAME} | Premium Comfort Food - Navi Mumbai`;
-    const fullUrl = url ? `${SITE_URL}${url}` : SITE_URL;
+  const pageTitle = title ? title : `${SITE_NAME} | 500g Chicken Keema, Korma, Roti & Pav - Navi Mumbai`;
+  const canonicalUrl = url ? `${SITE_URL}${url.startsWith('/') ? url : `/${url}`}` : SITE_URL;
+  const pageImage = image.startsWith('http') ? image : `${SITE_URL}${image.startsWith('/') ? image : `/${image}`}`;
 
-    // Default Local Business Schema
-    const defaultSchema = {
-        "@context": "https://schema.org",
-        "@type": "Restaurant",
-        "name": "Bread & Bite",
-        "image": DEFAULT_IMAGE,
-        "url": SITE_URL,
-        "telephone": "+919325629256",
-        "priceRange": "₹₹",
-        "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "Taloja Phase 1",
-            "addressLocality": "Navi Mumbai",
-            "addressRegion": "Maharashtra",
-            "postalCode": "410208",
-            "addressCountry": "IN"
+  // Composite Schema Graph for Google Rich Snippets
+  const schemaGraph = [
+    // 1. Restaurant / Local Business Schema
+    {
+      '@type': 'Restaurant',
+      '@id': `${SITE_URL}/#restaurant`,
+      name: 'Bread & Bite',
+      alternateName: 'Bread & Bite Cloud Kitchen',
+      image: pageImage,
+      url: SITE_URL,
+      telephone: '+919325629256',
+      priceRange: '₹₹',
+      currenciesAccepted: 'INR',
+      paymentAccepted: 'Cash, UPI, Credit Card, Debit Card',
+      servesCuisine: ['Mughlai', 'Indian', 'Chicken Keema', 'Chicken Gravy', 'Fast Food', 'Burgers', 'Snacks'],
+      hasMenu: `${SITE_URL}/menu`,
+      acceptsReservations: 'False',
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: 'Shop 12, Ground Floor, Sector 2, Taloja Phase 1',
+        addressLocality: 'Taloja, Navi Mumbai',
+        addressRegion: 'Maharashtra',
+        postalCode: '410208',
+        addressCountry: 'IN',
+      },
+      geo: {
+        '@type': 'GeoCoordinates',
+        latitude: 19.0647,
+        longitude: 73.1209,
+      },
+      openingHoursSpecification: [
+        {
+          '@type': 'OpeningHoursSpecification',
+          dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+          opens: '08:00',
+          closes: '23:45',
         },
-        "geo": {
-            "@type": "GeoCoordinates",
-            "latitude": 19.0647,
-            "longitude": 73.1209
+      ],
+      aggregateRating: {
+        '@type': 'AggregateRating',
+        ratingValue: '4.9',
+        bestRating: '5',
+        worstRating: '1',
+        ratingCount: '520',
+        reviewCount: '520',
+      },
+      areaServed: [
+        { '@type': 'AdministrativeArea', name: 'Taloja Phase 1' },
+        { '@type': 'AdministrativeArea', name: 'Taloja Phase 2' },
+        { '@type': 'AdministrativeArea', name: 'Kharghar' },
+        { '@type': 'AdministrativeArea', name: 'Panvel' },
+        { '@type': 'AdministrativeArea', name: 'Kamothe' },
+        { '@type': 'AdministrativeArea', name: 'Kalamboli' },
+        { '@type': 'AdministrativeArea', name: 'CBD Belapur' },
+        { '@type': 'AdministrativeArea', name: 'Navi Mumbai' },
+      ],
+    },
+
+    // 2. WebSite Schema with Sitelinks SearchBox
+    {
+      '@type': 'WebSite',
+      '@id': `${SITE_URL}/#website`,
+      url: SITE_URL,
+      name: 'Bread & Bite',
+      description: 'Navi Mumbai cloud kitchen serving hearty 500g Chicken Keema, Chicken Korma, hot Tandoori Roti, soft Pav, and crispy snacks.',
+      publisher: {
+        '@id': `${SITE_URL}/#restaurant`,
+      },
+      inLanguage: 'en-IN',
+    },
+
+    // 3. SiteNavigationElement (Tells Google how to render subpage Sitelinks)
+    {
+      '@type': 'SiteNavigationElement',
+      '@id': `${SITE_URL}/#navigation`,
+      name: [
+        'Explore Kitchen Menu',
+        'Meal Combos',
+        'About Our Kitchen',
+        'Contact & Orders',
+      ],
+      url: [
+        `${SITE_URL}/menu`,
+        `${SITE_URL}/menu?category=combos`,
+        `${SITE_URL}/about`,
+        `${SITE_URL}/contact`,
+      ],
+    },
+  ];
+
+  // 4. Breadcrumbs Schema
+  if (url && url !== '/') {
+    const breadcrumbItems = [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: SITE_URL,
+      },
+    ];
+
+    if (breadcrumbs && Array.isArray(breadcrumbs)) {
+      breadcrumbs.forEach((crumb, index) => {
+        breadcrumbItems.push({
+          '@type': 'ListItem',
+          position: index + 2,
+          name: crumb.name,
+          item: `${SITE_URL}${crumb.path}`,
+        });
+      });
+    } else {
+      const cleanPath = url.replace(/^\//, '').split('?')[0];
+      const pageName = cleanPath.charAt(0).toUpperCase() + cleanPath.slice(1);
+      breadcrumbItems.push({
+        '@type': 'ListItem',
+        position: 2,
+        name: pageName,
+        item: canonicalUrl,
+      });
+    }
+
+    schemaGraph.push({
+      '@type': 'BreadcrumbList',
+      '@id': `${canonicalUrl}#breadcrumb`,
+      itemListElement: breadcrumbItems,
+    });
+  }
+
+  // 5. FAQPage Schema (Google Rich Snippet "People Also Ask")
+  if (faqs && Array.isArray(faqs) && faqs.length > 0) {
+    schemaGraph.push({
+      '@type': 'FAQPage',
+      '@id': `${canonicalUrl}#faq`,
+      mainEntity: faqs.map((faq) => ({
+        '@type': 'Question',
+        name: faq.question,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: faq.answer,
         },
-        "openingHoursSpecification": {
-            "@type": "OpeningHoursSpecification",
-            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-            "opens": "08:00",
-            "closes": "23:45"
-        },
-        "servesCuisine": ["Italian", "Indian", "Street Food", "Fast Food"],
-        "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "4.9",
-            "reviewCount": "500"
-        },
-        "areaServed": ["Kharghar", "Panvel", "Taloja", "Kamothe", "CBD Belapur", "Navi Mumbai"]
-    };
+      })),
+    });
+  }
 
-    return (
-        <Helmet>
-            {/* Primary Meta Tags */}
-            <title>{fullTitle}</title>
-            <meta name="title" content={fullTitle} />
-            <meta name="description" content={description} />
-            {keywords && <meta name="keywords" content={keywords} />}
-            <meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow'} />
-            <link rel="canonical" href={fullUrl} />
+  // If custom schema provided, merge into graph
+  if (customSchema) {
+    schemaGraph.push(customSchema);
+  }
 
-            {/* Open Graph / Facebook */}
-            <meta property="og:type" content={type} />
-            <meta property="og:url" content={fullUrl} />
-            <meta property="og:title" content={fullTitle} />
-            <meta property="og:description" content={description} />
-            <meta property="og:image" content={image} />
-            <meta property="og:site_name" content={SITE_NAME} />
-            <meta property="og:locale" content="en_IN" />
+  const finalSchema = {
+    '@context': 'https://schema.org',
+    '@graph': schemaGraph,
+  };
 
-            {/* Twitter */}
-            <meta name="twitter:card" content="summary_large_image" />
-            <meta name="twitter:url" content={fullUrl} />
-            <meta name="twitter:title" content={fullTitle} />
-            <meta name="twitter:description" content={description} />
-            <meta name="twitter:image" content={image} />
+  return (
+    <Helmet>
+      {/* Primary Meta Tags */}
+      <title>{pageTitle}</title>
+      <meta name="title" content={pageTitle} />
+      <meta name="description" content={description} />
+      {keywords && <meta name="keywords" content={keywords} />}
+      <meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'} />
+      <link rel="canonical" href={canonicalUrl} />
 
-            {/* Additional SEO */}
-            <meta name="author" content="Bread & Bite" />
-            <meta name="geo.region" content="IN-MH" />
-            <meta name="geo.placename" content="Navi Mumbai" />
-            <meta name="language" content="English" />
-            <meta name="revisit-after" content="7 days" />
+      {/* Open Graph / Facebook */}
+      <meta property="og:type" content={type} />
+      <meta property="og:url" content={canonicalUrl} />
+      <meta property="og:title" content={pageTitle} />
+      <meta property="og:description" content={description} />
+      <meta property="og:image" content={pageImage} />
+      <meta property="og:site_name" content={SITE_NAME} />
+      <meta property="og:locale" content="en_IN" />
 
-            {/* JSON-LD Schema */}
-            <script type="application/ld+json">
-                {JSON.stringify(schema || defaultSchema)}
-            </script>
-        </Helmet>
-    );
+      {/* Twitter Cards */}
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:url" content={canonicalUrl} />
+      <meta name="twitter:title" content={pageTitle} />
+      <meta name="twitter:description" content={description} />
+      <meta name="twitter:image" content={pageImage} />
+
+      {/* Geo & Local Targeting */}
+      <meta name="author" content="Bread & Bite Cloud Kitchen" />
+      <meta name="geo.region" content="IN-MH" />
+      <meta name="geo.placename" content="Navi Mumbai, Maharashtra, India" />
+      <meta name="geo.position" content="19.0647;73.1209" />
+      <meta name="ICBM" content="19.0647, 73.1209" />
+      <meta name="language" content="English" />
+      <meta name="revisit-after" content="3 days" />
+
+      {/* Mobile Browser Color */}
+      <meta name="theme-color" content="#FAF7F2" />
+      <meta name="format-detection" content="telephone=yes" />
+
+      {/* JSON-LD Structured Data Graph */}
+      <script type="application/ld+json">
+        {JSON.stringify(finalSchema)}
+      </script>
+    </Helmet>
+  );
 };
 
 export default SEO;

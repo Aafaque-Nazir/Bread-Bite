@@ -24,7 +24,7 @@ function App() {
       <ScrollToTop />
       <ToastProvider />
       <CartSidebar />
-      <div className="flex flex-col min-h-screen bg-[#FAF7F2] text-[#181411] selection:bg-[#B84A1C] selection:text-white">
+      <div className="flex flex-col min-h-screen bg-[#FAF7F2] text-[#181411] selection:bg-[#B84A1C] selection:text-white overflow-x-clip">
         <Navbar />
         <main className="flex-grow">
           <Routes>

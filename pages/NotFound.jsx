@@ -5,12 +5,12 @@ import { Link } from "react-router-dom";
 
 const NotFound = () => {
   return (
-    <section className="min-h-[80vh] flex items-center justify-center bg-[#FAF7F2] px-6 text-[#181411]">
+    <section className="min-h-[80vh] flex items-center justify-center bg-[#FAF7F2] px-4 sm:px-6 text-[#181411]">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="artisan-card rounded-3xl p-10 sm:p-14 text-center max-w-lg bg-white"
+        className="artisan-card rounded-3xl p-7 sm:p-14 text-center max-w-lg bg-white"
       >
         <div className="text-8xl font-bold text-[#EAE4DC] font-heading mb-4 leading-none select-none">
           404

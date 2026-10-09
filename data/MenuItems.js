@@ -1,232 +1,164 @@
 const menuItems = [
-  // ==================== PIZZA ====================
+  // ==================== GRAVY (500G PORTIONS) ====================
   {
-    id: 101,
-    name: "Classic Margherita",
-    description: "Crispy crust topped with rich tomato sauce, melted mozzarella cheese, and fresh basil leaves.",
-    price: 169,
-    category: "Pizza",
-    type: "Veg",
-    rating: 4.8,
-    image: "https://images.unsplash.com/photo-1604382354936-07c5d9983bd3?q=80&w=800&auto=format&fit=crop",
-    isBestSeller: true,
-    isNew: false,
-    tags: []
-  },
-  {
-    id: 102,
-    name: "Tandoori Chicken Pizza",
-    description: "(Halal) Smoky tandoori chicken, bell peppers, onions, and double mozzarella on a crispy crust.",
-    price: 219,
-    originalPrice: 249,
-    discount: "12% OFF",
-    category: "Pizza",
-    type: "Non-Veg",
-    rating: 4.9,
-    image: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?q=80&w=800&auto=format&fit=crop",
-    isBestSeller: true,
-    isNew: false,
-    tags: ["Halal", "Spicy"]
-  },
-  {
-    id: 103,
-    name: "Paneer Tikka Pizza",
-    description: "Marinated paneer tikka chunks with capsicum, onion, and a drizzle of mint chutney on cheesy base.",
-    price: 209,
-    category: "Pizza",
-    type: "Veg",
-    rating: 4.7,
-    image: "https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=800&auto=format&fit=crop",
-    isBestSeller: false,
-    isNew: false,
-    tags: []
-  },
-  {
-    id: 104,
-    name: "BBQ Chicken Pizza",
-    description: "(Halal) Smoky BBQ sauce, grilled chicken strips, caramelized onions, and jalapeños with extra cheese.",
-    price: 229,
-    category: "Pizza",
-    type: "Non-Veg",
-    rating: 4.8,
-    image: "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?q=80&w=800&auto=format&fit=crop",
-    isBestSeller: false,
-    isNew: true,
-    tags: ["Halal"]
-  },
-
-  // ==================== SANDWICH ====================
-  {
-    id: 201,
-    name: "Tandoori Chicken Grilled",
-    description: "(Halal) Rich tandoori-flavoured shredded chicken with melted cheese, capsicum, and signature spices.",
-    price: 170,
-    originalPrice: 179,
-    discount: "5% OFF",
-    category: "Sandwich",
-    type: "Non-Veg",
-    rating: 4.9,
-    image: "https://images.unsplash.com/photo-1528735602780-2552fd46c7af?q=80&w=800&auto=format&fit=crop",
-    isBestSeller: true,
-    isNew: false,
-    tags: ["Halal", "Spicy"]
-  },
-  {
-    id: 202,
-    name: "Classic Veg Grilled",
-    description: "Fresh veggies — capsicum, tomato, cabbage, beetroot — tossed in creamy mayo and toasted golden.",
-    price: 129,
-    category: "Sandwich",
-    type: "Veg",
-    rating: 4.7,
-    image: "https://images.unsplash.com/photo-1481070555726-e2fe8357725c?q=80&w=800&auto=format&fit=crop",
-    isBestSeller: false,
-    isNew: false,
-    tags: []
-  },
-  {
-    id: 203,
-    name: "Egg & Cheese Grilled",
-    description: "Two-layer egg omelette with creamy cheese, onion, tomato, capsicum, and cracked pepper seasoning.",
-    price: 119,
-    category: "Sandwich",
-    type: "Egg",
-    rating: 4.8,
-    image: "https://images.unsplash.com/photo-1550507992-eb63ffee0847?q=80&w=800&auto=format&fit=crop",
-    isBestSeller: true,
-    isNew: false,
-    tags: []
-  },
-  {
-    id: 204,
-    name: "Paneer Tikka Grilled",
-    description: "Spiced paneer tikka with onion, capsicum, mint chutney, and melted cheese on toasted bread.",
-    price: 149,
-    category: "Sandwich",
-    type: "Veg",
-    rating: 4.7,
-    image: "https://images.unsplash.com/photo-1628840042765-356cda07504e?q=80&w=800&auto=format&fit=crop",
-    isBestSeller: false,
-    isNew: true,
-    tags: []
-  },
-
-  // ==================== PASTA ====================
-  {
-    id: 301,
-    name: "Creamy Chicken Pasta",
-    description: "(Halal) Penne pasta in a rich, creamy white sauce with tender chicken pieces and Italian herbs.",
-    price: 219,
-    category: "Pasta",
-    type: "Non-Veg",
-    rating: 4.8,
-    image: "https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?q=80&w=800&auto=format&fit=crop",
-    isBestSeller: true,
-    isNew: false,
-    tags: ["Halal"]
-  },
-  {
-    id: 302,
-    name: "Penne Arrabbiata",
-    description: "Penne pasta tossed in spicy tomato-garlic sauce with chilli flakes, basil, and cheese.",
-    price: 189,
-    category: "Pasta",
-    type: "Veg",
-    rating: 4.7,
-    image: "https://images.unsplash.com/photo-1473093226795-af9932fe5856?q=80&w=800&auto=format&fit=crop",
-    isBestSeller: false,
-    isNew: false,
-    tags: ["Spicy"]
-  },
-  {
-    id: 303,
-    name: "Classic White Sauce Pasta",
-    description: "Creamy white sauce pasta with fresh mushrooms, sweet corn, and herbs tossed with fusilli.",
+    id: 1,
+    name: "Chicken Keema Boneless - 500gms",
+    description: "500g rich chicken keema cooked in whole spices, onions, and fresh coriander. 100% boneless, hot and flavorful.",
     price: 199,
-    category: "Pasta",
-    type: "Veg",
-    rating: 4.6,
-    image: "https://images.unsplash.com/photo-1555949258-eb67b1ef0ceb?q=80&w=800&auto=format&fit=crop",
-    isBestSeller: false,
-    isNew: false,
-    tags: []
-  },
-  {
-    id: 304,
-    name: "Alfredo Chicken Pasta",
-    description: "(Halal) Creamy white sauce pasta loaded with grilled chicken, garlic, and herbs.",
-    price: 239,
-    originalPrice: 269,
-    discount: "11% OFF",
-    category: "Pasta",
+    category: "Gravy",
     type: "Non-Veg",
-    rating: 4.9,
-    image: "https://images.unsplash.com/photo-1555949258-eb67b1ef0ceb?q=80&w=800&auto=format&fit=crop",
-    isBestSeller: false,
-    isNew: true,
-    tags: ["Halal"]
-  },
-
-  // ==================== DRINKS ====================
-  {
-    id: 401,
-    name: "Classic Cold Coffee",
-    description: "Chilled espresso blended with milk, ice, and a touch of vanilla — smooth and refreshing.",
-    price: 99,
-    category: "Drinks",
-    type: "Veg",
-    rating: 4.7,
-    image: "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?q=80&w=800&auto=format&fit=crop",
+    portion: "500gms",
+    image: "https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?q=80&w=800&auto=format&fit=crop",
     isBestSeller: true,
     isNew: false,
-    tags: []
+    tags: ["500g", "Boneless", "Halal"]
   },
   {
-    id: 402,
-    name: "Mango Shake",
-    description: "Thick, creamy Alphonso mango shake made with real pulp and chilled milk. A seasonal favourite.",
-    price: 109,
-    category: "Drinks",
-    type: "Veg",
-    rating: 4.8,
-    image: "https://images.unsplash.com/photo-1546173159-315724a31696?q=80&w=800&auto=format&fit=crop",
-    isBestSeller: false,
+    id: 2,
+    name: "Chicken Korma - 500gms",
+    description: "500g tender chicken pieces slow-cooked in a thick, aromatic, mildly spiced korma gravy. Perfect with hot rotis.",
+    price: 199,
+    category: "Gravy",
+    type: "Non-Veg",
+    portion: "500gms",
+    image: "https://images.unsplash.com/photo-1588166524941-3bf61a9c41db?q=80&w=800&auto=format&fit=crop",
+    isBestSeller: true,
     isNew: false,
-    tags: []
+    tags: ["500g", "Halal"]
   },
   {
-    id: 403,
-    name: "Oreo Shake",
-    description: "Thick, creamy milkshake blended with crunchy Oreo cookies and chocolate.",
-    price: 119,
-    category: "Drinks",
-    type: "Veg",
-    rating: 4.9,
-    image: "https://images.unsplash.com/photo-1572490122747-3968b75cc699?q=80&w=800&auto=format&fit=crop",
+    id: 3,
+    name: "Random Chicken Gravy - 500gms",
+    description: "500g chef's daily special chicken curry cooked homestyle with rich traditional spices and thick masala gravy.",
+    price: 199,
+    category: "Gravy",
+    type: "Non-Veg",
+    portion: "500gms",
+    image: "https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?q=80&w=800&auto=format&fit=crop",
     isBestSeller: false,
+    isNew: true,
+    tags: ["500g", "Daily Special", "Halal"]
+  },
+
+  // ==================== ROTI & BREADS ====================
+  {
+    id: 4,
+    name: "Tandoori Roti",
+    description: "Hot, freshly baked whole wheat tandoori roti. Crispy on the outside and soft inside.",
+    price: 30,
+    category: "Roti",
+    type: "Veg",
+    image: "https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?q=80&w=800&auto=format&fit=crop",
+    isBestSeller: true,
     isNew: false,
-    tags: []
+    tags: ["Fresh Baked"]
   },
   {
-    id: 404,
-    name: "Fresh Lime Soda",
-    description: "Freshly squeezed lime with soda, a pinch of salt, and mint — sweet or salted, your choice.",
-    price: 59,
-    category: "Drinks",
+    id: 5,
+    name: "Pav - 4 pieces",
+    description: "Set of 4 soft, fresh golden ladi pavs. The classic pair with hot Chicken Keema.",
+    price: 30,
+    category: "Roti",
     type: "Veg",
-    rating: 4.5,
-    image: "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?q=80&w=800&auto=format&fit=crop",
+    portion: "4 pcs",
+    image: "https://images.unsplash.com/photo-1606491956689-2ea866880c84?q=80&w=800&auto=format&fit=crop",
+    isBestSeller: true,
+    isNew: false,
+    tags: ["4 Pcs", "Soft & Fresh"]
+  },
+
+  // ==================== SNACKS ====================
+  {
+    id: 6,
+    name: "French Fries (200g)",
+    description: "200g crispy golden salted potato fries, fried fresh on order. Served with tomato ketchup.",
+    price: 99,
+    category: "Snacks",
+    type: "Veg",
+    portion: "200g",
+    image: "https://images.unsplash.com/photo-1576107232684-1279f3908594?q=80&w=800&auto=format&fit=crop",
+    isBestSeller: true,
+    isNew: false,
+    tags: ["200g", "Crispy"]
+  },
+  {
+    id: 7,
+    name: "Plain Maggi",
+    description: "Hot classic masala Maggi noodles cooked fresh with authentic tastemaker seasoning.",
+    price: 99,
+    category: "Snacks",
+    type: "Veg",
+    image: "https://images.unsplash.com/photo-1612927601601-6638404737ce?q=80&w=800&auto=format&fit=crop",
     isBestSeller: false,
     isNew: false,
-    tags: []
+    tags: ["Comfort Food"]
+  },
+
+  // ==================== BURGERS ====================
+  {
+    id: 8,
+    name: "Crispy Chicken Burger",
+    description: "Crispy spiced chicken patty with shredded lettuce, sliced onions, and creamy mayo in a toasted bun.",
+    price: 149,
+    category: "Burgers",
+    type: "Non-Veg",
+    image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=800&auto=format&fit=crop",
+    isBestSeller: true,
+    isNew: false,
+    tags: ["Halal", "Juicy"]
+  },
+
+  // ==================== VALUE MEALS & COMBOS ====================
+  {
+    id: 9,
+    name: "Keema Pav Meal",
+    description: "Chicken Keema Boneless (500g) + 4 Soft Pavs. The ultimate hearty comfort food meal.",
+    price: 219,
+    originalPrice: 229,
+    discount: "Save ₹10",
+    category: "Combos",
+    type: "Non-Veg",
+    image: "https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?q=80&w=800&auto=format&fit=crop",
+    isBestSeller: true,
+    isNew: true,
+    tags: ["Bestseller Meal", "500g Keema + 4 Pav"]
+  },
+  {
+    id: 10,
+    name: "Chicken Korma & Roti Meal",
+    description: "Chicken Korma (500g) + 2 Hot Tandoori Rotis. Complete filling meal for lunch or dinner.",
+    price: 249,
+    originalPrice: 259,
+    discount: "Save ₹10",
+    category: "Combos",
+    type: "Non-Veg",
+    image: "https://images.unsplash.com/photo-1588166524941-3bf61a9c41db?q=80&w=800&auto=format&fit=crop",
+    isBestSeller: true,
+    isNew: false,
+    tags: ["500g Korma + 2 Roti"]
+  },
+  {
+    id: 11,
+    name: "Burger & Fries Combo",
+    description: "1 Crispy Chicken Burger + 1 French Fries (200g). Quick and satisfying meal deal.",
+    price: 229,
+    originalPrice: 248,
+    discount: "Save ₹19",
+    category: "Combos",
+    type: "Non-Veg",
+    image: "https://images.unsplash.com/photo-1550547660-d9450f859349?q=80&w=800&auto=format&fit=crop",
+    isBestSeller: false,
+    isNew: false,
+    tags: ["Burger + 200g Fries"]
   }
 ];
 
 export const CATEGORIES_DATA = [
-  { id: "Pizza", name: "Pizza", image: "https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=300&h=300&auto=format&fit=crop", description: "Pizzas" },
-  { id: "Sandwich", name: "Sandwich", image: "https://images.unsplash.com/photo-1528735602780-2552fd46c7af?q=80&w=300&h=300&auto=format&fit=crop", description: "Sandwiches" },
-  { id: "Pasta", name: "Pasta", image: "https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?q=80&w=300&h=300&auto=format&fit=crop", description: "Pastas" },
-  { id: "Drinks", name: "Drinks", image: "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?q=80&w=300&h=300&auto=format&fit=crop", description: "Cold Drinks" }
+  { id: "Gravy", name: "Gravy (500g)", image: "https://images.unsplash.com/photo-1588166524941-3bf61a9c41db?q=80&w=400&auto=format&fit=crop", description: "500g Chicken Gravies" },
+  { id: "Roti", name: "Roti & Pav", image: "https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?q=80&w=400&auto=format&fit=crop", description: "Tandoori Roti & Fresh Pav" },
+  { id: "Snacks", name: "Snacks", image: "https://images.unsplash.com/photo-1576107232684-1279f3908594?q=80&w=400&auto=format&fit=crop", description: "Fries & Hot Maggi" },
+  { id: "Burgers", name: "Burgers", image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=400&auto=format&fit=crop", description: "Crispy Chicken Burgers" },
+  { id: "Combos", name: "Combos", image: "https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?q=80&w=400&auto=format&fit=crop", description: "Meals & Combos" }
 ];
 
 export const CATEGORIES = CATEGORIES_DATA.map(cat => cat.id);

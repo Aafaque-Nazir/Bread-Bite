@@ -1,46 +1,14 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaWhatsapp, FaMapMarkerAlt, FaClock, FaPaperPlane, FaCheckCircle, FaChevronDown, FaMotorcycle } from 'react-icons/fa';
+import { FaWhatsapp, FaMapMarkerAlt, FaClock, FaPaperPlane, FaCheckCircle, FaChevronDown } from 'react-icons/fa';
 import SEO from "../src/components/SEO";
-
-const faqs = [
-  {
-    question: "Which areas in Navi Mumbai do you deliver to?",
-    answer: "We offer hot and fresh delivery across Taloja Phase 1 & 2, Kharghar (all sectors), Panvel, Kamothe, Kalamboli, and CBD Belapur. Delivery is FREE on all orders above ₹499."
-  },
-  {
-    question: "Do you have vegetarian and eggless options?",
-    answer: "Yes, absolutely! We have a dedicated range of pure vegetarian pizzas, sandwiches, and pastas made with separate prep equipment and fresh ingredients."
-  },
-  {
-    question: "How long does delivery usually take?",
-    answer: "Our standard cooking time is 15-20 minutes, with average doorstep delivery between 25-35 minutes depending on your sector and area."
-  },
-  {
-    question: "Can I place bulk orders for birthday parties or corporate lunches?",
-    answer: "Yes! We specialize in office lunch combos, party platters, and custom food boxes. Simply message us on WhatsApp at least 4-6 hours in advance for priority scheduling."
-  }
-];
+import { FAQS } from '../data/faqs';
 
 const Contact = () => {
   const [formData, setFormData] = useState({ name: '', phone: '', message: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [openFaq, setOpenFaq] = useState(null);
-
-  // Dynamic Kitchen Operating Status (8:00 AM to 11:45 PM IST)
-  const isKitchenOpen = useMemo(() => {
-    const now = new Date();
-    // Convert to IST
-    const utcTime = now.getTime() + (now.getTimezoneOffset() * 60000);
-    const istTime = new Date(utcTime + (3600000 * 5.5));
-    const hours = istTime.getHours();
-    const minutes = istTime.getMinutes();
-    const currentMins = hours * 60 + minutes;
-    const openMins = 8 * 60; // 08:00 AM
-    const closeMins = 23 * 60 + 45; // 11:45 PM
-    return currentMins >= openMins && currentMins <= closeMins;
-  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -56,40 +24,35 @@ const Contact = () => {
   };
 
   return (
-    <section className="relative min-h-screen bg-[#FAF7F2] pt-8 lg:pt-14 pb-24 px-6 overflow-hidden text-[#181411]">
+    <section className="relative min-h-screen bg-[#FAF7F2] pt-6 sm:pt-10 pb-24 px-4 sm:px-6 overflow-hidden text-[#181411]">
       <SEO
         title="Contact Us - Bread & Bite Navi Mumbai"
         description="Get in touch with Bread & Bite. Order via WhatsApp at +91 93256 29256, find our kitchen in Taloja Phase 1, or message our team. Serving all of Navi Mumbai."
         url="/contact"
         keywords="bread and bite contact, food delivery taloja, whatsapp food order navi mumbai, restaurant contact kharghar"
+        faqs={FAQS}
       />
 
       <div className="relative z-10 max-w-7xl mx-auto">
         {/* Header */}
-        <div className="text-center max-w-2xl mx-auto mb-16">
-          <span className="eyebrow-tag mb-4">We're Here To Help</span>
-          <h1 className="text-4xl sm:text-6xl font-normal tracking-tight mb-4 font-heading leading-tight">
+        <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
+          <span className="text-[11px] uppercase tracking-[0.2em] font-bold text-[#B84A1C] block mb-2">
+            We're Here To Help
+          </span>
+          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-normal tracking-tight mb-3 font-heading leading-tight">
             Get In <span className="font-italic-accent text-[#B84A1C]">Touch</span>
           </h1>
-          <p className="text-[#574F4A] text-base leading-relaxed">
-            Have questions about an order, party bookings, or feedback? We are always happy to help.
+          <p className="text-[#574F4A] text-xs sm:text-base leading-relaxed max-w-lg mx-auto">
+            Have questions about an order, party bookings, or custom meals? We are always happy to help.
           </p>
-
-          {/* Dynamic Kitchen Status Badge */}
-          <div className="mt-5 inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-[#EAE4DC] shadow-2xs">
-            <span className={`w-2 h-2 rounded-full ${isKitchenOpen ? 'bg-[#2A6A4E]' : 'bg-[#D97706]'}`} />
-            <span className="text-xs font-semibold text-[#181411]">
-              {isKitchenOpen ? "Kitchen Open Now · Closes at 11:45 PM" : "Kitchen Opens Daily at 8:00 AM"}
-            </span>
-          </div>
         </div>
 
         {/* 2-Column Grid */}
-        <div className="grid lg:grid-cols-12 gap-10 items-start mb-24">
+        <div className="grid lg:grid-cols-12 gap-6 lg:gap-10 items-start mb-20 sm:mb-24">
           {/* Information Column (5 cols) */}
-          <div className="lg:col-span-5 space-y-6">
-            <div className="artisan-card p-8 rounded-3xl bg-white space-y-6">
-              <h3 className="text-xl font-bold font-heading text-[#181411]">Quick Access</h3>
+          <div className="lg:col-span-5 space-y-5">
+            <div className="artisan-card p-5 sm:p-7 rounded-3xl bg-white space-y-5">
+              <h3 className="text-lg sm:text-xl font-bold font-heading text-[#181411]">Quick Access</h3>
 
               <div className="space-y-6">
                 <div className="flex items-start gap-4">
@@ -155,7 +118,7 @@ const Contact = () => {
           </div>
 
           {/* Form Column (7 cols) */}
-          <div className="lg:col-span-7 artisan-card p-8 sm:p-12 rounded-3xl bg-white">
+          <div className="lg:col-span-7 artisan-card p-5 sm:p-9 rounded-3xl bg-white">
             <AnimatePresence mode="wait">
               {!isSubmitted ? (
                 <motion.form
@@ -164,20 +127,20 @@ const Contact = () => {
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
                   onSubmit={handleSubmit}
-                  className="space-y-6"
+                  className="space-y-5"
                 >
                   <div>
-                    <h3 className="text-2xl font-bold font-heading text-[#181411] mb-1">
+                    <h3 className="text-xl sm:text-2xl font-bold font-heading text-[#181411] mb-1">
                       Send a Direct Message
                     </h3>
                     <p className="text-xs text-[#574F4A]">
-                      Fill out the form below and we'll format your request directly on WhatsApp.
+                      Fill out the form below and we'll format your inquiry directly on WhatsApp.
                     </p>
                   </div>
 
-                  <div className="space-y-4">
+                  <div className="space-y-3.5">
                     <div>
-                      <label className="block text-[11px] font-bold uppercase tracking-wider text-[#8C827A] mb-1.5">
+                      <label className="block text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-[#8C827A] mb-1.5">
                         Your Full Name
                       </label>
                       <input
@@ -186,12 +149,12 @@ const Contact = () => {
                         placeholder="e.g. Rahul Sharma"
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        className="w-full bg-[#FAF7F2] border border-[#EAE4DC] rounded-xl px-4 py-3 text-sm text-[#181411] placeholder-[#8C827A] focus:outline-none focus:border-[#B84A1C] transition-colors"
+                        className="w-full bg-[#FAF7F2] border border-[#EAE4DC] rounded-xl px-3.5 py-2.5 sm:px-4 sm:py-3 text-xs sm:text-sm text-[#181411] placeholder-[#8C827A] focus:outline-none focus:border-[#B84A1C] transition-colors"
                       />
                     </div>
 
                     <div>
-                      <label className="block text-[11px] font-bold uppercase tracking-wider text-[#8C827A] mb-1.5">
+                      <label className="block text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-[#8C827A] mb-1.5">
                         Mobile Number
                       </label>
                       <input
@@ -200,12 +163,12 @@ const Contact = () => {
                         placeholder="10-digit mobile number"
                         value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                        className="w-full bg-[#FAF7F2] border border-[#EAE4DC] rounded-xl px-4 py-3 text-sm text-[#181411] placeholder-[#8C827A] focus:outline-none focus:border-[#B84A1C] transition-colors"
+                        className="w-full bg-[#FAF7F2] border border-[#EAE4DC] rounded-xl px-3.5 py-2.5 sm:px-4 sm:py-3 text-xs sm:text-sm text-[#181411] placeholder-[#8C827A] focus:outline-none focus:border-[#B84A1C] transition-colors"
                       />
                     </div>
 
                     <div>
-                      <label className="block text-[11px] font-bold uppercase tracking-wider text-[#8C827A] mb-1.5">
+                      <label className="block text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-[#8C827A] mb-1.5">
                         Your Message / Inquiry
                       </label>
                       <textarea
@@ -214,7 +177,7 @@ const Contact = () => {
                         placeholder="Ask about party catering, special requests, or order inquiries..."
                         value={formData.message}
                         onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                        className="w-full bg-[#FAF7F2] border border-[#EAE4DC] rounded-xl px-4 py-3 text-sm text-[#181411] placeholder-[#8C827A] focus:outline-none focus:border-[#B84A1C] transition-colors resize-none"
+                        className="w-full bg-[#FAF7F2] border border-[#EAE4DC] rounded-xl px-3.5 py-2.5 sm:px-4 sm:py-3 text-xs sm:text-sm text-[#181411] placeholder-[#8C827A] focus:outline-none focus:border-[#B84A1C] transition-colors resize-none"
                       />
                     </div>
                   </div>
@@ -222,7 +185,7 @@ const Contact = () => {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="btn-primary w-full py-4 text-sm uppercase tracking-wider"
+                    className="btn-primary w-full py-3.5 sm:py-4 text-xs sm:text-sm uppercase tracking-wider font-bold shadow-tactile-md"
                   >
                     <FaPaperPlane size={13} />
                     <span>Send via WhatsApp</span>
@@ -233,13 +196,13 @@ const Contact = () => {
                   key="success"
                   initial={{ opacity: 0, scale: 0.96 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  className="text-center py-12 space-y-4"
+                  className="text-center py-10 space-y-4"
                 >
-                  <div className="w-16 h-16 bg-[#EEF6F2] text-[#2A6A4E] rounded-full flex items-center justify-center text-2xl mx-auto border border-[#2A6A4E]/30">
+                  <div className="w-14 h-14 sm:w-16 sm:h-16 bg-[#EEF6F2] text-[#2A6A4E] rounded-full flex items-center justify-center text-2xl mx-auto border border-[#2A6A4E]/30">
                     <FaCheckCircle />
                   </div>
-                  <h3 className="text-2xl font-bold font-heading text-[#181411]">Message Ready!</h3>
-                  <p className="text-sm text-[#574F4A] max-w-sm mx-auto leading-relaxed">
+                  <h3 className="text-xl sm:text-2xl font-bold font-heading text-[#181411]">Message Ready!</h3>
+                  <p className="text-xs sm:text-sm text-[#574F4A] max-w-sm mx-auto leading-relaxed">
                     We've formatted your inquiry in WhatsApp. If your chat didn't open automatically, tap below:
                   </p>
                   <div className="pt-2">
@@ -247,7 +210,7 @@ const Contact = () => {
                       href={`https://wa.me/919325629256?text=${encodeURIComponent(`👋 Hi Bread & Bite, I am ${formData.name}. ${formData.message}`)}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="btn-primary py-3 px-6 text-xs uppercase"
+                      className="btn-primary py-3 px-6 text-xs uppercase font-bold"
                     >
                       <FaWhatsapp size={15} />
                       <span>Open WhatsApp Now</span>
@@ -263,15 +226,17 @@ const Contact = () => {
             FAQ ACCORDION
         ═══════════════════════════════════════════════════════════════════ */}
         <div className="max-w-3xl mx-auto">
-          <div className="text-center mb-10">
-            <span className="eyebrow-tag mb-3">Common Questions</span>
-            <h2 className="text-3xl font-normal font-heading text-[#181411]">
+          <div className="text-center mb-8 sm:mb-10">
+            <span className="text-[11px] uppercase tracking-[0.2em] font-bold text-[#B84A1C] block mb-2">
+              Common Questions
+            </span>
+            <h2 className="text-2xl sm:text-4xl font-normal font-heading text-[#181411]">
               Frequently Asked <span className="font-italic-accent text-[#B84A1C]">Questions</span>
             </h2>
           </div>
 
           <div className="space-y-3.5">
-            {faqs.map((faq, index) => (
+            {FAQS.map((faq, index) => (
               <div
                 key={index}
                 className="artisan-card rounded-2xl overflow-hidden bg-white"

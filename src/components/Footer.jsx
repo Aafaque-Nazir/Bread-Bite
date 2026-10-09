@@ -4,9 +4,9 @@ import { NavLink } from 'react-router-dom';
 
 const Footer = () => {
   return (
-    <footer className="bg-[#181411] text-[#EAE4DC] border-t border-[#26211D] relative overflow-hidden pt-20 pb-12">
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8 mb-16">
+    <footer className="bg-[#181411] text-[#EAE4DC] border-t border-[#26211D] relative overflow-hidden pt-14 sm:pt-20 pb-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-8 mb-12 sm:mb-16">
           {/* Brand Column (5 cols) */}
           <div className="lg:col-span-5 space-y-6">
             <div className="flex items-center gap-3.5">
@@ -24,7 +24,7 @@ const Footer = () => {
             </div>
 
             <p className="text-sm leading-relaxed text-[#A89E94] max-w-sm">
-              Fresh pizzas, loaded grilled sandwiches, creamy pastas, and cold drinks delivered hot to your door in Navi Mumbai.
+              500g Chicken Keema, Chicken Korma, hot Tandoori Roti, soft Pav, burgers, and crispy fries delivered hot across Navi Mumbai.
             </p>
 
             <div className="flex items-center gap-3 pt-1">
@@ -57,10 +57,10 @@ const Footer = () => {
             <ul className="space-y-3 text-sm">
               {[
                 { name: 'Home', path: '/' },
-                { name: 'Menu', path: '/menu' },
-                { name: 'About Us', path: '/about' },
-                { name: 'Reviews', path: '/reviews' },
-                { name: 'Contact Us', path: '/contact' }
+                { name: 'Kitchen Menu', path: '/menu' },
+                { name: 'Customer Reviews', path: '/reviews' },
+                { name: 'About Our Kitchen', path: '/about' },
+                { name: 'Contact & Orders', path: '/contact' }
               ].map((link) => (
                 <li key={link.name}>
                   <NavLink
@@ -81,10 +81,10 @@ const Footer = () => {
             </h4>
             <ul className="space-y-3 text-sm">
               {[
-                { name: 'Pizzas', id: 'Pizza' },
-                { name: 'Sandwiches', id: 'Sandwich' },
-                { name: 'Pastas', id: 'Pasta' },
-                { name: 'Beverages', id: 'Drinks' }
+                { name: 'Chicken Gravies', id: 'Gravy' },
+                { name: 'Roti & Pav', id: 'Roti' },
+                { name: 'Snacks', id: 'Snacks' },
+                { name: 'Burgers', id: 'Burgers' }
               ].map((cat) => (
                 <li key={cat.name}>
                   <NavLink
@@ -101,16 +101,16 @@ const Footer = () => {
           {/* Kitchen Hours & Location (3 cols) */}
           <div className="lg:col-span-3">
             <h4 className="text-white font-bold text-xs uppercase tracking-[0.18em] mb-5 font-heading">
-              Our Location
+              Our Kitchen
             </h4>
             <ul className="space-y-3.5 text-xs text-[#A89E94]">
               <li className="flex items-start gap-2.5">
                 <FaMapMarkerAlt className="text-[#B84A1C] mt-0.5 shrink-0" size={13} />
-                <span>Taloja Phase 1, Sector 11, Navi Mumbai, 410208</span>
+                <span>Shop 12, Ground Floor, Sector 11, Taloja Phase 1, Navi Mumbai 410208</span>
               </li>
               <li className="flex items-center gap-2.5">
                 <FaClock className="text-[#B84A1C] shrink-0" size={13} />
-                <span>Open Daily: 8:00 AM – 11:45 PM</span>
+                <span>Open Daily: 8:00 AM – 11:45 PM IST</span>
               </li>
               <li className="flex items-center gap-2.5">
                 <FaPhoneAlt className="text-[#B84A1C] shrink-0" size={13} />
@@ -128,11 +128,27 @@ const Footer = () => {
           </div>
         </div>
 
+        {/* Local Delivery Coverage SEO Bar */}
+        <div className="pt-6 pb-6 border-t border-[#26211D]">
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 text-xs text-[#A89E94]">
+            <span className="text-white font-semibold uppercase tracking-wider text-[11px] shrink-0">
+              Doorstep Delivery Hubs:
+            </span>
+            <div className="flex flex-wrap items-center gap-2 text-[11px]">
+              {['Taloja Phase 1', 'Taloja Phase 2', 'Kharghar Sectors 1–35', 'Panvel & New Panvel', 'Kamothe', 'Kalamboli', 'CBD Belapur'].map((hub) => (
+                <span key={hub} className="bg-[#201B17] px-2.5 py-1 rounded-md border border-[#2E2822] text-[#A89E94]">
+                  {hub}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+
         {/* Bottom Bar */}
-        <div className="pt-8 border-t border-[#26211D] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#8C827A]">
+        <div className="pt-6 border-t border-[#26211D] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#8C827A]">
           <p>© {new Date().getFullYear()} Bread & Bite. All rights reserved.</p>
           <div className="flex items-center gap-6">
-            <span>Delivered across Kharghar, Taloja, Panvel & Belapur</span>
+            <span>FSSAI Certified Cloud Kitchen · 100% Halal Fresh Chicken</span>
           </div>
         </div>
       </div>

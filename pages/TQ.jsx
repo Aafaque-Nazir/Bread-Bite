@@ -29,12 +29,12 @@ const ThankYou = () => {
         url="/thank-you"
         noindex={true}
       />
-      <div className="min-h-screen flex flex-col items-center justify-center bg-[#FAF7F2] text-[#181411] px-6 py-16 text-center relative overflow-hidden">
+      <div className="min-h-screen flex flex-col items-center justify-center bg-[#FAF7F2] text-[#181411] px-4 sm:px-6 py-10 sm:py-16 text-center relative overflow-hidden">
         <motion.div
           initial={{ scale: 0.95, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 0.4 }}
-          className="relative z-10 bg-white p-8 md:p-12 rounded-3xl max-w-lg w-full border border-[#EAE4DC] shadow-warm"
+          className="relative z-10 bg-white p-6 sm:p-12 rounded-3xl max-w-lg w-full border border-[#EAE4DC] shadow-tactile-lg"
         >
           <div className="w-16 h-16 bg-[#EEF6F2] text-[#2A6A4E] rounded-full flex items-center justify-center mx-auto mb-6 border border-[#2A6A4E]/20">
             <FaCheckCircle className="text-3xl" />
@@ -42,9 +42,9 @@ const ThankYou = () => {
 
           {orderData?.orderId ? (
             <>
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FAF7F2] border border-[#EAE4DC] text-[#B84A1C] text-xs font-bold uppercase tracking-wider mb-3">
+              <div className="inline-flex items-center gap-1.5 text-[#B84A1C] text-xs font-bold uppercase tracking-wider mb-3">
                 <FaReceipt /> Order #{orderData.orderId}
-              </span>
+              </div>
 
               <h1 className="text-3xl sm:text-4xl font-normal text-[#181411] mb-3 font-heading">
                 Order <span className="font-italic-accent text-[#B84A1C]">Placed!</span>

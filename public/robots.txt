@@ -19,5 +19,5 @@ Allow: /
 User-agent: DuckDuckBot
 Allow: /
 
-# Crawl-delay for bots
-Crawl-delay: 10
+# Host
+Host: https://breadandbite.in

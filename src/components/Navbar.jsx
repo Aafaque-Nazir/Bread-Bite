@@ -48,24 +48,17 @@ function Navbar() {
 
   return (
     <>
-      {/* REFINED ANNOUNCEMENT BAR */}
-      <div className="bg-[#181411] text-[#EAE4DC] text-[11px] font-medium tracking-[0.14em] uppercase py-2 px-6 text-center w-full z-50 relative flex items-center justify-center gap-2">
-        <span className="text-[#B84A1C] text-[10px]">✦</span>
-        <span>Free Delivery On Orders Above ₹499 Across Navi Mumbai</span>
-        <span className="text-[#B84A1C] text-[10px]">✦</span>
-      </div>
-
       <nav
         className={`sticky top-0 left-0 w-full z-40 transition-all duration-300 ${
           scrolled
-            ? "glass py-3.5 shadow-sm"
-            : "bg-[#FAF7F2] py-4.5 border-b border-[#EAE4DC]"
+            ? "glass py-3 shadow-xs"
+            : "bg-[#FAF7F2] py-3.5 sm:py-4 border-b border-[#EAE4DC]"
         }`}
       >
-        <div className="max-w-7xl mx-auto flex items-center justify-between px-6">
+        <div className="max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-6">
           {/* LOGO */}
-          <NavLink to="/" className="flex items-center gap-3.5 group relative z-50">
-            <div className="w-10 h-10 rounded-xl bg-white border border-[#EAE4DC] flex items-center justify-center p-1.5 shadow-xs transition-transform duration-300 group-hover:scale-105">
+          <NavLink to="/" className="flex items-center gap-2.5 sm:gap-3.5 group relative z-50">
+            <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-white border border-[#EAE4DC] flex items-center justify-center p-1.5 shadow-2xs transition-transform duration-300 group-hover:scale-105">
               <img
                 src="/Logo.png"
                 alt="Bread & Bite"
@@ -73,10 +66,10 @@ function Navbar() {
               />
             </div>
             <div className="flex flex-col">
-              <span className="text-[1.35rem] tracking-tight text-[#181411] leading-none font-heading whitespace-nowrap">
-                Bread <span className="font-italic-accent text-xl text-[#B84A1C]">&</span> Bite
+              <span className="text-[1.2rem] sm:text-[1.35rem] tracking-tight text-[#181411] leading-none font-heading whitespace-nowrap">
+                Bread <span className="font-italic-accent text-lg sm:text-xl text-[#B84A1C]">&</span> Bite
               </span>
-              <span className="text-[9.5px] text-[#8C827A] font-semibold tracking-[0.24em] uppercase mt-0.5 whitespace-nowrap">
+              <span className="text-[9px] sm:text-[9.5px] text-[#8C827A] font-semibold tracking-[0.2em] uppercase mt-0.5 whitespace-nowrap">
                 Cloud Kitchen · Navi Mumbai
               </span>
             </div>
@@ -84,7 +77,7 @@ function Navbar() {
 
           {/* DESKTOP MENU */}
           <div className="hidden lg:flex items-center flex-1 justify-center">
-            <ul className="flex items-center gap-9 text-[12.5px] font-semibold tracking-[0.12em] uppercase">
+            <ul className="flex items-center gap-8 text-[12px] font-semibold tracking-[0.14em] uppercase">
               {navLinks.map(({ name, path }) => (
                 <li key={name} className="relative">
                   <NavLink
@@ -116,16 +109,16 @@ function Navbar() {
           </div>
 
           {/* DESKTOP ACTIONS */}
-          <div className="hidden lg:flex items-center gap-5">
+          <div className="hidden lg:flex items-center gap-4">
             {/* CART TRIGGER */}
             <button
               onClick={toggleCart}
               aria-label="View shopping bag"
-              className="relative p-2.5 rounded-full text-[#181411] hover:text-[#B84A1C] hover:bg-white border border-transparent hover:border-[#EAE4DC] transition-all duration-200"
+              className="relative p-2.5 rounded-full text-[#181411] hover:text-[#B84A1C] hover:bg-white border border-transparent hover:border-[#EAE4DC] transition-all duration-200 cursor-pointer"
             >
               <FaShoppingBag size={17} />
               {cartCount > 0 && (
-                <span className="absolute -top-1 -right-1 bg-[#B84A1C] text-white text-[10px] font-bold w-4.5 h-4.5 flex items-center justify-center rounded-full shadow-xs">
+                <span className="absolute -top-1 -right-1 bg-[#B84A1C] text-white text-[10px] font-bold w-4.5 h-4.5 flex items-center justify-center rounded-full shadow-2xs">
                   {cartCount}
                 </span>
               )}
@@ -136,7 +129,7 @@ function Navbar() {
               href={whatsappLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-primary py-2.5 px-5 text-xs font-semibold tracking-wider uppercase"
+              className="btn-primary py-2.5 px-4.5 text-[11px] font-bold tracking-wider uppercase"
             >
               <FaWhatsapp className="text-[14px]" />
               <span>Order Direct</span>
@@ -144,15 +137,15 @@ function Navbar() {
           </div>
 
           {/* MOBILE TOGGLE & CART */}
-          <div className="lg:hidden flex items-center gap-2">
+          <div className="lg:hidden flex items-center gap-1.5">
             <button
               onClick={toggleCart}
               aria-label="View shopping bag"
-              className="relative p-2 rounded-xl text-[#181411] hover:text-[#B84A1C]"
+              className="relative p-2.5 rounded-xl text-[#181411] hover:text-[#B84A1C] touch-manipulation cursor-pointer"
             >
-              <FaShoppingBag size={18} />
+              <FaShoppingBag size={19} />
               {cartCount > 0 && (
-                <span className="absolute -top-1 -right-1 bg-[#B84A1C] text-white text-[9px] font-bold w-4 h-4 flex items-center justify-center rounded-full">
+                <span className="absolute top-1 right-1 bg-[#B84A1C] text-white text-[9px] font-bold w-4 h-4 flex items-center justify-center rounded-full">
                   {cartCount}
                 </span>
               )}
@@ -160,38 +153,43 @@ function Navbar() {
             <button
               onClick={() => setIsOpen(!isOpen)}
               aria-label={isOpen ? "Close menu" : "Open menu"}
-              className="p-2 rounded-xl text-[#181411] hover:text-[#B84A1C] z-50 relative"
+              className="p-2.5 rounded-xl text-[#181411] hover:text-[#B84A1C] z-50 relative touch-manipulation cursor-pointer"
             >
               {isOpen ? <FaTimes size={20} /> : <FaBars size={20} />}
             </button>
           </div>
         </div>
 
-        {/* MOBILE MENU DRAWER */}
+        {/* MOBILE MENU DRAWER (FULL HEIGHT & SEAMLESS) */}
         <AnimatePresence>
           {isOpen && (
             <motion.div
               data-lenis-prevent
-              initial={{ opacity: 0, y: -10 }}
+              initial={{ opacity: 0, y: -8 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.25 }}
-              className="fixed inset-0 top-[88px] h-[calc(100vh-88px)] w-screen bg-[#FAF7F2] z-40 flex flex-col justify-between px-8 py-10 overflow-y-auto"
+              exit={{ opacity: 0, y: -8 }}
+              transition={{ duration: 0.2 }}
+              className="fixed inset-x-0 top-[61px] sm:top-[69px] bottom-0 bg-[#FAF7F2] z-40 flex flex-col justify-between px-6 py-6 overflow-y-auto border-t border-[#EAE4DC]"
             >
-              <div className="flex flex-col gap-6 pt-4">
-                <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#8C827A]">Navigation</span>
+              <div className="flex flex-col gap-3 py-2">
+                <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#8C827A] px-1">
+                  Menu & Pages
+                </span>
                 {navLinks.map(({ name, path }, index) => (
                   <motion.div
                     key={name}
-                    initial={{ opacity: 0, x: -15 }}
+                    initial={{ opacity: 0, x: -12 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.05 }}
+                    transition={{ delay: index * 0.04 }}
                   >
                     <NavLink
                       to={path}
+                      onClick={() => setIsOpen(false)}
                       className={({ isActive }) =>
-                        `text-3xl font-heading tracking-tight block py-1 ${
-                          isActive ? "text-[#B84A1C] italic font-semibold" : "text-[#181411]"
+                        `text-2xl font-heading tracking-tight block py-2.5 px-3 rounded-xl transition-colors ${
+                          isActive
+                            ? "text-[#B84A1C] bg-white font-semibold shadow-2xs border border-[#EAE4DC]"
+                            : "text-[#181411] hover:bg-white/60"
                         }`
                       }
                     >
@@ -201,17 +199,18 @@ function Navbar() {
                 ))}
               </div>
 
-              <div className="pt-8 border-t border-[#EAE4DC] space-y-4">
+              <div className="pt-6 border-t border-[#EAE4DC] space-y-3 mt-auto">
                 <a
                   href={whatsappLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full btn-primary py-3.5 text-sm"
+                  className="w-full btn-primary py-3.5 text-xs uppercase tracking-wider font-bold shadow-tactile-md"
                 >
-                  <FaWhatsapp size={18} /> Order on WhatsApp
+                  <FaWhatsapp size={16} />
+                  <span>Order on WhatsApp</span>
                 </a>
-                <p className="text-center text-xs text-[#8C827A]">
-                  Taloja Phase 1 · Delivering across Navi Mumbai
+                <p className="text-center text-[11px] text-[#8C827A]">
+                  Delivering across Taloja, Kharghar, Panvel & Belapur
                 </p>
               </div>
             </motion.div>

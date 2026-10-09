@@ -50,11 +50,19 @@
   --color-border-strong: #D9D1C7;
 }
 
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+html.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
 body {
   font-family: var(--font-body);
   background-color: var(--color-bg);
   color: var(--color-text);
-  overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -112,19 +120,15 @@ h6 {
   background: #B84A1C;
 }
 
-/* Artisan Glassmorphism (Warm & Natural) */
+/* Clean High-Performance Surface (Zero GPU blur lag) */
 .glass {
-  background: rgba(250, 247, 242, 0.9);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(234, 228, 220, 0.85);
-  box-shadow: 0 1px 3px rgba(24, 20, 17, 0.02);
+  background: #FAF7F2;
+  border-bottom: 1px solid rgba(234, 228, 220, 0.95);
+  box-shadow: 0 1px 3px rgba(24, 20, 17, 0.03);
 }
 
 .glass-card {
-  background: rgba(255, 255, 255, 0.92);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  background: #FFFFFF;
   border: 1px solid var(--color-border);
   box-shadow: 0 2px 8px rgba(24, 20, 17, 0.03), 0 12px 28px -6px rgba(24, 20, 17, 0.06);
 }

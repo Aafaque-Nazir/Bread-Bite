@@ -56,7 +56,7 @@ const Cart = () => {
     const deliveryStr = deliveryCharge === 0 ? 'FREE' : `₹${deliveryCharge}`;
     const totalStr = `\n\n💰 *Bill Summary:*\nSubtotal: ₹${cartTotal}\nDelivery Fee: ${deliveryStr}\n*Grand Total: ₹${grandTotal}*`;
 
-    const fullMessage = `🍕 *NEW ORDER - BREAD & BITE*\nOrder ID: *${orderId}* (Time: ${orderTime})\n${customerInfo}\n\n🛒 *Order Items:*\n${itemsList}${totalStr}\n\n_Please confirm my order and share estimated delivery time!_`;
+    const fullMessage = `🍛 *NEW ORDER - BREAD & BITE*\nOrder ID: *${orderId}* (Time: ${orderTime})\n${customerInfo}\n\n🛒 *Order Items:*\n${itemsList}${totalStr}\n\n_Please confirm my order and share estimated delivery time!_`;
 
     const whatsappUrl = `https://wa.me/919325629256?text=${encodeURIComponent(fullMessage)}`;
 
@@ -101,7 +101,7 @@ const Cart = () => {
           </div>
           <h2 className="text-2xl font-bold text-[#181411] mb-2 font-heading">Your Cart Is Empty</h2>
           <p className="text-[#574F4A] mb-8 text-sm leading-relaxed">
-            Check out our fresh pizzas, crispy grilled sandwiches, and chilled drinks.
+            Check out our 500g Chicken Keema, Chicken Korma, hot Tandoori Roti, and soft Pav.
           </p>
           <Link
             to="/menu"
@@ -118,7 +118,7 @@ const Cart = () => {
   const freeDeliveryProgress = Math.min(100, Math.round((cartTotal / 499) * 100));
 
   return (
-    <div className="min-h-screen bg-[#FAF7F2] text-[#181411] pt-8 lg:pt-14 pb-24 px-6">
+    <div className="min-h-screen bg-[#FAF7F2] text-[#181411] pt-6 sm:pt-10 pb-24 px-4 sm:px-6">
       <SEO
         title="Checkout - Bread & Bite"
         description="Review your cart and place your order instantly on WhatsApp."
@@ -128,18 +128,20 @@ const Cart = () => {
 
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <div className="mb-10">
-          <span className="eyebrow-tag mb-3">Order Checkout</span>
+        <div className="mb-6 sm:mb-10">
+          <span className="text-[11px] uppercase tracking-[0.2em] font-bold text-[#B84A1C] block mb-1">
+            Order Checkout
+          </span>
           <h1 className="text-3xl sm:text-5xl font-normal tracking-tight font-heading text-[#181411] leading-tight">
             Review <span className="font-italic-accent text-[#B84A1C]">& Order</span>
           </h1>
         </div>
 
-        <div className="grid lg:grid-cols-12 gap-8 lg:gap-10">
+        <div className="grid lg:grid-cols-12 gap-6 lg:gap-10">
           {/* Left Column: Items (7 cols) */}
-          <div className="lg:col-span-7 space-y-6">
+          <div className="lg:col-span-7 space-y-5">
             {/* Free Delivery Bar */}
-            <div className="artisan-card rounded-2xl p-4.5 bg-white border border-[#EAE4DC]">
+            <div className="artisan-card rounded-2xl p-4 bg-white border border-[#EAE4DC]">
               <div className="flex items-center justify-between text-xs font-semibold mb-2">
                 <span className="text-[#181411] flex items-center gap-1.5">
                   <FaMotorcycle className="text-[#B84A1C]" />
@@ -147,7 +149,7 @@ const Cart = () => {
                     ? "✨ You qualify for Free Delivery!"
                     : `Add ₹${499 - cartTotal} more for FREE Delivery`}
                 </span>
-                <span className="text-[#8C827A]">{freeDeliveryProgress}%</span>
+                <span className="text-[#8C827A] font-bold">{freeDeliveryProgress}%</span>
               </div>
               <div className="w-full h-1.5 bg-[#FAF7F2] rounded-full overflow-hidden border border-[#EAE4DC]">
                 <div
@@ -158,13 +160,13 @@ const Cart = () => {
             </div>
 
             {/* Item List */}
-            <div className="artisan-card rounded-3xl p-6 sm:p-8 bg-white">
-              <h2 className="text-xl font-bold mb-6 font-heading text-[#181411] flex items-center gap-2">
+            <div className="artisan-card rounded-3xl p-5 sm:p-7 bg-white">
+              <h2 className="text-lg sm:text-xl font-bold mb-5 font-heading text-[#181411] flex items-center gap-2">
                 <FaShoppingBag className="text-[#B84A1C]" />
                 <span>Selected Items ({cart.reduce((sum, item) => sum + item.quantity, 0)})</span>
               </h2>
 
-              <div className="space-y-4">
+              <div className="space-y-3.5">
                 <AnimatePresence mode="popLayout">
                   {cart.map((item) => (
                     <motion.div
@@ -173,9 +175,9 @@ const Cart = () => {
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, scale: 0.95 }}
-                      className="flex flex-col sm:flex-row gap-4 items-start sm:items-center p-4 bg-[#FAF7F2] rounded-2xl border border-[#EAE4DC]"
+                      className="flex gap-3.5 items-center p-3 sm:p-4 bg-[#FAF7F2] rounded-2xl border border-[#EAE4DC]"
                     >
-                      <div className="w-full sm:w-20 h-20 bg-white rounded-xl overflow-hidden shrink-0 border border-[#EAE4DC] relative">
+                      <div className="w-16 h-16 sm:w-20 sm:h-20 bg-white rounded-xl overflow-hidden shrink-0 border border-[#EAE4DC] relative">
                         <ImageWithLoader
                           src={item.image}
                           alt={item.name}
@@ -183,14 +185,14 @@ const Cart = () => {
                         />
                       </div>
 
-                      <div className="flex-1 min-w-0 w-full">
-                        <div className="flex justify-between items-start mb-1">
-                          <h3 className="text-base font-bold font-heading text-[#181411] line-clamp-1">{item.name}</h3>
-                          <span className="text-base font-bold text-[#181411] font-heading shrink-0 ml-3">
+                      <div className="flex-1 min-w-0">
+                        <div className="flex justify-between items-start mb-0.5">
+                          <h3 className="text-xs sm:text-base font-bold font-heading text-[#181411] line-clamp-1">{item.name}</h3>
+                          <span className="text-xs sm:text-base font-bold text-[#181411] font-heading shrink-0 ml-2">
                             ₹{item.price * item.quantity}
                           </span>
                         </div>
-                        <span className="text-[11px] text-[#8C827A] font-semibold block mb-3">
+                        <span className="text-[10px] sm:text-[11px] text-[#8C827A] font-semibold block mb-2">
                           ₹{item.price} each
                         </span>
 
@@ -198,29 +200,29 @@ const Cart = () => {
                           <div className="flex items-center bg-white border border-[#EAE4DC] rounded-lg p-0.5 shadow-2xs">
                             <button
                               onClick={() => updateQuantity(item.id, -1)}
-                              className="w-7 h-7 flex items-center justify-center text-[#574F4A] hover:text-[#B84A1C] transition-colors rounded"
+                              className="w-6 h-6 sm:w-7 sm:h-7 flex items-center justify-center text-[#574F4A] hover:text-[#B84A1C] transition-colors rounded cursor-pointer"
                               aria-label="Decrease quantity"
                             >
-                              <FaMinus size={9} />
+                              {item.quantity === 1 ? <FaTrash size={8} /> : <FaMinus size={8} />}
                             </button>
-                            <span className="text-xs font-bold w-7 text-center text-[#181411]">
+                            <span className="text-xs font-bold w-6 text-center text-[#181411]">
                               {item.quantity}
                             </span>
                             <button
                               onClick={() => updateQuantity(item.id, 1)}
-                              className="w-7 h-7 flex items-center justify-center text-[#574F4A] hover:text-[#B84A1C] transition-colors rounded"
+                              className="w-6 h-6 sm:w-7 sm:h-7 flex items-center justify-center text-[#574F4A] hover:text-[#B84A1C] transition-colors rounded cursor-pointer"
                               aria-label="Increase quantity"
                             >
-                              <FaPlus size={9} />
+                              <FaPlus size={8} />
                             </button>
                           </div>
 
                           <button
                             onClick={() => removeFromCart(item.id)}
-                            className="p-2 text-[#8C827A] hover:text-[#9E2A2B] transition-colors"
+                            className="p-1.5 text-[#8C827A] hover:text-[#9E2A2B] transition-colors cursor-pointer"
                             aria-label={`Remove ${item.name}`}
                           >
-                            <FaTrash size={12} />
+                            <FaTrash size={11} />
                           </button>
                         </div>
                       </div>
@@ -232,24 +234,25 @@ const Cart = () => {
           </div>
 
           {/* Right Column: Address & Summary (5 cols) */}
-          <div className="lg:col-span-5 space-y-6">
+          <div className="lg:col-span-5 space-y-5">
             {/* Delivery Location & Address */}
-            <div className="artisan-card rounded-3xl p-6 sm:p-8 bg-white">
-              <h2 className="text-xl font-bold mb-5 font-heading flex items-center gap-2 text-[#181411]">
+            <div className="artisan-card rounded-3xl p-5 sm:p-7 bg-white">
+              <h2 className="text-lg sm:text-xl font-bold mb-4 font-heading flex items-center gap-2 text-[#181411]">
                 <FaMapMarkerAlt className="text-[#B84A1C]" />
                 <span>Delivery Details</span>
               </h2>
 
-              <div className="space-y-4">
+              <div className="space-y-3.5">
                 {/* Location Selection */}
                 <div>
-                  <label className="block text-[11px] font-bold uppercase tracking-wider text-[#8C827A] mb-2">
+                  <label className="block text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-[#8C827A] mb-1.5">
                     Delivery Zone
                   </label>
-                  <div className="grid grid-cols-2 gap-3">
+                  <div className="grid grid-cols-2 gap-2.5">
                     <button
+                      type="button"
                       onClick={() => setDetails({ ...details, location: 'taloja' })}
-                      className={`py-2.5 px-3 rounded-xl text-xs font-bold transition-all border ${
+                      className={`py-2 px-3 rounded-xl text-xs font-bold transition-all border cursor-pointer ${
                         details.location === 'taloja'
                           ? 'bg-[#FDF3ED] border-[#B84A1C] text-[#B84A1C]'
                           : 'bg-[#FAF7F2] border-[#EAE4DC] text-[#574F4A]'
@@ -258,8 +261,9 @@ const Cart = () => {
                       Taloja Phase 1
                     </button>
                     <button
+                      type="button"
                       onClick={() => setDetails({ ...details, location: 'other' })}
-                      className={`py-2.5 px-3 rounded-xl text-xs font-bold transition-all border ${
+                      className={`py-2 px-3 rounded-xl text-xs font-bold transition-all border cursor-pointer ${
                         details.location === 'other'
                           ? 'bg-[#FDF3ED] border-[#B84A1C] text-[#B84A1C]'
                           : 'bg-[#FAF7F2] border-[#EAE4DC] text-[#574F4A]'
@@ -275,7 +279,8 @@ const Cart = () => {
                   </p>
                 </div>
 
-                <div className="grid grid-cols-2 gap-3">
+                {/* Name & Phone in Responsive Grid (1 col on mobile, 2 col on tablet/desktop) */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                   <div>
                     <input
                       type="text"
@@ -285,7 +290,7 @@ const Cart = () => {
                         setDetails({ ...details, name: e.target.value });
                         setErrors({ ...errors, name: '' });
                       }}
-                      className={`w-full bg-[#FAF7F2] border ${errors.name ? 'border-red-400' : 'border-[#EAE4DC]'} rounded-xl px-3.5 py-3 text-xs sm:text-sm focus:outline-none focus:border-[#B84A1C] transition-colors`}
+                      className={`w-full bg-[#FAF7F2] border ${errors.name ? 'border-red-400' : 'border-[#EAE4DC]'} rounded-xl px-3.5 py-2.5 text-xs sm:text-sm focus:outline-none focus:border-[#B84A1C] transition-colors`}
                     />
                   </div>
                   <div>
@@ -297,7 +302,7 @@ const Cart = () => {
                         setDetails({ ...details, phone: e.target.value });
                         setErrors({ ...errors, phone: '' });
                       }}
-                      className={`w-full bg-[#FAF7F2] border ${errors.phone ? 'border-red-400' : 'border-[#EAE4DC]'} rounded-xl px-3.5 py-3 text-xs sm:text-sm focus:outline-none focus:border-[#B84A1C] transition-colors`}
+                      className={`w-full bg-[#FAF7F2] border ${errors.phone ? 'border-red-400' : 'border-[#EAE4DC]'} rounded-xl px-3.5 py-2.5 text-xs sm:text-sm focus:outline-none focus:border-[#B84A1C] transition-colors`}
                     />
                   </div>
                 </div>
@@ -314,7 +319,7 @@ const Cart = () => {
                       setDetails({ ...details, address: e.target.value });
                       setErrors({ ...errors, address: '' });
                     }}
-                    className={`w-full bg-[#FAF7F2] border ${errors.address ? 'border-red-400' : 'border-[#EAE4DC]'} rounded-xl px-3.5 py-3 text-xs sm:text-sm focus:outline-none focus:border-[#B84A1C] transition-colors resize-none`}
+                    className={`w-full bg-[#FAF7F2] border ${errors.address ? 'border-red-400' : 'border-[#EAE4DC]'} rounded-xl px-3.5 py-2.5 text-xs sm:text-sm focus:outline-none focus:border-[#B84A1C] transition-colors resize-none`}
                   />
                   {errors.address && <p className="text-red-500 text-xs font-medium mt-1">{errors.address}</p>}
                 </div>
@@ -324,13 +329,13 @@ const Cart = () => {
                   placeholder="Landmark (Optional)"
                   value={details.landmark}
                   onChange={(e) => setDetails({ ...details, landmark: e.target.value })}
-                  className="w-full bg-[#FAF7F2] border border-[#EAE4DC] rounded-xl px-3.5 py-3 text-xs sm:text-sm focus:outline-none focus:border-[#B84A1C] transition-colors"
+                  className="w-full bg-[#FAF7F2] border border-[#EAE4DC] rounded-xl px-3.5 py-2.5 text-xs sm:text-sm focus:outline-none focus:border-[#B84A1C] transition-colors"
                 />
               </div>
             </div>
 
             {/* Order Summary & WhatsApp Dispatch */}
-            <div className="bg-[#181411] text-[#EAE4DC] rounded-3xl p-6 sm:p-8 shadow-warm-lg">
+            <div className="bg-[#181411] text-[#EAE4DC] rounded-3xl p-5 sm:p-7 shadow-tactile-lg">
               <h2 className="text-white text-lg font-bold mb-5 font-heading border-b border-white/10 pb-3">
                 Bill Summary
               </h2>
