@@ -1,10 +1,12 @@
 import React, { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaTimes, FaShoppingBag, FaCheckCircle } from 'react-icons/fa';
+import { FaTimes, FaShoppingBag, FaCheckCircle, FaClock } from 'react-icons/fa';
 import { useCart } from '../context/CartContext';
+import { useKitchenStatus } from '../hooks/useKitchenStatus';
 
 const ProductModal = ({ item, isOpen, onClose }) => {
   const { addToCart, cart, updateQuantity } = useCart();
+  const { isOpen: isKitchenOpen } = useKitchenStatus();
 
   useEffect(() => {
     if (!isOpen) return;
@@ -173,6 +175,12 @@ const ProductModal = ({ item, isOpen, onClose }) => {
                     <FaShoppingBag size={13} />
                     <span>Add to Bag • ₹{item.price}</span>
                   </button>
+                )}
+
+                {!isKitchenOpen && (
+                  <p className="text-[10px] text-[#8C827A] text-center mt-2.5 font-medium">
+                    Kitchen opens 10:00 AM · Item saved in bag for morning checkout
+                  </p>
                 )}
               </div>
             </div>

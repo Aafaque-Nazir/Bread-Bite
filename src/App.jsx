@@ -16,6 +16,7 @@ import Cart from '../pages/Cart';
 import Reviews from '../pages/Reviews';
 import ScrollToTop from './components/ScrollToTop';
 import SmoothScroll from './components/SmoothScroll';
+import KitchenStatusBanner from './components/KitchenStatusBanner';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
       <ScrollToTop />
       <ToastProvider />
       <CartSidebar />
+      <KitchenStatusBanner />
       <div className="flex flex-col min-h-screen bg-[#FAF7F2] text-[#181411] selection:bg-[#B84A1C] selection:text-white overflow-x-clip">
         <Navbar />
         <main className="flex-grow">

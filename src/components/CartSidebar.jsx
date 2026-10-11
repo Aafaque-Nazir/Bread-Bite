@@ -1,11 +1,13 @@
 import React, { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
-import { FaTimes, FaTrash, FaPlus, FaMinus, FaShoppingBag, FaArrowRight, FaMotorcycle } from 'react-icons/fa';
+import { FaTimes, FaTrash, FaPlus, FaMinus, FaShoppingBag, FaArrowRight, FaMotorcycle, FaClock } from 'react-icons/fa';
 import { useCart } from '../context/CartContext';
+import { useKitchenStatus } from '../hooks/useKitchenStatus';
 
 const CartSidebar = () => {
   const { isCartOpen, toggleCart, cart, updateQuantity, cartTotal, clearCart } = useCart();
+  const { isOpen: isKitchenOpen } = useKitchenStatus();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -192,13 +194,33 @@ const CartSidebar = () => {
                 </div>
 
                 <div className="space-y-2.5">
-                  <button
-                    onClick={handleProceedToCheckout}
-                    className="btn-primary w-full py-3.5 text-xs uppercase tracking-wider font-bold shadow-tactile-md"
-                  >
-                    <span>Proceed to Checkout</span>
-                    <FaArrowRight size={10} />
-                  </button>
+                  {!isKitchenOpen && (
+                    <div className="bg-[#FAF7F2] border border-[#EAE4DC] rounded-xl p-3 text-left">
+                      <span className="text-xs font-bold text-[#181411] tracking-wide block">
+                        Kitchen Closed for the Night
+                      </span>
+                      <p className="text-[11px] text-[#574F4A] mt-1 leading-snug">
+                        Hours are 10:00 AM – 9:00 PM IST. Items remain saved in your bag, but checkout unlocks at 10:00 AM.
+                      </p>
+                    </div>
+                  )}
+
+                  {isKitchenOpen ? (
+                    <button
+                      onClick={handleProceedToCheckout}
+                      className="btn-primary w-full py-3.5 text-xs uppercase tracking-wider font-bold shadow-tactile-md"
+                    >
+                      <span>Proceed to Checkout</span>
+                      <FaArrowRight size={10} />
+                    </button>
+                  ) : (
+                    <button
+                      disabled
+                      className="w-full py-3.5 text-xs uppercase tracking-wider font-bold rounded-xl bg-[#EAE4DC] text-[#8C827A] cursor-not-allowed flex items-center justify-center gap-2 border border-[#DDD5CA]"
+                    >
+                      <span>Reopens at 10:00 AM</span>
+                    </button>
+                  )}
 
                   <div className="flex items-center justify-between px-1">
                     <span className="text-[10px] text-[#8C827A]">Fast delivery across Navi Mumbai</span>

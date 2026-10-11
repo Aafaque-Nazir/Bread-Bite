@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useCart } from '../src/context/CartContext';
-import { FaTrash, FaMinus, FaPlus, FaWhatsapp, FaArrowLeft, FaShoppingBag, FaMapMarkerAlt, FaMotorcycle } from 'react-icons/fa';
+import { FaTrash, FaMinus, FaPlus, FaWhatsapp, FaArrowLeft, FaShoppingBag, FaMapMarkerAlt, FaMotorcycle, FaClock } from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router-dom';
+import toast from 'react-hot-toast';
+import { useKitchenStatus } from '../src/hooks/useKitchenStatus';
 import SEO from '../src/components/SEO';
 import ImageWithLoader from '../src/components/ImageWithLoader';
 
 const Cart = () => {
   const { cart, removeFromCart, updateQuantity, cartTotal, clearCart } = useCart();
+  const { isOpen: isKitchenOpen } = useKitchenStatus();
   const navigate = useNavigate();
   const [details, setDetails] = useState({
     name: '',
@@ -39,6 +42,11 @@ const Cart = () => {
   };
 
   const handleCheckout = () => {
+    if (!isKitchenOpen) {
+      toast.error("Our kitchen is currently closed (10:00 AM - 9:00 PM). Please visit at 10:00 AM!");
+      return;
+    }
+
     const formErrors = validateForm();
     if (Object.keys(formErrors).length > 0) {
       setErrors(formErrors);
@@ -136,6 +144,29 @@ const Cart = () => {
             Review <span className="font-italic-accent text-[#B84A1C]">& Order</span>
           </h1>
         </div>
+
+        {/* Closed Kitchen Notice Banner */}
+        {!isKitchenOpen && (
+          <div className="artisan-card rounded-2xl p-4 sm:p-5 bg-white border border-[#EAE4DC] mb-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 shadow-xs">
+            <div>
+              <h3 className="text-sm font-bold text-[#181411] font-heading">
+                Kitchen Closed for the Night
+              </h3>
+              <p className="text-xs text-[#574F4A] mt-1 leading-relaxed">
+                Operating hours: <strong>10:00 AM – 9:00 PM IST</strong>. Your items remain saved in your bag, but online checkout will unlock at 10:00 AM.
+              </p>
+            </div>
+            <a
+              href="https://wa.me/919325629256?text=Hi%20Bread%20%26%20Bite%2C%20I%20have%20an%20inquiry%20regarding%20advance%20orders%20or%20catering."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-semibold text-[#181411] bg-[#FAF7F2] border border-[#EAE4DC] hover:border-[#B84A1C] transition-colors whitespace-nowrap self-stretch sm:self-auto justify-center"
+            >
+              <FaWhatsapp size={14} className="text-[#25D366]" />
+              <span>Advance Inquiry</span>
+            </a>
+          </div>
+        )}
 
         <div className="grid lg:grid-cols-12 gap-6 lg:gap-10">
           {/* Left Column: Items (7 cols) */}
@@ -360,13 +391,27 @@ const Cart = () => {
                 </div>
               </div>
 
-              <button
-                onClick={handleCheckout}
-                className="btn-primary w-full py-4 text-sm uppercase tracking-wider"
-              >
-                <FaWhatsapp size={18} />
-                <span>Order on WhatsApp</span>
-              </button>
+                {isKitchenOpen ? (
+                  <button
+                    onClick={handleCheckout}
+                    className="btn-primary w-full py-4 text-sm uppercase tracking-wider"
+                  >
+                    <FaWhatsapp size={18} />
+                    <span>Order on WhatsApp</span>
+                  </button>
+                ) : (
+                  <div className="space-y-3">
+                    <button
+                      disabled
+                      className="w-full py-4 rounded-xl bg-[#2C2723] text-[#8C827A] border border-white/10 font-bold text-xs uppercase tracking-wider cursor-not-allowed flex items-center justify-center gap-2"
+                    >
+                      <span>Reopens Daily at 10:00 AM</span>
+                    </button>
+                    <p className="text-center text-[10px] text-[#A89E94] leading-relaxed">
+                      Online order checkout reopens at 10:00 AM IST.
+                    </p>
+                  </div>
+                )}
 
               <p className="text-center text-[10px] text-[#8C827A] mt-3 uppercase tracking-wider">
                 Pay on delivery via Cash or UPI QR

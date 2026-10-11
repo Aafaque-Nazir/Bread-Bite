@@ -3,13 +3,17 @@ import { FaBars, FaTimes, FaShoppingBag, FaWhatsapp } from "react-icons/fa";
 import { NavLink, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { useCart } from "../context/CartContext";
+import { useKitchenStatus } from "../hooks/useKitchenStatus";
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
   const { toggleCart, cartCount } = useCart();
-  const whatsappLink = "https://wa.me/919325629256?text=Hi%2C%20I%20want%20to%20order%20from%20Bread%20%26%20Bite!";
+  const { isOpen: isKitchenOpen } = useKitchenStatus();
+  const whatsappLink = isKitchenOpen
+    ? "https://wa.me/919325629256?text=Hi%2C%20I%20want%20to%20order%20from%20Bread%20%26%20Bite!"
+    : "https://wa.me/919325629256?text=Hi%20Bread%20%26%20Bite%2C%20I%20have%20an%20inquiry%20regarding%20orders%20for%20tomorrow%20or%20party%20catering.";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -70,7 +74,7 @@ function Navbar() {
                 Bread <span className="font-italic-accent text-lg sm:text-xl text-[#B84A1C]">&</span> Bite
               </span>
               <span className="text-[9px] sm:text-[9.5px] text-[#8C827A] font-semibold tracking-[0.2em] uppercase mt-0.5 whitespace-nowrap">
-                Cloud Kitchen · Navi Mumbai
+                Cloud Kitchen · 10 AM – 9 PM Daily
               </span>
             </div>
           </NavLink>
@@ -124,15 +128,19 @@ function Navbar() {
               )}
             </button>
 
-            {/* ORDER ON WHATSAPP CTA */}
+            {/* ORDER CTA */}
             <a
               href={whatsappLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-primary py-2.5 px-4.5 text-[11px] font-bold tracking-wider uppercase"
+              className={`py-2.5 px-5 text-[11px] font-bold tracking-wider uppercase flex items-center gap-2 rounded-full transition-all duration-200 ${
+                isKitchenOpen 
+                  ? "btn-primary shadow-tactile-sm" 
+                  : "bg-[#181411] hover:bg-[#2A2420] text-[#FAF7F2] border border-black/10"
+              }`}
             >
-              <FaWhatsapp className="text-[14px]" />
-              <span>Order Direct</span>
+              <FaWhatsapp className={isKitchenOpen ? "text-[14px]" : "text-[14px] text-[#25D366]"} />
+              <span>{isKitchenOpen ? "Order Direct" : "Inquire (WhatsApp)"}</span>
             </a>
           </div>
 
@@ -200,14 +208,21 @@ function Navbar() {
               </div>
 
               <div className="pt-6 border-t border-[#EAE4DC] space-y-3 mt-auto">
+                <div className="flex items-center justify-between px-1 text-xs text-[#8C827A]">
+                  <span className="text-[10px] font-bold uppercase tracking-wider">Kitchen Hours</span>
+                  <span className="font-semibold text-[#181411]">10:00 AM – 9:00 PM Daily</span>
+                </div>
+
                 <a
                   href={whatsappLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full btn-primary py-3.5 text-xs uppercase tracking-wider font-bold shadow-tactile-md"
+                  className={`w-full py-3.5 text-xs uppercase tracking-wider font-bold shadow-tactile-md flex items-center justify-center gap-2 rounded-xl transition-colors ${
+                    isKitchenOpen ? "btn-primary" : "bg-[#181411] text-[#FAF7F2]"
+                  }`}
                 >
-                  <FaWhatsapp size={16} />
-                  <span>Order on WhatsApp</span>
+                  <FaWhatsapp size={16} className={isKitchenOpen ? "" : "text-[#25D366]"} />
+                  <span>{isKitchenOpen ? "Order on WhatsApp" : "Inquire on WhatsApp"}</span>
                 </a>
                 <p className="text-center text-[11px] text-[#8C827A]">
                   Delivering across Taloja, Kharghar, Panvel & Belapur

@@ -110,7 +110,7 @@ const Footer = () => {
               </li>
               <li className="flex items-center gap-2.5">
                 <FaClock className="text-[#B84A1C] shrink-0" size={13} />
-                <span>Open Daily: 8:00 AM – 11:45 PM IST</span>
+                <span>Open Daily: 10:00 AM – 9:00 PM IST</span>
               </li>
               <li className="flex items-center gap-2.5">
                 <FaPhoneAlt className="text-[#B84A1C] shrink-0" size={13} />

@@ -64,8 +64,8 @@ const SEO = ({
         {
           '@type': 'OpeningHoursSpecification',
           dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
-          opens: '08:00',
-          closes: '23:45',
+          opens: '10:00',
+          closes: '21:00',
         },
       ],
       aggregateRating: {

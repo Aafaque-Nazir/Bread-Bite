@@ -7,9 +7,12 @@ import { FaPlus, FaMinus, FaTrash, FaSearch, FaTimes } from "react-icons/fa";
 import ProductModal from '../src/components/ProductModal';
 import SEO from '../src/components/SEO';
 import ImageWithLoader from '../src/components/ImageWithLoader';
+import { useKitchenStatus } from '../src/hooks/useKitchenStatus';
+import { FaClock } from 'react-icons/fa';
 
 const Menu = () => {
   const { addToCart, updateQuantity, cart } = useCart();
+  const { isOpen: isKitchenOpen } = useKitchenStatus();
   const [searchParams, setSearchParams] = useSearchParams();
   const categoryParam = searchParams.get("category");
 
@@ -65,7 +68,7 @@ const Menu = () => {
         title="Kitchen Menu & Online Order | Bread & Bite - Navi Mumbai"
         description="Order 500g Chicken Keema Boneless, Chicken Korma, hot Tandoori Roti, fresh Pav, Burgers, and Fries. Cooked fresh, delivered hot in Taloja, Kharghar & Panvel."
         url="/menu"
-        keywords="bread and bite menu, chicken keema taloja, chicken korma kharghar, keema pav navi mumbai, tandoori roti delivery, chicken burger taloja phase 1, late night food delivery panvel, cloud kitchen menu navi mumbai"
+        keywords="bread and bite menu, chicken keema taloja, chicken korma kharghar, keema pav navi mumbai, tandoori roti delivery, chicken burger taloja phase 1, food delivery panvel, cloud kitchen menu navi mumbai"
       />
 
       <div className="max-w-7xl mx-auto">
@@ -102,6 +105,18 @@ const Menu = () => {
             )}
           </div>
         </div>
+
+        {/* Closed Hours Browsing Mode Banner */}
+        {!isKitchenOpen && (
+          <div className="bg-white border border-[#EAE4DC] rounded-2xl p-4 mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs shadow-2xs">
+            <p className="text-[#574F4A] leading-relaxed">
+              <strong className="text-[#181411] font-semibold">Kitchen resting after 9:00 PM:</strong> Explore our menu and prepare your bag; online orders reopen daily at 10:00 AM IST.
+            </p>
+            <span className="text-[11px] font-bold text-[#8C827A] uppercase tracking-wider shrink-0 self-start sm:self-auto">
+              Hours: 10 AM – 9 PM
+            </span>
+          </div>
+        )}
 
         {/* Sticky Filters Bar: Categories & Dietary */}
         <div className="sticky top-[61px] sm:top-[69px] z-30 bg-[#FAF7F2] py-3 -mx-4 px-4 sm:-mx-6 sm:px-6 border-b border-[#EAE4DC] shadow-xs mb-8 transition-all">

@@ -96,8 +96,8 @@ const Contact = () => {
                     <span className="text-[10px] font-bold uppercase tracking-wider text-[#8C827A] block">
                       Kitchen Hours
                     </span>
-                    <p className="text-base font-bold text-[#181411]">8:00 AM – 11:45 PM Daily</p>
-                    <p className="text-xs text-[#8C827A] mt-0.5">Breakfast, Lunch, Dinner & Late Night</p>
+                    <p className="text-base font-bold text-[#181411]">10:00 AM – 9:00 PM Daily</p>
+                    <p className="text-xs text-[#8C827A] mt-0.5">Breakfast, Lunch & Dinner</p>
                   </div>
                 </div>
               </div>

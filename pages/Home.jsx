@@ -1,6 +1,7 @@
 import React, { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaWhatsapp, FaUtensils, FaCheckCircle, FaFire, FaMotorcycle, FaArrowRight, FaPlus, FaMinus, FaTrash, FaChevronDown, FaInfoCircle, FaMapMarkerAlt } from "react-icons/fa";
+import { FaWhatsapp, FaUtensils, FaCheckCircle, FaFire, FaMotorcycle, FaArrowRight, FaPlus, FaMinus, FaTrash, FaChevronDown, FaInfoCircle, FaMapMarkerAlt, FaClock } from "react-icons/fa";
+import { useKitchenStatus } from "../src/hooks/useKitchenStatus";
 import { NavLink } from "react-router-dom";
 import SEO from "../src/components/SEO";
 import ImageWithLoader from "../src/components/ImageWithLoader";
@@ -36,9 +37,12 @@ const HOME_COMBOS = [
 
 const Home = () => {
   const { addToCart, updateQuantity, cart } = useCart();
+  const { isOpen: isKitchenOpen } = useKitchenStatus();
   const [selectedItem, setSelectedItem] = useState(null);
   const [openFaq, setOpenFaq] = useState(0);
-  const whatsappLink = "https://wa.me/919325629256?text=Hi%2C%20I%20want%20to%20order%20from%20Bread%20%26%20Bite!";
+  const whatsappLink = isKitchenOpen
+    ? "https://wa.me/919325629256?text=Hi%2C%20I%20want%20to%20order%20from%20Bread%20%26%20Bite!"
+    : "https://wa.me/919325629256?text=Hi%20Bread%20%26%20Bite%2C%20I%20have%20an%20inquiry%20regarding%20advance%20orders%20or%20catering.";
 
   const bestsellers = useMemo(() => {
     return menuItems.filter(item => item.isBestSeller).slice(0, 4);
@@ -108,7 +112,7 @@ const Home = () => {
                   className="btn-outline py-3 px-6 text-xs uppercase tracking-wider font-bold hover:border-[#25D366] hover:text-[#25D366] justify-center"
                 >
                   <FaWhatsapp className="text-base text-[#25D366]" />
-                  <span>Order on WhatsApp</span>
+                  <span>{isKitchenOpen ? "Order on WhatsApp" : "Inquire on WhatsApp"}</span>
                 </a>
               </motion.div>
 
@@ -593,7 +597,7 @@ const Home = () => {
                 title: "Contact & Location",
                 desc: "Order directly on WhatsApp, check kitchen hours, and get delivery updates in Navi Mumbai.",
                 path: "/contact",
-                badge: "8 AM - 11:45 PM",
+                badge: "10 AM - 9 PM",
                 icon: <FaMapMarkerAlt className="text-[#2A6A4E]" size={18} />
               }
             ].map((p) => (
@@ -716,7 +720,7 @@ const Home = () => {
               className="btn-primary py-3.5 px-8 text-xs uppercase tracking-wider font-bold shadow-tactile-md justify-center"
             >
               <FaWhatsapp size={16} />
-              <span>Order on WhatsApp</span>
+              <span>{isKitchenOpen ? "Order on WhatsApp" : "Inquire on WhatsApp"}</span>
             </a>
             <NavLink
               to="/menu"
@@ -727,7 +731,7 @@ const Home = () => {
           </div>
 
           <p className="text-[11px] text-[#8C827A] mt-6">
-            Open daily: 8:00 AM – 11:45 PM · Free delivery on ₹499+ across Taloja, Kharghar, Panvel & Belapur
+            Open daily: 10:00 AM – 9:00 PM · Free delivery on ₹499+ across Taloja, Kharghar, Panvel & Belapur
           </p>
         </div>
       </section>

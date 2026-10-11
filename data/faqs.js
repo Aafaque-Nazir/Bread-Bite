@@ -21,7 +21,7 @@ export const FAQS = [
   },
   {
     question: "What are your kitchen timings and how do I place an order?",
-    answer: "Our kitchen is open daily from 8:00 AM to 11:45 PM IST. You can order directly on WhatsApp (+91 93256 29256) or add dishes to your cart on this website and checkout directly to WhatsApp for instant confirmation."
+    answer: "Our kitchen is open daily from 10:00 AM to 9:00 PM IST. You can order directly on WhatsApp (+91 93256 29256) or add dishes to your cart on this website and checkout directly to WhatsApp for instant confirmation."
   },
   {
     question: "How long does food delivery take?",
