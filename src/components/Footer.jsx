@@ -31,7 +31,7 @@ const Footer = () => {
               <a
                 href="https://wa.me/919325629256"
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="nofollow noopener noreferrer"
                 aria-label="Order on WhatsApp"
                 className="w-10 h-10 rounded-full bg-[#26211D] border border-white/5 flex items-center justify-center text-[#EAE4DC] hover:bg-[#B84A1C] hover:text-white transition-all"
               >
@@ -40,7 +40,7 @@ const Footer = () => {
               <a
                 href="https://www.instagram.com/bread_and_bite/"
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="nofollow noopener noreferrer"
                 aria-label="Follow us on Instagram"
                 className="w-10 h-10 rounded-full bg-[#26211D] border border-white/5 flex items-center justify-center text-[#EAE4DC] hover:bg-[#B84A1C] hover:text-white transition-all"
               >

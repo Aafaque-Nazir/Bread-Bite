@@ -164,7 +164,7 @@ const Cart = () => {
             <a
               href="https://wa.me/919325629256?text=Hi%20Bread%20%26%20Bite%2C%20I%20have%20an%20inquiry%20regarding%20advance%20orders%20or%20catering."
               target="_blank"
-              rel="noopener noreferrer"
+              rel="nofollow noopener noreferrer"
               className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-semibold text-[#181411] bg-[#FAF7F2] border border-[#EAE4DC] hover:border-[#B84A1C] transition-colors whitespace-nowrap self-stretch sm:self-auto justify-center"
             >
               <FaWhatsapp size={14} className="text-[#25D366]" />

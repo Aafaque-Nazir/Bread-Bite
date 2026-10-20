@@ -90,7 +90,7 @@ const Reviews = () => {
               <a
                 href={reviewWhatsAppLink}
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="nofollow noopener noreferrer"
                 className="w-full sm:w-auto btn-primary py-3 px-6 text-xs uppercase tracking-wider font-bold shadow-tactile-sm justify-center"
               >
                 <FaCommentDots size={14} />
@@ -200,7 +200,7 @@ const Reviews = () => {
             <a
               href={orderWhatsAppLink}
               target="_blank"
-              rel="noopener noreferrer"
+              rel="nofollow noopener noreferrer"
               className="btn-primary py-3.5 px-8 text-xs uppercase tracking-wider font-bold justify-center shadow-tactile-sm"
             >
               <FaWhatsapp size={16} />

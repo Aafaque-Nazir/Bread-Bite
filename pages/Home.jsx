@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaWhatsapp, FaUtensils, FaCheckCircle, FaFire, FaMotorcycle, FaArrowRight, FaPlus, FaMinus, FaTrash, FaChevronDown, FaInfoCircle, FaMapMarkerAlt, FaClock } from "react-icons/fa";
+import { FaWhatsapp, FaUtensils, FaCheckCircle, FaFire, FaMotorcycle, FaArrowRight, FaPlus, FaMinus, FaTrash, FaChevronDown, FaInfoCircle, FaMapMarkerAlt, FaClock, FaStar } from "react-icons/fa";
 import { useKitchenStatus } from "../src/hooks/useKitchenStatus";
 import { NavLink } from "react-router-dom";
 import SEO from "../src/components/SEO";
@@ -108,7 +108,7 @@ const Home = () => {
                 <a
                   href={whatsappLink}
                   target="_blank"
-                  rel="noopener noreferrer"
+                  rel="nofollow noopener noreferrer"
                   className="btn-outline py-3 px-6 text-xs uppercase tracking-wider font-bold hover:border-[#25D366] hover:text-[#25D366] justify-center"
                 >
                   <FaWhatsapp className="text-base text-[#25D366]" />
@@ -342,7 +342,7 @@ const Home = () => {
               { name: "Burgers", id: "Burgers", img: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=600&auto=format&fit=crop", count: "Juicy Patty", note: "Crispy Chicken" }
             ].map((cat, i) => (
               <NavLink
-                to={`/menu?category=${cat.id.toLowerCase()}`}
+                to={`/menu/?category=${cat.id.toLowerCase()}`}
                 key={i}
                 className="group artisan-card rounded-2xl overflow-hidden p-2.5 sm:p-3.5 block"
               >
@@ -577,26 +577,33 @@ const Home = () => {
             </p>
           </div>
 
-          <div className="grid sm:grid-cols-3 gap-5">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {[
               {
                 title: "Kitchen Menu",
                 desc: "500g Chicken Keema, Chicken Korma, hot Tandoori Roti, soft Pav, and crispy snacks.",
-                path: "/menu",
+                path: "/menu/",
                 badge: "Full Menu",
                 icon: <FaUtensils className="text-[#B84A1C]" size={18} />
               },
               {
                 title: "Meal Combos",
                 desc: "Keema Pav and Korma Roti value meals at special discounted combo prices.",
-                path: "/menu?category=combos",
+                path: "/menu/?category=combos",
                 badge: "Value Deals",
                 icon: <FaFire className="text-[#B84A1C]" size={18} />
               },
               {
+                title: "Customer Reviews",
+                desc: "Read real reviews from our early patrons or submit your own dining feedback.",
+                path: "/reviews/",
+                badge: "Reviews",
+                icon: <FaStar className="text-[#B84A1C]" size={18} />
+              },
+              {
                 title: "Contact & Location",
                 desc: "Order directly on WhatsApp, check kitchen hours, and get delivery updates in Navi Mumbai.",
-                path: "/contact",
+                path: "/contact/",
                 badge: "10 AM - 9 PM",
                 icon: <FaMapMarkerAlt className="text-[#2A6A4E]" size={18} />
               }
@@ -716,7 +723,7 @@ const Home = () => {
             <a
               href={whatsappLink}
               target="_blank"
-              rel="noopener noreferrer"
+              rel="nofollow noopener noreferrer"
               className="btn-primary py-3.5 px-8 text-xs uppercase tracking-wider font-bold shadow-tactile-md justify-center"
             >
               <FaWhatsapp size={16} />

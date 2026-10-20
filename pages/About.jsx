@@ -231,7 +231,7 @@ const About = () => {
             <a
               href="https://wa.me/919325629256"
               target="_blank"
-              rel="noopener noreferrer"
+              rel="nofollow noopener noreferrer"
               className="btn-outline py-3.5 px-7 text-xs uppercase tracking-wider font-bold justify-center"
             >
               Order on WhatsApp

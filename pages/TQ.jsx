@@ -88,7 +88,7 @@ const ThankYou = () => {
             <a
               href={whatsappUrl}
               target="_blank"
-              rel="noopener noreferrer"
+              rel="nofollow noopener noreferrer"
               className="btn-primary w-full sm:flex-1 py-3.5 text-xs uppercase"
             >
               <FaWhatsapp size={16} />
@@ -97,7 +97,7 @@ const ThankYou = () => {
             <a
               href="https://www.instagram.com/bread_and_bite/"
               target="_blank"
-              rel="noopener noreferrer"
+              rel="nofollow noopener noreferrer"
               className="btn-outline w-full sm:flex-1 py-3.5 text-xs uppercase"
             >
               <FaInstagram size={16} />

@@ -66,7 +66,7 @@ const Contact = () => {
                     <a
                       href="https://wa.me/919325629256"
                       target="_blank"
-                      rel="noopener noreferrer"
+                      rel="nofollow noopener noreferrer"
                       className="text-lg font-bold text-[#181411] hover:text-[#B84A1C] transition-colors"
                     >
                       +91 93256 29256
@@ -209,7 +209,7 @@ const Contact = () => {
                     <a
                       href={`https://wa.me/919325629256?text=${encodeURIComponent(`👋 Hi Bread & Bite, I am ${formData.name}. ${formData.message}`)}`}
                       target="_blank"
-                      rel="noopener noreferrer"
+                      rel="nofollow noopener noreferrer"
                       className="btn-primary py-3 px-6 text-xs uppercase font-bold"
                     >
                       <FaWhatsapp size={15} />

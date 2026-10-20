@@ -132,7 +132,7 @@ function Navbar() {
             <a
               href={whatsappLink}
               target="_blank"
-              rel="noopener noreferrer"
+              rel="nofollow noopener noreferrer"
               className={`py-2.5 px-5 text-[11px] font-bold tracking-wider uppercase flex items-center gap-2 rounded-full transition-all duration-200 ${
                 isKitchenOpen 
                   ? "btn-primary shadow-tactile-sm" 
@@ -216,7 +216,7 @@ function Navbar() {
                 <a
                   href={whatsappLink}
                   target="_blank"
-                  rel="noopener noreferrer"
+                  rel="nofollow noopener noreferrer"
                   className={`w-full py-3.5 text-xs uppercase tracking-wider font-bold shadow-tactile-md flex items-center justify-center gap-2 rounded-xl transition-colors ${
                     isKitchenOpen ? "btn-primary" : "bg-[#181411] text-[#FAF7F2]"
                   }`}

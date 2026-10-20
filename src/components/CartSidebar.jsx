@@ -202,6 +202,7 @@ const CartSidebar = () => {
                   {isKitchenOpen ? (
                     <Link
                       to="/cart/"
+                      rel="nofollow"
                       onClick={toggleCart}
                       className="btn-primary w-full py-3.5 text-xs uppercase tracking-wider font-bold shadow-tactile-md flex items-center justify-center gap-2"
                     >
