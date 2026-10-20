@@ -105,7 +105,7 @@ const Cart = () => {
         <SEO
           title="Your Cart & Checkout | Bread & Bite Navi Mumbai"
           description="Review your cart items and complete your order with Bread & Bite. Fresh homestyle chicken gravies and breads delivered hot across Navi Mumbai."
-          url="/cart"
+          url="/cart/"
           noindex={true}
         />
         <div className="text-center max-w-md w-full artisan-card p-10 sm:p-12 rounded-3xl bg-white">
@@ -117,7 +117,7 @@ const Cart = () => {
             Check out our 500g Chicken Keema, Chicken Korma, hot Tandoori Roti, and soft Pav.
           </p>
           <Link
-            to="/menu"
+            to="/menu/"
             className="btn-primary py-3.5 px-7 text-xs uppercase"
           >
             <FaArrowLeft size={10} />
@@ -135,7 +135,7 @@ const Cart = () => {
       <SEO
         title="Your Cart & Checkout | Bread & Bite Navi Mumbai"
         description="Review your cart items and complete your order with Bread & Bite. Fresh homestyle chicken gravies and breads delivered hot across Navi Mumbai."
-        url="/cart"
+        url="/cart/"
         noindex={true}
       />
 

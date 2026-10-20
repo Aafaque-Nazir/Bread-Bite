@@ -67,19 +67,19 @@ const Menu = () => {
       <SEO
         title="Our Menu & Online Order | Bread & Bite Navi Mumbai"
         description="Explore our menu of 500g Chicken Keema, Korma gravies, tandoori rotis, pav, and burgers. Freshly cooked & delivered fast across Navi Mumbai."
-        url="/menu"
+        url="/menu/"
         keywords="bread and bite menu, chicken keema taloja, chicken korma kharghar, keema pav navi mumbai, tandoori roti delivery, chicken burger taloja phase 1, food delivery panvel, cloud kitchen menu navi mumbai"
       />
 
       {/* Semantic Directory for Search Engines (Phase 4) */}
       <nav aria-label="Menu Directory" className="sr-only">
         <ul>
-          <li><a href="/menu?category=all">All Items</a></li>
-          <li><a href="/menu?category=Combos">Value Meal Combos</a></li>
-          <li><a href="/menu?category=Gravy">Chicken Gravies (500g)</a></li>
-          <li><a href="/menu?category=Roti">Tandoori Roti & Fresh Pav</a></li>
-          <li><a href="/menu?category=Snacks">Crispy Snacks & Fries</a></li>
-          <li><a href="/menu?category=Burgers">Gourmet Burgers</a></li>
+          <li><a href="/menu/?category=all">All Items</a></li>
+          <li><a href="/menu/?category=Combos">Value Meal Combos</a></li>
+          <li><a href="/menu/?category=Gravy">Chicken Gravies (500g)</a></li>
+          <li><a href="/menu/?category=Roti">Tandoori Roti & Fresh Pav</a></li>
+          <li><a href="/menu/?category=Snacks">Crispy Snacks & Fries</a></li>
+          <li><a href="/menu/?category=Burgers">Gourmet Burgers</a></li>
         </ul>
       </nav>
 

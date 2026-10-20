@@ -26,7 +26,7 @@ const ThankYou = () => {
       <SEO
         title="Order Confirmation | Bread & Bite Navi Mumbai"
         description="Thank you for choosing Bread & Bite. Your order details are confirmed and our kitchen team is preparing your fresh meal in Navi Mumbai."
-        url="/thank-you"
+        url="/thank-you/"
         noindex={true}
       />
       <div className="min-h-screen flex flex-col items-center justify-center bg-[#FAF7F2] text-[#181411] px-4 sm:px-6 py-10 sm:py-16 text-center relative overflow-hidden">
@@ -106,7 +106,7 @@ const ThankYou = () => {
           </div>
 
           <Link
-            to="/menu"
+            to="/menu/"
             className="inline-flex items-center gap-2 text-xs font-semibold text-[#B84A1C] hover:text-[#9C3B12] transition-colors"
           >
             <FaArrowLeft size={10} />

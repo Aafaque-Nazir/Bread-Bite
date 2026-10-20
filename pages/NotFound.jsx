@@ -37,14 +37,14 @@ const NotFound = () => {
             <span>Return Home</span>
           </Link>
           <Link
-            to="/menu"
+            to="/menu/"
             className="btn-outline py-3.5 px-6 text-xs uppercase w-full sm:w-auto"
           >
             <span>Explore Menu</span>
             <FaArrowRight size={10} />
           </Link>
           <Link
-            to="/contact"
+            to="/contact/"
             className="btn-outline py-3.5 px-6 text-xs uppercase w-full sm:w-auto"
           >
             <FaPhoneAlt size={10} />

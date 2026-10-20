@@ -11,43 +11,48 @@ const SITE_URL = 'https://breadandbite.in';
 
 const ROUTES = [
   {
-    path: '/menu',
+    path: '/menu/',
     outDir: path.join(DIST_DIR, 'menu'),
     title: 'Our Menu & Online Order | Bread & Bite Navi Mumbai',
     description: 'Explore our menu of 500g Chicken Keema, Korma gravies, tandoori rotis, pav, and burgers. Freshly cooked & delivered fast across Navi Mumbai.',
-    canonical: `${SITE_URL}/menu`,
+    canonical: `${SITE_URL}/menu/`,
+    h1: 'Our Kitchen Menu',
     robots: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'
   },
   {
-    path: '/about',
+    path: '/about/',
     outDir: path.join(DIST_DIR, 'about'),
     title: 'About Bread & Bite | Cloud Kitchen in Navi Mumbai',
     description: 'Learn about Bread & Bite cloud kitchen in Taloja Phase 1. Honest 500g chicken portions, authentic homestyle recipes, and quick local delivery.',
-    canonical: `${SITE_URL}/about`,
+    canonical: `${SITE_URL}/about/`,
+    h1: 'About Bread & Bite Cloud Kitchen',
     robots: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'
   },
   {
-    path: '/reviews',
+    path: '/reviews/',
     outDir: path.join(DIST_DIR, 'reviews'),
     title: 'Customer Reviews & Ratings | Bread & Bite Navi Mumbai',
     description: 'Our kitchen doors just opened in Navi Mumbai! Order today and be among our first founding food critics to get featured on our Wall of Fame.',
-    canonical: `${SITE_URL}/reviews`,
+    canonical: `${SITE_URL}/reviews/`,
+    h1: 'Customer Reviews & Ratings',
     robots: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'
   },
   {
-    path: '/contact',
+    path: '/contact/',
     outDir: path.join(DIST_DIR, 'contact'),
     title: 'Contact Bread & Bite | Order Food in Navi Mumbai',
     description: 'Get in touch with Bread & Bite. Order via WhatsApp at +91 93256 29256 or find our cloud kitchen in Taloja Phase 1. Fast Navi Mumbai delivery.',
-    canonical: `${SITE_URL}/contact`,
+    canonical: `${SITE_URL}/contact/`,
+    h1: 'Contact Bread & Bite',
     robots: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'
   },
   {
-    path: '/cart',
+    path: '/cart/',
     outDir: path.join(DIST_DIR, 'cart'),
     title: 'Your Cart & Checkout | Bread & Bite Navi Mumbai',
     description: 'Review your cart items and complete your order with Bread & Bite. Fresh homestyle chicken gravies and breads delivered hot across Navi Mumbai.',
-    canonical: `${SITE_URL}/cart`,
+    canonical: `${SITE_URL}/cart/`,
+    h1: 'Your Cart & Checkout',
     robots: 'noindex, follow'
   },
   {
@@ -56,6 +61,7 @@ const ROUTES = [
     title: 'Page Not Found - 404 | Bread & Bite Navi Mumbai',
     description: 'The requested page was not found. Return to Bread & Bite to order fresh 500g Chicken Keema, Chicken Korma, hot rotis, and pav in Navi Mumbai.',
     canonical: `${SITE_URL}/404`,
+    h1: 'Recipe Not Found - 404',
     robots: 'noindex, follow'
   }
 ];
@@ -67,7 +73,13 @@ function prerender() {
     process.exit(1);
   }
 
-  const baseHtml = fs.readFileSync(indexHtmlPath, 'utf-8');
+  let baseHtml = fs.readFileSync(indexHtmlPath, 'utf-8');
+
+  // Inject single static H1 into dist/index.html for raw HTML crawlers
+  const homeH1 = '<div id="root"><h1 style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;">Chicken Keema, Korma, Hot Roti & Soft Pav</h1></div>';
+  const updatedHomeHtml = baseHtml.replace('<div id="root"></div>', homeH1);
+  fs.writeFileSync(indexHtmlPath, updatedHomeHtml, 'utf-8');
+  console.log(`[prerender] Injected static crawlable H1 into dist/index.html`);
 
   for (const route of ROUTES) {
     let html = baseHtml;
@@ -127,6 +139,12 @@ function prerender() {
       /<meta data-rh="true" name="twitter:description"[\s\S]*?\/>/,
       `<meta data-rh="true" name="twitter:description"\n    content="${route.description}" />`
     );
+
+    // Inject route-specific static H1 for raw HTML crawlers
+    if (route.h1) {
+      const routeH1 = `<div id="root"><h1 style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;">${route.h1}</h1></div>`;
+      html = html.replace('<div id="root"></div>', routeH1);
+    }
 
     const targetFile = route.outFile || path.join(route.outDir, 'index.html');
     const targetFolder = path.dirname(targetFile);

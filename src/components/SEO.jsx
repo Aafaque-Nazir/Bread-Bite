@@ -43,7 +43,7 @@ const SEO = ({
   if (url && url !== '/') {
     const cleanPath = url.startsWith('/') ? url : `/${url}`;
     const basePath = cleanPath.split('?')[0].replace(/\/+$/, '');
-    canonicalUrl = `${SITE_URL}${basePath}`;
+    canonicalUrl = `${SITE_URL}${basePath}/`;
   }
 
   const pageImage = image.startsWith('http') ? image : `${SITE_URL}${image.startsWith('/') ? image : `/${image}`}`;
@@ -212,25 +212,25 @@ const SEO = ({
           '@type': 'SiteNavigationElement',
           position: 1,
           name: 'Explore Kitchen Menu',
-          url: `${SITE_URL}/menu`,
+          url: `${SITE_URL}/menu/`,
         },
         {
           '@type': 'SiteNavigationElement',
           position: 2,
           name: 'About Our Kitchen',
-          url: `${SITE_URL}/about`,
+          url: `${SITE_URL}/about/`,
         },
         {
           '@type': 'SiteNavigationElement',
           position: 3,
           name: 'Customer Reviews',
-          url: `${SITE_URL}/reviews`,
+          url: `${SITE_URL}/reviews/`,
         },
         {
           '@type': 'SiteNavigationElement',
           position: 4,
           name: 'Contact & Orders',
-          url: `${SITE_URL}/contact`,
+          url: `${SITE_URL}/contact/`,
         },
       ],
     },

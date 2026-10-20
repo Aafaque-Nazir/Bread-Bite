@@ -57,10 +57,10 @@ const Footer = () => {
             <ul className="space-y-3 text-sm">
               {[
                 { name: 'Home', path: '/' },
-                { name: 'Kitchen Menu', path: '/menu' },
-                { name: 'Customer Reviews', path: '/reviews' },
-                { name: 'About Our Kitchen', path: '/about' },
-                { name: 'Contact & Orders', path: '/contact' }
+                { name: 'Kitchen Menu', path: '/menu/' },
+                { name: 'Customer Reviews', path: '/reviews/' },
+                { name: 'About Our Kitchen', path: '/about/' },
+                { name: 'Contact & Orders', path: '/contact/' }
               ].map((link) => (
                 <li key={link.name}>
                   <NavLink
@@ -88,7 +88,7 @@ const Footer = () => {
               ].map((cat) => (
                 <li key={cat.name}>
                   <NavLink
-                    to={`/menu?category=${cat.id}`}
+                    to={`/menu/?category=${cat.id}`}
                     className="text-[#A89E94] hover:text-white transition-colors"
                   >
                     {cat.name}

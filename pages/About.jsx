@@ -17,7 +17,7 @@ const About = () => {
       <SEO
         title="About Bread & Bite | Cloud Kitchen in Navi Mumbai"
         description="Learn about Bread & Bite cloud kitchen in Taloja Phase 1. Honest 500g chicken portions, authentic homestyle recipes, and quick local delivery."
-        url="/about"
+        url="/about/"
         keywords="about bread and bite, cloud kitchen taloja, chicken keema navi mumbai, halal chicken kharghar, tandoori roti panvel"
       />
 
@@ -222,7 +222,7 @@ const About = () => {
           </p>
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3">
             <Link
-              to="/menu"
+              to="/menu/"
               className="btn-primary py-3.5 px-8 text-xs uppercase tracking-wider font-bold justify-center shadow-tactile-md"
             >
               <FaUtensils size={12} />

@@ -28,7 +28,7 @@ const Reviews = () => {
       <SEO
         title="Customer Reviews & Ratings | Bread & Bite Navi Mumbai"
         description="Our kitchen doors just opened in Navi Mumbai! Order today and be among our first founding food critics to get featured on our Wall of Fame."
-        url="/reviews"
+        url="/reviews/"
         keywords="bread and bite reviews, food critic navi mumbai, taloja cloud kitchen reviews, chicken keema reviews kharghar, chicken korma panvel"
       />
 
@@ -98,7 +98,7 @@ const Reviews = () => {
               </a>
 
               <Link
-                to="/menu"
+                to="/menu/"
                 className="w-full sm:w-auto btn-outline py-3 px-5 text-xs uppercase tracking-wider font-bold justify-center"
               >
                 <span>Order Food First</span>
@@ -207,7 +207,7 @@ const Reviews = () => {
               <span>Order on WhatsApp</span>
             </a>
             <Link
-              to="/menu"
+              to="/menu/"
               className="btn-outline py-3.5 px-7 text-xs uppercase tracking-wider font-bold justify-center"
             >
               Explore Full Menu

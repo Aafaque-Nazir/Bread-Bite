@@ -98,7 +98,7 @@ const Home = () => {
               {/* Action Buttons */}
               <motion.div variants={fadeUp} className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-1">
                 <NavLink
-                  to="/menu"
+                  to="/menu/"
                   className="btn-primary py-3 px-7 text-xs uppercase tracking-wider font-bold shadow-tactile-sm justify-center"
                 >
                   <FaUtensils className="text-xs" />
@@ -225,7 +225,7 @@ const Home = () => {
               </p>
             </div>
             <NavLink
-              to="/menu?category=combos"
+              to="/menu/?category=combos"
               className="btn-outline self-start sm:self-auto text-xs py-2 px-4.5"
             >
               <span>View All Combos</span>
@@ -387,7 +387,7 @@ const Home = () => {
               </h2>
             </div>
             <NavLink
-              to="/menu"
+              to="/menu/"
               className="text-[#181411] hover:text-[#B84A1C] font-semibold text-xs sm:text-sm flex items-center gap-2 group transition-colors"
             >
               <span>See Full Menu</span>
@@ -548,7 +548,7 @@ const Home = () => {
 
               <div className="pt-2">
                 <NavLink
-                  to="/about"
+                  to="/about/"
                   className="btn-outline text-xs py-2.5 px-5"
                 >
                   <span>More About Our Kitchen</span>
@@ -723,7 +723,7 @@ const Home = () => {
               <span>{isKitchenOpen ? "Order on WhatsApp" : "Inquire on WhatsApp"}</span>
             </a>
             <NavLink
-              to="/menu"
+              to="/menu/"
               className="btn-outline py-3.5 px-7 text-xs uppercase tracking-wider font-bold justify-center"
             >
               <span>Explore Full Menu</span>

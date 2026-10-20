@@ -32,11 +32,17 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
+            <Route path="/about/" element={<About />} />
             <Route path="/menu" element={<Menu />} />
+            <Route path="/menu/" element={<Menu />} />
             <Route path="/cart" element={<Cart />} />
+            <Route path="/cart/" element={<Cart />} />
             <Route path="/reviews" element={<Reviews />} />
+            <Route path="/reviews/" element={<Reviews />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/contact/" element={<Contact />} />
             <Route path="/thank-you" element={<TQ />} />
+            <Route path="/thank-you/" element={<TQ />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </main>

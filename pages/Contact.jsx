@@ -28,7 +28,7 @@ const Contact = () => {
       <SEO
         title="Contact Bread & Bite | Order Food in Navi Mumbai"
         description="Get in touch with Bread & Bite. Order via WhatsApp at +91 93256 29256 or find our cloud kitchen in Taloja Phase 1. Fast Navi Mumbai delivery."
-        url="/contact"
+        url="/contact/"
         keywords="bread and bite contact, food delivery taloja phase 1, whatsapp food order navi mumbai, restaurant contact kharghar, cloud kitchen address taloja, tiffin service taloja navi mumbai, panvel food delivery hotline"
         faqs={FAQS}
       />
