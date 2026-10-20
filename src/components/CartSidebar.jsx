@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { FaTimes, FaTrash, FaPlus, FaMinus, FaShoppingBag, FaArrowRight, FaMotorcycle, FaClock } from 'react-icons/fa';
 import { useCart } from '../context/CartContext';
 import { useKitchenStatus } from '../hooks/useKitchenStatus';
@@ -8,7 +8,6 @@ import { useKitchenStatus } from '../hooks/useKitchenStatus';
 const CartSidebar = () => {
   const { isCartOpen, toggleCart, cart, updateQuantity, cartTotal, clearCart } = useCart();
   const { isOpen: isKitchenOpen } = useKitchenStatus();
-  const navigate = useNavigate();
 
   useEffect(() => {
     if (isCartOpen) {
@@ -20,11 +19,6 @@ const CartSidebar = () => {
       window.__lenis?.start();
     };
   }, [isCartOpen]);
-
-  const handleProceedToCheckout = () => {
-    toggleCart();
-    navigate('/cart');
-  };
 
   return (
     <AnimatePresence>
@@ -206,13 +200,14 @@ const CartSidebar = () => {
                   )}
 
                   {isKitchenOpen ? (
-                    <button
-                      onClick={handleProceedToCheckout}
-                      className="btn-primary w-full py-3.5 text-xs uppercase tracking-wider font-bold shadow-tactile-md"
+                    <Link
+                      to="/cart"
+                      onClick={toggleCart}
+                      className="btn-primary w-full py-3.5 text-xs uppercase tracking-wider font-bold shadow-tactile-md flex items-center justify-center gap-2"
                     >
                       <span>Proceed to Checkout</span>
                       <FaArrowRight size={10} />
-                    </button>
+                    </Link>
                   ) : (
                     <button
                       disabled

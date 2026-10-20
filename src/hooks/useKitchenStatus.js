@@ -68,7 +68,7 @@ export const getKitchenStatus = () => {
       statusText: isOpen ? 'Open Now' : 'Kitchen Closed',
       subText: isOpen ? 'Closes at 9:00 PM' : 'Opens daily at 10:00 AM'
     };
-  } catch (e) {
+  } catch {
     // Fallback gracefully to standard hours
     return {
       isOpen: true,

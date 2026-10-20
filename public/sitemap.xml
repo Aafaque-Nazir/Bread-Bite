@@ -7,7 +7,7 @@
   <!-- Homepage -->
   <url>
     <loc>https://breadandbite.in/</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -15,7 +15,7 @@
   <!-- Menu Page -->
   <url>
     <loc>https://breadandbite.in/menu</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.95</priority>
   </url>
@@ -23,7 +23,7 @@
   <!-- Customer Reviews Page -->
   <url>
     <loc>https://breadandbite.in/reviews</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
@@ -31,7 +31,7 @@
   <!-- About Page -->
   <url>
     <loc>https://breadandbite.in/about</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.80</priority>
   </url>
@@ -39,7 +39,7 @@
   <!-- Contact Page -->
   <url>
     <loc>https://breadandbite.in/contact</loc>
-    <lastmod>2026-10-09</lastmod>
+    <lastmod>2026-10-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.80</priority>
   </url>

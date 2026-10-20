@@ -102,12 +102,17 @@ const Cart = () => {
   if (cart.length === 0) {
     return (
       <div className="min-h-[75vh] flex flex-col items-center justify-center px-6 bg-[#FAF7F2]">
-        <SEO title="Your Cart - Bread & Bite" noindex={true} />
+        <SEO
+          title="Your Cart & Checkout | Bread & Bite Navi Mumbai"
+          description="Review your cart items and complete your order with Bread & Bite. Fresh homestyle chicken gravies and breads delivered hot across Navi Mumbai."
+          url="/cart"
+          noindex={true}
+        />
         <div className="text-center max-w-md w-full artisan-card p-10 sm:p-12 rounded-3xl bg-white">
           <div className="w-16 h-16 rounded-2xl bg-[#FAF7F2] border border-[#EAE4DC] flex items-center justify-center text-[#B84A1C] mx-auto mb-6">
             <FaShoppingBag size={24} />
           </div>
-          <h2 className="text-2xl font-bold text-[#181411] mb-2 font-heading">Your Cart Is Empty</h2>
+          <h1 className="text-2xl font-bold text-[#181411] mb-2 font-heading">Your Cart Is Empty</h1>
           <p className="text-[#574F4A] mb-8 text-sm leading-relaxed">
             Check out our 500g Chicken Keema, Chicken Korma, hot Tandoori Roti, and soft Pav.
           </p>
@@ -128,8 +133,8 @@ const Cart = () => {
   return (
     <div className="min-h-screen bg-[#FAF7F2] text-[#181411] pt-6 sm:pt-10 pb-24 px-4 sm:px-6">
       <SEO
-        title="Checkout - Bread & Bite"
-        description="Review your cart and place your order instantly on WhatsApp."
+        title="Your Cart & Checkout | Bread & Bite Navi Mumbai"
+        description="Review your cart items and complete your order with Bread & Bite. Fresh homestyle chicken gravies and breads delivered hot across Navi Mumbai."
         url="/cart"
         noindex={true}
       />

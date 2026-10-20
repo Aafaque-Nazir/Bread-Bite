@@ -1,11 +1,18 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { FaHome, FaArrowRight } from "react-icons/fa";
+import { FaHome, FaArrowRight, FaPhoneAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import SEO from "../src/components/SEO";
 
 const NotFound = () => {
   return (
     <section className="min-h-[80vh] flex items-center justify-center bg-[#FAF7F2] px-4 sm:px-6 text-[#181411]">
+      <SEO
+        title="Page Not Found - 404 | Bread & Bite Navi Mumbai"
+        description="The requested page was not found. Return to Bread & Bite to order fresh 500g Chicken Keema, Chicken Korma, hot rotis, and pav in Navi Mumbai."
+        url="/404"
+        noindex={true}
+      />
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -35,6 +42,13 @@ const NotFound = () => {
           >
             <span>Explore Menu</span>
             <FaArrowRight size={10} />
+          </Link>
+          <Link
+            to="/contact"
+            className="btn-outline py-3.5 px-6 text-xs uppercase w-full sm:w-auto"
+          >
+            <FaPhoneAlt size={10} />
+            <span>Contact Us</span>
           </Link>
         </div>
       </motion.div>

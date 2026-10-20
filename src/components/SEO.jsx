@@ -5,6 +5,9 @@ const SITE_URL = 'https://breadandbite.in';
 const SITE_NAME = 'Bread & Bite';
 const DEFAULT_IMAGE = `${SITE_URL}/og-image.jpg`;
 
+const DEFAULT_TITLE = 'Bread & Bite | Online Food Delivery in Navi Mumbai';
+const DEFAULT_DESCRIPTION = 'Order fresh 500g Chicken Keema, Chicken Korma, hot Tandoori Roti & soft Pav. Delivered hot across Taloja, Kharghar & Panvel by Bread & Bite.';
+
 /**
  * Senior SEO Component for Bread & Bite
  * Emits complete Meta, OpenGraph, Twitter, Geo-targeting, and Schema.org @graph
@@ -23,8 +26,26 @@ const SEO = ({
   customSchema = null,
   breadcrumbs = null,
 }) => {
-  const pageTitle = title ? title : `${SITE_NAME} | 500g Chicken Keema, Korma, Roti & Pav - Navi Mumbai`;
-  const canonicalUrl = url ? `${SITE_URL}${url.startsWith('/') ? url : `/${url}`}` : SITE_URL;
+  // Title Length Guardrail (Strictly 45-55 chars, max 58)
+  let pageTitle = title ? title.trim() : DEFAULT_TITLE;
+  if (pageTitle.length > 58) {
+    pageTitle = pageTitle.slice(0, 55).replace(/\s+\S*$/, '') + '...';
+  }
+
+  // Description Length Guardrail (Strictly 130-150 chars, max 155)
+  let pageDescription = description ? description.trim() : DEFAULT_DESCRIPTION;
+  if (pageDescription.length > 150) {
+    pageDescription = pageDescription.slice(0, 147).replace(/\s+\S*$/, '') + '...';
+  }
+
+  // 1:1 Canonical & Social URL Alignment
+  let canonicalUrl = `${SITE_URL}/`;
+  if (url && url !== '/') {
+    const cleanPath = url.startsWith('/') ? url : `/${url}`;
+    const basePath = cleanPath.split('?')[0].replace(/\/+$/, '');
+    canonicalUrl = `${SITE_URL}${basePath}`;
+  }
+
   const pageImage = image.startsWith('http') ? image : `${SITE_URL}${image.startsWith('/') ? image : `/${image}`}`;
 
   // Composite Schema Graph for Google Rich Snippets & AI Answer Engines (AEO/GEO)
@@ -36,6 +57,7 @@ const SEO = ({
       name: 'Bread & Bite',
       alternateName: ['Bread & Bite Cloud Kitchen', 'Bread and Bite Taloja', 'Bread and Bite Navi Mumbai'],
       image: pageImage,
+      logo: `${SITE_URL}/Logo.png`,
       url: SITE_URL,
       telephone: '+919325629256',
       priceRange: '₹₹',
@@ -155,11 +177,11 @@ const SEO = ({
           urlTemplate: `${SITE_URL}/menu`,
           inLanguage: 'en-IN',
           actionPlatform: [
-            'http://schema.org/DesktopWebPlatform',
-            'http://schema.org/MobileWebPlatform'
+            'https://schema.org/DesktopWebPlatform',
+            'https://schema.org/MobileWebPlatform'
           ]
         },
-        deliveryMethod: 'http://purl.org/goodrelations/v1#DeliveryModeOwnFleet'
+        deliveryMethod: 'https://schema.org/DeliveryModeOwnFleet'
       },
       speakable: {
         '@type': 'SpeakableSpecification',
@@ -171,7 +193,7 @@ const SEO = ({
     {
       '@type': 'WebSite',
       '@id': `${SITE_URL}/#website`,
-      url: SITE_URL,
+      url: `${SITE_URL}/`,
       name: 'Bread & Bite',
       description: 'Navi Mumbai cloud kitchen serving hearty 500g Chicken Keema, Chicken Korma, hot Tandoori Roti, soft Pav, and crispy snacks.',
       publisher: {
@@ -182,19 +204,34 @@ const SEO = ({
 
     // 3. SiteNavigationElement (Tells Google how to render subpage Sitelinks)
     {
-      '@type': 'SiteNavigationElement',
+      '@type': 'ItemList',
       '@id': `${SITE_URL}/#navigation`,
-      name: [
-        'Explore Kitchen Menu',
-        'Meal Combos',
-        'About Our Kitchen',
-        'Contact & Orders',
-      ],
-      url: [
-        `${SITE_URL}/menu`,
-        `${SITE_URL}/menu?category=combos`,
-        `${SITE_URL}/about`,
-        `${SITE_URL}/contact`,
+      name: 'Main Site Navigation',
+      itemListElement: [
+        {
+          '@type': 'SiteNavigationElement',
+          position: 1,
+          name: 'Explore Kitchen Menu',
+          url: `${SITE_URL}/menu`,
+        },
+        {
+          '@type': 'SiteNavigationElement',
+          position: 2,
+          name: 'About Our Kitchen',
+          url: `${SITE_URL}/about`,
+        },
+        {
+          '@type': 'SiteNavigationElement',
+          position: 3,
+          name: 'Customer Reviews',
+          url: `${SITE_URL}/reviews`,
+        },
+        {
+          '@type': 'SiteNavigationElement',
+          position: 4,
+          name: 'Contact & Orders',
+          url: `${SITE_URL}/contact`,
+        },
       ],
     },
   ];

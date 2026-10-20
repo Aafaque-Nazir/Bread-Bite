@@ -65,11 +65,23 @@ const Menu = () => {
   return (
     <section className="min-h-screen bg-[#FAF7F2] pt-6 sm:pt-10 lg:pt-14 pb-28 px-4 sm:px-6">
       <SEO
-        title="Kitchen Menu & Online Order | Bread & Bite - Navi Mumbai"
-        description="Order 500g Chicken Keema Boneless, Chicken Korma, hot Tandoori Roti, fresh Pav, Burgers, and Fries. Cooked fresh, delivered hot in Taloja, Kharghar & Panvel."
+        title="Our Menu & Online Order | Bread & Bite Navi Mumbai"
+        description="Explore our menu of 500g Chicken Keema, Korma gravies, tandoori rotis, pav, and burgers. Freshly cooked & delivered fast across Navi Mumbai."
         url="/menu"
         keywords="bread and bite menu, chicken keema taloja, chicken korma kharghar, keema pav navi mumbai, tandoori roti delivery, chicken burger taloja phase 1, food delivery panvel, cloud kitchen menu navi mumbai"
       />
+
+      {/* Semantic Directory for Search Engines (Phase 4) */}
+      <nav aria-label="Menu Directory" className="sr-only">
+        <ul>
+          <li><a href="/menu?category=all">All Items</a></li>
+          <li><a href="/menu?category=Combos">Value Meal Combos</a></li>
+          <li><a href="/menu?category=Gravy">Chicken Gravies (500g)</a></li>
+          <li><a href="/menu?category=Roti">Tandoori Roti & Fresh Pav</a></li>
+          <li><a href="/menu?category=Snacks">Crispy Snacks & Fries</a></li>
+          <li><a href="/menu?category=Burgers">Gourmet Burgers</a></li>
+        </ul>
+      </nav>
 
       <div className="max-w-7xl mx-auto">
         {/* Page Header */}

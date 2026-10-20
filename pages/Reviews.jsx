@@ -26,8 +26,8 @@ const Reviews = () => {
   return (
     <section className="relative min-h-[calc(100vh-4.5rem)] bg-[#FAF7F2] pt-8 sm:pt-12 pb-24 px-4 sm:px-6 overflow-hidden text-[#181411]">
       <SEO
-        title="Guest Reviews & First Impressions | Bread & Bite Navi Mumbai"
-        description="Our kitchen doors just opened in Taloja, Navi Mumbai! Order today and be among our first founding food critics to get featured on our Wall of Fame."
+        title="Customer Reviews & Ratings | Bread & Bite Navi Mumbai"
+        description="Our kitchen doors just opened in Navi Mumbai! Order today and be among our first founding food critics to get featured on our Wall of Fame."
         url="/reviews"
         keywords="bread and bite reviews, food critic navi mumbai, taloja cloud kitchen reviews, chicken keema reviews kharghar, chicken korma panvel"
       />

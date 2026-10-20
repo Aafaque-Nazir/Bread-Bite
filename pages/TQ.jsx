@@ -24,8 +24,8 @@ const ThankYou = () => {
   return (
     <>
       <SEO
-        title="Thank You - Bread & Bite"
-        description="Thank you for choosing Bread & Bite. We look forward to serving you fresh comfort food!"
+        title="Order Confirmation | Bread & Bite Navi Mumbai"
+        description="Thank you for choosing Bread & Bite. Your order details are confirmed and our kitchen team is preparing your fresh meal in Navi Mumbai."
         url="/thank-you"
         noindex={true}
       />

@@ -15,8 +15,8 @@ const About = () => {
   return (
     <section className="relative min-h-screen bg-[#FAF7F2] pt-6 sm:pt-10 pb-24 px-4 sm:px-6 overflow-hidden text-[#181411]">
       <SEO
-        title="About Bread & Bite Kitchen | Navi Mumbai"
-        description="The story of Bread & Bite cloud kitchen in Taloja Phase 1. Hearty 500g Chicken Keema, Chicken Korma, hot Tandoori Roti, soft Pav, clean kitchen & fast delivery."
+        title="About Bread & Bite | Cloud Kitchen in Navi Mumbai"
+        description="Learn about Bread & Bite cloud kitchen in Taloja Phase 1. Honest 500g chicken portions, authentic homestyle recipes, and quick local delivery."
         url="/about"
         keywords="about bread and bite, cloud kitchen taloja, chicken keema navi mumbai, halal chicken kharghar, tandoori roti panvel"
       />
