@@ -133,7 +133,7 @@ const SEO = ({
               {
                 '@type': 'MenuItem',
                 name: 'Chicken Korma (500g)',
-                description: '500g tender chicken in thick, aromatic korma gravy.',
+                description: '500g tender chicken in thick, rich korma gravy.',
                 offers: { '@type': 'Offer', price: '199', priceCurrency: 'INR' }
               }
             ]
@@ -304,7 +304,7 @@ const SEO = ({
       '@id': `${SITE_URL}/#product-chicken-korma`,
       name: 'Chicken Korma (500g)',
       image: `${SITE_URL}/images/chicken-korma.webp`,
-      description: 'Aromatic cashew and golden onion Mughlai gravy with tender slow-cooked chicken pieces in 500g portion.',
+      description: 'Rich cashew and onion korma gravy with tender chicken pieces in full 500g portion.',
       brand: { '@type': 'Brand', name: 'Bread & Bite' },
       offers: {
         '@type': 'Offer',

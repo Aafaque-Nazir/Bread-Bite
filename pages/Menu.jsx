@@ -80,7 +80,7 @@ const Menu = () => {
           <li><a href="/menu/?category=Gravy">Chicken Gravies (500g)</a></li>
           <li><a href="/menu/?category=Roti">Tandoori Roti & Fresh Pav</a></li>
           <li><a href="/menu/?category=Snacks">Crispy Snacks & Fries</a></li>
-          <li><a href="/menu/?category=Burgers">Gourmet Burgers</a></li>
+          <li><a href="/menu/?category=Burgers">Crispy Chicken Burgers</a></li>
         </ul>
       </nav>
 

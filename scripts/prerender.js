@@ -30,7 +30,7 @@ const homeBody = `
       </div>
       <div style="background:#fff;border:1px solid #EAE4DC;border-radius:1rem;padding:1.25rem;">
         <h3 style="font-size:1.1rem;margin:0 0 0.5rem;color:#181411;">Chicken Korma (500g)</h3>
-        <p style="font-size:0.85rem;color:#574F4A;line-height:1.5;margin:0 0 0.75rem;">Aromatic cashew and golden fried onion Mughlai gravy with tender slow-cooked chicken pieces. Rich, mildly spiced, and deeply comforting.</p>
+        <p style="font-size:0.85rem;color:#574F4A;line-height:1.5;margin:0 0 0.75rem;">Rich cashew and fried onion gravy with tender chicken pieces. Mildly spiced and delicious with hot rotis.</p>
         <strong style="color:#B84A1C;font-size:1rem;">₹299 · Serves 2-3</strong>
       </div>
       <div style="background:#fff;border:1px solid #EAE4DC;border-radius:1rem;padding:1.25rem;">
@@ -53,7 +53,7 @@ const homeBody = `
       <a href="/menu/?category=gravy" style="background:#fff;border:1px solid #EAE4DC;padding:0.5rem 1rem;border-radius:9999px;color:#181411;text-decoration:none;font-size:0.85rem;font-weight:600;">Chicken Gravies (500g)</a>
       <a href="/menu/?category=roti" style="background:#fff;border:1px solid #EAE4DC;padding:0.5rem 1rem;border-radius:9999px;color:#181411;text-decoration:none;font-size:0.85rem;font-weight:600;">Tandoori Roti &amp; Soft Pav</a>
       <a href="/menu/?category=snacks" style="background:#fff;border:1px solid #EAE4DC;padding:0.5rem 1rem;border-radius:9999px;color:#181411;text-decoration:none;font-size:0.85rem;font-weight:600;">Crispy Snacks &amp; Fries</a>
-      <a href="/menu/?category=burgers" style="background:#fff;border:1px solid #EAE4DC;padding:0.5rem 1rem;border-radius:9999px;color:#181411;text-decoration:none;font-size:0.85rem;font-weight:600;">Gourmet Burgers</a>
+      <a href="/menu/?category=burgers" style="background:#fff;border:1px solid #EAE4DC;padding:0.5rem 1rem;border-radius:9999px;color:#181411;text-decoration:none;font-size:0.85rem;font-weight:600;">Crispy Chicken Burgers</a>
     </div>
   </section>
 
@@ -103,13 +103,13 @@ const menuBody = `
       <a href="/menu/?category=Gravy" style="background:#fff;border:1px solid #EAE4DC;padding:0.5rem 1.25rem;border-radius:9999px;color:#181411;text-decoration:none;font-size:0.85rem;font-weight:600;">Chicken Gravies (500g)</a>
       <a href="/menu/?category=Roti" style="background:#fff;border:1px solid #EAE4DC;padding:0.5rem 1.25rem;border-radius:9999px;color:#181411;text-decoration:none;font-size:0.85rem;font-weight:600;">Tandoori Roti &amp; Fresh Pav</a>
       <a href="/menu/?category=Snacks" style="background:#fff;border:1px solid #EAE4DC;padding:0.5rem 1.25rem;border-radius:9999px;color:#181411;text-decoration:none;font-size:0.85rem;font-weight:600;">Crispy Snacks &amp; Fries</a>
-      <a href="/menu/?category=Burgers" style="background:#fff;border:1px solid #EAE4DC;padding:0.5rem 1.25rem;border-radius:9999px;color:#181411;text-decoration:none;font-size:0.85rem;font-weight:600;">Gourmet Burgers</a>
+      <a href="/menu/?category=Burgers" style="background:#fff;border:1px solid #EAE4DC;padding:0.5rem 1.25rem;border-radius:9999px;color:#181411;text-decoration:none;font-size:0.85rem;font-weight:600;">Crispy Chicken Burgers</a>
     </div>
 
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;">
       <article style="background:#fff;border:1px solid #EAE4DC;border-radius:1rem;padding:1.5rem;">
         <h2 style="font-size:1.2rem;margin:0 0 0.5rem;color:#181411;">Chicken Keema Boneless (500g)</h2>
-        <p style="font-size:0.875rem;color:#574F4A;line-height:1.5;margin:0 0 0.75rem;">Tender boneless chicken mince cooked with aromatic whole spices, onions, and fresh cilantro. Generous 500g meal serving.</p>
+        <p style="font-size:0.875rem;color:#574F4A;line-height:1.5;margin:0 0 0.75rem;">Boneless chicken mince cooked with traditional whole spices, onions, and fresh coriander. Full 500g meal serving.</p>
         <span style="font-weight:700;color:#B84A1C;font-size:1.1rem;">₹299</span>
       </article>
       <article style="background:#fff;border:1px solid #EAE4DC;border-radius:1rem;padding:1.5rem;">
@@ -145,7 +145,7 @@ const aboutBody = `
   <section style="background:#fff;border:1px solid #EAE4DC;border-radius:1.5rem;padding:2rem;margin-bottom:2.5rem;line-height:1.7;color:#574F4A;">
     <h2 style="font-family:'DM Serif Display',Georgia,serif;font-size:1.75rem;color:#181411;margin:0 0 1rem;">Honest Food, Honest Portions</h2>
     <p>We started Bread &amp; Bite with one clear mission: when you order a chicken gravy, you should receive a real meal. While most restaurants serve 250g–300g containers that leave you wanting more, every single gravy at Bread &amp; Bite is weighed and served in generous <strong>500g family-sized portions</strong>.</p>
-    <p>Operating from our clean cloud kitchen in Taloja Phase 1, we prepare homestyle Chicken Keema, aromatic Chicken Korma, hot tandoori rotis, and fluffy ladi pavs with daily fresh chicken and authentic spices.</p>
+    <p>Operating from our clean cloud kitchen in Taloja Phase 1, we prepare homestyle Chicken Keema, rich Chicken Korma, hot tandoori rotis, and soft ladi pavs with daily fresh chicken and authentic spices.</p>
     
     <h2 style="font-family:'DM Serif Display',Georgia,serif;font-size:1.5rem;color:#181411;margin:2rem 0 1rem;">Our Cooking Philosophy</h2>
     <ul style="padding-left:1.5rem;margin:0 0 1.5rem;">
@@ -217,7 +217,7 @@ const ROUTES = [
     description: 'Explore our menu of 500g Chicken Keema, Korma gravies, tandoori rotis, pav, and burgers. Freshly cooked & delivered fast across Navi Mumbai.',
     canonical: `${SITE_URL}/menu/`,
     h1: 'Our Kitchen Menu &amp; Online Orders',
-    subtitle: 'Freshly prepared 500g non-veg gravies, tandoori rotis, pavs, and gourmet sides delivered hot across Navi Mumbai.',
+    subtitle: 'Freshly prepared 500g non-veg gravies, tandoori rotis, pavs, and sides delivered hot across Navi Mumbai.',
     bodyHtml: menuBody,
     robots: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'
   },
@@ -228,7 +228,7 @@ const ROUTES = [
     description: 'Learn about Bread & Bite cloud kitchen in Taloja Phase 1. Honest 500g chicken portions, authentic homestyle recipes, and quick local delivery.',
     canonical: `${SITE_URL}/about/`,
     h1: 'About Bread &amp; Bite Cloud Kitchen',
-    subtitle: 'Crafting generous 500g portions of homestyle non-veg delicacies in Taloja Phase 1, Navi Mumbai.',
+    subtitle: 'Serving generous 500g portions of homestyle chicken meals in Taloja Phase 1, Navi Mumbai.',
     bodyHtml: aboutBody,
     robots: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'
   },
@@ -236,10 +236,10 @@ const ROUTES = [
     path: '/reviews/',
     outDir: path.join(DIST_DIR, 'reviews'),
     title: 'Customer Reviews & Ratings | Bread & Bite Navi Mumbai',
-    description: 'Our kitchen doors just opened in Navi Mumbai! Order today and be among our first founding food critics to get featured on our Wall of Fame.',
+    description: 'We recently opened our kitchen in Navi Mumbai! Order today and share your review on WhatsApp.',
     canonical: `${SITE_URL}/reviews/`,
     h1: 'Customer Reviews &amp; Ratings',
-    subtitle: 'Read genuine reviews or be among our very first critics to share feedback on our food and delivery.',
+    subtitle: 'Read genuine customer reviews or share your feedback on our food and delivery.',
     bodyHtml: reviewsBody,
     robots: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'
   },
@@ -325,7 +325,7 @@ function renderLocationBody(loc) {
         </div>
         <div style="background:#fff;border:1px solid #EAE4DC;border-radius:1rem;padding:1.25rem;">
           <h3 style="font-size:1.1rem;margin:0 0 0.5rem;color:#181411;">Chicken Korma (500g)</h3>
-          <p style="font-size:0.85rem;color:#574F4A;line-height:1.5;margin:0 0 0.75rem;">Aromatic cashew and golden onion Mughlai gravy with tender slow-cooked chicken pieces.</p>
+          <p style="font-size:0.85rem;color:#574F4A;line-height:1.5;margin:0 0 0.75rem;">Rich cashew and onion gravy with tender chicken pieces.</p>
           <strong style="color:#B84A1C;font-size:1rem;">₹199 · Serves 2</strong>
         </div>
         <div style="background:#fff;border:1px solid #EAE4DC;border-radius:1rem;padding:1.25rem;">

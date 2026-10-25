@@ -167,7 +167,7 @@ const Home = () => {
 
                     <div className="absolute bottom-3.5 left-3.5 right-3.5 sm:bottom-5 sm:left-5 sm:right-5 text-white">
                       <span className="badge-veg bg-black/40 text-white border-white/30 text-[9px] mb-1.5 inline-block">
-                        Chef Bestseller
+                        Bestseller Dish
                       </span>
                       <h4 className="text-base sm:text-lg font-bold font-heading">Chicken Keema Boneless (500g)</h4>
                       <p className="text-[10px] sm:text-xs text-white/85 mt-0.5 leading-snug">
@@ -596,7 +596,7 @@ const Home = () => {
               },
               {
                 title: "Customer Reviews",
-                desc: "Read real reviews from our early patrons or submit your own dining feedback.",
+                desc: "See what customers are saying about our food or send your own review.",
                 path: "/reviews/",
                 badge: "Reviews",
                 icon: <FaStar className="text-[#B84A1C]" size={18} />

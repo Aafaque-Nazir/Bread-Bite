@@ -16,7 +16,7 @@ const menuItems = [
   {
     id: 2,
     name: "Chicken Korma - 500gms",
-    description: "500g tender chicken pieces slow-cooked in a thick, aromatic, mildly spiced korma gravy. Perfect with hot rotis.",
+    description: "500g chicken pieces slow-cooked in thick, tasty cashew and onion korma gravy. Perfect with hot rotis.",
     price: 199,
     category: "Gravy",
     type: "Non-Veg",
@@ -91,7 +91,7 @@ const menuItems = [
     image: "/images/plain-maggi.webp",
     isBestSeller: false,
     isNew: false,
-    tags: ["Comfort Food"]
+    tags: ["Hot & Fast"]
   },
 
   // ==================== BURGERS ====================
@@ -112,7 +112,7 @@ const menuItems = [
   {
     id: 9,
     name: "Keema Pav Meal",
-    description: "Chicken Keema Boneless (500g) + 4 Soft Pavs. The ultimate hearty comfort food meal.",
+    description: "500g Chicken Keema Boneless served with 4 soft ladi pavs. Filling meal for 2 people.",
     price: 219,
     originalPrice: 229,
     discount: "Save ₹10",
@@ -126,7 +126,7 @@ const menuItems = [
   {
     id: 10,
     name: "Chicken Korma & Roti Meal",
-    description: "Chicken Korma (500g) + 2 Hot Tandoori Rotis. Complete filling meal for lunch or dinner.",
+    description: "500g Chicken Korma served with 2 hot tandoori rotis. Complete lunch or dinner meal.",
     price: 249,
     originalPrice: 259,
     discount: "Save ₹10",
@@ -140,7 +140,7 @@ const menuItems = [
   {
     id: 11,
     name: "Burger & Fries Combo",
-    description: "1 Crispy Chicken Burger + 1 French Fries (200g). Quick and satisfying meal deal.",
+    description: "1 Crispy Chicken Burger served with hot salted French fries (200g).",
     price: 229,
     originalPrice: 248,
     discount: "Save ₹19",

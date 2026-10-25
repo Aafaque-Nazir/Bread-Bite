@@ -30,7 +30,7 @@ export const LOCATIONS = [
 
     // Hero Content
     heroTagline: 'Hot, Homestyle Meals Delivered to Your Sector',
-    heroSubtitle: 'From our cloud kitchen in Taloja Phase 1, we deliver piping hot 500g Chicken Keema, aromatic Chicken Korma, and freshly baked Tandoori Rotis straight to your doorstep across all 35 sectors of Kharghar — in just 20 to 30 minutes.',
+    heroSubtitle: 'From our cloud kitchen in Taloja Phase 1, we deliver fresh 500g Chicken Keema, rich Chicken Korma, and hot Tandoori Rotis straight to your doorstep across all 35 sectors of Kharghar — in just 20 to 30 minutes.',
 
     // Content Sections (unique per location)
     sections: [
@@ -40,7 +40,7 @@ export const LOCATIONS = [
       },
       {
         heading: 'What We Deliver to Kharghar',
-        text: 'Our menu is built for hearty meals, not fancy gimmicks. The star dishes are our Chicken Keema Boneless (500g, ₹199) — rich, slow-cooked chicken mince simmered with onions and coriander — and Chicken Korma (500g, ₹199) — tender chicken pieces in an aromatic cashew-onion Mughlai gravy. Pair either with hot Tandoori Rotis (₹30 each) or 4-pack soft Ladi Pavs (₹30) for a complete meal. We also serve Crispy Chicken Burgers (₹149), French Fries (200g, ₹99), and value meal combos like the Keema Pav Meal (₹219) that save you money without compromising portions.',
+        text: 'Our menu is built for hearty meals, not fancy gimmicks. The star dishes are our Chicken Keema Boneless (500g, ₹199) — rich, slow-cooked chicken mince simmered with onions and coriander — and Chicken Korma (500g, ₹199) — tender chicken pieces in a rich cashew-onion gravy. Pair either with hot Tandoori Rotis (₹30 each) or 4-pack soft Ladi Pavs (₹30) for a complete meal. We also serve Crispy Chicken Burgers (₹149), French Fries (200g, ₹99), and value meal combos like the Keema Pav Meal (₹219) that save you money without compromising portions.',
       },
       {
         heading: 'Delivery Coverage Across Kharghar',
@@ -105,12 +105,12 @@ export const LOCATIONS = [
 
     sections: [
       {
-        heading: 'Why Panvel Foodies Love Bread & Bite',
-        text: 'Panvel is a town that takes its food seriously — from the roadside keema stalls near the station to the sit-down joints in New Panvel. But finding generous, home-cooked quality food delivered fast was always a gap. That\'s where we come in. Our 500g Chicken Keema isn\'t the watery mince you get from most delivery apps — it\'s a thick, aromatic, bone-dry keema slow-cooked with whole spices and fresh coriander, exactly the way it\'s made in kitchens across Mumbai. At ₹199 for 500 grams, you\'re getting twice the portion of most restaurants at half the price.',
+        heading: 'Why Panvel Residents Choose Bread & Bite',
+        text: 'Panvel is a town that takes its food seriously — from the roadside keema stalls near the station to the sit-down joints in New Panvel. But finding generous, home-cooked quality food delivered fast was always a gap. That\'s where we come in. Our 500g Chicken Keema isn\'t the watery mince you get from most delivery apps — it\'s a thick, well-spiced, flavorful keema slow-cooked with whole spices and fresh coriander, exactly the way it\'s made in kitchens across Mumbai. At ₹199 for 500 grams, you\'re getting twice the portion of most restaurants at half the price.',
       },
       {
         heading: 'Our Menu for Panvel Delivery',
-        text: 'We keep it focused and we keep it honest. Chicken Keema Boneless (500g, ₹199) — our bestseller across all delivery areas. Chicken Korma (500g, ₹199) — a richer, creamier gravy for when you want something indulgent. Pair with Tandoori Rotis (₹30) baked fresh in our clay oven, or soft Ladi Pavs (₹30 for 4 pieces) for the classic keema-pav experience. Our combo meals — Keema Pav Meal at ₹219 and Korma Roti Meal at ₹249 — are complete lunch or dinner solutions. We also have Crispy Chicken Burgers and hot French Fries for lighter cravings.',
+        text: 'We keep it focused and we keep it honest. Chicken Keema Boneless (500g, ₹199) — our bestseller across all delivery areas. Chicken Korma (500g, ₹199) — a rich, creamy gravy cooked with cashews and fried onions. Pair with Tandoori Rotis (₹30) baked fresh in our clay oven, or soft Ladi Pavs (₹30 for 4 pieces) for the classic keema-pav experience. Our combo meals — Keema Pav Meal at ₹219 and Korma Roti Meal at ₹249 — are complete lunch or dinner solutions. We also have Crispy Chicken Burgers and hot French Fries for lighter cravings.',
       },
       {
         heading: 'Panvel Delivery Coverage',
@@ -241,7 +241,7 @@ export const LOCATIONS = [
       },
       {
         heading: 'What You Can Order in Kalamboli',
-        text: 'Chicken Keema Boneless (500g, ₹199) — our bestselling dish, rich and aromatic. Chicken Korma (500g, ₹199) — a milder, creamier option perfect with rotis. Chef\'s Special Chicken Gravy (500g, ₹199) — a different homestyle curry every day for variety. Tandoori Roti (₹30) and Ladi Pav (₹30 for 4) round out the meal. For something lighter, try our Crispy Chicken Burger (₹149) or crispy French Fries (200g, ₹99). All chicken is 100% Halal, fresh-sourced daily, and cooked on order.',
+        text: 'Chicken Keema Boneless (500g, ₹199) — our bestselling dish, rich and flavorful. Chicken Korma (500g, ₹199) — a milder, creamier option perfect with rotis. Chef\'s Special Chicken Gravy (500g, ₹199) — a different homestyle curry every day for variety. Tandoori Roti (₹30) and Ladi Pav (₹30 for 4) round out the meal. For something lighter, try our Crispy Chicken Burger (₹149) or crispy French Fries (200g, ₹99). All chicken is 100% Halal, fresh-sourced daily, and cooked on order.',
       },
       {
         heading: 'Delivery Areas in Kalamboli',
@@ -304,7 +304,7 @@ export const LOCATIONS = [
       },
       {
         heading: 'Menu Highlights for Taloja Delivery',
-        text: 'Our full menu is available for Taloja delivery — and since we\'re local, everything arrives at peak freshness. Chicken Keema Boneless (500g, ₹199) — our signature dish that put Bread & Bite on the map. Thick, aromatic, packed with minced chicken. Chicken Korma (500g, ₹199) — a richer, creamier curry for special dinners. Random Chicken Gravy (500g, ₹199) — a chef\'s surprise every day. Tandoori Rotis straight from the clay oven (₹30), and Ladi Pavs fresh from the bakery (₹30 for 4). Plus burgers, fries, and Maggi for those quick-snack cravings. Our Keema Pav Meal (₹219) is the most ordered combo in Taloja — it\'s a complete, satisfying dinner for two.',
+        text: 'Our full menu is available for Taloja delivery — and since we\'re local, everything arrives hot and fresh. Chicken Keema Boneless (500g, ₹199) — our signature dish that put Bread & Bite on the map. Thick, tasty, packed with chicken mince. Chicken Korma (500g, ₹199) — a richer, creamier curry for family dinners. Random Chicken Gravy (500g, ₹199) — a chef\'s surprise every day. Tandoori Rotis straight from the clay oven (₹30), and Ladi Pavs fresh from the bakery (₹30 for 4). Plus burgers, fries, and Maggi for quick snacks. Our Keema Pav Meal (₹219) is the most ordered combo in Taloja — it\'s a complete dinner for two.',
       },
       {
         heading: 'Taloja Delivery Coverage',

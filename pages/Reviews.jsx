@@ -27,12 +27,12 @@ const Reviews = () => {
     <section className="relative min-h-[calc(100vh-4.5rem)] bg-[#FAF7F2] pt-8 sm:pt-12 pb-24 px-4 sm:px-6 overflow-hidden text-[#181411]">
       <SEO
         title="Customer Reviews & Ratings | Bread & Bite Navi Mumbai"
-        description="Our kitchen doors just opened in Navi Mumbai! Order today and be among our first founding food critics to get featured on our Wall of Fame."
+        description="We recently opened our kitchen in Navi Mumbai! Order today, try our food, and share your review on WhatsApp to get featured."
         url="/reviews/"
-        keywords="bread and bite reviews, food critic navi mumbai, taloja cloud kitchen reviews, chicken keema reviews kharghar, chicken korma panvel"
+        keywords="bread and bite reviews, food review navi mumbai, taloja cloud kitchen reviews, chicken keema reviews kharghar, chicken korma panvel"
       />
 
-      {/* Ambient Artisan Glows */}
+      {/* Background Soft Glows */}
       <div className="absolute inset-0 pointer-events-none opacity-40">
         <div className="absolute top-10 right-1/4 w-[420px] h-[420px] bg-[#F4EFE6] rounded-full blur-[100px]" />
         <div className="absolute bottom-20 left-10 w-[380px] h-[380px] bg-[#FDF3ED] rounded-full blur-[100px]" />
@@ -48,19 +48,19 @@ const Reviews = () => {
         >
           {/* Heading */}
           <motion.h1 variants={fadeIn} className="text-3xl sm:text-5xl lg:text-6xl font-normal tracking-tight font-heading leading-[1.1] mb-4 text-[#181411]">
-            Our Guest Wall is <br />
+            Real Reviews From <br />
             <span className="font-italic-accent text-[#B84A1C] text-4xl sm:text-6xl lg:text-7xl">
-              Heating Up.
+              Real Customers.
             </span>
           </motion.h1>
 
           {/* Subtitle */}
           <motion.p variants={fadeIn} className="text-xs sm:text-base text-[#574F4A] max-w-xl mx-auto leading-relaxed">
-            We've just opened our kitchen doors in Navi Mumbai. Rather than showing placeholder ratings, we believe in <strong>100% genuine customer love</strong>. Be among our founding patrons and help us write our story.
+            We recently started our cloud kitchen in Navi Mumbai. Rather than showing fake ratings, we want <strong>100% genuine customer reviews</strong>. Order your meal, taste our food, and share your honest feedback.
           </motion.p>
         </motion.div>
 
-        {/* Central "First Critic Spotlight" Reserved Plaque */}
+        {/* Central Spotlight Box */}
         <motion.div
           initial={{ opacity: 0, scale: 0.97 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -79,11 +79,11 @@ const Reviews = () => {
             </div>
 
             <h2 className="text-xl sm:text-2xl font-bold font-heading text-[#181411] mb-2 leading-snug">
-              Reserved for Your First Bite
+              Tell Us How You Liked The Food
             </h2>
 
             <p className="text-xs sm:text-sm text-[#574F4A] max-w-md mx-auto leading-relaxed mb-6">
-              "Ordered our hearty 500g Chicken Keema, rich Chicken Korma, hot Tandoori Roti, soft Pav, or crispy burgers? Tell us how the flavors hit. Your review will be featured right here on our Wall of Fame."
+              "Tried our 500g Chicken Keema, Chicken Korma, hot Tandoori Roti, soft Pav, or burgers? Tell us honestly how it tasted. We share real customer feedback right here."
             </p>
 
             <div className="inline-flex flex-col sm:flex-row items-center justify-center gap-3 w-full sm:w-auto">
@@ -94,7 +94,7 @@ const Reviews = () => {
                 className="w-full sm:w-auto btn-primary py-3 px-6 text-xs uppercase tracking-wider font-bold shadow-tactile-sm justify-center"
               >
                 <FaCommentDots size={14} />
-                <span>Submit Your Review on WhatsApp</span>
+                <span>Send Review on WhatsApp</span>
               </a>
 
               <Link
@@ -114,20 +114,20 @@ const Reviews = () => {
               <span>•</span>
               <span className="flex items-center gap-1.5">
                 <FaHeart className="text-[#2A6A4E]" />
-                <span>100% Real Diners Only</span>
+                <span>100% Genuine Reviews</span>
               </span>
             </div>
           </div>
         </motion.div>
 
-        {/* 3 Founding Patron Perks Grid */}
+        {/* 3 Perks Grid */}
         <div className="mb-14 sm:mb-20">
           <div className="text-center max-w-xl mx-auto mb-8 sm:mb-10">
             <span className="text-[11px] uppercase tracking-[0.2em] font-bold text-[#B84A1C] block mb-1.5">
-              Why Review Early?
+              Why Share Feedback?
             </span>
             <h3 className="text-xl sm:text-3xl font-bold font-heading text-[#181411]">
-              The Founding Patron <span className="font-italic-accent text-[#B84A1C]">Perks</span>
+              Simple Reasons to <span className="font-italic-accent text-[#B84A1C]">Review</span>
             </h3>
           </div>
 
@@ -135,21 +135,21 @@ const Reviews = () => {
             {[
               {
                 icon: <FaUtensils className="text-[#B84A1C]" size={20} />,
-                badge: "Direct Chef Feedback",
-                title: "Shape Our Recipe",
-                desc: "Tell our head kitchen team what you loved and what we can elevate. We craft our recipes around your real palate."
+                badge: "Direct Feedback",
+                title: "Help Us Improve",
+                desc: "Tell our kitchen team what you loved and what we can make better. We cook our food based on what you actually like."
               },
               {
                 icon: <FaCamera className="text-[#2A6A4E]" size={20} />,
-                badge: "Permanent Spotlight",
-                title: "Wall of Fame Feature",
-                desc: "Send us a quick food photo with your name. You'll be forever immortalized as one of our earliest kitchen supporters."
+                badge: "Customer Photos",
+                title: "Get Featured",
+                desc: "Send us a photo of your food on WhatsApp with your name. We feature real customer photos right here on the website."
               },
               {
                 icon: <FaAward className="text-[#D97706]" size={20} />,
-                badge: "Next Order Voucher",
-                title: "Early Foodie Reward",
-                desc: "Every patron who shares an honest review within 48 hours of delivery unlocks a special discount on their next comfort meal."
+                badge: "Special Discount",
+                title: "Discount on Next Order",
+                desc: "Send us your honest feedback after your order and get a discount code on your next food order."
               }
             ].map((perk, i) => (
               <motion.div
