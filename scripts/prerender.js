@@ -26,22 +26,22 @@ const homeBody = `
       <div style="background:#fff;border:1px solid #EAE4DC;border-radius:1rem;padding:1.25rem;">
         <h3 style="font-size:1.1rem;margin:0 0 0.5rem;color:#181411;">Chicken Keema Boneless (500g)</h3>
         <p style="font-size:0.85rem;color:#574F4A;line-height:1.5;margin:0 0 0.75rem;">Generous 500g portion of tender minced chicken simmered with whole spices, caramelized onions, ginger-garlic, and fresh coriander.</p>
-        <strong style="color:#B84A1C;font-size:1rem;">₹299 · Serves 2-3</strong>
+        <strong style="color:#B84A1C;font-size:1rem;">₹199 · Serves 2</strong>
       </div>
       <div style="background:#fff;border:1px solid #EAE4DC;border-radius:1rem;padding:1.25rem;">
         <h3 style="font-size:1.1rem;margin:0 0 0.5rem;color:#181411;">Chicken Korma (500g)</h3>
         <p style="font-size:0.85rem;color:#574F4A;line-height:1.5;margin:0 0 0.75rem;">Rich cashew and fried onion gravy with tender chicken pieces. Mildly spiced and delicious with hot rotis.</p>
-        <strong style="color:#B84A1C;font-size:1rem;">₹299 · Serves 2-3</strong>
+        <strong style="color:#B84A1C;font-size:1rem;">₹199 · Serves 2</strong>
       </div>
       <div style="background:#fff;border:1px solid #EAE4DC;border-radius:1rem;padding:1.25rem;">
         <h3 style="font-size:1.1rem;margin:0 0 0.5rem;color:#181411;">Keema Pav Meal Combo</h3>
         <p style="font-size:0.85rem;color:#574F4A;line-height:1.5;margin:0 0 0.75rem;">Generous 500g Chicken Keema served with 4 soft bakery ladi pavs. The ultimate hearty meal combo for lunch or dinner.</p>
-        <strong style="color:#B84A1C;font-size:1rem;">₹329 · Combo Deal</strong>
+        <strong style="color:#B84A1C;font-size:1rem;">₹219 · Combo Deal</strong>
       </div>
       <div style="background:#fff;border:1px solid #EAE4DC;border-radius:1rem;padding:1.25rem;">
         <h3 style="font-size:1.1rem;margin:0 0 0.5rem;color:#181411;">Chicken Korma &amp; Roti Meal</h3>
         <p style="font-size:0.85rem;color:#574F4A;line-height:1.5;margin:0 0 0.75rem;">500g rich Chicken Korma paired with 2 hot, whole wheat tandoori rotis fresh from our clay oven.</p>
-        <strong style="color:#B84A1C;font-size:1rem;">₹329 · Combo Deal</strong>
+        <strong style="color:#B84A1C;font-size:1rem;">₹249 · Combo Deal</strong>
       </div>
     </div>
   </section>
@@ -110,32 +110,32 @@ const menuBody = `
       <article style="background:#fff;border:1px solid #EAE4DC;border-radius:1rem;padding:1.5rem;">
         <h2 style="font-size:1.2rem;margin:0 0 0.5rem;color:#181411;">Chicken Keema Boneless (500g)</h2>
         <p style="font-size:0.875rem;color:#574F4A;line-height:1.5;margin:0 0 0.75rem;">Boneless chicken mince cooked with traditional whole spices, onions, and fresh coriander. Full 500g meal serving.</p>
-        <span style="font-weight:700;color:#B84A1C;font-size:1.1rem;">₹299</span>
+        <span style="font-weight:700;color:#B84A1C;font-size:1.1rem;">₹199</span>
       </article>
       <article style="background:#fff;border:1px solid #EAE4DC;border-radius:1rem;padding:1.5rem;">
         <h2 style="font-size:1.2rem;margin:0 0 0.5rem;color:#181411;">Chicken Korma (500g)</h2>
         <p style="font-size:0.875rem;color:#574F4A;line-height:1.5;margin:0 0 0.75rem;">Traditional rich Mughlai chicken curry slow-cooked with curd, fried onions, and whole spices in a generous 500g bowl.</p>
-        <span style="font-weight:700;color:#B84A1C;font-size:1.1rem;">₹299</span>
+        <span style="font-weight:700;color:#B84A1C;font-size:1.1rem;">₹199</span>
       </article>
       <article style="background:#fff;border:1px solid #EAE4DC;border-radius:1rem;padding:1.5rem;">
         <h2 style="font-size:1.2rem;margin:0 0 0.5rem;color:#181411;">Keema Pav Meal Combo</h2>
         <p style="font-size:0.875rem;color:#574F4A;line-height:1.5;margin:0 0 0.75rem;">A hearty 500g portion of Chicken Keema paired with 4 soft bakery ladi pavs. Freshly prepared comfort food.</p>
-        <span style="font-weight:700;color:#B84A1C;font-size:1.1rem;">₹329</span>
+        <span style="font-weight:700;color:#B84A1C;font-size:1.1rem;">₹219</span>
       </article>
       <article style="background:#fff;border:1px solid #EAE4DC;border-radius:1rem;padding:1.5rem;">
         <h2 style="font-size:1.2rem;margin:0 0 0.5rem;color:#181411;">Chicken Korma &amp; Roti Meal</h2>
         <p style="font-size:0.875rem;color:#574F4A;line-height:1.5;margin:0 0 0.75rem;">Rich 500g Chicken Korma served with 2 freshly made tandoori rotis. Complete lunch and dinner value deal.</p>
-        <span style="font-weight:700;color:#B84A1C;font-size:1.1rem;">₹329</span>
+        <span style="font-weight:700;color:#B84A1C;font-size:1.1rem;">₹249</span>
       </article>
       <article style="background:#fff;border:1px solid #EAE4DC;border-radius:1rem;padding:1.5rem;">
         <h2 style="font-size:1.2rem;margin:0 0 0.5rem;color:#181411;">Tandoori Roti</h2>
         <p style="font-size:0.875rem;color:#574F4A;line-height:1.5;margin:0 0 0.75rem;">Freshly baked whole wheat flatbread made to order in our clay tandoor oven.</p>
-        <span style="font-weight:700;color:#B84A1C;font-size:1.1rem;">₹15</span>
+        <span style="font-weight:700;color:#B84A1C;font-size:1.1rem;">₹30</span>
       </article>
       <article style="background:#fff;border:1px solid #EAE4DC;border-radius:1rem;padding:1.5rem;">
-        <h2 style="font-size:1.2rem;margin:0 0 0.5rem;color:#181411;">Soft Bakery Ladi Pav (Pair)</h2>
-        <p style="font-size:0.875rem;color:#574F4A;line-height:1.5;margin:0 0 0.75rem;">Pillowy soft traditional Mumbai ladi pavs, perfect for scooping up rich keema and korma gravies.</p>
-        <span style="font-weight:700;color:#B84A1C;font-size:1.1rem;">₹15</span>
+        <h2 style="font-size:1.2rem;margin:0 0 0.5rem;color:#181411;">Soft Bakery Ladi Pav (4 pcs)</h2>
+        <p style="font-size:0.875rem;color:#574F4A;line-height:1.5;margin:0 0 0.75rem;">Set of 4 soft golden Mumbai ladi pavs, perfect for scooping up keema and korma gravies.</p>
+        <span style="font-weight:700;color:#B84A1C;font-size:1.1rem;">₹30</span>
       </article>
     </div>
   </section>
