@@ -7,7 +7,7 @@ import { useKitchenStatus } from '../hooks/useKitchenStatus';
 
 const CartSidebar = () => {
   const { isCartOpen, toggleCart, cart, updateQuantity, cartTotal, clearCart } = useCart();
-  const { isOpen: isKitchenOpen } = useKitchenStatus();
+  const { isOpen: isKitchenOpen, shortStatus } = useKitchenStatus();
 
   useEffect(() => {
     if (isCartOpen) {
@@ -191,10 +191,10 @@ const CartSidebar = () => {
                   {!isKitchenOpen && (
                     <div className="bg-[#FAF7F2] border border-[#EAE4DC] rounded-xl p-3 text-left">
                       <span className="text-xs font-bold text-[#181411] tracking-wide block">
-                        Kitchen Closed for the Night
+                        Kitchen Currently Resting
                       </span>
                       <p className="text-[11px] text-[#574F4A] mt-1 leading-snug">
-                        Hours are 10:00 AM – 9:00 PM IST. Items remain saved in your bag, but checkout unlocks at 10:00 AM.
+                        2 Daily Slots: <strong>11:00 AM – 3:15 PM</strong> & <strong>7:00 PM – 9:15 PM</strong>. Items remain saved in your bag; checkout unlocks during open slots.
                       </p>
                     </div>
                   )}
@@ -214,7 +214,7 @@ const CartSidebar = () => {
                       disabled
                       className="w-full py-3.5 text-xs uppercase tracking-wider font-bold rounded-xl bg-[#EAE4DC] text-[#8C827A] cursor-not-allowed flex items-center justify-center gap-2 border border-[#DDD5CA]"
                     >
-                      <span>Reopens at 10:00 AM</span>
+                      <span>{shortStatus ? `Reopens (${shortStatus})` : "Reopens Next Slot"}</span>
                     </button>
                   )}
 

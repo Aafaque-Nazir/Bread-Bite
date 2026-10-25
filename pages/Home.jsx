@@ -9,6 +9,7 @@ import menuItems from "../data/MenuItems";
 import { useCart } from '../src/context/CartContext';
 import ProductModal from '../src/components/ProductModal';
 import { FAQS } from '../data/faqs';
+import { LOCATIONS } from '../data/locations';
 
 const HOME_COMBOS = [
   {
@@ -84,15 +85,15 @@ const Home = () => {
 
               {/* Main Headline */}
               <motion.h1 variants={fadeUp} className="text-3xl sm:text-4xl lg:text-[3.25rem] xl:text-[3.65rem] font-normal text-[#181411] leading-[1.08] tracking-tight font-heading">
-                Chicken Keema, Korma, <br />
+                Homestyle Flavours, <br />
                 <span className="font-italic-accent text-3xl sm:text-5xl lg:text-[3.5rem] xl:text-[3.9rem] text-[#B84A1C] font-normal tracking-wide">
-                  Hot Roti & Soft Pav.
+                  Honest 500g Bowls.
                 </span>
               </motion.h1>
 
               {/* Subheadline (Clean, no fancy jargon) */}
               <motion.p variants={fadeUp} className="text-xs sm:text-sm lg:text-[0.95rem] text-[#574F4A] max-w-lg leading-relaxed">
-                Homestyle chicken gravies in generous 500g portions, freshly baked tandoori rotis, soft ladi pavs, burgers, and fries. Cooked hot on order and delivered to your doorstep.
+                Slow-cooked Mughlai chicken gravies in hearty 500g family portions, fresh clay-oven tandoori rotis, and bakery-soft pavs — cooked on order and delivered hot across Navi Mumbai.
               </motion.p>
 
               {/* Action Buttons */}
@@ -604,7 +605,7 @@ const Home = () => {
                 title: "Contact & Location",
                 desc: "Order directly on WhatsApp, check kitchen hours, and get delivery updates in Navi Mumbai.",
                 path: "/contact/",
-                badge: "10 AM - 9 PM",
+                badge: "2 Daily Slots",
                 icon: <FaMapMarkerAlt className="text-[#2A6A4E]" size={18} />
               }
             ].map((p) => (
@@ -636,6 +637,68 @@ const Home = () => {
                 </div>
               </NavLink>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════════════════════════
+          DELIVERING ACROSS NAVI MUMBAI — Local Hubs Section
+      ═══════════════════════════════════════════════════════════════════ */}
+      <section className="py-16 sm:py-20 bg-white relative border-b border-[#EAE4DC]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-12">
+            <span className="text-[11px] uppercase tracking-[0.2em] font-bold text-[#B84A1C] block mb-2">
+              Fast Doorstep Delivery
+            </span>
+            <h2 className="text-2xl sm:text-4xl font-bold text-[#181411] font-heading tracking-tight leading-tight">
+              Delivering Across <span className="font-italic-accent text-[#B84A1C]">Navi Mumbai</span>
+            </h2>
+            <p className="text-[#574F4A] mt-2 text-xs sm:text-sm leading-relaxed">
+              Based in Taloja Phase 1, our cloud kitchen reaches Kharghar, Panvel, Kamothe, Kalamboli, and Belapur in 10 to 35 minutes with piping hot food.
+            </p>
+          </div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {LOCATIONS.map((loc) => (
+              <NavLink
+                key={loc.slug}
+                to={`/${loc.slug}/`}
+                className="group artisan-card rounded-2xl p-5 sm:p-6 bg-[#FAF7F2] hover:bg-white hover:border-[#B84A1C] hover:shadow-tactile-md transition-all duration-300 flex flex-col justify-between"
+              >
+                <div>
+                  <div className="flex items-center justify-between mb-3">
+                    <span className="inline-flex items-center gap-1.5 text-xs font-bold text-[#181411] font-heading">
+                      <FaMapMarkerAlt className="text-[#B84A1C]" size={13} />
+                      {loc.name}
+                    </span>
+                    <span className="inline-flex items-center gap-1 text-[11px] font-bold text-[#2A6A4E] bg-[#EEF6F2] px-2.5 py-0.5 rounded-full border border-[#2A6A4E]/20">
+                      <FaMotorcycle size={11} />
+                      {loc.deliveryTime} mins
+                    </span>
+                  </div>
+
+                  <p className="text-xs text-[#574F4A] leading-relaxed line-clamp-2 mb-3">
+                    {loc.heroTagline}
+                  </p>
+
+                  <p className="text-[11px] text-[#8C827A] line-clamp-1">
+                    Coverage: {loc.landmarks.slice(0, 3).join(', ')}...
+                  </p>
+                </div>
+
+                <div className="pt-4 mt-4 border-t border-[#EAE4DC] flex items-center justify-between text-xs font-bold text-[#B84A1C]">
+                  <span>Order to {loc.name}</span>
+                  <FaArrowRight size={10} className="group-hover:translate-x-1 transition-transform" />
+                </div>
+              </NavLink>
+            ))}
+          </div>
+
+          <div className="mt-8 text-center">
+            <span className="inline-flex items-center gap-2 text-xs text-[#574F4A] bg-[#FAF7F2] border border-[#EAE4DC] px-4 py-2 rounded-full font-medium">
+              <FaCheckCircle className="text-[#2A6A4E]" size={12} />
+              Free delivery on all orders above ₹499 across all listed areas
+            </span>
           </div>
         </div>
       </section>
@@ -738,7 +801,7 @@ const Home = () => {
           </div>
 
           <p className="text-[11px] text-[#8C827A] mt-6">
-            Open daily: 10:00 AM – 9:00 PM · Free delivery on ₹499+ across Taloja, Kharghar, Panvel & Belapur
+            Daily slots: 11:00 AM – 3:15 PM & 7:00 PM – 9:15 PM · Free delivery on ₹499+ across Taloja, Kharghar, Panvel & Belapur
           </p>
         </div>
       </section>

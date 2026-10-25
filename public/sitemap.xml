@@ -7,7 +7,7 @@
   <!-- Homepage -->
   <url>
     <loc>https://breadandbite.in/</loc>
-    <lastmod>2026-10-20</lastmod>
+    <lastmod>2026-10-25</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -15,15 +15,58 @@
   <!-- Menu Page -->
   <url>
     <loc>https://breadandbite.in/menu/</loc>
-    <lastmod>2026-10-20</lastmod>
+    <lastmod>2026-10-25</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.95</priority>
+  </url>
+
+  <!-- Location Landing Pages (Local SEO Navi Mumbai) -->
+  <url>
+    <loc>https://breadandbite.in/kharghar/</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+  </url>
+
+  <url>
+    <loc>https://breadandbite.in/panvel/</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+  </url>
+
+  <url>
+    <loc>https://breadandbite.in/kamothe/</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+  </url>
+
+  <url>
+    <loc>https://breadandbite.in/kalamboli/</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+  </url>
+
+  <url>
+    <loc>https://breadandbite.in/taloja/</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+  </url>
+
+  <url>
+    <loc>https://breadandbite.in/cbd-belapur/</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
   </url>
   
   <!-- Customer Reviews Page -->
   <url>
     <loc>https://breadandbite.in/reviews/</loc>
-    <lastmod>2026-10-20</lastmod>
+    <lastmod>2026-10-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
@@ -31,7 +74,7 @@
   <!-- About Page -->
   <url>
     <loc>https://breadandbite.in/about/</loc>
-    <lastmod>2026-10-20</lastmod>
+    <lastmod>2026-10-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.80</priority>
   </url>
@@ -39,7 +82,7 @@
   <!-- Contact Page -->
   <url>
     <loc>https://breadandbite.in/contact/</loc>
-    <lastmod>2026-10-20</lastmod>
+    <lastmod>2026-10-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.80</priority>
   </url>

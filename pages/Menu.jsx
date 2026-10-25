@@ -1,8 +1,9 @@
 import React, { useState, useMemo, useEffect } from "react";
 import { useCart } from '../src/context/CartContext';
 import { motion, AnimatePresence } from "framer-motion";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams, Link } from "react-router-dom";
 import menuItems, { CATEGORIES_DATA } from "../data/MenuItems";
+import { LOCATIONS } from "../data/locations";
 import { FaPlus, FaMinus, FaTrash, FaSearch, FaTimes } from "react-icons/fa";
 import ProductModal from '../src/components/ProductModal';
 import SEO from '../src/components/SEO';
@@ -12,7 +13,7 @@ import { FaClock } from 'react-icons/fa';
 
 const Menu = () => {
   const { addToCart, updateQuantity, cart } = useCart();
-  const { isOpen: isKitchenOpen } = useKitchenStatus();
+  const { isOpen: isKitchenOpen, shortStatus } = useKitchenStatus();
   const [searchParams, setSearchParams] = useSearchParams();
   const categoryParam = searchParams.get("category");
 
@@ -122,10 +123,10 @@ const Menu = () => {
         {!isKitchenOpen && (
           <div className="bg-white border border-[#EAE4DC] rounded-2xl p-4 mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs shadow-2xs">
             <p className="text-[#574F4A] leading-relaxed">
-              <strong className="text-[#181411] font-semibold">Kitchen resting after 9:00 PM:</strong> Explore our menu and prepare your bag; online orders reopen daily at 10:00 AM IST.
+              <strong className="text-[#181411] font-semibold">Kitchen resting ({shortStatus}):</strong> Explore our menu and prepare your bag; online orders reopen during operational slots.
             </p>
             <span className="text-[11px] font-bold text-[#8C827A] uppercase tracking-wider shrink-0 self-start sm:self-auto">
-              Hours: 10 AM – 9 PM
+              Slots: 11am–3:15pm & 7pm–9:15pm
             </span>
           </div>
         )}
@@ -425,6 +426,40 @@ const Menu = () => {
             </button>
           </div>
         )}
+
+        {/* Navi Mumbai Delivery Locations Banner */}
+        <div className="mt-16 artisan-card rounded-3xl p-6 sm:p-8 bg-white border border-[#EAE4DC]">
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-5 pb-4 border-b border-[#EAE4DC]">
+            <div>
+              <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#B84A1C] block">
+                Local Delivery Coverage
+              </span>
+              <h3 className="text-xl font-bold font-heading text-[#181411]">
+                Delivering Fresh to Your Area in Navi Mumbai
+              </h3>
+            </div>
+            <span className="text-xs text-[#2A6A4E] font-bold bg-[#EEF6F2] px-3 py-1 rounded-full border border-[#2A6A4E]/20 self-start md:self-auto">
+              ⚡ 20–35 Min Doorstep Delivery
+            </span>
+          </div>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2.5 text-xs">
+            {LOCATIONS.map((loc) => (
+              <Link
+                key={loc.slug}
+                to={`/${loc.slug}/`}
+                className="p-3 rounded-2xl bg-[#FAF7F2] border border-[#EAE4DC] hover:border-[#B84A1C] hover:bg-white transition-all text-center group"
+              >
+                <strong className="block text-[#181411] group-hover:text-[#B84A1C] font-semibold text-xs mb-0.5">
+                  {loc.name}
+                </strong>
+                <span className="text-[10px] text-[#8C827A] block">
+                  {loc.deliveryTime} mins
+                </span>
+              </Link>
+            ))}
+          </div>
+        </div>
       </div>
 
       <ProductModal

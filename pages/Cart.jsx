@@ -10,7 +10,7 @@ import ImageWithLoader from '../src/components/ImageWithLoader';
 
 const Cart = () => {
   const { cart, removeFromCart, updateQuantity, cartTotal, clearCart } = useCart();
-  const { isOpen: isKitchenOpen } = useKitchenStatus();
+  const { isOpen: isKitchenOpen, shortStatus } = useKitchenStatus();
   const navigate = useNavigate();
   const [details, setDetails] = useState({
     name: '',
@@ -43,7 +43,7 @@ const Cart = () => {
 
   const handleCheckout = () => {
     if (!isKitchenOpen) {
-      toast.error("Our kitchen is currently closed (10:00 AM - 9:00 PM). Please visit at 10:00 AM!");
+      toast.error(`Our kitchen is resting. Daily slots: 11:00 AM – 3:15 PM & 7:00 PM – 9:15 PM (${shortStatus})`);
       return;
     }
 
@@ -155,10 +155,10 @@ const Cart = () => {
           <div className="artisan-card rounded-2xl p-4 sm:p-5 bg-white border border-[#EAE4DC] mb-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 shadow-xs">
             <div>
               <h3 className="text-sm font-bold text-[#181411] font-heading">
-                Kitchen Closed for the Night
+                Kitchen Currently Resting
               </h3>
               <p className="text-xs text-[#574F4A] mt-1 leading-relaxed">
-                Operating hours: <strong>10:00 AM – 9:00 PM IST</strong>. Your items remain saved in your bag, but online checkout will unlock at 10:00 AM.
+                Daily slots: <strong>Lunch: 11:00 AM – 3:15 PM</strong> & <strong>Dinner: 7:00 PM – 9:15 PM IST</strong>. Your items remain saved in your bag; checkout unlocks during open slots ({shortStatus}).
               </p>
             </div>
             <a
@@ -410,10 +410,10 @@ const Cart = () => {
                       disabled
                       className="w-full py-4 rounded-xl bg-[#2C2723] text-[#8C827A] border border-white/10 font-bold text-xs uppercase tracking-wider cursor-not-allowed flex items-center justify-center gap-2"
                     >
-                      <span>Reopens Daily at 10:00 AM</span>
+                      <span>{shortStatus ? `Reopens (${shortStatus})` : "Reopens Next Slot"}</span>
                     </button>
                     <p className="text-center text-[10px] text-[#A89E94] leading-relaxed">
-                      Online order checkout reopens at 10:00 AM IST.
+                      Daily Slots: 11:00 AM – 3:15 PM & 7:00 PM – 9:15 PM IST.
                     </p>
                   </div>
                 )}

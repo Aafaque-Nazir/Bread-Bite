@@ -86,8 +86,14 @@ const SEO = ({
         {
           '@type': 'OpeningHoursSpecification',
           dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
-          opens: '10:00',
-          closes: '21:00',
+          opens: '11:00',
+          closes: '15:15',
+        },
+        {
+          '@type': 'OpeningHoursSpecification',
+          dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+          opens: '19:00',
+          closes: '21:15',
         },
       ],
       aggregateRating: {
@@ -232,7 +238,98 @@ const SEO = ({
           name: 'Contact & Orders',
           url: `${SITE_URL}/contact/`,
         },
+        {
+          '@type': 'SiteNavigationElement',
+          position: 5,
+          name: 'Food Delivery in Kharghar',
+          url: `${SITE_URL}/kharghar/`,
+        },
+        {
+          '@type': 'SiteNavigationElement',
+          position: 6,
+          name: 'Food Delivery in Panvel',
+          url: `${SITE_URL}/panvel/`,
+        },
+        {
+          '@type': 'SiteNavigationElement',
+          position: 7,
+          name: 'Food Delivery in Kamothe',
+          url: `${SITE_URL}/kamothe/`,
+        },
+        {
+          '@type': 'SiteNavigationElement',
+          position: 8,
+          name: 'Food Delivery in Taloja',
+          url: `${SITE_URL}/taloja/`,
+        },
       ],
+    },
+
+    // 4. DeliveryService Schema (Express Doorstep Delivery in Navi Mumbai)
+    {
+      '@type': 'DeliveryService',
+      '@id': `${SITE_URL}/#delivery-service`,
+      name: 'Bread & Bite Express Food Delivery Navi Mumbai',
+      provider: { '@id': `${SITE_URL}/#restaurant` },
+      areaServed: [
+        { '@type': 'AdministrativeArea', name: 'Kharghar', postalCode: '410210' },
+        { '@type': 'AdministrativeArea', name: 'Panvel', postalCode: '410206' },
+        { '@type': 'AdministrativeArea', name: 'Kamothe', postalCode: '410209' },
+        { '@type': 'AdministrativeArea', name: 'Kalamboli', postalCode: '410218' },
+        { '@type': 'AdministrativeArea', name: 'Taloja Phase 1 & 2', postalCode: '410208' },
+        { '@type': 'AdministrativeArea', name: 'CBD Belapur', postalCode: '400614' },
+        { '@type': 'City', name: 'Navi Mumbai' },
+      ],
+    },
+
+    // 5. Individual Product Schemas for Google Rich Product Search Snippets
+    {
+      '@type': 'Product',
+      '@id': `${SITE_URL}/#product-chicken-keema`,
+      name: 'Chicken Keema Boneless (500g)',
+      image: `${SITE_URL}/images/chicken-keema.webp`,
+      description: 'Generous 500g slow-cooked boneless chicken mince with roasted spices, caramelized onions, and fresh coriander. Halal certified.',
+      brand: { '@type': 'Brand', name: 'Bread & Bite' },
+      offers: {
+        '@type': 'Offer',
+        price: '199',
+        priceCurrency: 'INR',
+        availability: 'https://schema.org/InStock',
+        url: `${SITE_URL}/menu/?category=Gravy`,
+        seller: { '@id': `${SITE_URL}/#restaurant` },
+      },
+    },
+    {
+      '@type': 'Product',
+      '@id': `${SITE_URL}/#product-chicken-korma`,
+      name: 'Chicken Korma (500g)',
+      image: `${SITE_URL}/images/chicken-korma.webp`,
+      description: 'Aromatic cashew and golden onion Mughlai gravy with tender slow-cooked chicken pieces in 500g portion.',
+      brand: { '@type': 'Brand', name: 'Bread & Bite' },
+      offers: {
+        '@type': 'Offer',
+        price: '199',
+        priceCurrency: 'INR',
+        availability: 'https://schema.org/InStock',
+        url: `${SITE_URL}/menu/?category=Gravy`,
+        seller: { '@id': `${SITE_URL}/#restaurant` },
+      },
+    },
+    {
+      '@type': 'Product',
+      '@id': `${SITE_URL}/#product-keema-pav-meal`,
+      name: 'Keema Pav Meal Combo',
+      image: `${SITE_URL}/images/keema-pav-meal.jpg`,
+      description: '500g Chicken Keema Boneless + 4 soft bakery ladi pavs. Complete lunch or dinner combo meal.',
+      brand: { '@type': 'Brand', name: 'Bread & Bite' },
+      offers: {
+        '@type': 'Offer',
+        price: '219',
+        priceCurrency: 'INR',
+        availability: 'https://schema.org/InStock',
+        url: `${SITE_URL}/menu/?category=Combos`,
+        seller: { '@id': `${SITE_URL}/#restaurant` },
+      },
     },
   ];
 
@@ -309,6 +406,8 @@ const SEO = ({
       {keywords && <meta name="keywords" content={keywords} />}
       <meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'} />
       <link rel="canonical" href={canonicalUrl} />
+      <link rel="alternate" hrefLang="en-IN" href={canonicalUrl} />
+      <link rel="alternate" hrefLang="x-default" href={canonicalUrl} />
 
       {/* Open Graph / Facebook */}
       <meta property="og:type" content={type} />

@@ -14,9 +14,11 @@ import FloatingCartBtn from './components/FloatingCartBtn';
 import CartSidebar from './components/CartSidebar';
 import Cart from '../pages/Cart';
 import Reviews from '../pages/Reviews';
+import LocationPage from '../pages/LocationPage';
 import ScrollToTop from './components/ScrollToTop';
 import SmoothScroll from './components/SmoothScroll';
 import KitchenStatusBanner from './components/KitchenStatusBanner';
+import { LOCATION_SLUGS } from '../data/locations';
 
 function App() {
   return (
@@ -43,6 +45,15 @@ function App() {
             <Route path="/contact/" element={<Contact />} />
             <Route path="/thank-you" element={<TQ />} />
             <Route path="/thank-you/" element={<TQ />} />
+
+            {/* Location Landing Pages for Navi Mumbai Local SEO */}
+            {LOCATION_SLUGS.map((slug) => (
+              <React.Fragment key={slug}>
+                <Route path={`/${slug}`} element={<LocationPage />} />
+                <Route path={`/${slug}/`} element={<LocationPage />} />
+              </React.Fragment>
+            ))}
+
             <Route path="*" element={<NotFound />} />
           </Routes>
         </main>

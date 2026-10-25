@@ -179,7 +179,7 @@ const ProductModal = ({ item, isOpen, onClose }) => {
 
                 {!isKitchenOpen && (
                   <p className="text-[10px] text-[#8C827A] text-center mt-2.5 font-medium">
-                    Kitchen opens 10:00 AM · Item saved in bag for morning checkout
+                    Daily Slots: 11:00 AM – 3:15 PM & 7:00 PM – 9:15 PM · Saved for checkout
                   </p>
                 )}
               </div>

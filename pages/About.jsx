@@ -130,6 +130,72 @@ const About = () => {
         </div>
 
         {/* ═══════════════════════════════════════════════════════════════════
+            OUR STORY — Why 500 Grams Matters
+        ═══════════════════════════════════════════════════════════════════ */}
+        <div className="mb-16 sm:mb-24 grid lg:grid-cols-12 gap-8 items-center">
+          <div className="lg:col-span-7 artisan-card rounded-3xl p-6 sm:p-10 bg-white space-y-4">
+            <span className="text-[11px] uppercase tracking-[0.2em] font-bold text-[#B84A1C] block">
+              The Bread & Bite Story
+            </span>
+            <h2 className="text-2xl sm:text-3xl font-heading text-[#181411]">
+              Born in Taloja, Built for <span className="font-italic-accent text-[#B84A1C]">Real Appetites</span>
+            </h2>
+            <div className="space-y-3.5 text-xs sm:text-sm text-[#574F4A] leading-relaxed">
+              <p>
+                Have you ever ordered a non-veg meal online, opened the container, and felt cheated? In most commercial food delivery apps, chicken gravies arrive in small 200g–250g plastic tubs — filled mostly with watery gravy and two tiny pieces of meat. By the time you dip your second roti or pav, the food is already over.
+              </p>
+              <p>
+                We started <strong>Bread & Bite</strong> in Sector 11, Taloja Phase 1, to fix this exact problem. Our core rule is simple: <em>every single chicken gravy is cooked and weighed in a generous 500-gram portion</em>. Whether you choose our signature <Link to="/menu/?category=Gravy" className="text-[#B84A1C] underline font-semibold hover:text-[#8C3413]">Chicken Keema Boneless (500g)</Link> or our rich Mughlai <Link to="/menu/?category=Gravy" className="text-[#B84A1C] underline font-semibold hover:text-[#8C3413]">Chicken Korma (500g)</Link>, you receive a substantial, wholesome meal that comfortably satisfies two adults.
+              </p>
+              <p>
+                We do not cut corners with pre-cooked frozen bases. Our chicken is 100% Halal certified, bought fresh every single morning from certified local vendors, marinated in authentic ground spices, and cooked on order.
+              </p>
+            </div>
+
+            <div className="pt-2">
+              <Link
+                to="/menu/"
+                className="btn-primary inline-flex py-3 px-6 text-xs uppercase tracking-wider font-bold"
+              >
+                <span>Explore Our Full Menu</span>
+              </Link>
+            </div>
+          </div>
+
+          <div className="lg:col-span-5 artisan-card rounded-3xl p-6 sm:p-8 bg-[#FAF7F2] border border-[#EAE4DC] space-y-4">
+            <h3 className="text-lg font-bold font-heading text-[#181411]">
+              Serving These Navi Mumbai Areas
+            </h3>
+            <p className="text-xs text-[#574F4A] leading-relaxed">
+              From our cloud kitchen in Taloja, we deliver fresh homestyle meals across Navi Mumbai within 10 to 35 minutes:
+            </p>
+            <ul className="space-y-2 text-xs">
+              {[
+                { name: 'Kharghar', path: '/kharghar/', time: '20–30 min', note: 'All Sectors 1–35, Central Park, Station' },
+                { name: 'Panvel', path: '/panvel/', time: '25–35 min', note: 'Old & New Panvel, Khandeshwar' },
+                { name: 'Kamothe', path: '/kamothe/', time: '20–30 min', note: 'All sectors near Mansarovar' },
+                { name: 'Kalamboli', path: '/kalamboli/', time: '25–35 min', note: 'Steel Market & residential sectors' },
+                { name: 'Taloja', path: '/taloja/', time: '10–20 min', note: 'Phase 1 & 2, MIDC (Kitchen Base)' },
+                { name: 'CBD Belapur', path: '/cbd-belapur/', time: '30–40 min', note: 'Sectors 1–15, NMMC, Palm Beach' },
+              ].map((area) => (
+                <li key={area.name}>
+                  <Link
+                    to={area.path}
+                    className="flex items-center justify-between p-2 rounded-xl bg-white border border-[#EAE4DC] hover:border-[#B84A1C] hover:text-[#B84A1C] transition-colors"
+                  >
+                    <div>
+                      <strong className="text-[#181411] block">{area.name} Delivery</strong>
+                      <span className="text-[10px] text-[#8C827A]">{area.note}</span>
+                    </div>
+                    <span className="text-[11px] font-bold text-[#2A6A4E] shrink-0">{area.time}</span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        {/* ═══════════════════════════════════════════════════════════════════
             OUR COMMITMENT / VALUES
         ═══════════════════════════════════════════════════════════════════ */}
         <div className="mb-16 sm:mb-24">

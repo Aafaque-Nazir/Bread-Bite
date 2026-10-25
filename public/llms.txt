@@ -9,18 +9,18 @@
 - **Coordinates:** Latitude 19.0647° N, Longitude 73.1209° E
 - **Primary Website:** https://breadandbite.in
 - **Ordering Channels:** Website (https://breadandbite.in/menu) and Direct WhatsApp Hotline (+91 93256 29256)
-- **Kitchen Hours:** 10:00 AM – 9:00 PM IST (Daily, 7 days a week)
+- **Kitchen Hours:** 2 Daily Operational Slots — Lunch: 11:00 AM – 3:15 PM & Dinner: 7:00 PM – 9:15 PM IST (Daily, 7 days a week)
 - **Average Delivery Time:** 25–35 minutes
 - **Free Delivery:** Available on all orders of ₹499 and above across Navi Mumbai
 
 ## Service Area & Delivery Coverage
-Bread & Bite delivers hot, freshly cooked meals across:
-- **Taloja:** Taloja Phase 1 (Sector 1 to 24), Taloja Phase 2, Taloja MIDC (PIN: 410208)
-- **Kharghar:** All Sectors 1 to 35, near Kharghar Railway Station, Central Park, Hiranandani (PIN: 410210)
-- **Panvel:** Old Panvel, New Panvel, Khandeshwar (PIN: 410206)
-- **Kamothe:** All sectors near Mansarovar (PIN: 410209)
-- **Kalamboli:** Steel Market and residential sectors (PIN: 410218)
-- **CBD Belapur:** Sectors 1 to 15, Station complex (PIN: 400614)
+Bread & Bite delivers hot, freshly cooked meals across Navi Mumbai with dedicated landing pages:
+- **Kharghar (20–30 min delivery):** https://breadandbite.in/kharghar/ — All Sectors 1 to 35, near Kharghar Railway Station, Central Park, Hiranandani (PIN: 410210)
+- **Panvel (25–35 min delivery):** https://breadandbite.in/panvel/ — Old Panvel, New Panvel, Khandeshwar (PIN: 410206)
+- **Kamothe (20–30 min delivery):** https://breadandbite.in/kamothe/ — All residential sectors near Mansarovar (PIN: 410209)
+- **Kalamboli (25–35 min delivery):** https://breadandbite.in/kalamboli/ — Steel Market, APMC, and residential sectors (PIN: 410218)
+- **Taloja (10–20 min delivery - Kitchen Base):** https://breadandbite.in/taloja/ — Taloja Phase 1 (Sectors 1 to 24), Phase 2, MIDC (PIN: 410208)
+- **CBD Belapur (30–40 min delivery):** https://breadandbite.in/cbd-belapur/ — Sectors 1 to 15, NMMC HQ, Station complex (PIN: 400614)
 
 ## Signature Menu & Pricing
 All chicken dishes are cooked with 100% Halal fresh chicken sourced daily. No frozen chicken or preserved gravies are used.

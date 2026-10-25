@@ -1,14 +1,15 @@
 import React from 'react';
 import { FaInstagram, FaWhatsapp, FaMapMarkerAlt, FaPhoneAlt, FaEnvelope, FaClock, FaHeart } from 'react-icons/fa';
 import { NavLink } from 'react-router-dom';
+import { LOCATIONS } from '../../data/locations';
 
 const Footer = () => {
   return (
     <footer className="bg-[#181411] text-[#EAE4DC] border-t border-[#26211D] relative overflow-hidden pt-14 sm:pt-20 pb-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-8 mb-12 sm:mb-16">
-          {/* Brand Column (5 cols) */}
-          <div className="lg:col-span-5 space-y-6">
+          {/* Brand Column (4 cols) */}
+          <div className="lg:col-span-4 space-y-6">
             <div className="flex items-center gap-3.5">
               <div className="w-11 h-11 bg-white rounded-xl flex items-center justify-center p-2 shadow-xs border border-[#26211D]">
                 <img src="/Logo.png" alt="Bread & Bite" className="w-full h-full object-contain" />
@@ -50,7 +51,7 @@ const Footer = () => {
           </div>
 
           {/* Quick Links (2 cols) */}
-          <div className="lg:col-span-2 lg:col-start-7">
+          <div className="lg:col-span-2">
             <h4 className="text-white font-bold text-xs uppercase tracking-[0.18em] mb-5 font-heading">
               Quick Links
             </h4>
@@ -74,24 +75,20 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Menu Categories (2 cols) */}
-          <div className="lg:col-span-2">
+          {/* Delivery Areas Column (3 cols) */}
+          <div className="lg:col-span-3">
             <h4 className="text-white font-bold text-xs uppercase tracking-[0.18em] mb-5 font-heading">
-              Categories
+              Delivery Areas
             </h4>
-            <ul className="space-y-3 text-sm">
-              {[
-                { name: 'Chicken Gravies', id: 'Gravy' },
-                { name: 'Roti & Pav', id: 'Roti' },
-                { name: 'Snacks', id: 'Snacks' },
-                { name: 'Burgers', id: 'Burgers' }
-              ].map((cat) => (
-                <li key={cat.name}>
+            <ul className="space-y-2.5 text-sm">
+              {LOCATIONS.map((loc) => (
+                <li key={loc.slug}>
                   <NavLink
-                    to={`/menu/?category=${cat.id}`}
-                    className="text-[#A89E94] hover:text-white transition-colors"
+                    to={`/${loc.slug}/`}
+                    className="text-[#A89E94] hover:text-[#B84A1C] transition-colors flex items-center justify-between group text-xs"
                   >
-                    {cat.name}
+                    <span>{loc.name} Delivery</span>
+                    <span className="text-[10px] text-[#8C827A] group-hover:text-white transition-colors">{loc.deliveryTime}m</span>
                   </NavLink>
                 </li>
               ))}
@@ -108,9 +105,13 @@ const Footer = () => {
                 <FaMapMarkerAlt className="text-[#B84A1C] mt-0.5 shrink-0" size={13} />
                 <span>Shop 12, Ground Floor, Sector 11, Taloja Phase 1, Navi Mumbai 410208</span>
               </li>
-              <li className="flex items-center gap-2.5">
-                <FaClock className="text-[#B84A1C] shrink-0" size={13} />
-                <span>Open Daily: 10:00 AM – 9:00 PM IST</span>
+              <li className="flex items-start gap-2.5">
+                <FaClock className="text-[#B84A1C] mt-0.5 shrink-0" size={13} />
+                <div>
+                  <span className="text-white font-medium block">2 Daily Operational Slots:</span>
+                  <span>Lunch: 11:00 AM – 3:15 PM</span>
+                  <span className="block">Dinner: 7:00 PM – 9:15 PM</span>
+                </div>
               </li>
               <li className="flex items-center gap-2.5">
                 <FaPhoneAlt className="text-[#B84A1C] shrink-0" size={13} />
@@ -135,10 +136,14 @@ const Footer = () => {
               Doorstep Delivery Hubs:
             </span>
             <div className="flex flex-wrap items-center gap-2 text-[11px]">
-              {['Taloja Phase 1', 'Taloja Phase 2', 'Kharghar Sectors 1–35', 'Panvel & New Panvel', 'Kamothe', 'Kalamboli', 'CBD Belapur'].map((hub) => (
-                <span key={hub} className="bg-[#201B17] px-2.5 py-1 rounded-md border border-[#2E2822] text-[#A89E94]">
-                  {hub}
-                </span>
+              {LOCATIONS.map((loc) => (
+                <NavLink
+                  key={loc.slug}
+                  to={`/${loc.slug}/`}
+                  className="bg-[#201B17] px-2.5 py-1 rounded-md border border-[#2E2822] text-[#A89E94] hover:text-white hover:border-[#B84A1C] hover:bg-[#2A231E] transition-all"
+                >
+                  {loc.name} ({loc.deliveryTime}m)
+                </NavLink>
               ))}
             </div>
           </div>

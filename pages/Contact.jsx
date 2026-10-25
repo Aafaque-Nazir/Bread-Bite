@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaWhatsapp, FaMapMarkerAlt, FaClock, FaPaperPlane, FaCheckCircle, FaChevronDown, FaMotorcycle } from 'react-icons/fa';
+import { FaWhatsapp, FaMapMarkerAlt, FaClock, FaPaperPlane, FaCheckCircle, FaChevronDown, FaMotorcycle, FaArrowRight } from 'react-icons/fa';
 import SEO from "../src/components/SEO";
 import { FAQS } from '../data/faqs';
+import { LOCATIONS } from '../data/locations';
 
 const Contact = () => {
   const [formData, setFormData] = useState({ name: '', phone: '', message: '' });
@@ -96,23 +98,34 @@ const Contact = () => {
                     <span className="text-[10px] font-bold uppercase tracking-wider text-[#8C827A] block">
                       Kitchen Hours
                     </span>
-                    <p className="text-base font-bold text-[#181411]">10:00 AM – 9:00 PM Daily</p>
-                    <p className="text-xs text-[#8C827A] mt-0.5">Breakfast, Lunch & Dinner</p>
+                    <p className="text-base font-bold text-[#181411]">2 Daily Slots (Mon–Sun)</p>
+                    <p className="text-xs text-[#574F4A] mt-0.5">
+                      Lunch: <strong className="text-[#181411]">11:00 AM – 3:15 PM</strong> · Dinner: <strong className="text-[#181411]">7:00 PM – 9:15 PM</strong>
+                    </p>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Delivery Radius Card */}
-            <div className="artisan-card p-6 rounded-3xl bg-white border border-[#EAE4DC] flex items-center gap-4">
-              <div className="w-12 h-12 rounded-2xl bg-[#FAF7F2] border border-[#EAE4DC] flex items-center justify-center text-[#B84A1C] shrink-0 text-xl">
-                <FaMotorcycle />
+
+
+            {/* Delivery Hubs Links */}
+            <div className="artisan-card p-6 rounded-3xl bg-white border border-[#EAE4DC] space-y-3">
+              <div className="flex items-center justify-between">
+                <h4 className="text-sm font-bold text-[#181411] font-heading">Navi Mumbai Delivery Coverage</h4>
+                <span className="text-[10px] text-[#2A6A4E] font-bold bg-[#EEF6F2] px-2 py-0.5 rounded-full">20–35 min</span>
               </div>
-              <div>
-                <h4 className="text-sm font-bold text-[#181411] font-heading">Navi Mumbai Delivery Radius</h4>
-                <p className="text-xs text-[#574F4A] mt-0.5">
-                  Taloja · Kharghar · Kamothe · Panvel · Belapur
-                </p>
+              <div className="grid grid-cols-2 gap-2 text-xs">
+                {LOCATIONS.map((loc) => (
+                  <Link
+                    key={loc.slug}
+                    to={`/${loc.slug}/`}
+                    className="p-2 rounded-xl bg-[#FAF7F2] border border-[#EAE4DC] hover:border-[#B84A1C] hover:text-[#B84A1C] transition-colors flex items-center justify-between group"
+                  >
+                    <span className="font-medium text-[#181411] group-hover:text-[#B84A1C]">{loc.name}</span>
+                    <FaArrowRight size={9} className="text-[#8C827A] group-hover:text-[#B84A1C] group-hover:translate-x-0.5 transition-all" />
+                  </Link>
+                ))}
               </div>
             </div>
           </div>
