@@ -75,7 +75,7 @@ const ProductModal = ({ item, isOpen, onClose }) => {
                 src={item.image}
                 alt={item.name}
                 onError={(e) => {
-                  e.target.src = 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=600&auto=format&fit=crop';
+                  e.target.src = '/images/chicken-korma.webp';
                 }}
                 className="w-full h-full object-cover"
               />

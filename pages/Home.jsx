@@ -1,6 +1,7 @@
 import React, { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaWhatsapp, FaUtensils, FaCheckCircle, FaFire, FaMotorcycle, FaArrowRight, FaPlus, FaMinus, FaTrash, FaChevronDown, FaInfoCircle, FaMapMarkerAlt, FaClock, FaStar } from "react-icons/fa";
+import { SiSwiggy, SiZomato } from "react-icons/si";
 import { useKitchenStatus } from "../src/hooks/useKitchenStatus";
 import { NavLink } from "react-router-dom";
 import SEO from "../src/components/SEO";
@@ -10,6 +11,7 @@ import { useCart } from '../src/context/CartContext';
 import ProductModal from '../src/components/ProductModal';
 import { FAQS } from '../data/faqs';
 import { LOCATIONS } from '../data/locations';
+import { ORDER_LINKS } from '../data/orderLinks';
 
 const HOME_COMBOS = [
   {
@@ -30,7 +32,7 @@ const HOME_COMBOS = [
     price: 249,
     originalPrice: 259,
     discount: 'Save ₹10',
-    image: '/images/chicken-korma-roti-meal.jpg',
+    image: '/images/chicken-korma-roti-meal.jpg?v=2',
     category: 'Combos',
     type: 'Non-Veg'
   }
@@ -72,135 +74,136 @@ const Home = () => {
       {/* ═══════════════════════════════════════════════════════════════════
           HERO SECTION — Compact, Clear & Appetite-Driven
       ═══════════════════════════════════════════════════════════════════ */}
-      <section className="relative min-h-[calc(100svh-4.25rem)] lg:min-h-[calc(100dvh-4.25rem)] lg:max-h-[820px] flex items-center py-6 sm:py-8 lg:py-4 bg-[#FAF7F2] overflow-hidden border-b border-[#EAE4DC]">
+      <section className="relative flex items-center pt-4 pb-8 sm:pt-6 sm:pb-12 lg:pt-7 lg:pb-14 bg-[#FAF7F2] overflow-hidden border-b border-[#EAE4DC]">
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 w-full">
-          <div className="grid lg:grid-cols-12 gap-8 lg:gap-10 items-center">
+          <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             {/* Left: Content (7 cols) */}
             <motion.div
               initial="hidden"
               animate="show"
               variants={staggerContainer}
-              className="lg:col-span-7 space-y-4 sm:space-y-5"
+              className="lg:col-span-7 space-y-3 sm:space-y-4"
             >
+              <motion.span variants={fadeUp} className="text-xs uppercase tracking-widest font-bold text-[#B84A1C] block">
+                Cloud Kitchen · Navi Mumbai
+              </motion.span>
 
               {/* Main Headline */}
-              <motion.h1 variants={fadeUp} className="text-3xl sm:text-4xl lg:text-[3.25rem] xl:text-[3.65rem] font-normal text-[#181411] leading-[1.08] tracking-tight font-heading">
-                Homestyle Flavours, <br />
-                <span className="font-italic-accent text-3xl sm:text-5xl lg:text-[3.5rem] xl:text-[3.9rem] text-[#B84A1C] font-normal tracking-wide">
-                  Honest 500g Bowls.
+              <motion.h1 variants={fadeUp} className="text-3xl sm:text-5xl lg:text-[3.25rem] font-bold text-[#181411] leading-[1.12] font-heading">
+                Homestyle Taste, <br />
+                <span className="font-italic-accent text-[#B84A1C]">
+                  Full 500g Portions.
                 </span>
               </motion.h1>
 
-              {/* Subheadline (Clean, no fancy jargon) */}
-              <motion.p variants={fadeUp} className="text-xs sm:text-sm lg:text-[0.95rem] text-[#574F4A] max-w-lg leading-relaxed">
-                Slow-cooked Mughlai chicken gravies in hearty 500g family portions, fresh clay-oven tandoori rotis, and bakery-soft pavs — cooked on order and delivered hot across Navi Mumbai.
+              {/* Subheadline */}
+              <motion.p variants={fadeUp} className="text-xs sm:text-sm text-[#574F4A] max-w-lg leading-relaxed">
+                Fresh Chicken Keema, rich Chicken Korma, hot Tandoori Rotis, and soft Pavs — cooked fresh on every order and delivered hot across Navi Mumbai.
               </motion.p>
 
-              {/* Action Buttons */}
-              <motion.div variants={fadeUp} className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-1">
-                <NavLink
-                  to="/menu/"
-                  className="btn-primary py-3 px-7 text-xs uppercase tracking-wider font-bold shadow-tactile-sm justify-center"
-                >
-                  <FaUtensils className="text-xs" />
-                  <span>View Full Menu</span>
-                </NavLink>
+              {/* Action Buttons & Food Apps */}
+              <motion.div variants={fadeUp} className="space-y-2.5 pt-0.5">
+                <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+                  <NavLink
+                    to="/menu/"
+                    className="btn-primary py-2.5 px-6 text-xs uppercase tracking-wider font-bold shadow-tactile-sm justify-center"
+                  >
+                    <FaUtensils className="text-xs" />
+                    <span>View Menu</span>
+                  </NavLink>
 
-                <a
-                  href={whatsappLink}
-                  target="_blank"
-                  rel="nofollow noopener noreferrer"
-                  className="btn-outline py-3 px-6 text-xs uppercase tracking-wider font-bold hover:border-[#25D366] hover:text-[#25D366] justify-center"
-                >
-                  <FaWhatsapp className="text-base text-[#25D366]" />
-                  <span>{isKitchenOpen ? "Order on WhatsApp" : "Inquire on WhatsApp"}</span>
-                </a>
+                  <a
+                    href={whatsappLink}
+                    target="_blank"
+                    rel="nofollow noopener noreferrer"
+                    className="btn-outline py-2.5 px-5 text-xs uppercase tracking-wider font-bold hover:border-[#25D366] hover:text-[#25D366] justify-center"
+                  >
+                    <FaWhatsapp className="text-base text-[#25D366]" />
+                    <span>Order on WhatsApp</span>
+                  </a>
+                </div>
+
+                {/* Swiggy & Zomato Links */}
+                <div className="flex items-center gap-3 pt-0.5 text-xs text-[#574F4A]">
+                  <span className="font-medium">Also order on:</span>
+                  <a
+                    href={ORDER_LINKS.swiggy}
+                    target="_blank"
+                    rel="nofollow noopener noreferrer"
+                    className="font-bold text-[#FC8019] hover:underline flex items-center gap-1"
+                  >
+                    <SiSwiggy /> Swiggy
+                  </a>
+                  <span>·</span>
+                  <a
+                    href={ORDER_LINKS.zomato}
+                    target="_blank"
+                    rel="nofollow noopener noreferrer"
+                    className="font-bold text-[#E23744] hover:underline flex items-center gap-1"
+                  >
+                    <SiZomato /> Zomato
+                  </a>
+                </div>
               </motion.div>
 
-              {/* Proof Points */}
-              <motion.div variants={fadeUp} className="pt-4 border-t border-[#EAE4DC] grid grid-cols-3 gap-2 sm:gap-6">
-                <div className="flex flex-col">
-                  <div className="flex items-center gap-1.5 text-[#B84A1C] text-xs sm:text-sm font-bold">
-                    <FaFire />
+              {/* Normal Proof Points */}
+              <motion.div variants={fadeUp} className="pt-3 sm:pt-4 border-t border-[#EAE4DC] grid grid-cols-3 gap-3 sm:gap-6">
+                <div>
+                  <div className="flex items-center gap-1.5 text-xs sm:text-sm font-bold text-[#181411]">
+                    <FaFire className="text-[#B84A1C]" />
                     <span>500g Portions</span>
                   </div>
-                  <span className="text-[#8C827A] text-[10px] sm:text-xs mt-0.5 font-medium">Hearty meals for 2</span>
+                  <span className="text-[#8C827A] text-[11px] mt-0.5 block">Serves 2 people</span>
                 </div>
 
-                <div className="flex flex-col border-l border-[#EAE4DC] pl-3 sm:pl-6">
+                <div className="border-l border-[#EAE4DC] pl-3 sm:pl-6">
                   <div className="flex items-center gap-1.5 text-xs sm:text-sm font-bold text-[#181411]">
                     <FaMotorcycle className="text-[#B84A1C]" />
-                    <span>25–35m</span>
+                    <span>20–35 Mins</span>
                   </div>
-                  <span className="text-[#8C827A] text-[10px] sm:text-xs mt-0.5 font-medium">Fast Doorstep Delivery</span>
+                  <span className="text-[#8C827A] text-[11px] mt-0.5 block">Fast delivery</span>
                 </div>
 
-                <div className="flex flex-col border-l border-[#EAE4DC] pl-3 sm:pl-6">
+                <div className="border-l border-[#EAE4DC] pl-3 sm:pl-6">
                   <div className="flex items-center gap-1.5 text-xs sm:text-sm font-bold text-[#2A6A4E]">
                     <FaCheckCircle />
                     <span>100% Halal</span>
                   </div>
-                  <span className="text-[#8C827A] text-[10px] sm:text-xs mt-0.5 font-medium">Fresh Daily Chicken</span>
+                  <span className="text-[#8C827A] text-[11px] mt-0.5 block">Fresh chicken daily</span>
                 </div>
               </motion.div>
             </motion.div>
 
-            {/* Right: Framed Food Artwork */}
+            {/* Right: Clean Food Image */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.96 }}
+              initial={{ opacity: 0, scale: 0.98 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
-              className="lg:col-span-5 relative mt-2 lg:mt-0"
+              transition={{ duration: 0.5 }}
+              className="lg:col-span-5 relative mt-1 lg:mt-0"
             >
-              <div className="relative max-w-sm sm:max-w-md mx-auto lg:max-w-none">
-                {/* Framed Image Container */}
-                <div className="relative z-10 rounded-3xl overflow-hidden bg-white border border-[#EAE4DC] p-2.5 sm:p-3 shadow-tactile-md">
-                  <div className="relative aspect-[4/4.1] sm:aspect-[4/4.2] max-h-[380px] lg:max-h-[420px] rounded-2xl overflow-hidden">
-                    <img
-                      src="/images/chicken-keema.webp"
-                      alt="Bread & Bite Chicken Keema Boneless 500g"
-                      fetchPriority="high"
-                      decoding="async"
-                      className="w-full h-full object-cover transition-transform duration-700 hover:scale-104"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#181411]/80 via-transparent to-transparent" />
-
-                    <div className="absolute bottom-3.5 left-3.5 right-3.5 sm:bottom-5 sm:left-5 sm:right-5 text-white">
-                      <span className="badge-veg bg-black/40 text-white border-white/30 text-[9px] mb-1.5 inline-block">
-                        Bestseller Dish
-                      </span>
-                      <h4 className="text-base sm:text-lg font-bold font-heading">Chicken Keema Boneless (500g)</h4>
-                      <p className="text-[10px] sm:text-xs text-white/85 mt-0.5 leading-snug">
-                        Slow-cooked spiced chicken mince with onions & coriander. Served with fresh lemon.
-                      </p>
-                    </div>
-                  </div>
+              <div className="max-w-sm sm:max-w-md mx-auto lg:max-w-none rounded-3xl bg-white border border-[#EAE4DC] p-2.5 sm:p-3 shadow-tactile-md overflow-hidden">
+                <div className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-[#F4EFE6]">
+                  <img
+                    src="/images/chicken-keema.webp"
+                    alt="Chicken Keema Boneless 500g"
+                    fetchPriority="high"
+                    decoding="async"
+                    className="w-full h-full object-cover"
+                  />
                 </div>
 
-                {/* Static Badge: 500g Portions */}
-                <div
-                  className="absolute -top-2.5 -left-2 sm:top-4 sm:-left-4 z-20 bg-white border border-[#EAE4DC] rounded-xl px-2.5 py-1.5 sm:px-3.5 sm:py-2.5 shadow-tactile-sm flex items-center gap-2"
-                >
-                  <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-lg bg-[#FDF3ED] text-[#B84A1C] flex items-center justify-center font-bold text-xs shrink-0">
-                    <FaFire />
-                  </div>
+                <div className="p-3 sm:p-3.5 flex items-center justify-between">
                   <div>
-                    <p className="text-[#181411] font-bold text-[10px] sm:text-xs leading-none">500g Portions</p>
-                    <p className="text-[#8C827A] text-[9px] mt-0.5">Generous Servings</p>
+                    <h3 className="font-heading text-base sm:text-lg font-bold text-[#181411]">
+                      Chicken Keema Boneless (500g)
+                    </h3>
+                    <p className="text-[11px] sm:text-xs text-[#574F4A] mt-0.5">
+                      Slow-cooked chicken mince with onions &amp; fresh lemon
+                    </p>
                   </div>
-                </div>
-
-                {/* Static Badge: Fast Delivery */}
-                <div
-                  className="absolute -bottom-2.5 -right-2 sm:bottom-4 sm:-right-4 z-20 bg-white border border-[#EAE4DC] rounded-xl px-2.5 py-1.5 sm:px-3.5 sm:py-2.5 shadow-tactile-sm flex items-center gap-2"
-                >
-                  <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-lg bg-[#EEF6F2] text-[#2A6A4E] flex items-center justify-center font-bold text-xs shrink-0">
-                    <FaMotorcycle />
-                  </div>
-                  <div>
-                    <p className="text-[#181411] font-bold text-[10px] sm:text-xs leading-none">Navi Mumbai</p>
-                    <p className="text-[#8C827A] text-[9px] mt-0.5">Hot Delivery</p>
-                  </div>
+                  <span className="text-xl sm:text-2xl font-bold font-heading text-[#B84A1C] shrink-0 pl-2">
+                    ₹199
+                  </span>
                 </div>
               </div>
             </motion.div>
@@ -331,16 +334,17 @@ const Home = () => {
               Explore Our <span className="font-italic-accent text-[#B84A1C]">Categories</span>
             </h2>
             <p className="text-[#574F4A] mt-2 text-xs sm:text-sm leading-relaxed">
-              From heavy chicken gravies to soft pavs, rotis, and snacks.
+              From heavy chicken gravies to soft pavs, warm choco lava cake, and snacks.
             </p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3.5 sm:gap-5">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3.5 sm:gap-5">
             {[
               { name: "Chicken Gravies", id: "Gravy", img: "/images/chicken-korma.webp", count: "500g Portions", note: "Keema & Korma" },
               { name: "Roti & Pav", id: "Roti", img: "/images/tandoori-roti.webp", count: "Fresh Baked", note: "Tandoori & Ladi Pav" },
               { name: "Snacks", id: "Snacks", img: "/images/french-fries.webp", count: "Fries & Maggi", note: "Crispy & Hot" },
-              { name: "Burgers", id: "Burgers", img: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=600&auto=format&fit=crop", count: "Juicy Patty", note: "Crispy Chicken" }
+              { name: "Burgers", id: "Burgers", img: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=600&auto=format&fit=crop", count: "Juicy Patty", note: "Crispy Chicken" },
+              { name: "Warm Desserts", id: "Dessert", img: "/images/choco-lava-cake.jpg", count: "Molten Center", note: "Choco Lava Cake" }
             ].map((cat, i) => (
               <NavLink
                 to={`/menu/?category=${cat.id.toLowerCase()}`}
@@ -564,64 +568,55 @@ const Home = () => {
       {/* ═══════════════════════════════════════════════════════════════════
           EXPLORE BREAD & BITE — Clean Directory
       ═══════════════════════════════════════════════════════════════════ */}
-      <section className="py-14 sm:py-20 bg-[#FAF7F2] relative border-b border-[#EAE4DC]">
+      <section className="py-14 sm:py-20 bg-white relative border-b border-[#EAE4DC]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-12">
             <span className="text-[11px] uppercase tracking-[0.2em] font-bold text-[#B84A1C] block mb-2">
-              Explore Our Website
+              Explore Our Kitchen
             </span>
             <h2 className="text-2xl sm:text-4xl font-bold text-[#181411] font-heading tracking-tight leading-tight">
               Discover Everything at <span className="font-italic-accent text-[#B84A1C]">Bread & Bite</span>
             </h2>
             <p className="text-[#574F4A] mt-2 text-xs sm:text-sm leading-relaxed">
-              Browse our food menu, check out value meal combos, and order directly on WhatsApp.
+              Browse our freshly cooked food menu, value meal combos, customer stories, and direct kitchen contact.
             </p>
           </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {[
               {
-                title: "Kitchen Menu",
+                title: "Full Menu",
                 desc: "500g Chicken Keema, Chicken Korma, hot Tandoori Roti, soft Pav, and crispy snacks.",
                 path: "/menu/",
-                badge: "Full Menu",
-                icon: <FaUtensils className="text-[#B84A1C]" size={18} />
+                icon: <FaUtensils className="text-[#B84A1C]" size={17} />
               },
               {
                 title: "Meal Combos",
                 desc: "Keema Pav and Korma Roti value meals at special discounted combo prices.",
                 path: "/menu/?category=combos",
-                badge: "Value Deals",
-                icon: <FaFire className="text-[#B84A1C]" size={18} />
+                icon: <FaFire className="text-[#B84A1C]" size={17} />
               },
               {
                 title: "Customer Reviews",
                 desc: "See what customers are saying about our food or send your own review.",
                 path: "/reviews/",
-                badge: "Reviews",
-                icon: <FaStar className="text-[#B84A1C]" size={18} />
+                icon: <FaStar className="text-[#B84A1C]" size={17} />
               },
               {
-                title: "Contact & Location",
+                title: "Contact & Order",
                 desc: "Order directly on WhatsApp, check kitchen hours, and get delivery updates in Navi Mumbai.",
                 path: "/contact/",
-                badge: "2 Daily Slots",
-                icon: <FaMapMarkerAlt className="text-[#2A6A4E]" size={18} />
+                icon: <FaMapMarkerAlt className="text-[#2A6A4E]" size={17} />
               }
             ].map((p) => (
               <NavLink
                 key={p.title}
                 to={p.path}
-                className="group artisan-card rounded-2xl p-5 sm:p-6 flex flex-col justify-between hover:border-[#B84A1C] hover:shadow-tactile-md transition-all duration-300"
+                className="group artisan-card rounded-2xl p-6 flex flex-col justify-between hover:border-[#B84A1C] hover:shadow-tactile-md transition-all duration-300"
               >
                 <div>
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="w-10 h-10 rounded-xl bg-white border border-[#EAE4DC] flex items-center justify-center shadow-2xs group-hover:scale-105 transition-transform">
-                      {p.icon}
-                    </div>
-                    <span className="text-[10px] font-bold text-[#8C827A] bg-[#F4EFE6] px-2.5 py-1 rounded-full border border-[#EAE4DC]">
-                      {p.badge}
-                    </span>
+                  <div className="w-10 h-10 rounded-xl bg-[#FAF7F2] border border-[#EAE4DC] flex items-center justify-center mb-4 group-hover:scale-105 transition-transform">
+                    {p.icon}
                   </div>
                   <h3 className="text-base sm:text-lg font-bold text-[#181411] font-heading group-hover:text-[#B84A1C] transition-colors mb-1.5">
                     {p.title}
@@ -631,9 +626,13 @@ const Home = () => {
                   </p>
                 </div>
 
-                <div className="pt-4 mt-4 border-t border-[#EAE4DC] flex items-center justify-between text-xs font-bold text-[#B84A1C]">
-                  <span>View Details</span>
-                  <FaArrowRight size={10} className="group-hover:translate-x-1 transition-transform" />
+                <div className="pt-4 mt-5 border-t border-[#EAE4DC] flex items-center justify-between">
+                  <span className="text-xs font-semibold text-[#181411] group-hover:text-[#B84A1C] transition-colors">
+                    Explore
+                  </span>
+                  <div className="w-7 h-7 rounded-full bg-[#FAF7F2] group-hover:bg-[#B84A1C] text-[#574F4A] group-hover:text-white border border-[#EAE4DC] group-hover:border-[#B84A1C] flex items-center justify-center transition-all duration-300">
+                    <FaArrowRight size={9} className="group-hover:translate-x-0.5 transition-transform" />
+                  </div>
                 </div>
               </NavLink>
             ))}
@@ -644,61 +643,57 @@ const Home = () => {
       {/* ═══════════════════════════════════════════════════════════════════
           DELIVERING ACROSS NAVI MUMBAI — Local Hubs Section
       ═══════════════════════════════════════════════════════════════════ */}
-      <section className="py-16 sm:py-20 bg-white relative border-b border-[#EAE4DC]">
+      <section className="py-16 sm:py-24 bg-[#FAF7F2] relative border-b border-[#EAE4DC]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-12">
+          <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
             <span className="text-[11px] uppercase tracking-[0.2em] font-bold text-[#B84A1C] block mb-2">
-              Fast Doorstep Delivery
+              Delivery Areas
             </span>
             <h2 className="text-2xl sm:text-4xl font-bold text-[#181411] font-heading tracking-tight leading-tight">
               Delivering Across <span className="font-italic-accent text-[#B84A1C]">Navi Mumbai</span>
             </h2>
-            <p className="text-[#574F4A] mt-2 text-xs sm:text-sm leading-relaxed">
-              Based in Taloja Phase 1, our cloud kitchen reaches Kharghar, Panvel, Kamothe, Kalamboli, and Belapur in 10 to 35 minutes with piping hot food.
+            <p className="text-[#574F4A] mt-2.5 text-xs sm:text-sm leading-relaxed max-w-xl mx-auto">
+              Fresh food cooked and delivered hot from our kitchen in Taloja to Kharghar, Panvel, Kamothe, Kalamboli, and Belapur in 10 to 35 minutes.
             </p>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
             {LOCATIONS.map((loc) => (
               <NavLink
                 key={loc.slug}
                 to={`/${loc.slug}/`}
-                className="group artisan-card rounded-2xl p-5 sm:p-6 bg-[#FAF7F2] hover:bg-white hover:border-[#B84A1C] hover:shadow-tactile-md transition-all duration-300 flex flex-col justify-between"
+                className="group artisan-card rounded-2xl p-5 sm:p-6 bg-white hover:border-[#B84A1C] hover:shadow-tactile-md transition-all duration-300 flex flex-col justify-between"
               >
                 <div>
-                  <div className="flex items-center justify-between mb-3">
-                    <span className="inline-flex items-center gap-1.5 text-xs font-bold text-[#181411] font-heading">
-                      <FaMapMarkerAlt className="text-[#B84A1C]" size={13} />
+                  <div className="flex items-center justify-between gap-2 mb-2">
+                    <h3 className="font-heading text-xl sm:text-2xl font-bold text-[#181411] group-hover:text-[#B84A1C] transition-colors">
                       {loc.name}
-                    </span>
-                    <span className="inline-flex items-center gap-1 text-[11px] font-bold text-[#2A6A4E] bg-[#EEF6F2] px-2.5 py-0.5 rounded-full border border-[#2A6A4E]/20">
-                      <FaMotorcycle size={11} />
+                    </h3>
+                    <span className="text-xs font-semibold text-[#2A6A4E]">
                       {loc.deliveryTime} mins
                     </span>
                   </div>
 
-                  <p className="text-xs text-[#574F4A] leading-relaxed line-clamp-2 mb-3">
+                  <p className="text-xs text-[#574F4A] leading-relaxed mb-3">
                     {loc.heroTagline}
                   </p>
 
-                  <p className="text-[11px] text-[#8C827A] line-clamp-1">
-                    Coverage: {loc.landmarks.slice(0, 3).join(', ')}...
+                  <p className="text-xs text-[#8C827A] leading-normal">
+                    <span className="font-medium text-[#574F4A]">Areas:</span> {loc.landmarks.slice(0, 3).join(', ')}
                   </p>
                 </div>
 
-                <div className="pt-4 mt-4 border-t border-[#EAE4DC] flex items-center justify-between text-xs font-bold text-[#B84A1C]">
-                  <span>Order to {loc.name}</span>
+                <div className="pt-4 mt-5 border-t border-[#EAE4DC] flex items-center justify-between text-xs font-bold text-[#B84A1C]">
+                  <span>View Menu & Delivery</span>
                   <FaArrowRight size={10} className="group-hover:translate-x-1 transition-transform" />
                 </div>
               </NavLink>
             ))}
           </div>
 
-          <div className="mt-8 text-center">
-            <span className="inline-flex items-center gap-2 text-xs text-[#574F4A] bg-[#FAF7F2] border border-[#EAE4DC] px-4 py-2 rounded-full font-medium">
-              <FaCheckCircle className="text-[#2A6A4E]" size={12} />
-              Free delivery on all orders above ₹499 across all listed areas
-            </span>
+          <div className="mt-8 text-center text-xs text-[#574F4A] flex items-center justify-center gap-2">
+            <FaCheckCircle className="text-[#2A6A4E]" size={13} />
+            <span>Free delivery on orders above ₹499 across all areas</span>
           </div>
         </div>
       </section>
@@ -790,7 +785,7 @@ const Home = () => {
               className="btn-primary py-3.5 px-8 text-xs uppercase tracking-wider font-bold shadow-tactile-md justify-center"
             >
               <FaWhatsapp size={16} />
-              <span>{isKitchenOpen ? "Order on WhatsApp" : "Inquire on WhatsApp"}</span>
+              <span>Order on WhatsApp</span>
             </a>
             <NavLink
               to="/menu/"
@@ -798,6 +793,28 @@ const Home = () => {
             >
               <span>Explore Full Menu</span>
             </NavLink>
+          </div>
+
+          {/* Quick Apps Row */}
+          <div className="flex items-center justify-center gap-3 mt-4 text-xs text-[#574F4A]">
+            <span>Also order on:</span>
+            <a
+              href={ORDER_LINKS.swiggy}
+              target="_blank"
+              rel="nofollow noopener noreferrer"
+              className="font-bold text-[#FC8019] hover:underline flex items-center gap-1"
+            >
+              <SiSwiggy /> Swiggy
+            </a>
+            <span>·</span>
+            <a
+              href={ORDER_LINKS.zomato}
+              target="_blank"
+              rel="nofollow noopener noreferrer"
+              className="font-bold text-[#E23744] hover:underline flex items-center gap-1"
+            >
+              <SiZomato /> Zomato
+            </a>
           </div>
 
           <p className="text-[11px] text-[#8C827A] mt-6">

@@ -440,32 +440,35 @@ const LocationPage = () => {
             </p>
           </div>
 
-          <div className="grid sm:grid-cols-3 gap-4">
+          <div className="grid sm:grid-cols-3 gap-5">
             {nearbyLocations.map((nearby) => (
               <NavLink
                 key={nearby.slug}
                 to={`/${nearby.slug}/`}
-                className="group artisan-card rounded-2xl p-5 flex flex-col justify-between hover:border-[#B84A1C] hover:shadow-tactile-md transition-all duration-300"
+                className="group artisan-card rounded-2xl p-5 sm:p-6 bg-white hover:border-[#B84A1C] hover:shadow-tactile-md transition-all duration-300 flex flex-col justify-between"
               >
                 <div>
-                  <div className="flex items-center gap-2 mb-3">
-                    <div className="w-8 h-8 rounded-lg bg-[#FFF5F0] border border-[#FDDCC8] flex items-center justify-center">
-                      <FaMapMarkerAlt className="text-[#B84A1C]" size={12} />
-                    </div>
-                    <span className="text-[10px] font-bold text-[#8C827A] bg-[#F4EFE6] px-2 py-0.5 rounded-full border border-[#EAE4DC]">
-                      {nearby.deliveryTime} min
+                  <div className="flex items-center justify-between gap-2 mb-2">
+                    <h3 className="font-heading text-lg sm:text-xl font-bold text-[#181411] group-hover:text-[#B84A1C] transition-colors">
+                      {nearby.name}
+                    </h3>
+                    <span className="text-xs font-semibold text-[#2A6A4E]">
+                      {nearby.deliveryTime} mins
                     </span>
                   </div>
-                  <h3 className="text-base font-bold text-[#181411] font-heading group-hover:text-[#B84A1C] transition-colors mb-1">
-                    {nearby.name} Delivery
-                  </h3>
-                  <p className="text-[11px] text-[#574F4A] leading-relaxed line-clamp-2">
+
+                  <p className="text-xs text-[#574F4A] leading-relaxed mb-3">
                     {nearby.heroTagline}
                   </p>
+
+                  <p className="text-xs text-[#8C827A] leading-normal">
+                    <span className="font-medium text-[#574F4A]">Areas:</span> {nearby.landmarks?.slice(0, 3).join(', ')}
+                  </p>
                 </div>
-                <div className="pt-3 mt-3 border-t border-[#EAE4DC] flex items-center justify-between text-[11px] font-bold text-[#B84A1C]">
-                  <span>View Details</span>
-                  <FaArrowRight size={9} className="group-hover:translate-x-1 transition-transform" />
+
+                <div className="pt-4 mt-5 border-t border-[#EAE4DC] flex items-center justify-between text-xs font-bold text-[#B84A1C]">
+                  <span>View Menu & Delivery</span>
+                  <FaArrowRight size={10} className="group-hover:translate-x-1 transition-transform" />
                 </div>
               </NavLink>
             ))}
@@ -514,7 +517,7 @@ const LocationPage = () => {
               className="btn-primary py-3.5 px-8 text-xs uppercase tracking-wider font-bold shadow-tactile-md justify-center"
             >
               <FaWhatsapp size={16} />
-              <span>{isKitchenOpen ? 'Order on WhatsApp' : 'Inquire on WhatsApp'}</span>
+              <span>Order on WhatsApp</span>
             </a>
             <NavLink
               to="/menu/"

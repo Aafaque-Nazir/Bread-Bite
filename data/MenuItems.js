@@ -132,7 +132,7 @@ const menuItems = [
     discount: "Save ₹10",
     category: "Combos",
     type: "Non-Veg",
-    image: "/images/chicken-korma-roti-meal.jpg",
+    image: "/images/chicken-korma-roti-meal.jpg?v=2",
     isBestSeller: true,
     isNew: false,
     tags: ["500g Korma + 2 Roti"]
@@ -150,6 +150,21 @@ const menuItems = [
     isBestSeller: false,
     isNew: false,
     tags: ["Burger + 200g Fries"]
+  },
+
+  // ==================== DESSERT ====================
+  {
+    id: 12,
+    name: "Warm Choco Lava Cake",
+    description: "Decadent chocolate cake with a rich, molten gooey chocolate fudge centre. Served fresh and warm.",
+    price: 99,
+    category: "Dessert",
+    type: "Veg",
+    portion: "1 pc",
+    image: "/images/choco-lava-cake.jpg",
+    isBestSeller: true,
+    isNew: true,
+    tags: ["Molten Chocolate", "Warm & Gooey", "Veg"]
   }
 ];
 
@@ -158,6 +173,7 @@ export const CATEGORIES_DATA = [
   { id: "Roti", name: "Roti & Pav", image: "/images/tandoori-roti.webp", description: "Tandoori Roti & Fresh Pav" },
   { id: "Snacks", name: "Snacks", image: "/images/french-fries.webp", description: "Fries & Hot Maggi" },
   { id: "Burgers", name: "Burgers", image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=400&auto=format&fit=crop", description: "Crispy Chicken Burgers" },
+  { id: "Dessert", name: "Dessert", image: "/images/choco-lava-cake.jpg", description: "Warm Cakes & Desserts" },
   { id: "Combos", name: "Combos", image: "/images/keema-pav-meal.jpg", description: "Meals & Combos" }
 ];
 

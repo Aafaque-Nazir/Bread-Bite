@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaWhatsapp, FaMapMarkerAlt, FaClock, FaPaperPlane, FaCheckCircle, FaChevronDown, FaMotorcycle, FaArrowRight } from 'react-icons/fa';
+import { SiSwiggy, SiZomato } from 'react-icons/si';
 import SEO from "../src/components/SEO";
 import { FAQS } from '../data/faqs';
 import { LOCATIONS } from '../data/locations';
+import { ORDER_LINKS } from '../data/orderLinks';
 
 const Contact = () => {
   const [formData, setFormData] = useState({ name: '', phone: '', message: '' });
@@ -104,6 +106,38 @@ const Contact = () => {
                     </p>
                   </div>
                 </div>
+
+                <div className="flex items-start gap-4 pt-2 border-t border-[#EAE4DC]">
+                  <div className="w-12 h-12 rounded-2xl bg-[#FFF7F0] text-[#FC8019] flex items-center justify-center text-xl shrink-0 border border-[#FC8019]/20">
+                    <SiSwiggy />
+                  </div>
+                  <div className="flex-1">
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-[#8C827A] block">
+                      Order On Food Apps
+                    </span>
+                    <p className="text-base font-bold text-[#181411] mb-2">Swiggy &amp; Zomato Delivery</p>
+                    <div className="flex flex-wrap items-center gap-2">
+                      <a
+                        href={ORDER_LINKS.swiggy}
+                        target="_blank"
+                        rel="nofollow noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#FAF7F2] border border-[#EAE4DC] hover:border-[#FC8019] hover:bg-[#FFF7F0] text-xs font-bold text-[#181411] transition-all group shadow-2xs"
+                      >
+                        <SiSwiggy className="text-[#FC8019] group-hover:scale-110 transition-transform" />
+                        <span>Swiggy</span>
+                      </a>
+                      <a
+                        href={ORDER_LINKS.zomato}
+                        target="_blank"
+                        rel="nofollow noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#FAF7F2] border border-[#EAE4DC] hover:border-[#E23744] hover:bg-[#FFF5F5] text-xs font-bold text-[#181411] transition-all group shadow-2xs"
+                      >
+                        <SiZomato className="text-[#E23744] group-hover:scale-110 transition-transform" />
+                        <span>Zomato</span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -112,8 +146,8 @@ const Contact = () => {
             {/* Delivery Hubs Links */}
             <div className="artisan-card p-6 rounded-3xl bg-white border border-[#EAE4DC] space-y-3">
               <div className="flex items-center justify-between">
-                <h4 className="text-sm font-bold text-[#181411] font-heading">Navi Mumbai Delivery Coverage</h4>
-                <span className="text-[10px] text-[#2A6A4E] font-bold bg-[#EEF6F2] px-2 py-0.5 rounded-full">20–35 min</span>
+                <h4 className="text-sm font-bold text-[#181411] font-heading">Navi Mumbai Delivery Areas</h4>
+                <span className="text-xs text-[#2A6A4E] font-semibold">20–35 mins</span>
               </div>
               <div className="grid grid-cols-2 gap-2 text-xs">
                 {LOCATIONS.map((loc) => (

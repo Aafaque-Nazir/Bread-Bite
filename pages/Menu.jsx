@@ -4,12 +4,13 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useSearchParams, Link } from "react-router-dom";
 import menuItems, { CATEGORIES_DATA } from "../data/MenuItems";
 import { LOCATIONS } from "../data/locations";
-import { FaPlus, FaMinus, FaTrash, FaSearch, FaTimes } from "react-icons/fa";
+import { ORDER_LINKS } from "../data/orderLinks";
+import { FaPlus, FaMinus, FaTrash, FaSearch, FaTimes, FaClock } from "react-icons/fa";
+import { SiSwiggy, SiZomato } from "react-icons/si";
 import ProductModal from '../src/components/ProductModal';
 import SEO from '../src/components/SEO';
 import ImageWithLoader from '../src/components/ImageWithLoader';
 import { useKitchenStatus } from '../src/hooks/useKitchenStatus';
-import { FaClock } from 'react-icons/fa';
 
 const Menu = () => {
   const { addToCart, updateQuantity, cart } = useCart();
@@ -19,7 +20,10 @@ const Menu = () => {
 
   const [selectedCategory, setSelectedCategory] = useState(() => {
     if (categoryParam) {
-      const match = CATEGORIES_DATA.find(c => c.id.toLowerCase() === categoryParam.toLowerCase());
+      const match = CATEGORIES_DATA.find(c => 
+        c.id.toLowerCase() === categoryParam.toLowerCase() ||
+        (c.id === "Dessert" && categoryParam.toLowerCase() === "desserts")
+      );
       if (match) return match.id;
     }
     return "Gravy";
@@ -32,7 +36,10 @@ const Menu = () => {
   // Sync category state when URL search param changes
   useEffect(() => {
     if (categoryParam) {
-      const match = CATEGORIES_DATA.find(c => c.id.toLowerCase() === categoryParam.toLowerCase());
+      const match = CATEGORIES_DATA.find(c => 
+        c.id.toLowerCase() === categoryParam.toLowerCase() ||
+        (c.id === "Dessert" && categoryParam.toLowerCase() === "desserts")
+      );
       if (match && match.id !== selectedCategory) {
         setSelectedCategory(match.id);
       }
@@ -67,9 +74,9 @@ const Menu = () => {
     <section className="min-h-screen bg-[#FAF7F2] pt-6 sm:pt-10 lg:pt-14 pb-28 px-4 sm:px-6">
       <SEO
         title="Our Menu & Online Order | Bread & Bite Navi Mumbai"
-        description="Explore our menu of 500g Chicken Keema, Korma gravies, tandoori rotis, pav, and burgers. Freshly cooked & delivered fast across Navi Mumbai."
+        description="Explore our menu of 500g Chicken Keema, Korma gravies, tandoori rotis, burgers & warm Choco Lava Cake. Freshly cooked & delivered hot across Navi Mumbai."
         url="/menu/"
-        keywords="bread and bite menu, chicken keema taloja, chicken korma kharghar, keema pav navi mumbai, tandoori roti delivery, chicken burger taloja phase 1, food delivery panvel, cloud kitchen menu navi mumbai"
+        keywords="bread and bite menu, chicken keema taloja, choco lava cake navi mumbai, dessert delivery taloja, chicken korma kharghar, keema pav navi mumbai, tandoori roti delivery, chicken burger taloja phase 1, food delivery panvel, cloud kitchen menu navi mumbai"
       />
 
       {/* Semantic Directory for Search Engines (Phase 4) */}
@@ -81,6 +88,7 @@ const Menu = () => {
           <li><a href="/menu/?category=Roti">Tandoori Roti & Fresh Pav</a></li>
           <li><a href="/menu/?category=Snacks">Crispy Snacks & Fries</a></li>
           <li><a href="/menu/?category=Burgers">Crispy Chicken Burgers</a></li>
+          <li><a href="/menu/?category=Dessert">Warm Desserts & Choco Lava Cake</a></li>
         </ul>
       </nav>
 
@@ -116,6 +124,32 @@ const Menu = () => {
                 <FaTimes size={11} />
               </button>
             )}
+          </div>
+        </div>
+
+        {/* Swiggy & Zomato Quick Order Banner */}
+        <div className="flex flex-wrap items-center justify-between gap-3 bg-white border border-[#EAE4DC] rounded-2xl px-4 py-2.5 mb-6 text-xs">
+          <span className="font-semibold text-[#181411]">Also available on:</span>
+          <div className="flex items-center gap-3">
+            <a
+              href={ORDER_LINKS.swiggy}
+              target="_blank"
+              rel="nofollow noopener noreferrer"
+              aria-label="Order on Swiggy"
+              className="font-bold text-[#FC8019] hover:underline flex items-center gap-1"
+            >
+              <SiSwiggy /> Swiggy
+            </a>
+            <span className="text-[#8C827A]">·</span>
+            <a
+              href={ORDER_LINKS.zomato}
+              target="_blank"
+              rel="nofollow noopener noreferrer"
+              aria-label="Order on Zomato"
+              className="font-bold text-[#E23744] hover:underline flex items-center gap-1"
+            >
+              <SiZomato /> Zomato
+            </a>
           </div>
         </div>
 

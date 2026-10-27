@@ -1,7 +1,9 @@
 import React from 'react';
 import { FaInstagram, FaWhatsapp, FaMapMarkerAlt, FaPhoneAlt, FaEnvelope, FaClock, FaHeart } from 'react-icons/fa';
+import { SiSwiggy, SiZomato } from 'react-icons/si';
 import { NavLink } from 'react-router-dom';
 import { LOCATIONS } from '../../data/locations';
+import { ORDER_LINKS } from '../../data/orderLinks';
 
 const Footer = () => {
   return (
@@ -28,25 +30,53 @@ const Footer = () => {
               500g Chicken Keema, Chicken Korma, hot Tandoori Roti, soft Pav, burgers, and crispy fries delivered hot across Navi Mumbai.
             </p>
 
-            <div className="flex items-center gap-3 pt-1">
-              <a
-                href="https://wa.me/919325629256"
-                target="_blank"
-                rel="nofollow noopener noreferrer"
-                aria-label="Order on WhatsApp"
-                className="w-10 h-10 rounded-full bg-[#26211D] border border-white/5 flex items-center justify-center text-[#EAE4DC] hover:bg-[#B84A1C] hover:text-white transition-all"
-              >
-                <FaWhatsapp size={16} />
-              </a>
-              <a
-                href="https://www.instagram.com/bread_and_bite/"
-                target="_blank"
-                rel="nofollow noopener noreferrer"
-                aria-label="Follow us on Instagram"
-                className="w-10 h-10 rounded-full bg-[#26211D] border border-white/5 flex items-center justify-center text-[#EAE4DC] hover:bg-[#B84A1C] hover:text-white transition-all"
-              >
-                <FaInstagram size={16} />
-              </a>
+            <div className="space-y-3 pt-1">
+              <span className="text-[10px] text-[#8C827A] uppercase tracking-wider font-semibold block">
+                Also order on:
+              </span>
+              <div className="flex flex-wrap items-center gap-2.5">
+                <a
+                  href={ORDER_LINKS.swiggy}
+                  target="_blank"
+                  rel="nofollow noopener noreferrer"
+                  aria-label="Order Bread & Bite on Swiggy"
+                  className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-[#26211D] border border-white/10 text-white hover:border-[#FC8019] hover:bg-[#FC8019]/10 text-xs font-semibold transition-all group"
+                >
+                  <SiSwiggy className="text-[#FC8019] text-base group-hover:scale-110 transition-transform" />
+                  <span>Swiggy</span>
+                </a>
+                <a
+                  href={ORDER_LINKS.zomato}
+                  target="_blank"
+                  rel="nofollow noopener noreferrer"
+                  aria-label="Order Bread & Bite on Zomato"
+                  className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-[#26211D] border border-white/10 text-white hover:border-[#E23744] hover:bg-[#E23744]/10 text-xs font-semibold transition-all group"
+                >
+                  <SiZomato className="text-[#E23744] text-base group-hover:scale-110 transition-transform" />
+                  <span>Zomato</span>
+                </a>
+              </div>
+
+              <div className="flex items-center gap-3 pt-2">
+                <a
+                  href={ORDER_LINKS.whatsappUrl}
+                  target="_blank"
+                  rel="nofollow noopener noreferrer"
+                  aria-label="Order on WhatsApp"
+                  className="w-9 h-9 rounded-full bg-[#26211D] border border-white/5 flex items-center justify-center text-[#EAE4DC] hover:bg-[#25D366] hover:text-white transition-all"
+                >
+                  <FaWhatsapp size={15} />
+                </a>
+                <a
+                  href={ORDER_LINKS.instagram}
+                  target="_blank"
+                  rel="nofollow noopener noreferrer"
+                  aria-label="Follow us on Instagram"
+                  className="w-9 h-9 rounded-full bg-[#26211D] border border-white/5 flex items-center justify-center text-[#EAE4DC] hover:bg-[#E1306C] hover:text-white transition-all"
+                >
+                  <FaInstagram size={15} />
+                </a>
+              </div>
             </div>
           </div>
 

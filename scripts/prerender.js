@@ -11,7 +11,7 @@ const DIST_DIR = path.resolve(__dirname, '../dist');
 const SITE_URL = 'https://breadandbite.in';
 
 function renderLayout({ h1, subtitle, bodyHtml, activePath }) {
-  return `<div style="font-family:'Outfit',sans-serif;color:#181411;background-color:#FAF7F2;min-height:100vh;display:flex;flex-direction:column;"><header style="border-bottom:1px solid #EAE4DC;background:#FAF7F2;position:sticky;top:0;z-index:10;"><div style="max-width:1200px;margin:0 auto;padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;"><a href="/" style="font-family:'DM Serif Display',Georgia,serif;font-size:1.5rem;font-weight:bold;color:#B84A1C;text-decoration:none;">Bread &amp; Bite</a><nav aria-label="Main Navigation"><ul style="display:flex;gap:1.25rem;list-style:none;margin:0;padding:0;font-size:0.875rem;font-weight:600;"><li><a href="/" style="color:${activePath === '/' ? '#B84A1C' : '#181411'};text-decoration:none;">Home</a></li><li><a href="/menu/" style="color:${activePath === '/menu/' ? '#B84A1C' : '#181411'};text-decoration:none;">Menu</a></li><li><a href="/about/" style="color:${activePath === '/about/' ? '#B84A1C' : '#181411'};text-decoration:none;">About</a></li><li><a href="/reviews/" style="color:${activePath === '/reviews/' ? '#B84A1C' : '#181411'};text-decoration:none;">Reviews</a></li><li><a href="/contact/" style="color:${activePath === '/contact/' ? '#B84A1C' : '#181411'};text-decoration:none;">Contact</a></li></ul></nav></div></header><main style="flex:1;max-width:1100px;margin:0 auto;padding:2.5rem 1.5rem;width:100%;box-sizing:border-box;"><div style="text-align:center;margin-bottom:2.5rem;"><h1 style="font-family:'DM Serif Display',Georgia,serif;font-size:2.25rem;font-weight:normal;color:#181411;margin:0 0 0.75rem;line-height:1.2;">${h1}</h1>${subtitle ? `<p style="font-size:0.95rem;color:#574F4A;max-width:680px;margin:0 auto;line-height:1.6;">${subtitle}</p>` : ''}</div>${bodyHtml}</main><footer style="border-top:1px solid #EAE4DC;background:#FAF7F2;padding:2.5rem 1.5rem;margin-top:auto;"><div style="max-width:1100px;margin:0 auto;text-align:center;font-size:0.85rem;color:#574F4A;"><p style="margin:0 0 0.75rem;"><strong>Bread &amp; Bite Cloud Kitchen</strong> &middot; Shop 12, Ground Floor, Sector 11, Taloja Phase 1, Navi Mumbai 410208</p><p style="margin:0 0 0.75rem;"><strong>Doorstep Delivery Hubs:</strong> <a href="/kharghar/" style="color:#B84A1C;text-decoration:underline;">Kharghar (20-30m)</a> &middot; <a href="/panvel/" style="color:#B84A1C;text-decoration:underline;">Panvel (25-35m)</a> &middot; <a href="/kamothe/" style="color:#B84A1C;text-decoration:underline;">Kamothe (20-30m)</a> &middot; <a href="/kalamboli/" style="color:#B84A1C;text-decoration:underline;">Kalamboli (25-35m)</a> &middot; <a href="/taloja/" style="color:#B84A1C;text-decoration:underline;">Taloja (10-20m)</a> &middot; <a href="/cbd-belapur/" style="color:#B84A1C;text-decoration:underline;">CBD Belapur (30-40m)</a></p><p style="margin:0;"><a href="/" style="color:#B84A1C;text-decoration:underline;">Home</a> &middot; <a href="/menu/" style="color:#B84A1C;text-decoration:underline;">Full Menu</a> &middot; <a href="/about/" style="color:#B84A1C;text-decoration:underline;">About Us</a> &middot; <a href="/reviews/" style="color:#B84A1C;text-decoration:underline;">Customer Reviews</a> &middot; <a href="/contact/" style="color:#B84A1C;text-decoration:underline;">Contact</a></p></div></footer></div>`;
+  return `<div style="font-family:'Outfit',sans-serif;color:#181411;background-color:#FAF7F2;min-height:100vh;display:flex;flex-direction:column;"><header style="border-bottom:1px solid #EAE4DC;background:#FAF7F2;position:sticky;top:0;z-index:10;"><div style="max-width:1200px;margin:0 auto;padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;"><a href="/" style="font-family:'DM Serif Display',Georgia,serif;font-size:1.5rem;font-weight:bold;color:#B84A1C;text-decoration:none;">Bread &amp; Bite</a><nav aria-label="Main Navigation"><ul style="display:flex;gap:1.25rem;list-style:none;margin:0;padding:0;font-size:0.875rem;font-weight:600;"><li><a href="/" style="color:${activePath === '/' ? '#B84A1C' : '#181411'};text-decoration:none;">Home</a></li><li><a href="/menu/" style="color:${activePath === '/menu/' ? '#B84A1C' : '#181411'};text-decoration:none;">Menu</a></li><li><a href="/about/" style="color:${activePath === '/about/' ? '#B84A1C' : '#181411'};text-decoration:none;">About</a></li><li><a href="/reviews/" style="color:${activePath === '/reviews/' ? '#B84A1C' : '#181411'};text-decoration:none;">Reviews</a></li><li><a href="/contact/" style="color:${activePath === '/contact/' ? '#B84A1C' : '#181411'};text-decoration:none;">Contact</a></li></ul></nav></div></header><main style="flex:1;max-width:1100px;margin:0 auto;padding:2.5rem 1.5rem;width:100%;box-sizing:border-box;"><div style="text-align:center;margin-bottom:2.5rem;"><h1 style="font-family:'DM Serif Display',Georgia,serif;font-size:2.25rem;font-weight:normal;color:#181411;margin:0 0 0.75rem;line-height:1.2;">${h1}</h1>${subtitle ? `<p style="font-size:0.95rem;color:#574F4A;max-width:680px;margin:0 auto;line-height:1.6;">${subtitle}</p>` : ''}</div>${bodyHtml}</main><footer style="border-top:1px solid #EAE4DC;background:#FAF7F2;padding:2.5rem 1.5rem;margin-top:auto;"><div style="max-width:1100px;margin:0 auto;text-align:center;font-size:0.85rem;color:#574F4A;"><p style="margin:0 0 0.75rem;"><strong>Bread &amp; Bite Cloud Kitchen</strong> &middot; Shop 12, Ground Floor, Sector 11, Taloja Phase 1, Navi Mumbai 410208</p><p style="margin:0 0 0.75rem;"><strong>Order Online:</strong> <a href="https://www.swiggy.com/direct/brand/675246?source=swiggy-direct&amp;subSource=generic" target="_blank" rel="noopener noreferrer" style="color:#FC8019;text-decoration:underline;font-weight:600;">Swiggy</a> &middot; <a href="https://link.zomato.com/xqzv/rshare?id=10960061830563279" target="_blank" rel="noopener noreferrer" style="color:#E23744;text-decoration:underline;font-weight:600;">Zomato</a> &middot; <a href="https://wa.me/919325629256" target="_blank" rel="noopener noreferrer" style="color:#25D366;text-decoration:underline;font-weight:600;">WhatsApp Hotline</a></p><p style="margin:0 0 0.75rem;"><strong>Doorstep Delivery Hubs:</strong> <a href="/kharghar/" style="color:#B84A1C;text-decoration:underline;">Kharghar (20-30m)</a> &middot; <a href="/panvel/" style="color:#B84A1C;text-decoration:underline;">Panvel (25-35m)</a> &middot; <a href="/kamothe/" style="color:#B84A1C;text-decoration:underline;">Kamothe (20-30m)</a> &middot; <a href="/kalamboli/" style="color:#B84A1C;text-decoration:underline;">Kalamboli (25-35m)</a> &middot; <a href="/taloja/" style="color:#B84A1C;text-decoration:underline;">Taloja (10-20m)</a> &middot; <a href="/cbd-belapur/" style="color:#B84A1C;text-decoration:underline;">CBD Belapur (30-40m)</a></p><p style="margin:0;"><a href="/" style="color:#B84A1C;text-decoration:underline;">Home</a> &middot; <a href="/menu/" style="color:#B84A1C;text-decoration:underline;">Full Menu</a> &middot; <a href="/about/" style="color:#B84A1C;text-decoration:underline;">About Us</a> &middot; <a href="/reviews/" style="color:#B84A1C;text-decoration:underline;">Customer Reviews</a> &middot; <a href="/contact/" style="color:#B84A1C;text-decoration:underline;">Contact</a></p></div></footer></div>`;
 }
 
 const homeBody = `
@@ -43,6 +43,11 @@ const homeBody = `
         <p style="font-size:0.85rem;color:#574F4A;line-height:1.5;margin:0 0 0.75rem;">500g rich Chicken Korma paired with 2 hot, whole wheat tandoori rotis fresh from our clay oven.</p>
         <strong style="color:#B84A1C;font-size:1rem;">₹249 · Combo Deal</strong>
       </div>
+      <div style="background:#fff;border:1px solid #EAE4DC;border-radius:1rem;padding:1.25rem;">
+        <h3 style="font-size:1.1rem;margin:0 0 0.5rem;color:#181411;">Warm Choco Lava Cake</h3>
+        <p style="font-size:0.85rem;color:#574F4A;line-height:1.5;margin:0 0 0.75rem;">Decadent chocolate cake with a rich molten gooey chocolate fudge centre. Served fresh and warm.</p>
+        <strong style="color:#B84A1C;font-size:1rem;">₹99 · Dessert</strong>
+      </div>
     </div>
   </section>
 
@@ -54,6 +59,7 @@ const homeBody = `
       <a href="/menu/?category=roti" style="background:#fff;border:1px solid #EAE4DC;padding:0.5rem 1rem;border-radius:9999px;color:#181411;text-decoration:none;font-size:0.85rem;font-weight:600;">Tandoori Roti &amp; Soft Pav</a>
       <a href="/menu/?category=snacks" style="background:#fff;border:1px solid #EAE4DC;padding:0.5rem 1rem;border-radius:9999px;color:#181411;text-decoration:none;font-size:0.85rem;font-weight:600;">Crispy Snacks &amp; Fries</a>
       <a href="/menu/?category=burgers" style="background:#fff;border:1px solid #EAE4DC;padding:0.5rem 1rem;border-radius:9999px;color:#181411;text-decoration:none;font-size:0.85rem;font-weight:600;">Crispy Chicken Burgers</a>
+      <a href="/menu/?category=dessert" style="background:#fff;border:1px solid #EAE4DC;padding:0.5rem 1rem;border-radius:9999px;color:#181411;text-decoration:none;font-size:0.85rem;font-weight:600;">Warm Desserts</a>
     </div>
   </section>
 
@@ -61,32 +67,32 @@ const homeBody = `
     <h2 style="font-family:'DM Serif Display',Georgia,serif;font-size:1.75rem;color:#181411;text-align:center;margin:0 0 0.5rem;">Fast Food Delivery Across Navi Mumbai</h2>
     <p style="font-size:0.9rem;color:#574F4A;text-align:center;max-width:620px;margin:0 auto 1.75rem;line-height:1.6;">Our cloud kitchen is centrally located in Taloja Phase 1, delivering fresh, piping hot 500g chicken gravies, rotis, and combos to every surrounding township.</p>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem;">
-      <a href="/kharghar/" style="background:#FAF7F2;border:1px solid #EAE4DC;border-radius:1rem;padding:1.25rem;text-decoration:none;color:#181411;display:block;">
+      <a href="/kharghar/" style="background:#fff;border:1px solid #EAE4DC;border-radius:1rem;padding:1.25rem;text-decoration:none;color:#181411;display:block;">
         <h3 style="font-size:1.1rem;margin:0 0 0.25rem;color:#B84A1C;">Kharghar Delivery</h3>
         <p style="font-size:0.8rem;color:#574F4A;margin:0 0 0.5rem;">Sectors 1-35 · Central Park · Station</p>
         <strong style="font-size:0.8rem;color:#181411;">⚡ 20–30 Min Delivery &rarr;</strong>
       </a>
-      <a href="/panvel/" style="background:#FAF7F2;border:1px solid #EAE4DC;border-radius:1rem;padding:1.25rem;text-decoration:none;color:#181411;display:block;">
+      <a href="/panvel/" style="background:#fff;border:1px solid #EAE4DC;border-radius:1rem;padding:1.25rem;text-decoration:none;color:#181411;display:block;">
         <h3 style="font-size:1.1rem;margin:0 0 0.25rem;color:#B84A1C;">Panvel Delivery</h3>
         <p style="font-size:0.8rem;color:#574F4A;margin:0 0 0.5rem;">Old &amp; New Panvel · Khandeshwar</p>
         <strong style="font-size:0.8rem;color:#181411;">⚡ 25–35 Min Delivery &rarr;</strong>
       </a>
-      <a href="/kamothe/" style="background:#FAF7F2;border:1px solid #EAE4DC;border-radius:1rem;padding:1.25rem;text-decoration:none;color:#181411;display:block;">
+      <a href="/kamothe/" style="background:#fff;border:1px solid #EAE4DC;border-radius:1rem;padding:1.25rem;text-decoration:none;color:#181411;display:block;">
         <h3 style="font-size:1.1rem;margin:0 0 0.25rem;color:#B84A1C;">Kamothe Delivery</h3>
         <p style="font-size:0.8rem;color:#574F4A;margin:0 0 0.5rem;">All Sectors · Mansarovar Area</p>
         <strong style="font-size:0.8rem;color:#181411;">⚡ 20–30 Min Delivery &rarr;</strong>
       </a>
-      <a href="/kalamboli/" style="background:#FAF7F2;border:1px solid #EAE4DC;border-radius:1rem;padding:1.25rem;text-decoration:none;color:#181411;display:block;">
+      <a href="/kalamboli/" style="background:#fff;border:1px solid #EAE4DC;border-radius:1rem;padding:1.25rem;text-decoration:none;color:#181411;display:block;">
         <h3 style="font-size:1.1rem;margin:0 0 0.25rem;color:#B84A1C;">Kalamboli Delivery</h3>
         <p style="font-size:0.8rem;color:#574F4A;margin:0 0 0.5rem;">Steel Market · APMC · Residential</p>
         <strong style="font-size:0.8rem;color:#181411;">⚡ 25–35 Min Delivery &rarr;</strong>
       </a>
-      <a href="/taloja/" style="background:#FAF7F2;border:1px solid #EAE4DC;border-radius:1rem;padding:1.25rem;text-decoration:none;color:#181411;display:block;">
+      <a href="/taloja/" style="background:#fff;border:1px solid #EAE4DC;border-radius:1rem;padding:1.25rem;text-decoration:none;color:#181411;display:block;">
         <h3 style="font-size:1.1rem;margin:0 0 0.25rem;color:#B84A1C;">Taloja Delivery</h3>
         <p style="font-size:0.8rem;color:#574F4A;margin:0 0 0.5rem;">Phase 1 &amp; 2 · MIDC · Kitchen Base</p>
         <strong style="font-size:0.8rem;color:#181411;">⚡ 10–20 Min Delivery &rarr;</strong>
       </a>
-      <a href="/cbd-belapur/" style="background:#FAF7F2;border:1px solid #EAE4DC;border-radius:1rem;padding:1.25rem;text-decoration:none;color:#181411;display:block;">
+      <a href="/cbd-belapur/" style="background:#fff;border:1px solid #EAE4DC;border-radius:1rem;padding:1.25rem;text-decoration:none;color:#181411;display:block;">
         <h3 style="font-size:1.1rem;margin:0 0 0.25rem;color:#B84A1C;">CBD Belapur Delivery</h3>
         <p style="font-size:0.8rem;color:#574F4A;margin:0 0 0.5rem;">Sectors 1-15 · NMMC · Palm Beach</p>
         <strong style="font-size:0.8rem;color:#181411;">⚡ 30–40 Min Delivery &rarr;</strong>
@@ -104,6 +110,7 @@ const menuBody = `
       <a href="/menu/?category=Roti" style="background:#fff;border:1px solid #EAE4DC;padding:0.5rem 1.25rem;border-radius:9999px;color:#181411;text-decoration:none;font-size:0.85rem;font-weight:600;">Tandoori Roti &amp; Fresh Pav</a>
       <a href="/menu/?category=Snacks" style="background:#fff;border:1px solid #EAE4DC;padding:0.5rem 1.25rem;border-radius:9999px;color:#181411;text-decoration:none;font-size:0.85rem;font-weight:600;">Crispy Snacks &amp; Fries</a>
       <a href="/menu/?category=Burgers" style="background:#fff;border:1px solid #EAE4DC;padding:0.5rem 1.25rem;border-radius:9999px;color:#181411;text-decoration:none;font-size:0.85rem;font-weight:600;">Crispy Chicken Burgers</a>
+      <a href="/menu/?category=Dessert" style="background:#fff;border:1px solid #EAE4DC;padding:0.5rem 1.25rem;border-radius:9999px;color:#181411;text-decoration:none;font-size:0.85rem;font-weight:600;">Warm Desserts</a>
     </div>
 
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;">
@@ -136,6 +143,11 @@ const menuBody = `
         <h2 style="font-size:1.2rem;margin:0 0 0.5rem;color:#181411;">Soft Bakery Ladi Pav (4 pcs)</h2>
         <p style="font-size:0.875rem;color:#574F4A;line-height:1.5;margin:0 0 0.75rem;">Set of 4 soft golden Mumbai ladi pavs, perfect for scooping up keema and korma gravies.</p>
         <span style="font-weight:700;color:#B84A1C;font-size:1.1rem;">₹30</span>
+      </article>
+      <article style="background:#fff;border:1px solid #EAE4DC;border-radius:1rem;padding:1.5rem;">
+        <h2 style="font-size:1.2rem;margin:0 0 0.5rem;color:#181411;">Warm Choco Lava Cake</h2>
+        <p style="font-size:0.875rem;color:#574F4A;line-height:1.5;margin:0 0 0.75rem;">Decadent chocolate cake with a rich, molten gooey chocolate fudge centre. Served fresh and warm.</p>
+        <span style="font-weight:700;color:#B84A1C;font-size:1.1rem;">₹99</span>
       </article>
     </div>
   </section>

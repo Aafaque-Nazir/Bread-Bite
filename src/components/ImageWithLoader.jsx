@@ -1,10 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
-const FALLBACK_IMAGE = 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=600&auto=format&fit=crop';
+const FALLBACK_IMAGE = '/images/chicken-korma.webp';
 
 const ImageWithLoader = ({ src, alt, className = '' }) => {
     const [isLoaded, setIsLoaded] = useState(false);
     const [hasError, setHasError] = useState(false);
+
+    useEffect(() => {
+        setIsLoaded(false);
+        setHasError(false);
+    }, [src]);
 
     return (
         <div className={`relative overflow-hidden bg-[#F4EFE6] ${className}`}>

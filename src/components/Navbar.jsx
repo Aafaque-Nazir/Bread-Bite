@@ -61,137 +61,143 @@ function Navbar() {
       <nav
         className={`sticky top-0 left-0 w-full z-40 transition-all duration-300 ${
           scrolled
-            ? "bg-[#FAF7F2]/95 backdrop-blur-md py-3 shadow-xs border-b border-[#EAE4DC]"
-            : "bg-[#FAF7F2] py-3.5 sm:py-4 border-b border-[#EAE4DC]"
+            ? "bg-[#FAF7F2]/95 backdrop-blur-md py-2.5 shadow-xs border-b border-[#EAE4DC]"
+            : "bg-[#FAF7F2] py-2.5 sm:py-3 border-b border-[#EAE4DC]"
         }`}
       >
         <div className="max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-6">
-          {/* LOGO & BRAND */}
-          <NavLink to="/" className="flex items-center gap-2.5 sm:gap-3.5 group relative z-50">
-            <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-white border border-[#EAE4DC] flex items-center justify-center p-1.5 shadow-2xs transition-transform duration-300 group-hover:scale-105">
-              <img
-                src="/Logo.png"
-                alt="Bread & Bite"
-                className="w-full h-full object-contain"
-              />
-            </div>
-            <div className="flex flex-col">
-              <span className="text-[1.2rem] sm:text-[1.35rem] tracking-tight text-[#181411] leading-none font-heading whitespace-nowrap">
-                Bread <span className="font-italic-accent text-lg sm:text-xl text-[#B84A1C]">&</span> Bite
-              </span>
-              <span className="text-[9px] sm:text-[9.5px] text-[#8C827A] font-semibold tracking-[0.2em] uppercase mt-1 whitespace-nowrap">
-                Cloud Kitchen · Navi Mumbai
-              </span>
-            </div>
-          </NavLink>
+          {/* LEFT: LOGO & DESKTOP NAV LINKS (Grouped with guaranteed breathing space) */}
+          <div className="flex items-center gap-8 xl:gap-11">
+            {/* LOGO & BRAND */}
+            <NavLink to="/" className="flex items-center gap-2.5 sm:gap-3 group shrink-0">
+              <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-white border border-[#EAE4DC] flex items-center justify-center p-1 shadow-2xs transition-transform duration-200 group-hover:scale-105">
+                <img
+                  src="/Logo.png"
+                  alt="Bread & Bite"
+                  className="w-full h-full object-contain"
+                />
+              </div>
+              <div className="flex flex-col">
+                <span className="text-[1.2rem] sm:text-[1.28rem] tracking-tight text-[#181411] leading-none font-heading whitespace-nowrap">
+                  Bread <span className="font-italic-accent text-lg text-[#B84A1C]">&</span> Bite
+                </span>
+                <span className="text-[9.5px] text-[#8C827A] font-medium tracking-wider uppercase mt-0.5 whitespace-nowrap">
+                  Navi Mumbai
+                </span>
+              </div>
+            </NavLink>
 
-          {/* DESKTOP MENU (CLEAN, MINIMALIST, NO CAPSULES/PATTIYA) */}
-          <div className="hidden lg:flex items-center flex-1 justify-center">
-            <ul className="flex items-center gap-8 text-[12px] font-semibold tracking-[0.16em] uppercase">
-              {navLinks.map(({ name, path }) => (
-                <li key={name} className="relative">
-                  <NavLink
-                    to={path}
-                    className={({ isActive }) =>
-                      `transition-colors duration-200 py-1 flex items-center ${
-                        isActive
-                          ? "text-[#B84A1C] font-bold"
-                          : "text-[#574F4A] hover:text-[#181411]"
-                      }`
-                    }
+            {/* DESKTOP NAV LINKS */}
+            <nav className="hidden lg:flex items-center">
+              <ul className="flex items-center gap-6 xl:gap-7 text-[12.5px] font-medium tracking-wider uppercase">
+                {navLinks.map(({ name, path }) => (
+                  <li key={name} className="relative">
+                    <NavLink
+                      to={path}
+                      className={({ isActive }) =>
+                        `transition-colors duration-200 py-1 flex items-center ${
+                          isActive
+                            ? "text-[#B84A1C] font-semibold"
+                            : "text-[#574F4A] hover:text-[#181411]"
+                        }`
+                      }
+                    >
+                      {({ isActive }) => (
+                        <>
+                          <span>{name}</span>
+                          {isActive && (
+                            <motion.span
+                              layoutId="activeNavUnderline"
+                              className="absolute -bottom-1 left-0 right-0 h-[2px] bg-[#B84A1C] rounded-full"
+                              transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                            />
+                          )}
+                        </>
+                      )}
+                    </NavLink>
+                  </li>
+                ))}
+
+                {/* LOCATIONS DROPDOWN */}
+                <li className="relative group">
+                  <button
+                    type="button"
+                    className={`transition-colors duration-200 py-1 flex items-center gap-1 cursor-pointer tracking-wider uppercase ${
+                      isLocationActive
+                        ? "text-[#B84A1C] font-semibold"
+                        : "text-[#574F4A] hover:text-[#181411]"
+                    }`}
                   >
-                    {({ isActive }) => (
-                      <>
-                        <span>{name}</span>
-                        {isActive && (
-                          <motion.span
-                            layoutId="activeNavUnderline"
-                            className="absolute -bottom-1 left-0 right-0 h-[2px] bg-[#B84A1C] rounded-full"
-                            transition={{ type: "spring", stiffness: 380, damping: 30 }}
-                          />
-                        )}
-                      </>
-                    )}
-                  </NavLink>
-                </li>
-              ))}
-
-              {/* LOCATIONS DROPDOWN */}
-              <li className="relative group">
-                <button
-                  type="button"
-                  className={`transition-colors duration-200 py-1 flex items-center gap-1.5 cursor-pointer uppercase tracking-[0.16em] ${
-                    isLocationActive
-                      ? "text-[#B84A1C] font-bold"
-                      : "text-[#574F4A] hover:text-[#181411]"
-                  }`}
-                >
-                  <span>Locations</span>
-                  <FaChevronDown
-                    size={8}
-                    className="group-hover:rotate-180 transition-transform duration-200 text-[#8C827A]"
-                  />
-                  {isLocationActive && (
-                    <motion.span
-                      layoutId="activeNavUnderline"
-                      className="absolute -bottom-1 left-0 right-0 h-[2px] bg-[#B84A1C] rounded-full"
-                      transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                    <span>Locations</span>
+                    <FaChevronDown
+                      size={8}
+                      className="group-hover:rotate-180 transition-transform duration-200 text-[#8C827A]"
                     />
-                  )}
-                </button>
+                    {isLocationActive && (
+                      <motion.span
+                        layoutId="activeNavUnderline"
+                        className="absolute -bottom-1 left-0 right-0 h-[2px] bg-[#B84A1C] rounded-full"
+                        transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                      />
+                    )}
+                  </button>
 
-                <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2.5 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-all duration-200 z-50">
-                  <div className="w-56 bg-white border border-[#EAE4DC] rounded-2xl shadow-tactile-lg p-2 space-y-1">
-                    <span className="text-[10px] uppercase tracking-wider font-bold text-[#8C827A] px-3 py-1.5 block border-b border-[#F0EAE1]">
-                      Navi Mumbai Delivery
-                    </span>
-                    {LOCATIONS.map((loc) => (
-                      <NavLink
-                        key={loc.slug}
-                        to={`/${loc.slug}/`}
-                        className={({ isActive }) =>
-                          `flex items-center justify-between px-3 py-2 rounded-xl text-xs transition-colors ${
-                            isActive
-                              ? "bg-[#FAF7F2] text-[#B84A1C] font-bold"
-                              : "text-[#181411] hover:bg-[#FAF7F2] hover:text-[#B84A1C]"
-                          }`
-                        }
-                      >
-                        <span className="normal-case font-medium">{loc.name}</span>
-                        <span className="text-[10px] text-[#8C827A]">{loc.deliveryTime}m</span>
-                      </NavLink>
-                    ))}
+                  <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2.5 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-all duration-200 z-50">
+                    <div className="w-56 bg-white border border-[#EAE4DC] rounded-2xl shadow-tactile-lg p-2 space-y-1">
+                      <span className="text-[10px] uppercase tracking-wider font-bold text-[#8C827A] px-3 py-1.5 block border-b border-[#F0EAE1]">
+                        Navi Mumbai Delivery
+                      </span>
+                      {LOCATIONS.map((loc) => (
+                        <NavLink
+                          key={loc.slug}
+                          to={`/${loc.slug}/`}
+                          className={({ isActive }) =>
+                            `flex items-center justify-between px-3 py-2 rounded-xl text-xs transition-colors ${
+                              isActive
+                                ? "bg-[#FAF7F2] text-[#B84A1C] font-bold"
+                                : "text-[#181411] hover:bg-[#FAF7F2] hover:text-[#B84A1C]"
+                            }`
+                          }
+                        >
+                          <span className="normal-case font-medium">{loc.name}</span>
+                          <span className="text-[10px] text-[#8C827A]">{loc.deliveryTime}m</span>
+                        </NavLink>
+                      ))}
+                    </div>
                   </div>
-                </div>
-              </li>
-            </ul>
+                </li>
+              </ul>
+            </nav>
           </div>
 
-          {/* DESKTOP ACTIONS */}
-          <div className="hidden lg:flex items-center gap-4">
+          {/* RIGHT: DESKTOP ACTIONS */}
+          <div className="hidden lg:flex items-center gap-3">
             {/* CART TRIGGER */}
             <button
               onClick={toggleCart}
               aria-label="View shopping bag"
-              className="relative p-2.5 rounded-full text-[#181411] hover:text-[#B84A1C] hover:bg-white border border-transparent hover:border-[#EAE4DC] transition-all duration-200 cursor-pointer"
+              className="relative p-2 rounded-full text-[#181411] hover:text-[#B84A1C] hover:bg-black/5 transition-colors cursor-pointer"
             >
-              <FaShoppingBag size={17} />
+              <FaShoppingBag size={16} />
               {cartCount > 0 && (
-                <span className="absolute -top-1 -right-1 bg-[#B84A1C] text-white text-[10px] font-bold w-4.5 h-4.5 flex items-center justify-center rounded-full shadow-2xs">
+                <span className="absolute -top-0.5 -right-0.5 bg-[#B84A1C] text-white text-[9px] font-bold w-4 h-4 flex items-center justify-center rounded-full ring-2 ring-[#FAF7F2]">
                   {cartCount}
                 </span>
               )}
             </button>
 
-            {/* ORDER CTA BUTTON */}
+            {/* Subtle Divider */}
+            <div className="h-3.5 w-px bg-[#EAE4DC]" />
+
+            {/* SLEEK ORDER CTA BUTTON */}
             <a
               href={whatsappLink}
               target="_blank"
               rel="nofollow noopener noreferrer"
-              className="btn-primary py-2.5 px-5 text-[11px] font-bold tracking-wider uppercase flex items-center gap-2 rounded-full shadow-tactile-sm transition-transform active:scale-95"
+              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#181411] hover:bg-[#B84A1C] text-white text-xs font-medium tracking-wide transition-all duration-200 shadow-2xs hover:shadow-xs active:scale-98"
             >
-              <FaWhatsapp className="text-[14px]" />
-              <span>{isKitchenOpen ? "Order Direct" : "Inquire Direct"}</span>
+              <FaWhatsapp size={12} className="opacity-80" />
+              <span>Order Now</span>
             </a>
           </div>
 
@@ -307,7 +313,7 @@ function Navbar() {
                   className="btn-primary w-full py-3.5 text-xs uppercase tracking-wider font-bold shadow-tactile-md flex items-center justify-center gap-2 rounded-xl transition-colors"
                 >
                   <FaWhatsapp size={16} />
-                  <span>{isKitchenOpen ? "Order on WhatsApp" : "Inquire on WhatsApp"}</span>
+                  <span>Order on WhatsApp</span>
                 </a>
                 <p className="text-center text-[11px] text-[#8C827A]">
                   Taloja Phase 1 • Kharghar • Panvel • Kamothe • Kalamboli • Belapur

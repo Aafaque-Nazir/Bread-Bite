@@ -128,7 +128,6 @@ const Cart = () => {
     );
   }
 
-  const freeDeliveryProgress = Math.min(100, Math.round((cartTotal / 499) * 100));
 
   return (
     <div className="min-h-screen bg-[#FAF7F2] text-[#181411] pt-6 sm:pt-10 pb-24 px-4 sm:px-6">
@@ -176,24 +175,6 @@ const Cart = () => {
         <div className="grid lg:grid-cols-12 gap-6 lg:gap-10">
           {/* Left Column: Items (7 cols) */}
           <div className="lg:col-span-7 space-y-5">
-            {/* Free Delivery Bar */}
-            <div className="artisan-card rounded-2xl p-4 bg-white border border-[#EAE4DC]">
-              <div className="flex items-center justify-between text-xs font-semibold mb-2">
-                <span className="text-[#181411] flex items-center gap-1.5">
-                  <FaMotorcycle className="text-[#B84A1C]" />
-                  {isFreeDeliveryEligible || isTaloja
-                    ? "✨ You qualify for Free Delivery!"
-                    : `Add ₹${499 - cartTotal} more for FREE Delivery`}
-                </span>
-                <span className="text-[#8C827A] font-bold">{freeDeliveryProgress}%</span>
-              </div>
-              <div className="w-full h-1.5 bg-[#FAF7F2] rounded-full overflow-hidden border border-[#EAE4DC]">
-                <div
-                  className="h-full bg-[#B84A1C] rounded-full transition-all duration-300"
-                  style={{ width: `${isTaloja ? 100 : freeDeliveryProgress}%` }}
-                />
-              </div>
-            </div>
 
             {/* Item List */}
             <div className="artisan-card rounded-3xl p-5 sm:p-7 bg-white">
@@ -382,9 +363,7 @@ const Cart = () => {
                   <span className="text-white font-medium">₹{cartTotal}</span>
                 </div>
                 <div className="flex justify-between text-[#8C827A]">
-                  <span className="flex items-center gap-1.5">
-                    <FaMotorcycle className="text-[#B84A1C]" /> Delivery Fee
-                  </span>
+                  <span>Delivery Fee</span>
                   <span className={deliveryCharge === 0 ? "text-[#2A6A4E] font-bold" : "text-white font-medium"}>
                     {deliveryCharge === 0 ? 'FREE' : `₹${deliveryCharge}`}
                   </span>

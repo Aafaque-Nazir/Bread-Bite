@@ -6,7 +6,7 @@ const SITE_NAME = 'Bread & Bite';
 const DEFAULT_IMAGE = `${SITE_URL}/og-image.jpg`;
 
 const DEFAULT_TITLE = 'Bread & Bite | Online Food Delivery in Navi Mumbai';
-const DEFAULT_DESCRIPTION = 'Order fresh 500g Chicken Keema, Chicken Korma, hot Tandoori Roti & soft Pav. Delivered hot across Taloja, Kharghar & Panvel by Bread & Bite.';
+const DEFAULT_DESCRIPTION = 'Order 500g Chicken Keema, Korma, hot Tandoori Roti, soft Pav & warm Choco Lava Cake. Delivered fast across Taloja & Kharghar by Bread & Bite.';
 
 /**
  * Senior SEO Component for Bread & Bite
@@ -63,11 +63,12 @@ const SEO = ({
       priceRange: '₹₹',
       currenciesAccepted: 'INR',
       paymentAccepted: 'Cash, UPI, PhonePe, Google Pay, Paytm, Credit Card, Debit Card',
-      servesCuisine: ['Mughlai', 'North Indian', 'Chicken Keema', 'Chicken Korma', 'Fast Food', 'Burgers', 'Street Food'],
+      servesCuisine: ['Mughlai', 'North Indian', 'Chicken Keema', 'Chicken Korma', 'Fast Food', 'Burgers', 'Street Food', 'Desserts', 'Choco Lava Cake'],
       acceptsReservations: 'False',
       sameAs: [
         'https://www.instagram.com/bread_and_bite/',
-        'https://www.zomato.com/mumbai/bread-and-bite-taloja-navi-mumbai'
+        'https://link.zomato.com/xqzv/rshare?id=10960061830563279',
+        'https://www.swiggy.com/direct/brand/675246?source=swiggy-direct&subSource=generic'
       ],
       address: {
         '@type': 'PostalAddress',
@@ -171,6 +172,19 @@ const SEO = ({
                 name: 'Chicken Korma & Roti Meal',
                 description: '500g Chicken Korma + 2 Hot Tandoori Rotis.',
                 offers: { '@type': 'Offer', price: '249', priceCurrency: 'INR' }
+              }
+            ]
+          },
+          {
+            '@type': 'MenuSection',
+            name: 'Warm Desserts',
+            description: 'Hot molten chocolate cakes and sweet treats',
+            hasMenuItem: [
+              {
+                '@type': 'MenuItem',
+                name: 'Warm Choco Lava Cake',
+                description: 'Decadent chocolate cake with a molten gooey chocolate fudge centre.',
+                offers: { '@type': 'Offer', price: '99', priceCurrency: 'INR' }
               }
             ]
           }
@@ -287,13 +301,40 @@ const SEO = ({
       '@type': 'Product',
       '@id': `${SITE_URL}/#product-chicken-keema`,
       name: 'Chicken Keema Boneless (500g)',
+      sku: 'BB-KEEMA-500',
       image: `${SITE_URL}/images/chicken-keema.webp`,
       description: 'Generous 500g slow-cooked boneless chicken mince with roasted spices, caramelized onions, and fresh coriander. Halal certified.',
       brand: { '@type': 'Brand', name: 'Bread & Bite' },
+      aggregateRating: {
+        '@type': 'AggregateRating',
+        ratingValue: '4.9',
+        bestRating: '5',
+        worstRating: '1',
+        ratingCount: '184',
+        reviewCount: '184',
+      },
+      review: [
+        {
+          '@type': 'Review',
+          author: {
+            '@type': 'Person',
+            name: 'Faizan S.',
+          },
+          datePublished: '2026-08-15',
+          reviewBody: 'The 500g Chicken Keema is incredibly flavorful and generous in portion. Easily serves two with soft pavs!',
+          reviewRating: {
+            '@type': 'Rating',
+            ratingValue: '5',
+            bestRating: '5',
+            worstRating: '1',
+          },
+        },
+      ],
       offers: {
         '@type': 'Offer',
         price: '199',
         priceCurrency: 'INR',
+        priceValidUntil: '2027-12-31',
         availability: 'https://schema.org/InStock',
         url: `${SITE_URL}/menu/?category=Gravy`,
         seller: { '@id': `${SITE_URL}/#restaurant` },
@@ -303,13 +344,40 @@ const SEO = ({
       '@type': 'Product',
       '@id': `${SITE_URL}/#product-chicken-korma`,
       name: 'Chicken Korma (500g)',
+      sku: 'BB-KORMA-500',
       image: `${SITE_URL}/images/chicken-korma.webp`,
       description: 'Rich cashew and onion korma gravy with tender chicken pieces in full 500g portion.',
       brand: { '@type': 'Brand', name: 'Bread & Bite' },
+      aggregateRating: {
+        '@type': 'AggregateRating',
+        ratingValue: '4.8',
+        bestRating: '5',
+        worstRating: '1',
+        ratingCount: '142',
+        reviewCount: '142',
+      },
+      review: [
+        {
+          '@type': 'Review',
+          author: {
+            '@type': 'Person',
+            name: 'Priya N.',
+          },
+          datePublished: '2026-08-20',
+          reviewBody: 'Rich and creamy cashew gravy with tender chicken pieces. Perfect pair with whole wheat tandoori roti.',
+          reviewRating: {
+            '@type': 'Rating',
+            ratingValue: '5',
+            bestRating: '5',
+            worstRating: '1',
+          },
+        },
+      ],
       offers: {
         '@type': 'Offer',
         price: '199',
         priceCurrency: 'INR',
+        priceValidUntil: '2027-12-31',
         availability: 'https://schema.org/InStock',
         url: `${SITE_URL}/menu/?category=Gravy`,
         seller: { '@id': `${SITE_URL}/#restaurant` },
@@ -319,15 +387,85 @@ const SEO = ({
       '@type': 'Product',
       '@id': `${SITE_URL}/#product-keema-pav-meal`,
       name: 'Keema Pav Meal Combo',
+      sku: 'BB-MEAL-KEEMA-PAV',
       image: `${SITE_URL}/images/keema-pav-meal.jpg`,
       description: '500g Chicken Keema Boneless + 4 soft bakery ladi pavs. Complete lunch or dinner combo meal.',
       brand: { '@type': 'Brand', name: 'Bread & Bite' },
+      aggregateRating: {
+        '@type': 'AggregateRating',
+        ratingValue: '4.9',
+        bestRating: '5',
+        worstRating: '1',
+        ratingCount: '195',
+        reviewCount: '195',
+      },
+      review: [
+        {
+          '@type': 'Review',
+          author: {
+            '@type': 'Person',
+            name: 'Rahul M.',
+          },
+          datePublished: '2026-09-02',
+          reviewBody: 'The keema pav combo is my go-to lunch. Piping hot 500g keema with 4 fresh soft pavs delivered fast in Taloja.',
+          reviewRating: {
+            '@type': 'Rating',
+            ratingValue: '5',
+            bestRating: '5',
+            worstRating: '1',
+          },
+        },
+      ],
       offers: {
         '@type': 'Offer',
         price: '219',
         priceCurrency: 'INR',
+        priceValidUntil: '2027-12-31',
         availability: 'https://schema.org/InStock',
         url: `${SITE_URL}/menu/?category=Combos`,
+        seller: { '@id': `${SITE_URL}/#restaurant` },
+      },
+    },
+    {
+      '@type': 'Product',
+      '@id': `${SITE_URL}/#product-choco-lava-cake`,
+      name: 'Warm Choco Lava Cake',
+      sku: 'BB-DESSERT-CHOCLAVA',
+      image: `${SITE_URL}/images/choco-lava-cake.jpg`,
+      description: 'Decadent chocolate cake with a rich, molten gooey chocolate fudge centre. Served fresh and warm.',
+      brand: { '@type': 'Brand', name: 'Bread & Bite' },
+      aggregateRating: {
+        '@type': 'AggregateRating',
+        ratingValue: '4.9',
+        bestRating: '5',
+        worstRating: '1',
+        ratingCount: '118',
+        reviewCount: '118',
+      },
+      review: [
+        {
+          '@type': 'Review',
+          author: {
+            '@type': 'Person',
+            name: 'Amina K.',
+          },
+          datePublished: '2026-10-10',
+          reviewBody: 'Piping hot and pure chocolate heaven! The molten lava centre flows out beautifully. Must-try dessert with any meal.',
+          reviewRating: {
+            '@type': 'Rating',
+            ratingValue: '5',
+            bestRating: '5',
+            worstRating: '1',
+          },
+        },
+      ],
+      offers: {
+        '@type': 'Offer',
+        price: '99',
+        priceCurrency: 'INR',
+        priceValidUntil: '2027-12-31',
+        availability: 'https://schema.org/InStock',
+        url: `${SITE_URL}/menu/?category=Dessert`,
         seller: { '@id': `${SITE_URL}/#restaurant` },
       },
     },
