@@ -21,10 +21,9 @@ const Cart = () => {
   });
   const [errors, setErrors] = useState({});
 
-  // Delivery Logic
-  const isTaloja = details.location === 'taloja';
-  const isFreeDeliveryEligible = cartTotal >= 499;
-  const deliveryCharge = (isTaloja || isFreeDeliveryEligible) ? 0 : 49;
+  // Delivery Logic: Free delivery on ₹299+ everywhere (including Taloja), ₹49 fee below ₹299
+  const isFreeDeliveryEligible = cartTotal >= 299;
+  const deliveryCharge = isFreeDeliveryEligible ? 0 : 49;
   const grandTotal = cartTotal + deliveryCharge;
 
   const validateForm = () => {
@@ -290,9 +289,9 @@ const Cart = () => {
                     </button>
                   </div>
                   <p className="text-[11px] text-[#8C827A] mt-1.5">
-                    {details.location === 'taloja'
-                      ? '✨ Free local delivery in Taloja.'
-                      : '₹49 delivery fee (Free on orders ₹499+).'}
+                    {isFreeDeliveryEligible
+                      ? `✨ Free doorstep delivery applied (${details.location === 'taloja' ? '10–20 min' : '25–35 min'}).`
+                      : '₹49 delivery fee (Free delivery on orders ₹299+).'}
                   </p>
                 </div>
 

@@ -21,6 +21,8 @@ const CartSidebar = () => {
   }, [isCartOpen]);
 
   const totalItemCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+  const deliveryCharge = cartTotal >= 299 ? 0 : 49;
+  const sidebarGrandTotal = cartTotal + deliveryCharge;
 
   return (
     <AnimatePresence>
@@ -154,13 +156,13 @@ const CartSidebar = () => {
                   </div>
                   <div className="flex justify-between text-[#736B63]">
                     <span>Delivery</span>
-                    <span className="text-[#181411]">
-                      {cartTotal >= 499 ? 'Free' : '₹49 (Free above ₹499)'}
+                    <span className={cartTotal >= 299 ? "text-[#2A6A4E] font-medium" : "text-[#181411]"}>
+                      {cartTotal >= 299 ? 'Free' : '₹49 (Free above ₹299)'}
                     </span>
                   </div>
                   <div className="pt-2.5 border-t border-[#EAE4DC] flex justify-between items-baseline">
                     <span className="text-xs uppercase tracking-wider font-semibold text-[#181411]">Total</span>
-                    <span className="text-xl font-bold font-heading text-[#181411]">₹{cartTotal}</span>
+                    <span className="text-xl font-bold font-heading text-[#181411]">₹{sidebarGrandTotal}</span>
                   </div>
                 </div>
 
@@ -173,7 +175,7 @@ const CartSidebar = () => {
                 >
                   <span>{isKitchenOpen ? 'Proceed to Checkout' : 'Review & Pre-order'}</span>
                   <span className="flex items-center gap-2 text-white/90 group-hover:text-white font-mono">
-                    <span>₹{cartTotal}</span>
+                    <span>₹{sidebarGrandTotal}</span>
                     <FaArrowRight size={10} className="group-hover:translate-x-0.5 transition-transform" />
                   </span>
                 </Link>

@@ -21,7 +21,7 @@
 
 | Banned Element | Why It Is Banned | What To Do Instead |
 |---|---|---|
-| **"Pattiya" / Progress Bars** | Delivery progress bars, spending meters, percentage bars (`44%`), and colored strip tracks look like cheap e-commerce discount apps. | Mention delivery terms plainly as clean text: `Delivery: Free above ₹499` or inside the bill breakdown. |
+| **"Pattiya" / Progress Bars** | Delivery progress bars, spending meters, percentage bars (`44%`), and colored strip tracks look like cheap e-commerce discount apps. | Mention delivery terms plainly as clean text: `Delivery: Free above ₹299` or inside the bill breakdown. |
 | **Blinkers & Pulsing Dots** | Green/red pulsing dots (`animate-pulse`), status pings, and live-cooking dots look like stock tickers or tacky CCTV trackers. | Use simple, honest text: `Next slot opens at 7:00 PM`. No blinking animations. No dots. |
 | **Pill / Badge Inflation** | Wrapping every small phrase in rounded pills (`rounded-full bg-... border ...`) creates visual clutter and looks like generic template slop. | Use typographic hierarchy, font weight, subtle muted colors, and generous whitespace. |
 | **AI / Tech Marketing Jargon** | Words like "Matrix", "Node", "Hub", "Zone 01", "Curated selection", "Optimized portioning", "Culinary ecosystem" sound fake and alien to a food kitchen. | Use real, grounded food words: "Fresh Chicken Keema", "500g Portions", "Cooked fresh to order", "Lunch Slot (11:00 AM – 3:15 PM)", "Taloja, Kharghar, Panvel". |

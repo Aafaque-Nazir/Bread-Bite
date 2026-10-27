@@ -74,7 +74,7 @@ export const LOCATIONS = [
       },
       {
         question: 'What is the minimum order for free delivery to Kharghar?',
-        answer: 'Free delivery to Kharghar is available on all orders above ₹499. Orders below ₹499 have a nominal delivery charge based on your sector.',
+        answer: 'Free delivery to Kharghar is available on all orders above ₹299. Orders below ₹299 have a nominal delivery charge of ₹49.',
       },
       {
         question: 'Can I order party platters for delivery to Kharghar?',

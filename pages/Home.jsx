@@ -693,7 +693,7 @@ const Home = () => {
 
           <div className="mt-8 text-center text-xs text-[#574F4A] flex items-center justify-center gap-2">
             <FaCheckCircle className="text-[#2A6A4E]" size={13} />
-            <span>Free delivery on orders above ₹499 across all areas</span>
+            <span>Free delivery on orders above ₹299 across all areas</span>
           </div>
         </div>
       </section>
@@ -818,7 +818,7 @@ const Home = () => {
           </div>
 
           <p className="text-[11px] text-[#8C827A] mt-6">
-            Daily slots: 11:00 AM – 3:15 PM & 7:00 PM – 9:15 PM · Free delivery on ₹499+ across Taloja, Kharghar, Panvel & Belapur
+            Daily slots: 11:00 AM – 3:15 PM & 7:00 PM – 9:15 PM · Free delivery on ₹299+ across Taloja, Kharghar, Panvel & Belapur
           </p>
         </div>
       </section>

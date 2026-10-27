@@ -28,7 +28,7 @@ const KitchenStatusBanner = () => {
     },
     {
       label: "Free Delivery",
-      val: "On Orders Above ₹499",
+      val: "On Orders Above ₹299",
       icon: <FaClock className="text-[#B84A1C]" size={11} />
     },
     {

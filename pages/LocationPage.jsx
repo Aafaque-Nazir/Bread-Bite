@@ -325,7 +325,7 @@ const LocationPage = () => {
                 </div>
                 <div>
                   <h3 className="text-sm font-bold text-[#181411] mb-1">Free Delivery</h3>
-                  <p className="text-xs text-[#574F4A]">Free delivery on orders above ₹499 to {location.name}.</p>
+                  <p className="text-xs text-[#574F4A]">Free delivery on orders above ₹299 to {location.name}.</p>
                 </div>
               </div>
             </div>
@@ -528,7 +528,7 @@ const LocationPage = () => {
           </div>
 
           <p className="text-[11px] text-[#8C827A] mt-6">
-            Daily slots: 11:00 AM – 3:15 PM & 7:00 PM – 9:15 PM · Free delivery on ₹499+ to {location.name}
+            Daily slots: 11:00 AM – 3:15 PM & 7:00 PM – 9:15 PM · Free delivery on ₹299+ to {location.name}
           </p>
         </div>
       </section>

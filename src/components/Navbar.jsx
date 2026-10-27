@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import { FaBars, FaTimes, FaShoppingBag, FaWhatsapp, FaChevronDown } from "react-icons/fa";
+import { createPortal } from "react-dom";
+import { FaBars, FaTimes, FaShoppingBag, FaWhatsapp, FaChevronDown, FaArrowRight } from "react-icons/fa";
 import { NavLink, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { useCart } from "../context/CartContext";
@@ -9,6 +10,7 @@ import { LOCATIONS } from "../../data/locations";
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const location = useLocation();
   const { toggleCart, cartCount } = useCart();
   const { isOpen: isKitchenOpen } = useKitchenStatus();
@@ -16,6 +18,10 @@ function Navbar() {
   const whatsappLink = isKitchenOpen
     ? "https://wa.me/919325629256?text=Hi%2C%20I%20want%20to%20order%20from%20Bread%20%26%20Bite!"
     : "https://wa.me/919325629256?text=Hi%20Bread%20%26%20Bite%2C%20I%20have%20an%20inquiry%20regarding%20orders%20or%20party%20catering.";
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -44,6 +50,19 @@ function Navbar() {
     };
   }, [isOpen]);
 
+  // Close on Escape key
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === "Escape") {
+        setIsOpen(false);
+      }
+    };
+    if (isOpen) {
+      window.addEventListener("keydown", handleKeyDown);
+    }
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [isOpen]);
+
   const navLinks = [
     { name: "Home", path: "/" },
     { name: "Menu", path: "/menu/" },
@@ -66,7 +85,7 @@ function Navbar() {
         }`}
       >
         <div className="max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-6">
-          {/* LEFT: LOGO & DESKTOP NAV LINKS (Grouped with guaranteed breathing space) */}
+          {/* LEFT: LOGO & DESKTOP NAV LINKS */}
           <div className="flex items-center gap-8 xl:gap-11">
             {/* LOGO & BRAND */}
             <NavLink to="/" className="flex items-center gap-2.5 sm:gap-3 group shrink-0">
@@ -204,7 +223,10 @@ function Navbar() {
           {/* MOBILE TOGGLE & CART */}
           <div className="lg:hidden flex items-center gap-1.5">
             <button
-              onClick={toggleCart}
+              onClick={() => {
+                setIsOpen(false);
+                toggleCart();
+              }}
               aria-label="View shopping bag"
               className="relative p-2.5 rounded-xl text-[#181411] hover:text-[#B84A1C] touch-manipulation cursor-pointer"
             >
@@ -224,105 +246,210 @@ function Navbar() {
             </button>
           </div>
         </div>
-
-        {/* MOBILE MENU DRAWER (CLEAN & MINIMALIST) */}
-        <AnimatePresence>
-          {isOpen && (
-            <motion.div
-              data-lenis-prevent
-              initial={{ opacity: 0, y: -8 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -8 }}
-              transition={{ duration: 0.2 }}
-              className="fixed inset-x-0 top-[61px] sm:top-[69px] bottom-0 bg-[#FAF7F2] z-40 flex flex-col justify-between px-6 py-6 overflow-y-auto border-t border-[#EAE4DC]"
-            >
-              <div className="flex flex-col gap-4">
-                {/* Clean Kitchen Timing Box */}
-                <div className="bg-white border border-[#EAE4DC] rounded-2xl p-4 shadow-2xs">
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-[#8C827A] block mb-2">
-                    Kitchen Operational Slots
-                  </span>
-                  <div className="flex items-center justify-between text-xs text-[#181411]">
-                    <div>
-                      <span className="font-bold block">☀️ Lunch Slot</span>
-                      <span className="text-[11px] text-[#574F4A]">11:00 AM – 3:15 PM</span>
-                    </div>
-                    <div className="text-right">
-                      <span className="font-bold block">🌙 Dinner Slot</span>
-                      <span className="text-[11px] text-[#574F4A]">7:00 PM – 9:15 PM</span>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Page Links */}
-                <div className="flex flex-col gap-1.5 py-1">
-                  <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#8C827A] px-1">
-                    Menu & Pages
-                  </span>
-                  {navLinks.map(({ name, path }, index) => (
-                    <motion.div
-                      key={name}
-                      initial={{ opacity: 0, x: -12 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: index * 0.03 }}
-                    >
-                      <NavLink
-                        to={path}
-                        onClick={() => setIsOpen(false)}
-                        className={({ isActive }) =>
-                          `text-2xl font-heading tracking-tight block py-2 px-3 rounded-xl transition-colors ${
-                            isActive
-                              ? "text-[#B84A1C] bg-white font-semibold shadow-2xs border border-[#EAE4DC]"
-                              : "text-[#181411] hover:bg-white/60"
-                          }`
-                        }
-                      >
-                        {name}
-                      </NavLink>
-                    </motion.div>
-                  ))}
-                </div>
-
-                {/* Delivery Areas */}
-                <div className="py-2 border-t border-[#EAE4DC]">
-                  <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#8C827A] px-1 block mb-2">
-                    Delivery Areas (Navi Mumbai)
-                  </span>
-                  <div className="grid grid-cols-2 gap-2">
-                    {LOCATIONS.map((loc) => (
-                      <NavLink
-                        key={loc.slug}
-                        to={`/${loc.slug}/`}
-                        onClick={() => setIsOpen(false)}
-                        className="bg-white border border-[#EAE4DC] rounded-xl px-3 py-2 text-xs text-[#181411] hover:text-[#B84A1C] hover:border-[#B84A1C] transition-colors flex items-center justify-between"
-                      >
-                        <span className="font-semibold">{loc.name}</span>
-                        <span className="text-[10px] text-[#8C827A]">{loc.deliveryTime}m</span>
-                      </NavLink>
-                    ))}
-                  </div>
-                </div>
-              </div>
-
-              {/* Bottom WhatsApp Button */}
-              <div className="pt-4 border-t border-[#EAE4DC] space-y-3 mt-auto">
-                <a
-                  href={whatsappLink}
-                  target="_blank"
-                  rel="nofollow noopener noreferrer"
-                  className="btn-primary w-full py-3.5 text-xs uppercase tracking-wider font-bold shadow-tactile-md flex items-center justify-center gap-2 rounded-xl transition-colors"
-                >
-                  <FaWhatsapp size={16} />
-                  <span>Order on WhatsApp</span>
-                </a>
-                <p className="text-center text-[11px] text-[#8C827A]">
-                  Taloja Phase 1 • Kharghar • Panvel • Kamothe • Kalamboli • Belapur
-                </p>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
       </nav>
+
+      {/* MOBILE MENU DRAWER (RENDERED VIA PORTAL TO PREVENT CONTAINING-BLOCK CLIPPING) */}
+      {mounted &&
+        createPortal(
+          <AnimatePresence>
+            {isOpen && (
+              <div className="fixed inset-0 z-[100] lg:hidden">
+                {/* Backdrop Overlay */}
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.2 }}
+                  onClick={() => setIsOpen(false)}
+                  className="fixed inset-0 bg-[#181411]/60 backdrop-blur-xs"
+                  aria-hidden="true"
+                />
+
+                {/* Slide-over Drawer Panel */}
+                <motion.div
+                  data-lenis-prevent
+                  initial={{ x: "100%" }}
+                  animate={{ x: 0 }}
+                  exit={{ x: "100%" }}
+                  transition={{ type: "spring", damping: 30, stiffness: 300 }}
+                  className="fixed inset-y-0 right-0 w-full sm:max-w-md bg-[#FAF7F2] z-[101] shadow-2xl flex flex-col h-[100dvh] overscroll-contain"
+                >
+                  {/* 1. PINNED DRAWER HEADER (Always accessible at viewport top) */}
+                  <div className="shrink-0 px-5 py-4 border-b border-[#EAE4DC] flex items-center justify-between bg-[#FAF7F2]">
+                    <NavLink
+                      to="/"
+                      onClick={() => setIsOpen(false)}
+                      className="flex items-center gap-2.5 group"
+                    >
+                      <div className="w-8 h-8 rounded-xl bg-white border border-[#EAE4DC] flex items-center justify-center p-1 shadow-2xs transition-transform duration-200 group-hover:scale-105">
+                        <img
+                          src="/Logo.png"
+                          alt="Bread & Bite"
+                          className="w-full h-full object-contain"
+                        />
+                      </div>
+                      <div className="flex flex-col">
+                        <span className="text-[1.15rem] tracking-tight text-[#181411] leading-none font-heading whitespace-nowrap">
+                          Bread <span className="font-italic-accent text-base text-[#B84A1C]">&</span> Bite
+                        </span>
+                        <span className="text-[9px] text-[#8C827A] font-medium tracking-wider uppercase mt-0.5">
+                          Navi Mumbai Cloud Kitchen
+                        </span>
+                      </div>
+                    </NavLink>
+
+                    {/* Prominent Header Close Button */}
+                    <div className="flex items-center gap-2">
+                      <button
+                        onClick={() => {
+                          setIsOpen(false);
+                          toggleCart();
+                        }}
+                        aria-label="View shopping bag"
+                        className="relative p-2.5 rounded-full bg-white border border-[#EAE4DC] text-[#181411] hover:text-[#B84A1C] active:scale-95 transition-all cursor-pointer shadow-2xs"
+                      >
+                        <FaShoppingBag size={15} />
+                        {cartCount > 0 && (
+                          <span className="absolute -top-1 -right-1 bg-[#B84A1C] text-white text-[9px] font-bold w-4 h-4 flex items-center justify-center rounded-full">
+                            {cartCount}
+                          </span>
+                        )}
+                      </button>
+                      <button
+                        onClick={() => setIsOpen(false)}
+                        aria-label="Close navigation menu"
+                        className="w-10 h-10 rounded-full bg-white border border-[#EAE4DC] text-[#181411] hover:text-[#B84A1C] hover:border-[#B84A1C] active:scale-95 transition-all flex items-center justify-center cursor-pointer shadow-2xs"
+                      >
+                        <FaTimes size={16} />
+                      </button>
+                    </div>
+                  </div>
+
+                  {/* 2. SMOOTH SCROLLABLE DRAWER BODY (Without flex justify-between bug) */}
+                  <div
+                    data-lenis-prevent
+                    className="flex-1 overflow-y-auto overscroll-contain px-5 py-5 space-y-5"
+                  >
+                    {/* Kitchen Timing Status Box */}
+                    <div className="bg-white border border-[#EAE4DC] rounded-2xl p-4 shadow-2xs">
+                      <div className="flex items-center justify-between mb-2.5 pb-2 border-b border-[#F0EAE1]">
+                        <span className="text-[10px] font-bold uppercase tracking-wider text-[#8C827A]">
+                          Kitchen Operational Slots
+                        </span>
+                        <span
+                          className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${
+                            isKitchenOpen
+                              ? "bg-[#2A6A4E]/10 text-[#2A6A4E]"
+                              : "bg-[#B84A1C]/10 text-[#B84A1C]"
+                          }`}
+                        >
+                          {isKitchenOpen ? "● Kitchen Open" : "○ Currently Closed"}
+                        </span>
+                      </div>
+                      <div className="grid grid-cols-2 gap-2.5 text-xs text-[#181411]">
+                        <div className="bg-[#FAF7F2] p-2.5 rounded-xl border border-[#EAE4DC]/60">
+                          <span className="font-bold text-[#181411] block text-[11.5px]">☀️ Lunch Slot</span>
+                          <span className="text-[11px] text-[#574F4A] mt-0.5 block">11:00 AM – 3:15 PM</span>
+                        </div>
+                        <div className="bg-[#FAF7F2] p-2.5 rounded-xl border border-[#EAE4DC]/60">
+                          <span className="font-bold text-[#181411] block text-[11.5px]">🌙 Dinner Slot</span>
+                          <span className="text-[11px] text-[#574F4A] mt-0.5 block">7:00 PM – 9:15 PM</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Main Nav Links */}
+                    <div>
+                      <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#8C827A] px-1 block mb-2">
+                        Menu & Pages
+                      </span>
+                      <div className="flex flex-col gap-1.5">
+                        {navLinks.map(({ name, path }) => (
+                          <NavLink
+                            key={name}
+                            to={path}
+                            onClick={() => setIsOpen(false)}
+                            className={({ isActive }) =>
+                              `flex items-center justify-between text-lg font-heading tracking-tight py-2.5 px-3.5 rounded-xl transition-all ${
+                                isActive
+                                  ? "text-[#B84A1C] bg-white font-semibold shadow-2xs border border-[#EAE4DC]"
+                                  : "text-[#181411] hover:bg-white/80 active:bg-white"
+                              }`
+                            }
+                          >
+                            <span>{name}</span>
+                            <FaArrowRight size={11} className="opacity-40" />
+                          </NavLink>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Delivery Areas in Navi Mumbai */}
+                    <div>
+                      <div className="flex items-center justify-between px-1 mb-2">
+                        <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#8C827A]">
+                          Delivery Areas (Navi Mumbai)
+                        </span>
+                        <span className="text-[10px] text-[#8C827A]">Doorstep Hot</span>
+                      </div>
+                      <div className="grid grid-cols-2 gap-2">
+                        {LOCATIONS.map((loc) => (
+                          <NavLink
+                            key={loc.slug}
+                            to={`/${loc.slug}/`}
+                            onClick={() => setIsOpen(false)}
+                            className={({ isActive }) =>
+                              `border rounded-xl px-3 py-2.5 text-xs transition-all flex items-center justify-between shadow-2xs ${
+                                isActive
+                                  ? "bg-white border-[#B84A1C] text-[#B84A1C] font-bold"
+                                  : "bg-white border-[#EAE4DC] text-[#181411] hover:text-[#B84A1C] hover:border-[#B84A1C]"
+                              }`
+                            }
+                          >
+                            <span className="font-semibold">{loc.name}</span>
+                            <span className="text-[10px] text-[#8C827A] bg-[#FAF7F2] px-1.5 py-0.5 rounded-md font-sans">
+                              {loc.deliveryTime}m
+                            </span>
+                          </NavLink>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="h-2" />
+                  </div>
+
+                  {/* 3. PINNED DRAWER FOOTER (Always accessible at viewport bottom) */}
+                  <div className="shrink-0 p-4 border-t border-[#EAE4DC] bg-white/95 backdrop-blur-xs space-y-2.5">
+                    <a
+                      href={whatsappLink}
+                      target="_blank"
+                      rel="nofollow noopener noreferrer"
+                      className="btn-primary w-full py-3.5 text-xs uppercase tracking-wider font-bold shadow-tactile-md flex items-center justify-center gap-2 rounded-xl transition-all active:scale-[0.99]"
+                    >
+                      <FaWhatsapp size={16} />
+                      <span>Order on WhatsApp</span>
+                    </a>
+
+                    {/* Direct Thumb-Accessible Dismiss Button */}
+                    <button
+                      type="button"
+                      onClick={() => setIsOpen(false)}
+                      className="w-full py-2.5 text-xs text-[#574F4A] hover:text-[#181411] bg-[#FAF7F2] hover:bg-[#F0EAE1] rounded-xl font-medium tracking-wide transition-colors flex items-center justify-center gap-1.5 cursor-pointer border border-[#EAE4DC]"
+                    >
+                      <FaTimes size={11} className="opacity-70" />
+                      <span>Close Menu</span>
+                    </button>
+
+                    <p className="text-center text-[10.5px] text-[#8C827A]">
+                      Taloja Phase 1 • Kharghar • Panvel • Kamothe • Kalamboli • Belapur
+                    </p>
+                  </div>
+                </motion.div>
+              </div>
+            )}
+          </AnimatePresence>,
+          document.body
+        )}
     </>
   );
 }
