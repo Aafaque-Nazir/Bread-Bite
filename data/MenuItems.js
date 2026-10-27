@@ -157,7 +157,7 @@ const menuItems = [
     id: 12,
     name: "Warm Choco Lava Cake",
     description: "Decadent chocolate cake with a rich, molten gooey chocolate fudge centre. Served fresh and warm.",
-    price: 99,
+    price: 89,
     category: "Dessert",
     type: "Veg",
     portion: "1 pc",
@@ -166,6 +166,7 @@ const menuItems = [
     isNew: true,
     tags: ["Molten Chocolate", "Warm & Gooey", "Veg"]
   }
+
 ];
 
 export const CATEGORIES_DATA = [

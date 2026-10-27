@@ -46,7 +46,7 @@ const homeBody = `
       <div style="background:#fff;border:1px solid #EAE4DC;border-radius:1rem;padding:1.25rem;">
         <h3 style="font-size:1.1rem;margin:0 0 0.5rem;color:#181411;">Warm Choco Lava Cake</h3>
         <p style="font-size:0.85rem;color:#574F4A;line-height:1.5;margin:0 0 0.75rem;">Decadent chocolate cake with a rich molten gooey chocolate fudge centre. Served fresh and warm.</p>
-        <strong style="color:#B84A1C;font-size:1rem;">₹99 · Dessert</strong>
+        <strong style="color:#B84A1C;font-size:1rem;">₹89 · Dessert</strong>
       </div>
     </div>
   </section>
@@ -147,7 +147,7 @@ const menuBody = `
       <article style="background:#fff;border:1px solid #EAE4DC;border-radius:1rem;padding:1.5rem;">
         <h2 style="font-size:1.2rem;margin:0 0 0.5rem;color:#181411;">Warm Choco Lava Cake</h2>
         <p style="font-size:0.875rem;color:#574F4A;line-height:1.5;margin:0 0 0.75rem;">Decadent chocolate cake with a rich, molten gooey chocolate fudge centre. Served fresh and warm.</p>
-        <span style="font-weight:700;color:#B84A1C;font-size:1.1rem;">₹99</span>
+        <span style="font-weight:700;color:#B84A1C;font-size:1.1rem;">₹89</span>
       </article>
     </div>
   </section>

@@ -7,6 +7,8 @@ import SEO from "../src/components/SEO";
 import { FAQS } from '../data/faqs';
 import { LOCATIONS } from '../data/locations';
 import { ORDER_LINKS } from '../data/orderLinks';
+import { sanitizeText, sanitizeSafeUrl, isValidIndianPhone, sanitizePhone } from '../src/utils/security';
+import toast from 'react-hot-toast';
 
 const Contact = () => {
   const [formData, setFormData] = useState({ name: '', phone: '', message: '' });
@@ -16,16 +18,37 @@ const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    const cleanName = sanitizeText(formData.name, 60);
+    const cleanPhone = sanitizePhone(formData.phone);
+    const cleanMessage = sanitizeText(formData.message, 500);
+
+    if (cleanName.length < 2) {
+      toast.error('Please enter a valid full name');
+      return;
+    }
+
+    if (!isValidIndianPhone(cleanPhone)) {
+      toast.error('Please enter a valid 10-digit mobile number');
+      return;
+    }
+
+    if (cleanMessage.length < 3) {
+      toast.error('Please enter a message (at least 3 characters)');
+      return;
+    }
+
     setIsSubmitting(true);
 
-    const cleanPhone = formData.phone.replace(/[\s-+]/g, '').replace(/^91/, '').replace(/^0/, '');
-    const inquiryText = `👋 *NEW INQUIRY - BREAD & BITE*\n\n👤 *Customer:* ${formData.name.trim()}\n📞 *Phone:* +91 ${cleanPhone}\n\n💬 *Message:*\n"${formData.message.trim()}"\n\n_Sent via Bread & Bite Website_`;
-    const whatsappUrl = `https://wa.me/919325629256?text=${encodeURIComponent(inquiryText)}`;
+    const inquiryText = `👋 *NEW INQUIRY - BREAD & BITE*\n\n👤 *Customer:* ${cleanName}\n📞 *Phone:* +91 ${cleanPhone}\n\n💬 *Message:*\n"${cleanMessage}"\n\n_Sent via Bread & Bite Website_`;
+    const rawWhatsappUrl = `https://wa.me/919325629256?text=${encodeURIComponent(inquiryText)}`;
+    const whatsappUrl = sanitizeSafeUrl(rawWhatsappUrl, 'https://wa.me/919325629256');
 
     window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
     setIsSubmitting(false);
     setIsSubmitted(true);
   };
+
 
   return (
     <section className="relative min-h-screen bg-[#FAF7F2] pt-6 sm:pt-10 pb-24 px-4 sm:px-6 overflow-hidden text-[#181411]">
@@ -193,6 +216,8 @@ const Contact = () => {
                       <input
                         type="text"
                         required
+                        maxLength={60}
+                        autoComplete="name"
                         placeholder="e.g. Rahul Sharma"
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
@@ -207,6 +232,8 @@ const Contact = () => {
                       <input
                         type="tel"
                         required
+                        maxLength={15}
+                        autoComplete="tel"
                         placeholder="10-digit mobile number"
                         value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
@@ -221,6 +248,7 @@ const Contact = () => {
                       <textarea
                         required
                         rows={4}
+                        maxLength={500}
                         placeholder="Ask about party catering, special requests, or order inquiries..."
                         value={formData.message}
                         onChange={(e) => setFormData({ ...formData, message: e.target.value })}
@@ -228,6 +256,7 @@ const Contact = () => {
                       />
                     </div>
                   </div>
+
 
                   <button
                     type="submit"

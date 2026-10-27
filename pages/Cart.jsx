@@ -7,6 +7,8 @@ import toast from 'react-hot-toast';
 import { useKitchenStatus } from '../src/hooks/useKitchenStatus';
 import SEO from '../src/components/SEO';
 import ImageWithLoader from '../src/components/ImageWithLoader';
+import { sanitizeText, sanitizeSafeUrl, isValidIndianPhone, sanitizePhone } from '../src/utils/security';
+export { sanitizePhone };
 
 // 6 Individual Delivery Cities across Navi Mumbai
 export const DELIVERY_CITIES = {
@@ -132,7 +134,7 @@ const QUICK_ADDONS = [
   {
     id: 12,
     name: "Warm Choco Lava Cake",
-    price: 99,
+    price: 89,
     category: "Dessert",
     type: "Veg",
     portion: "1 pc",
@@ -140,17 +142,8 @@ const QUICK_ADDONS = [
   }
 ];
 
-// Robust phone sanitizer that strips country codes only when actual length warrants it
-export const sanitizePhone = (raw) => {
-  const digitsOnly = (raw || '').replace(/\D/g, '');
-  if (digitsOnly.length === 10) return digitsOnly;
-  if (digitsOnly.length === 11 && digitsOnly.startsWith('0')) return digitsOnly.slice(1);
-  if (digitsOnly.length === 12 && digitsOnly.startsWith('91')) return digitsOnly.slice(2);
-  if (digitsOnly.length === 13 && digitsOnly.startsWith('091')) return digitsOnly.slice(3);
-  return digitsOnly;
-};
-
 const Cart = () => {
+
   const { cart, removeFromCart, updateQuantity, cartTotal, clearCart, addToCart } = useCart();
   const { isOpen: isKitchenOpen, shortStatus, reopenTimeStr } = useKitchenStatus();
   const navigate = useNavigate();
@@ -231,15 +224,19 @@ const Cart = () => {
 
   const validateForm = () => {
     const newErrors = {};
-    if (!details.name.trim()) newErrors.name = 'Full name is required';
-
-    // Sanitize phone number safely without corrupting 91-prefixed mobile numbers
-    const cleanPhone = sanitizePhone(details.phone);
-    if (!/^[6-9]\d{9}$/.test(cleanPhone)) {
-      newErrors.phone = 'Valid 10-digit mobile number is required';
+    const cleanName = sanitizeText(details.name, 60);
+    if (!cleanName || cleanName.length < 2) {
+      newErrors.name = 'Full name (min 2 characters) is required';
     }
 
-    if (!details.address.trim()) newErrors.address = 'Delivery address is required';
+    if (!isValidIndianPhone(details.phone)) {
+      newErrors.phone = 'Valid 10-digit mobile number is required (starts with 6-9)';
+    }
+
+    const cleanAddress = sanitizeText(details.address, 200);
+    if (!cleanAddress || cleanAddress.length < 5) {
+      newErrors.address = 'Complete delivery address (min 5 characters) is required';
+    }
     return newErrors;
   };
 
@@ -255,13 +252,18 @@ const Cart = () => {
       return;
     }
 
+    // Sanitize all customer inputs defensively
+    const cleanName = sanitizeText(details.name, 60);
     const cleanPhone = sanitizePhone(details.phone);
+    const cleanAddress = sanitizeText(details.address, 200);
+    const cleanLandmark = sanitizeText(details.landmark, 100);
+
     const orderId = 'BB-' + Math.floor(100000 + Math.random() * 900000);
     const orderTime = new Date().toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' });
 
-    const itemsList = cart.map(item => `• ${item.name} (x${item.quantity}) - ₹${item.price * item.quantity}`).join('\n');
+    const itemsList = cart.map(item => `• ${sanitizeText(item.name, 60)} (x${item.quantity}) - ₹${item.price * item.quantity}`).join('\n');
     const cityName = selectedCity.name;
-    const customerInfo = `\n\n👤 *Customer Details:*\nName: ${details.name.trim()}\nPhone: +91 ${cleanPhone}\nDelivery City: *${cityName}* (${selectedCity.time})\nAddress: ${details.address.trim()}${details.landmark ? `, Landmark: ${details.landmark.trim()}` : ''}`;
+    const customerInfo = `\n\n👤 *Customer Details:*\nName: ${cleanName}\nPhone: +91 ${cleanPhone}\nDelivery City: *${cityName}* (${selectedCity.time})\nAddress: ${cleanAddress}${cleanLandmark ? `, Landmark: ${cleanLandmark}` : ''}`;
 
     const deliveryStr = deliveryCharge === 0 ? 'FREE' : `₹${deliveryCharge} (${selectedCity.shortName})`;
     const totalStr = `\n\n💰 *Bill Summary:*\nSubtotal: ₹${cartTotal}\nDelivery Fee: ${deliveryStr}\n*Grand Total: ₹${grandTotal}*`;
@@ -276,9 +278,10 @@ const Cart = () => {
 
     const fullMessage = `${headerTitle}${customerInfo}\n\n🛒 *Order Items:*\n${itemsList}${totalStr}\n\n${footerNote}`;
 
-    const whatsappUrl = `https://wa.me/919325629256?text=${encodeURIComponent(fullMessage)}`;
+    const rawWhatsappUrl = `https://wa.me/919325629256?text=${encodeURIComponent(fullMessage)}`;
+    const whatsappUrl = sanitizeSafeUrl(rawWhatsappUrl, 'https://wa.me/919325629256');
 
-    // Save order receipt for the thank-you screen
+    // Save order receipt for the thank-you screen safely
     try {
       sessionStorage.setItem('bread_and_bite_last_order', JSON.stringify({
         orderId,
@@ -288,7 +291,7 @@ const Cart = () => {
         grandTotal,
         city: selectedCity.shortName,
         zone: selectedCity.name,
-        customer: { ...details, phone: cleanPhone },
+        customer: { name: cleanName, phone: cleanPhone, address: cleanAddress, landmark: cleanLandmark },
         whatsappUrl,
         isPreOrder: !isKitchenOpen,
         reopenTimeStr: reopenTimeStr || '7:00 PM',
@@ -298,7 +301,7 @@ const Cart = () => {
       // Ignore quota error
     }
 
-    // Open WhatsApp
+    // Open WhatsApp safely
     window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
 
     // Clear active cart & navigate
@@ -308,13 +311,14 @@ const Cart = () => {
         orderId,
         grandTotal,
         whatsappUrl,
-        customerName: details.name.trim(),
+        customerName: cleanName,
         city: selectedCity.shortName,
         zone: selectedCity.name,
         isPreOrder: !isKitchenOpen,
       }
     });
   };
+
 
   if (cart.length === 0) {
     return (
@@ -623,6 +627,8 @@ const Cart = () => {
                     <input
                       type="text"
                       placeholder="Your Name"
+                      maxLength={60}
+                      autoComplete="name"
                       value={details.name}
                       onChange={(e) => {
                         setDetails({ ...details, name: e.target.value });
@@ -635,6 +641,8 @@ const Cart = () => {
                     <input
                       type="tel"
                       placeholder="10-digit Phone"
+                      maxLength={15}
+                      autoComplete="tel"
                       value={details.phone}
                       onChange={(e) => {
                         setDetails({ ...details, phone: e.target.value });
@@ -652,6 +660,8 @@ const Cart = () => {
                   <textarea
                     placeholder="Complete Delivery Address (Flat / Wing / Society / Sector)"
                     rows="2"
+                    maxLength={200}
+                    autoComplete="street-address"
                     value={details.address}
                     onChange={handleAddressChange}
                     className={`w-full bg-[#FAF7F2] border ${errors.address ? 'border-red-400' : 'border-[#EAE4DC]'} rounded-xl px-3.5 py-2.5 text-xs sm:text-sm focus:outline-none focus:border-[#B84A1C] transition-colors resize-none`}
@@ -662,12 +672,14 @@ const Cart = () => {
                 <input
                   type="text"
                   placeholder="Landmark (Optional)"
+                  maxLength={100}
                   value={details.landmark}
                   onChange={(e) => setDetails({ ...details, landmark: e.target.value })}
                   className="w-full bg-[#FAF7F2] border border-[#EAE4DC] rounded-xl px-3.5 py-2.5 text-xs sm:text-sm focus:outline-none focus:border-[#B84A1C] transition-colors"
                 />
               </div>
             </div>
+
 
             {/* Order Summary & WhatsApp Dispatch */}
             <div className="bg-[#181411] text-[#EAE4DC] rounded-3xl p-5 sm:p-7 shadow-tactile-lg">

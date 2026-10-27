@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import toast from 'react-hot-toast';
+import { safeParseJSON, sanitizeCartItem } from '../utils/security';
 
 const CartContext = createContext();
 
@@ -11,7 +12,10 @@ export const CartProvider = ({ children }) => {
     const [cart, setCart] = useState(() => {
         try {
             const savedCart = localStorage.getItem('bread_and_bite_cart');
-            return savedCart ? JSON.parse(savedCart) : [];
+            const parsed = safeParseJSON(savedCart, [], Array.isArray);
+            // Validate and sanitize every stored item
+            const sanitized = parsed.map(sanitizeCartItem).filter(Boolean);
+            return sanitized;
         } catch (error) {
             console.warn('Corrupted cart data reset:', error);
             try {
@@ -33,13 +37,19 @@ export const CartProvider = ({ children }) => {
         }
     }, [cart]);
 
-    const addToCart = (item) => {
+    const addToCart = (rawItem) => {
+        const item = sanitizeCartItem(rawItem);
+        if (!item) {
+            toast.error('Unable to add item');
+            return;
+        }
+
         setCart((prevCart) => {
             const existingItem = prevCart.find((cartItem) => cartItem.id === item.id);
             if (existingItem) {
                 return prevCart.map((cartItem) =>
                     cartItem.id === item.id
-                        ? { ...cartItem, quantity: cartItem.quantity + 1 }
+                        ? { ...cartItem, quantity: Math.min(cartItem.quantity + 1, 99) }
                         : cartItem
                 );
             }
@@ -53,10 +63,12 @@ export const CartProvider = ({ children }) => {
     };
 
     const updateQuantity = (id, delta) => {
+        if (!Number.isInteger(delta)) return;
         setCart((prevCart) => {
             return prevCart.map((item) => {
                 if (item.id === id) {
-                    return { ...item, quantity: item.quantity + delta };
+                    const nextQty = item.quantity + delta;
+                    return { ...item, quantity: Math.min(Math.max(nextQty, 0), 99) };
                 }
                 return item;
             }).filter((item) => item.quantity > 0);
@@ -74,8 +86,9 @@ export const CartProvider = ({ children }) => {
     const openCart = () => setIsCartOpen(true);
     const closeCart = () => setIsCartOpen(false);
 
-    const cartTotal = cart.reduce((total, item) => total + item.price * item.quantity, 0);
+    const cartTotal = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
     const cartCount = cart.reduce((count, item) => count + item.quantity, 0);
+
     const value = {
         cart,
         isCartOpen,
@@ -92,3 +105,4 @@ export const CartProvider = ({ children }) => {
 
     return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
 };
+

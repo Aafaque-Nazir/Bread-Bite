@@ -184,7 +184,7 @@ const SEO = ({
                 '@type': 'MenuItem',
                 name: 'Warm Choco Lava Cake',
                 description: 'Decadent chocolate cake with a molten gooey chocolate fudge centre.',
-                offers: { '@type': 'Offer', price: '99', priceCurrency: 'INR' }
+                offers: { '@type': 'Offer', price: '89', priceCurrency: 'INR' }
               }
             ]
           }
@@ -461,7 +461,7 @@ const SEO = ({
       ],
       offers: {
         '@type': 'Offer',
-        price: '99',
+        price: '89',
         priceCurrency: 'INR',
         priceValidUntil: '2027-12-31',
         availability: 'https://schema.org/InStock',
@@ -578,9 +578,10 @@ const SEO = ({
 
       {/* JSON-LD Structured Data Graph */}
       <script type="application/ld+json">
-        {JSON.stringify(finalSchema)}
+        {JSON.stringify(finalSchema).replace(/</g, '\\u003c')}
       </script>
     </Helmet>
+
   );
 };
 

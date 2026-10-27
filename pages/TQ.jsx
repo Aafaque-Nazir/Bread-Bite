@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { FaWhatsapp, FaInstagram, FaCheckCircle, FaReceipt, FaMotorcycle, FaArrowLeft } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import SEO from '../src/components/SEO';
+import { sanitizeSafeUrl, safeParseJSON, sanitizeText } from '../src/utils/security';
 
 const ThankYou = () => {
   const location = useLocation();
@@ -11,15 +12,13 @@ const ThankYou = () => {
     if (location.state?.orderId) {
       return location.state;
     }
-    try {
-      const saved = sessionStorage.getItem('bread_and_bite_last_order');
-      return saved ? JSON.parse(saved) : null;
-    } catch {
-      return null;
-    }
+    const saved = sessionStorage.getItem('bread_and_bite_last_order');
+    return safeParseJSON(saved, null, (data) => data && typeof data === 'object');
   }, [location.state]);
 
-  const whatsappUrl = orderData?.whatsappUrl || 'https://wa.me/919325629256';
+  const rawWhatsappUrl = orderData?.whatsappUrl || 'https://wa.me/919325629256';
+  const whatsappUrl = sanitizeSafeUrl(rawWhatsappUrl, 'https://wa.me/919325629256');
+
 
   return (
     <>
