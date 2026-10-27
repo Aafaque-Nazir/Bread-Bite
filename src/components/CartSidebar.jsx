@@ -21,8 +21,11 @@ const CartSidebar = () => {
   }, [isCartOpen]);
 
   const totalItemCount = cart.reduce((sum, item) => sum + item.quantity, 0);
-  const deliveryCharge = cartTotal >= 299 ? 0 : 49;
-  const sidebarGrandTotal = cartTotal + deliveryCharge;
+  const deliveryStatus = 
+    cartTotal >= 699 ? 'FREE across Navi Mumbai' :
+    cartTotal >= 399 ? 'FREE (Taloja & Kharghar)' :
+    cartTotal >= 299 ? 'FREE in Taloja' :
+    'From ₹39 (Free on ₹299+)';
 
   return (
     <AnimatePresence>
@@ -157,12 +160,12 @@ const CartSidebar = () => {
                   <div className="flex justify-between text-[#736B63]">
                     <span>Delivery</span>
                     <span className={cartTotal >= 299 ? "text-[#2A6A4E] font-medium" : "text-[#181411]"}>
-                      {cartTotal >= 299 ? 'Free' : '₹49 (Free above ₹299)'}
+                      {deliveryStatus}
                     </span>
                   </div>
                   <div className="pt-2.5 border-t border-[#EAE4DC] flex justify-between items-baseline">
-                    <span className="text-xs uppercase tracking-wider font-semibold text-[#181411]">Total</span>
-                    <span className="text-xl font-bold font-heading text-[#181411]">₹{sidebarGrandTotal}</span>
+                    <span className="text-xs uppercase tracking-wider font-semibold text-[#181411]">Subtotal</span>
+                    <span className="text-xl font-bold font-heading text-[#181411]">₹{cartTotal}</span>
                   </div>
                 </div>
 
@@ -175,7 +178,7 @@ const CartSidebar = () => {
                 >
                   <span>{isKitchenOpen ? 'Proceed to Checkout' : 'Review & Pre-order'}</span>
                   <span className="flex items-center gap-2 text-white/90 group-hover:text-white font-mono">
-                    <span>₹{sidebarGrandTotal}</span>
+                    <span>₹{cartTotal}</span>
                     <FaArrowRight size={10} className="group-hover:translate-x-0.5 transition-transform" />
                   </span>
                 </Link>

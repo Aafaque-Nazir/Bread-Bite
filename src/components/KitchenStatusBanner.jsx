@@ -28,7 +28,7 @@ const KitchenStatusBanner = () => {
     },
     {
       label: "Free Delivery",
-      val: "On Orders Above ₹299",
+      val: "Taloja ₹299+ • Kharghar ₹399+ • Belapur ₹699+",
       icon: <FaClock className="text-[#B84A1C]" size={11} />
     },
     {

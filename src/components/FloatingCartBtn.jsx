@@ -1,9 +1,16 @@
 import { FaShoppingBag, FaArrowRight } from 'react-icons/fa';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useLocation } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 
 const FloatingCartBtn = () => {
   const { toggleCart, cartCount, cartTotal } = useCart();
+  const location = useLocation();
+
+  // Hide floating cart button on cart and thank-you pages
+  if (['/cart', '/cart/', '/thank-you', '/thank-you/'].includes(location.pathname)) {
+    return null;
+  }
 
   return (
     <AnimatePresence>

@@ -499,146 +499,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* ═══════════════════════════════════════════════════════════════════
-          OUR QUALITY PROMISE
-      ═══════════════════════════════════════════════════════════════════ */}
-      <section className="py-16 sm:py-24 bg-[#FAF7F2] relative border-b border-[#EAE4DC]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="grid lg:grid-cols-12 gap-10 lg:gap-14 items-center">
-            {/* Visual Left (5 cols) */}
-            <div className="lg:col-span-5 relative">
-              <div className="artisan-card rounded-3xl p-2.5 sm:p-3 shadow-tactile-lg max-w-md mx-auto lg:max-w-none">
-                <div className="rounded-2xl overflow-hidden aspect-[4/5]">
-                  <ImageWithLoader
-                    src="/images/chicken-korma.webp"
-                    alt="Kitchen cooking at Bread & Bite"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              </div>
-            </div>
 
-            {/* Content Right (7 cols) */}
-            <div className="lg:col-span-7 space-y-6">
-              <span className="text-[11px] uppercase tracking-[0.2em] font-bold text-[#B84A1C] block">
-                The Kitchen Standard
-              </span>
-              <h2 className="text-2xl sm:text-4xl lg:text-5xl font-bold text-[#181411] font-heading leading-tight">
-                Generous portions, <br />
-                <span className="font-italic-accent text-[#B84A1C]">honest taste & clean cooking.</span>
-              </h2>
-
-              <p className="text-[#574F4A] text-sm sm:text-base leading-relaxed">
-                At Bread & Bite, we believe food should be filling, flavorful, and freshly prepared. We serve full 500-gram chicken portions with hot breads and crispy snacks at reasonable rates.
-              </p>
-
-              <div className="grid sm:grid-cols-2 gap-4 sm:gap-6 pt-2">
-                {[
-                  { title: "Heavy 500g Gravies", desc: "Full 500-gram portions with plenty of chicken meat and rich gravy — easily serves two." },
-                  { title: "100% Halal Fresh Chicken", desc: "Fresh chicken sourced daily and cooked with authentic roasted spices." },
-                  { title: "Hot Tandoori Roti & Pav", desc: "Freshly baked tandoori rotis and soft ladi pavs packed warm with every order." },
-                  { title: "Clean Kitchen & Packaging", desc: "Hygienic kitchen, clean oil, and spill-proof sealed containers for delivery." }
-                ].map((item, i) => (
-                  <div key={i} className="flex gap-3">
-                    <div className="w-5 h-5 rounded-full bg-[#EEF6F2] text-[#2A6A4E] flex items-center justify-center shrink-0 mt-0.5">
-                      <FaCheckCircle size={11} />
-                    </div>
-                    <div>
-                      <h4 className="text-xs sm:text-sm font-bold text-[#181411] font-heading">{item.title}</h4>
-                      <p className="text-[11px] sm:text-xs text-[#574F4A] mt-0.5 leading-relaxed">{item.desc}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              <div className="pt-2">
-                <NavLink
-                  to="/about/"
-                  className="btn-outline text-xs py-2.5 px-5"
-                >
-                  <span>More About Our Kitchen</span>
-                  <FaArrowRight size={9} />
-                </NavLink>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ═══════════════════════════════════════════════════════════════════
-          EXPLORE BREAD & BITE — Clean Directory
-      ═══════════════════════════════════════════════════════════════════ */}
-      <section className="py-14 sm:py-20 bg-white relative border-b border-[#EAE4DC]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-12">
-            <span className="text-[11px] uppercase tracking-[0.2em] font-bold text-[#B84A1C] block mb-2">
-              Explore Our Kitchen
-            </span>
-            <h2 className="text-2xl sm:text-4xl font-bold text-[#181411] font-heading tracking-tight leading-tight">
-              Discover Everything at <span className="font-italic-accent text-[#B84A1C]">Bread & Bite</span>
-            </h2>
-            <p className="text-[#574F4A] mt-2 text-xs sm:text-sm leading-relaxed">
-              Browse our freshly cooked food menu, value meal combos, customer stories, and direct kitchen contact.
-            </p>
-          </div>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {[
-              {
-                title: "Full Menu",
-                desc: "500g Chicken Keema, Chicken Korma, hot Tandoori Roti, soft Pav, and crispy snacks.",
-                path: "/menu/",
-                icon: <FaUtensils className="text-[#B84A1C]" size={17} />
-              },
-              {
-                title: "Meal Combos",
-                desc: "Keema Pav and Korma Roti value meals at special discounted combo prices.",
-                path: "/menu/?category=combos",
-                icon: <FaFire className="text-[#B84A1C]" size={17} />
-              },
-              {
-                title: "Customer Reviews",
-                desc: "See what customers are saying about our food or send your own review.",
-                path: "/reviews/",
-                icon: <FaStar className="text-[#B84A1C]" size={17} />
-              },
-              {
-                title: "Contact & Order",
-                desc: "Order directly on WhatsApp, check kitchen hours, and get delivery updates in Navi Mumbai.",
-                path: "/contact/",
-                icon: <FaMapMarkerAlt className="text-[#2A6A4E]" size={17} />
-              }
-            ].map((p) => (
-              <NavLink
-                key={p.title}
-                to={p.path}
-                className="group artisan-card rounded-2xl p-6 flex flex-col justify-between hover:border-[#B84A1C] hover:shadow-tactile-md transition-all duration-300"
-              >
-                <div>
-                  <div className="w-10 h-10 rounded-xl bg-[#FAF7F2] border border-[#EAE4DC] flex items-center justify-center mb-4 group-hover:scale-105 transition-transform">
-                    {p.icon}
-                  </div>
-                  <h3 className="text-base sm:text-lg font-bold text-[#181411] font-heading group-hover:text-[#B84A1C] transition-colors mb-1.5">
-                    {p.title}
-                  </h3>
-                  <p className="text-xs text-[#574F4A] leading-relaxed">
-                    {p.desc}
-                  </p>
-                </div>
-
-                <div className="pt-4 mt-5 border-t border-[#EAE4DC] flex items-center justify-between">
-                  <span className="text-xs font-semibold text-[#181411] group-hover:text-[#B84A1C] transition-colors">
-                    Explore
-                  </span>
-                  <div className="w-7 h-7 rounded-full bg-[#FAF7F2] group-hover:bg-[#B84A1C] text-[#574F4A] group-hover:text-white border border-[#EAE4DC] group-hover:border-[#B84A1C] flex items-center justify-center transition-all duration-300">
-                    <FaArrowRight size={9} className="group-hover:translate-x-0.5 transition-transform" />
-                  </div>
-                </div>
-              </NavLink>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* ═══════════════════════════════════════════════════════════════════
           DELIVERING ACROSS NAVI MUMBAI — Local Hubs Section
@@ -693,7 +554,7 @@ const Home = () => {
 
           <div className="mt-8 text-center text-xs text-[#574F4A] flex items-center justify-center gap-2">
             <FaCheckCircle className="text-[#2A6A4E]" size={13} />
-            <span>Free delivery on orders above ₹299 across all areas</span>
+            <span>Free delivery starting ₹299+ (Taloja) · ₹399+ (Kharghar) · ₹699+ (Belapur)</span>
           </div>
         </div>
       </section>
@@ -818,7 +679,7 @@ const Home = () => {
           </div>
 
           <p className="text-[11px] text-[#8C827A] mt-6">
-            Daily slots: 11:00 AM – 3:15 PM & 7:00 PM – 9:15 PM · Free delivery on ₹299+ across Taloja, Kharghar, Panvel & Belapur
+            Daily slots: 11:00 AM – 3:15 PM & 7:00 PM – 9:15 PM · Free delivery starting ₹299+ across Navi Mumbai
           </p>
         </div>
       </section>

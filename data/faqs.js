@@ -5,7 +5,7 @@
 export const FAQS = [
   {
     question: "Which areas in Navi Mumbai do you deliver to?",
-    answer: "We deliver hot and fresh food across Taloja Phase 1 & 2, Kharghar (all sectors), Panvel, Kamothe, Kalamboli, and CBD Belapur. Delivery is FREE on all orders above ₹299."
+    answer: "We deliver hot and fresh food across Taloja Phase 1 & 2, Kharghar (all sectors), Panvel, Kamothe, Kalamboli, and CBD Belapur. Free doorstep delivery starts from ₹299 (Taloja), ₹399 (Kharghar & mid-distance), and ₹699 (Panvel & Belapur)."
   },
   {
     question: "What are the portion sizes for chicken gravies?",

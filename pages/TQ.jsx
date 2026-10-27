@@ -47,12 +47,20 @@ const ThankYou = () => {
               </div>
 
               <h1 className="text-3xl sm:text-4xl font-normal text-[#181411] mb-3 font-heading">
-                Order <span className="font-italic-accent text-[#B84A1C]">Placed!</span>
+                {orderData.isPreOrder ? (
+                  <>Pre-Order <span className="font-italic-accent text-[#B84A1C]">Scheduled!</span></>
+                ) : (
+                  <>Order <span className="font-italic-accent text-[#B84A1C]">Placed!</span></>
+                )}
               </h1>
 
               <p className="text-[#574F4A] text-sm mb-6 leading-relaxed">
                 {orderData.customerName ? `Thanks, ${orderData.customerName}! ` : 'Thank you! '}
-                Your order details are ready. Please make sure you tap <strong>Send</strong> in WhatsApp so our kitchen team receives it.
+                {orderData.isPreOrder ? (
+                  <>Your advance pre-order for the <strong>{orderData.reopenTimeStr || 'next'} slot</strong> is queued. Please tap <strong>Open WhatsApp Chat</strong> to send it to our kitchen.</>
+                ) : (
+                  <>Your order details are ready. Please make sure you tap <strong>Send</strong> in WhatsApp so our kitchen team receives it.</>
+                )}
               </p>
 
               {orderData.grandTotal && (
@@ -62,7 +70,9 @@ const ThankYou = () => {
                       <FaMotorcycle size={17} />
                     </div>
                     <div>
-                      <p className="text-[10px] font-semibold text-[#8C827A] uppercase tracking-wider">Total Bill</p>
+                      <p className="text-[10px] font-semibold text-[#8C827A] uppercase tracking-wider">
+                        {orderData.city ? `Delivery: ${orderData.city}` : 'Total Bill'}
+                      </p>
                       <p className="text-lg font-bold text-[#181411] font-heading">₹{orderData.grandTotal}</p>
                     </div>
                   </div>

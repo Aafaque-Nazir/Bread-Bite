@@ -30,22 +30,35 @@ export const LOCATIONS = [
 
     // Hero Content
     heroTagline: 'Hot, Homestyle Meals Delivered to Your Sector',
-    heroSubtitle: 'From our cloud kitchen in Taloja Phase 1, we deliver fresh 500g Chicken Keema, rich Chicken Korma, and hot Tandoori Rotis straight to your doorstep across all 35 sectors of Kharghar — in just 20 to 30 minutes.',
+    heroSubtitle: 'Fresh 500g Chicken Keema, rich Chicken Korma, and clay-oven Tandoori Rotis delivered hot to all 35 sectors of Kharghar in 20 to 30 minutes.',
 
-    // Content Sections (unique per location)
+    pricing: {
+      minOrder: 249,
+      freeAbove: 399,
+      deliveryFee: 49,
+      standardOrderName: 'Chicken Korma & Roti Meal',
+      standardSubtotal: 249,
+      standardTotal: 298,
+      freeOrderName: '2 Chicken Gravies & 2 Rotis',
+      freeSubtotal: 428,
+      freeTotal: 428,
+      tip: 'Minimum order is ₹249. Add a Tandoori Roti (₹30) or soft Pav (₹30) to cross ₹399 and get free delivery.'
+    },
+
+    // Short, Punchy Highlights (No fluff)
     sections: [
       {
-        heading: 'Why Kharghar Residents Choose Bread & Bite',
-        text: 'Kharghar is Navi Mumbai\'s most vibrant residential hub — from the greenery of Central Park to the bustling lanes near Hiranandani Heritage, families here expect quality and value in equal measure. That\'s exactly what we bring to your table. Our 500-gram chicken gravies aren\'t the usual 250g restaurant portions — they\'re honest, family-sized meals cooked fresh with daily-sourced Halal chicken, whole spices, and zero preservatives. Whether you\'re in Sector 4 near the railway station or in Sector 35 near the hills, our dedicated delivery riders reach you within 20 to 30 minutes of placing your order.',
+        heading: 'Generous 500g Portions',
+        text: 'Full 500-gram chicken gravies slow-cooked with fresh Halal chicken and roasted spices — real meals that easily feed two.'
       },
       {
-        heading: 'What We Deliver to Kharghar',
-        text: 'Our menu is built for hearty meals, not fancy gimmicks. The star dishes are our Chicken Keema Boneless (500g, ₹199) — rich, slow-cooked chicken mince simmered with onions and coriander — and Chicken Korma (500g, ₹199) — tender chicken pieces in a rich cashew-onion gravy. Pair either with hot Tandoori Rotis (₹30 each) or 4-pack soft Ladi Pavs (₹30) for a complete meal. We also serve Crispy Chicken Burgers (₹149), French Fries (200g, ₹99), and value meal combos like the Keema Pav Meal (₹219) that save you money without compromising portions.',
+        heading: 'Fresh Tandoor & Bakery',
+        text: 'Clay-oven Tandoori Rotis (₹30) and soft Ladi Pavs (4 pcs, ₹30) baked fresh to order, packed warm in spill-proof containers.'
       },
       {
-        heading: 'Delivery Coverage Across Kharghar',
-        text: 'We cover every sector in Kharghar — from Sector 1 near the Kharghar railway station all the way through Sector 35 near the Kharghar hills. Whether you live near Central Park, Oves Kharghar, Hiranandani Fortune City, NRI Complex, or the DY Patil Sports Stadium area, our kitchen-to-doorstep delivery is consistently under 30 minutes. We deliver via our own dedicated fleet, so your food arrives hot and sealed in spill-proof containers — not cold from long aggregator waits.',
-      },
+        heading: 'All 35 Sectors Covered',
+        text: 'Dispatched directly from our Taloja Phase 1 kitchen to Kharghar Sectors 1–35, Central Park, and Hiranandani in 20 to 30 minutes.'
+      }
     ],
 
     // Landmarks for local context
@@ -66,19 +79,19 @@ export const LOCATIONS = [
     faqs: [
       {
         question: 'How long does delivery take to Kharghar from Bread & Bite?',
-        answer: 'Delivery to Kharghar typically takes 20 to 30 minutes from our cloud kitchen in Taloja Phase 1. Your food is freshly cooked upon order, sealed in spill-proof containers, and delivered hot by our own riders.',
+        answer: 'Delivery to Kharghar typically takes 20 to 30 minutes from our cloud kitchen in Taloja Phase 1. Food is cooked fresh on order and delivered hot.',
       },
       {
         question: 'Which sectors in Kharghar do you deliver to?',
-        answer: 'We deliver to all 35 sectors of Kharghar — from Sector 1 near the railway station to Sector 35 near the hills, including areas around Central Park, Hiranandani Heritage, Oves, NRI Complex, and DY Patil Stadium.',
+        answer: 'We deliver to all 35 sectors of Kharghar — from Sector 1 near the railway station to Sector 35 near the hills, including Central Park, Hiranandani, and DY Patil Stadium.',
       },
       {
         question: 'What is the minimum order for free delivery to Kharghar?',
-        answer: 'Free delivery to Kharghar is available on all orders above ₹299. Orders below ₹299 have a nominal delivery charge of ₹49.',
+        answer: 'Free delivery to Kharghar is unlocked on orders above ₹399. For orders between ₹249 and ₹398, a nominal delivery charge of ₹49 applies (minimum order is ₹249).',
       },
       {
         question: 'Can I order party platters for delivery to Kharghar?',
-        answer: 'Absolutely! We prepare bulk orders of Keema Pav platters, Chicken Korma handis, and snack boxes for house parties, birthday celebrations, and office events in Kharghar. Message us on WhatsApp at +91 93256 29256 for custom party orders.',
+        answer: 'Absolutely! We prepare bulk orders of Keema Pav platters, Chicken Korma handis, and snack boxes for house parties, birthday celebrations, and office events in Kharghar.',
       },
     ],
 
@@ -101,21 +114,34 @@ export const LOCATIONS = [
     keywords: 'food delivery panvel, chicken keema panvel, order food online panvel, cloud kitchen panvel, keema pav new panvel, chicken korma delivery panvel, navi mumbai food delivery, halal food panvel, best non veg delivery panvel',
 
     heroTagline: 'Homestyle Chicken Gravies, Delivered Fresh to Panvel',
-    heroSubtitle: 'Whether you\'re in the bustling lanes of Old Panvel or the modern apartments of New Panvel, Bread & Bite delivers hearty 500g portions of Chicken Keema, Chicken Korma, and freshly baked Tandoori Rotis to your door in 25 to 35 minutes.',
+    heroSubtitle: 'Hearty 500g portions of Chicken Keema, rich Chicken Korma, and freshly baked Tandoori Rotis delivered hot to Old & New Panvel in 25 to 35 minutes.',
+
+    pricing: {
+      minOrder: 499,
+      freeAbove: 699,
+      deliveryFee: 79,
+      standardOrderName: 'Keema & Korma Combos',
+      standardSubtotal: 499,
+      standardTotal: 578,
+      freeOrderName: 'Family Feast (2 Gravies, Rotis & Sides)',
+      freeSubtotal: 716,
+      freeTotal: 716,
+      tip: 'Minimum order is ₹499. Orders of ₹699 and above receive free delivery.'
+    },
 
     sections: [
       {
-        heading: 'Why Panvel Residents Choose Bread & Bite',
-        text: 'Panvel is a town that takes its food seriously — from the roadside keema stalls near the station to the sit-down joints in New Panvel. But finding generous, home-cooked quality food delivered fast was always a gap. That\'s where we come in. Our 500g Chicken Keema isn\'t the watery mince you get from most delivery apps — it\'s a thick, well-spiced, flavorful keema slow-cooked with whole spices and fresh coriander, exactly the way it\'s made in kitchens across Mumbai. At ₹199 for 500 grams, you\'re getting twice the portion of most restaurants at half the price.',
+        heading: 'Thick Homestyle Gravies',
+        text: 'Real 500g Chicken Keema and creamy Korma — generous family-sized portions made with 100% fresh Halal chicken.'
       },
       {
-        heading: 'Our Menu for Panvel Delivery',
-        text: 'We keep it focused and we keep it honest. Chicken Keema Boneless (500g, ₹199) — our bestseller across all delivery areas. Chicken Korma (500g, ₹199) — a rich, creamy gravy cooked with cashews and fried onions. Pair with Tandoori Rotis (₹30) baked fresh in our clay oven, or soft Ladi Pavs (₹30 for 4 pieces) for the classic keema-pav experience. Our combo meals — Keema Pav Meal at ₹219 and Korma Roti Meal at ₹249 — are complete lunch or dinner solutions. We also have Crispy Chicken Burgers and hot French Fries for lighter cravings.',
+        heading: 'Freshly Baked Clay-Oven Rotis',
+        text: 'Hot tandoori rotis and soft bakery pavs prepared fresh the moment your order comes in.'
       },
       {
-        heading: 'Panvel Delivery Coverage',
-        text: 'Our delivery covers Old Panvel (station area, market, and residential lanes), New Panvel (all sectors including Orion Mall and D-Mart Road), and Khandeshwar. Whether you\'re near Panvel Railway Station, Orion Mall, Balaji Temple Road, or the highway service road apartments, our riders know every lane. Average delivery time from our Taloja kitchen to Panvel is 25 to 35 minutes depending on traffic and your exact location.',
-      },
+        heading: 'Old & New Panvel Coverage',
+        text: 'Fast doorstep delivery to Old Panvel, New Panvel sectors, Orion Mall area, and Khandeshwar in 25 to 35 minutes.'
+      }
     ],
 
     landmarks: [
@@ -134,19 +160,19 @@ export const LOCATIONS = [
     faqs: [
       {
         question: 'Do you deliver to both Old Panvel and New Panvel?',
-        answer: 'Yes! We cover both Old Panvel (near the station and market) and New Panvel (including areas near Orion Mall, D-Mart Road, and the highway service road apartments). We also deliver to Khandeshwar.',
+        answer: 'Yes! We cover both Old Panvel (near the station and market) and New Panvel (including Orion Mall, D-Mart Road, and Khandeshwar).',
+      },
+      {
+        question: 'What is the delivery fee and minimum order for Panvel?',
+        answer: 'Panvel has a minimum order of ₹499 with a ₹79 delivery fee. Orders of ₹699 and above receive 100% FREE doorstep delivery.',
       },
       {
         question: 'How long does delivery take to Panvel?',
-        answer: 'Delivery to Panvel takes approximately 25 to 35 minutes from our kitchen in Taloja Phase 1. Your food is freshly cooked upon order, so it arrives hot and sealed.',
+        answer: 'Delivery to Panvel takes approximately 25 to 35 minutes from our kitchen in Taloja Phase 1. Your food is freshly cooked upon order and arrives sealed.',
       },
       {
         question: 'What payment methods do you accept in Panvel?',
-        answer: 'We accept Cash on Delivery, UPI (Google Pay, PhonePe, Paytm), and all major debit/credit cards. Payment is collected at your doorstep.',
-      },
-      {
-        question: 'Is the chicken Halal for Panvel orders?',
-        answer: 'Yes, all our chicken is 100% Halal certified, sourced fresh daily from certified local suppliers. We never use frozen chicken or pre-made gravy bases.',
+        answer: 'We accept Cash on Delivery and UPI QR (Google Pay, PhonePe, Paytm). Payment is verified upon delivery.',
       },
     ],
 
@@ -169,21 +195,34 @@ export const LOCATIONS = [
     keywords: 'food delivery kamothe, chicken keema kamothe, order food online kamothe, cloud kitchen kamothe, keema pav kamothe, chicken korma delivery kamothe, halal food kamothe navi mumbai, non veg delivery kamothe',
 
     heroTagline: 'Fresh 500g Chicken Meals, Right at Your Door in Kamothe',
-    heroSubtitle: 'Kamothe families love generous portions and homestyle flavors. Our kitchen delivers exactly that — 500g Chicken Keema, rich Chicken Korma, and hot-off-the-tandoor Rotis to all Kamothe sectors in 20 to 30 minutes flat.',
+    heroSubtitle: 'Hearty 500g Chicken Keema, rich Chicken Korma, and hot-off-the-tandoor Rotis delivered to all Kamothe sectors in 20 to 30 minutes.',
+
+    pricing: {
+      minOrder: 249,
+      freeAbove: 399,
+      deliveryFee: 49,
+      standardOrderName: 'Keema Pav Meal & Roti',
+      standardSubtotal: 249,
+      standardTotal: 298,
+      freeOrderName: 'Keema, Korma & 2 Rotis',
+      freeSubtotal: 458,
+      freeTotal: 458,
+      tip: 'Minimum order is ₹249. Add a side or roti to reach ₹399 and get free delivery.'
+    },
 
     sections: [
       {
-        heading: 'Why Kamothe Families Order from Bread & Bite',
-        text: 'Kamothe is a family-first township — quiet, clean, and full of young households who value honest meals over flashy restaurant packaging. Our cloud kitchen was built for exactly this audience. When you order a 500g Chicken Keema from us, you get a real home-cooked meal that fills two adults comfortably, not a tiny 250g container with more gravy than meat. Our Tandoori Rotis are baked fresh the moment your order comes in, and our Ladi Pavs are soft bakery-quality — never stale, never reheated. Families in Kamothe regularly order our Keema Pav Meal (₹219) and Korma Roti Meal (₹249) as weekday dinner solutions — quick, affordable, and genuinely satisfying.',
+        heading: 'Family-First Portions',
+        text: 'Generous 500g boneless keema and korma gravies that easily satisfy 2 adults without skimping on chicken.'
       },
       {
-        heading: 'Complete Menu for Kamothe Delivery',
-        text: 'Our menu focuses on doing a few things exceptionally well. Chicken Keema Boneless (500g, ₹199) — our signature dish, slow-cooked with whole spices and fresh coriander. Chicken Korma (500g, ₹199) — tender chicken in a Mughlai cashew-onion gravy. Random Chicken Gravy (500g, ₹199) — our chef\'s daily special, a different homestyle curry every day. Add Tandoori Rotis (₹30), Ladi Pav pack (₹30 for 4 pieces), French Fries (200g, ₹99), Maggi (₹99), or a Crispy Chicken Burger (₹149). Our combo deals save you ₹10-19 per meal.',
+        heading: 'Hot Tandoori Breads',
+        text: 'Crispy whole wheat rotis and soft ladi pavs packed warm in food-grade spill-proof containers.'
       },
       {
-        heading: 'Kamothe Delivery Coverage',
-        text: 'We deliver across all Kamothe sectors — from the residential blocks near Mansarovar to the areas near Kamothe railway station and the main bus depot. Whether you live near the Kamothe circle, the D-Mart area, or the newer residential complexes towards Kharghar, our riders reach you in 20 to 30 minutes. We use our own delivery fleet, so your food stays hot in insulated bags and arrives in sealed, spill-proof packaging.',
-      },
+        heading: 'Quick 20–30m Delivery',
+        text: 'Fast doorstep delivery across all Kamothe residential sectors, Mansarovar, and near the railway station.'
+      }
     ],
 
     landmarks: [
@@ -201,15 +240,15 @@ export const LOCATIONS = [
     faqs: [
       {
         question: 'How quickly can you deliver to Kamothe?',
-        answer: 'We deliver to Kamothe in approximately 20 to 30 minutes from our kitchen in Taloja Phase 1. Your meal is cooked fresh upon order and delivered hot in sealed containers.',
+        answer: 'We deliver to Kamothe in approximately 20 to 30 minutes from our kitchen in Taloja Phase 1. Your meal is cooked fresh upon order and delivered hot.',
       },
       {
-        question: 'Do you deliver to all parts of Kamothe?',
-        answer: 'Yes — we cover all residential sectors in Kamothe, including Mansarovar area, near the railway station, Kamothe bus depot, D-Mart road, Kamothe Circle, and the newer complexes towards Kharghar.',
+        question: 'What is the delivery charge and free delivery threshold for Kamothe?',
+        answer: 'Kamothe orders have a minimum order of ₹249. Delivery is ₹49 below ₹399, and completely FREE on all orders of ₹399 and above.',
       },
       {
         question: 'What are the best-selling items in Kamothe?',
-        answer: 'The Keema Pav Meal (500g Chicken Keema + 4 Pavs at ₹219) is our most popular combo in Kamothe, followed by the Chicken Korma & Roti Meal (₹249). Many families order these as their weekday dinner.',
+        answer: 'The Keema Pav Meal (500g Chicken Keema + 4 Pavs at ₹219) is our most popular combo in Kamothe, followed by the Chicken Korma & Roti Meal (₹249).',
       },
     ],
 
@@ -232,21 +271,34 @@ export const LOCATIONS = [
     keywords: 'food delivery kalamboli, chicken keema kalamboli, order food online kalamboli, cloud kitchen kalamboli, keema pav kalamboli, food delivery near kalamboli steel market, halal food kalamboli navi mumbai',
 
     heroTagline: 'Filling Meals Delivered Fast to Kalamboli',
-    heroSubtitle: 'Whether you\'re working near the Steel Market or relaxing at home in a Kalamboli residential complex, Bread & Bite delivers 500g chicken meals, hot Tandoori Rotis, and value combos to your door in 25 to 35 minutes.',
+    heroSubtitle: 'Hearty 500g chicken meals, hot Tandoori Rotis, and value combos delivered to your doorstep in Kalamboli in 25 to 35 minutes.',
+
+    pricing: {
+      minOrder: 249,
+      freeAbove: 399,
+      deliveryFee: 49,
+      standardOrderName: 'Chicken Korma & Roti Meal',
+      standardSubtotal: 249,
+      standardTotal: 298,
+      freeOrderName: 'Keema Meal, Burger & Fries',
+      freeSubtotal: 448,
+      freeTotal: 448,
+      tip: 'Minimum order is ₹249. Orders of ₹399 and above receive free delivery.'
+    },
 
     sections: [
       {
-        heading: 'Kalamboli\'s Go-To Cloud Kitchen',
-        text: 'Kalamboli is a town of hard-working people — from the shopkeepers at the Steel Market and APMC to the families in the growing residential sectors. When lunch or dinner needs to be quick, filling, and affordable, Bread & Bite is the answer. Our 500g Chicken Keema (₹199) feeds two adults easily, and our value combos like the Keema Pav Meal (₹219) or Burger & Fries Combo (₹229) are designed for people who want a real meal without overspending. No tiny portions, no hidden charges — just honest food at honest prices.',
+        heading: 'Hearty Everyday Meals',
+        text: 'Heavy 500g chicken gravies and filling combo meals crafted for honest appetites and working lunches.'
       },
       {
-        heading: 'What You Can Order in Kalamboli',
-        text: 'Chicken Keema Boneless (500g, ₹199) — our bestselling dish, rich and flavorful. Chicken Korma (500g, ₹199) — a milder, creamier option perfect with rotis. Chef\'s Special Chicken Gravy (500g, ₹199) — a different homestyle curry every day for variety. Tandoori Roti (₹30) and Ladi Pav (₹30 for 4) round out the meal. For something lighter, try our Crispy Chicken Burger (₹149) or crispy French Fries (200g, ₹99). All chicken is 100% Halal, fresh-sourced daily, and cooked on order.',
+        heading: 'Clay-Oven Freshness',
+        text: 'Hot rotis and fresh pavs baked on order. Never pre-cooked, pre-packaged, or reheated.'
       },
       {
-        heading: 'Delivery Areas in Kalamboli',
-        text: 'We cover all of Kalamboli — from the residential sectors near the Steel Market and Furniture Market to the APMC Market area and Palaspe Phata. Whether you\'re near Kalamboli station, the highway service road, or the newer apartment complexes, our riders reach you in 25 to 35 minutes. Office lunch orders near the commercial areas are especially popular — message us on WhatsApp for group orders.',
-      },
+        heading: 'Residential & Market Delivery',
+        text: 'Delivering hot food in 25–35 minutes across Kalamboli residential sectors, Steel Market, and APMC.'
+      }
     ],
 
     landmarks: [
@@ -259,20 +311,20 @@ export const LOCATIONS = [
       'Kalamboli Circle',
     ],
 
-    coverageDetail: 'All sectors in Kalamboli including Steel Market area, Furniture Market, APMC Market, Palaspe Phata, Railway Station area, and highway-side residential complexes.',
+    coverageDetail: 'All sectors in Kalamboli including Steel Market area, Furniture Market, APMC Market, Palaspe Phata, Railway Station area, and residential complexes.',
 
     faqs: [
       {
         question: 'Do you deliver to the Kalamboli Steel Market area?',
-        answer: 'Yes! We deliver to all parts of Kalamboli including the Steel Market area, APMC Market, residential sectors, and the highway service road. Group lunch orders for shop workers and offices are welcome — message us on WhatsApp.',
+        answer: 'Yes! We deliver to all parts of Kalamboli including the Steel Market area, APMC Market, and residential sectors. Group lunch orders are welcome.',
+      },
+      {
+        question: 'What is the delivery fee for Kalamboli?',
+        answer: 'Minimum order is ₹249 with a ₹49 delivery fee. Orders of ₹399 and above receive 100% FREE delivery.',
       },
       {
         question: 'How long does delivery take to Kalamboli?',
-        answer: 'Delivery to Kalamboli takes approximately 25 to 35 minutes from our Taloja Phase 1 kitchen. Your meal is cooked fresh upon order, not pre-made.',
-      },
-      {
-        question: 'Can I order lunch for my office or shop in Kalamboli?',
-        answer: 'Absolutely! Many offices and shop owners near the Steel Market and APMC order daily lunch from us. We offer combo meals starting at ₹219 that are perfect for working lunches. Contact us on WhatsApp at +91 93256 29256 for group orders.',
+        answer: 'Delivery to Kalamboli takes approximately 25 to 35 minutes from our Taloja Phase 1 kitchen. Food is cooked fresh upon order.',
       },
     ],
 
@@ -295,21 +347,34 @@ export const LOCATIONS = [
     keywords: 'food delivery taloja, chicken keema taloja, order food online taloja, cloud kitchen taloja phase 1, keema pav taloja, chicken korma taloja, food delivery taloja phase 2, halal food taloja navi mumbai, best cloud kitchen taloja',
 
     heroTagline: 'Our Kitchen Is Right Here. Your Food Arrives in Minutes.',
-    heroSubtitle: 'Bread & Bite is located in Taloja Phase 1, Sector 11 — which means when you order from us in Taloja, your food is cooked, packed, and at your doorstep in just 10 to 20 minutes. No long waits, no cold deliveries. Just hot, fresh, homestyle meals.',
+    heroSubtitle: 'Bread & Bite is based in Taloja Phase 1, Sector 11. Your food is cooked, packed, and delivered to your doorstep in just 10 to 20 minutes.',
+
+    pricing: {
+      minOrder: 199,
+      freeAbove: 299,
+      deliveryFee: 39,
+      standardOrderName: 'Chicken Keema Boneless (500g)',
+      standardSubtotal: 199,
+      standardTotal: 238,
+      freeOrderName: 'Keema (500g), Fries & Pav',
+      freeSubtotal: 328,
+      freeTotal: 328,
+      tip: 'Minimum order is ₹199. Add a Pav pack (₹30) or Tandoori Roti (₹30) to reach ₹299 for free delivery.'
+    },
 
     sections: [
       {
         heading: 'Taloja\'s Own Cloud Kitchen',
-        text: 'We\'re not delivering to Taloja from some distant commercial kitchen — we ARE Taloja. Bread & Bite was born in Taloja Phase 1, Sector 11, and our very first customers were our neighbors. That\'s why we take local delivery seriously: every order within Taloja Phase 1 and Phase 2 reaches your door in 10 to 20 minutes, often faster. We know the gali-mohalla, the building names, and the shortcuts. When you order a 500g Chicken Keema from us, it\'s cooked the moment your order comes in and reaches you while it\'s still steaming.',
+        text: 'Located in Sector 11, Taloja Phase 1. When you order from us, your food is cooked fresh and reaches you in 10 to 20 minutes.'
       },
       {
-        heading: 'Menu Highlights for Taloja Delivery',
-        text: 'Our full menu is available for Taloja delivery — and since we\'re local, everything arrives hot and fresh. Chicken Keema Boneless (500g, ₹199) — our signature dish that put Bread & Bite on the map. Thick, tasty, packed with chicken mince. Chicken Korma (500g, ₹199) — a richer, creamier curry for family dinners. Random Chicken Gravy (500g, ₹199) — a chef\'s surprise every day. Tandoori Rotis straight from the clay oven (₹30), and Ladi Pavs fresh from the bakery (₹30 for 4). Plus burgers, fries, and Maggi for quick snacks. Our Keema Pav Meal (₹219) is the most ordered combo in Taloja — it\'s a complete dinner for two.',
+        heading: 'Honest 500g Portions',
+        text: 'Chicken Keema Boneless (₹199), creamy Chicken Korma (₹199), hot Tandoori Rotis (₹30), and burgers at everyday prices.'
       },
       {
-        heading: 'Taloja Delivery Coverage',
-        text: 'We cover every lane and sector in Taloja Phase 1 (Sectors 1 to 24) and Taloja Phase 2. We also deliver to Taloja MIDC industrial area for office lunch orders. Since our kitchen is in Sector 11, most Phase 1 deliveries arrive in under 15 minutes. Phase 2 deliveries are typically 15 to 20 minutes. MIDC orders can be scheduled in advance for batch delivery — WhatsApp us at +91 93256 29256 for daily lunch subscriptions.',
-      },
+        heading: 'Phase 1, Phase 2 & MIDC',
+        text: 'Covering all residential sectors and Taloja MIDC. Walk-in takeaway also available at Shop 12, Ground Floor, Sector 11.'
+      }
     ],
 
     landmarks: [
@@ -327,19 +392,15 @@ export const LOCATIONS = [
     faqs: [
       {
         question: 'How fast is delivery within Taloja?',
-        answer: 'Since our kitchen is located right in Taloja Phase 1, Sector 11, delivery within Taloja is our fastest — typically 10 to 20 minutes. Most Phase 1 orders arrive in under 15 minutes.',
+        answer: 'Since our kitchen is located right in Taloja Phase 1, Sector 11, delivery within Taloja is our fastest — typically 10 to 20 minutes.',
       },
       {
-        question: 'Do you deliver to Taloja Phase 2 and MIDC?',
-        answer: 'Yes! We cover Taloja Phase 2 (15-20 minutes) and Taloja MIDC industrial area. For MIDC, we also offer daily lunch subscriptions — message us on WhatsApp to set up recurring orders.',
+        question: 'What is the delivery fee in Taloja?',
+        answer: 'Orders under ₹299 have a small ₹39 local delivery fee (min order ₹199). All orders of ₹299 and above receive 100% FREE delivery.',
       },
       {
         question: 'Can I pick up my order directly from the kitchen?',
-        answer: 'Yes! Walk-in takeaway is available at our kitchen: Shop 12, Ground Floor, Sector 11, Taloja Phase 1. Open daily in 2 operational slots: 11:00 AM to 3:15 PM and 7:00 PM to 9:15 PM. No delivery wait — your food is packed fresh and ready in 10 to 15 minutes.',
-      },
-      {
-        question: 'Do you offer daily lunch subscriptions for Taloja?',
-        answer: 'Yes, many families and MIDC workers in Taloja subscribe to our daily lunch delivery. We offer customizable weekly plans with combo meals. Contact us on WhatsApp at +91 93256 29256 for subscription details and pricing.',
+        answer: 'Yes! Walk-in takeaway is available at Shop 12, Ground Floor, Sector 11, Taloja Phase 1. Open daily: 11:00 AM – 3:15 PM & 7:00 PM – 9:15 PM.',
       },
     ],
 
@@ -362,21 +423,34 @@ export const LOCATIONS = [
     keywords: 'food delivery cbd belapur, chicken keema cbd belapur, order food online belapur, lunch delivery belapur navi mumbai, keema pav belapur, chicken korma cbd belapur, cloud kitchen belapur, halal food belapur, office lunch delivery cbd belapur',
 
     heroTagline: 'Hot Meals Delivered to Belapur\'s Offices & Homes',
-    heroSubtitle: 'Working late at the office or relaxing at home in CBD Belapur? Bread & Bite delivers generous 500g Chicken Keema, rich Chicken Korma, and freshly baked Tandoori Rotis to Belapur\'s commercial and residential zones in 30 to 40 minutes.',
+    heroSubtitle: 'Generous 500g Chicken Keema, rich Chicken Korma, and freshly baked Tandoori Rotis delivered hot to Belapur in 30 to 40 minutes.',
+
+    pricing: {
+      minOrder: 499,
+      freeAbove: 699,
+      deliveryFee: 79,
+      standardOrderName: 'Office Lunch (2 Gravies & Pavs)',
+      standardSubtotal: 499,
+      standardTotal: 578,
+      freeOrderName: 'Team Lunch (3-4 Meals & Sides)',
+      freeSubtotal: 720,
+      freeTotal: 720,
+      tip: 'Minimum order is ₹499. Orders of ₹699 and above receive free delivery.'
+    },
 
     sections: [
       {
-        heading: 'The Perfect Lunch Solution for CBD Belapur',
-        text: 'CBD Belapur is the business nerve center of Navi Mumbai — home to NMMC headquarters, major banks, IT offices, and Belapur railway station. Office workers here are tired of the same canteen food and overpriced restaurant lunches. Bread & Bite offers a genuine alternative: a 500g Chicken Keema Boneless for just ₹199, enough to share with a colleague or enjoy as a hearty solo lunch. Our Keema Pav Meal (₹219) and Korma Roti Meal (₹249) are specifically designed as complete, filling office lunch combos — no need to order sides separately.',
+        heading: 'Corporate & Team Lunches',
+        text: 'Hearty 500g gravies and combo meals packed in sealed microwave-safe containers — ideal for office sharing.'
       },
       {
-        heading: 'Menu for CBD Belapur Delivery',
-        text: 'For office lunches, we recommend our combo meals: Keema Pav Meal (500g Chicken Keema + 4 Pavs, ₹219) — the most popular choice for working professionals. Chicken Korma & Roti Meal (500g Korma + 2 Tandoori Rotis, ₹249) — for those who prefer roti over pav. Burger & Fries Combo (₹229) — a lighter, quicker option. Individual items are also available: Chicken Keema (500g, ₹199), Chicken Korma (500g, ₹199), Tandoori Roti (₹30), Pav (₹30 for 4), French Fries (₹99), and Crispy Chicken Burger (₹149). All items are packed in sealed, microwave-safe containers — ideal for reheating at the office.',
+        heading: '100% Halal Fresh Cooking',
+        text: 'Fresh chicken sourced daily and cooked with authentic spices. Honest value compared to expensive restaurant orders.'
       },
       {
-        heading: 'Belapur Delivery Coverage',
-        text: 'We deliver to all of CBD Belapur — Sectors 1 through 15, the area around Belapur Railway Station, Palm Beach Road residences, and the NMMC headquarters zone. Since Belapur is farther from our Taloja kitchen, deliveries take 30 to 40 minutes. For office lunch orders, we recommend ordering by 12:00 PM to get your food by 12:30-12:45 PM. Group orders for 5+ people from the same office get priority processing — contact us on WhatsApp to arrange.',
-      },
+        heading: 'Belapur Commercial & Residential',
+        text: 'Delivering to Sectors 1–15, NMMC HQ zone, Palm Beach Road, and station commercial hubs in 30–40 minutes.'
+      }
     ],
 
     landmarks: [
@@ -395,15 +469,15 @@ export const LOCATIONS = [
     faqs: [
       {
         question: 'Do you deliver to offices in CBD Belapur?',
-        answer: 'Yes! Office lunch delivery is one of our specialties in CBD Belapur. Many offices near NMMC HQ, Palm Beach Road, and the Belapur railway station area order from us daily. Group orders for 5+ people get priority. Contact us on WhatsApp at +91 93256 29256.',
+        answer: 'Yes! Office lunch delivery is one of our specialties in CBD Belapur. Many offices near NMMC HQ and Palm Beach Road order daily.',
       },
       {
-        question: 'How long does delivery take to CBD Belapur?',
-        answer: 'Delivery to CBD Belapur takes approximately 30 to 40 minutes from our Taloja kitchen. For office lunches, we recommend ordering by 12:00 PM so your food arrives before 12:45 PM.',
+        question: 'What is the delivery fee and minimum order for Belapur?',
+        answer: 'Minimum order for Belapur is ₹499 with a ₹79 express delivery fee. All orders of ₹699 and above receive 100% FREE delivery.',
       },
       {
         question: 'Can I reheat the food at my office?',
-        answer: 'Yes — all our food is packed in sealed, microwave-safe containers. The gravies reheat well, and the rotis/pavs are wrapped separately to maintain freshness. Our spill-proof packaging ensures nothing leaks during delivery.',
+        answer: 'Yes — all food is packed in sealed, microwave-safe, spill-proof containers. Rotis and pavs are packed separately to stay warm.',
       },
     ],
 

@@ -31,6 +31,11 @@ const LocationPage = () => {
     return menuItems.filter(item => item.isBestSeller).slice(0, 4);
   }, []);
 
+  const freeThreshold = location?.pricing?.freeAbove || (
+    location?.slug === 'taloja' ? 299 :
+    ['kharghar', 'kamothe', 'kalamboli'].includes(location?.slug) ? 399 : 699
+  );
+
   // If location not found, show a minimal fallback
   if (!location) {
     return (
@@ -53,6 +58,28 @@ const LocationPage = () => {
   const nearbyLocations = location.nearbyLocations
     .map(s => LOCATIONS.find(l => l.slug === s))
     .filter(Boolean);
+
+  // Store preferred delivery city for checkout
+  React.useEffect(() => {
+    if (typeof window !== 'undefined' && location?.slug) {
+      const cityMap = {
+        taloja: 'taloja',
+        kharghar: 'kharghar',
+        kamothe: 'kamothe',
+        kalamboli: 'kalamboli',
+        panvel: 'panvel',
+        'cbd-belapur': 'belapur',
+        belapur: 'belapur'
+      };
+      const city = cityMap[location.slug] || 'taloja';
+      try {
+        sessionStorage.setItem('preferred_delivery_city', city);
+        sessionStorage.setItem('preferred_delivery_zone', city);
+      } catch {
+        // ignore
+      }
+    }
+  }, [location?.slug]);
 
   const fadeIn = {
     hidden: { opacity: 0, y: 16 },
@@ -153,26 +180,168 @@ const LocationPage = () => {
       </section>
 
       {/* ═══════════════════════════════════════════════════
-          CONTENT SECTIONS — Unique per location
+          DELIVERY & CART COSTING — Transparent & Grounded
       ═══════════════════════════════════════════════════ */}
-      <section className="py-14 sm:py-20 bg-white border-b border-[#EAE4DC]">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 space-y-12">
-          {location.sections.map((section, idx) => (
-            <motion.div
-              key={idx}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: idx * 0.1, ease: [0.16, 1, 0.3, 1] }}
-            >
-              <h2 className="text-xl sm:text-2xl font-bold text-[#181411] font-heading tracking-tight mb-4">
-                {section.heading}
-              </h2>
-              <p className="text-sm sm:text-base text-[#574F4A] leading-relaxed">
-                {section.text}
-              </p>
-            </motion.div>
-          ))}
+      <section className="py-12 sm:py-16 bg-white border-b border-[#EAE4DC]">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6">
+          <div className="text-center max-w-xl mx-auto mb-10">
+            <span className="text-[11px] uppercase tracking-[0.2em] font-bold text-[#B84A1C] block mb-2">
+              Transparent Pricing
+            </span>
+            <h2 className="text-2xl sm:text-3xl font-bold text-[#181411] font-heading tracking-tight mb-2">
+              Delivery & Cart Costing for {location.name}
+            </h2>
+            <p className="text-xs sm:text-sm text-[#574F4A] leading-relaxed">
+              No packaging charges, surge prices, or hidden fees. Cooked fresh in our Taloja Phase 1 kitchen and delivered hot to your doorstep.
+            </p>
+          </div>
+
+          {/* 3 Core Delivery Terms */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-[#EAE4DC] border border-[#EAE4DC] rounded-2xl bg-[#FAF7F2] mb-8 overflow-hidden">
+            <div className="p-5 sm:p-6 text-center">
+              <span className="text-[11px] uppercase tracking-wider font-semibold text-[#8C827A] block mb-1">
+                Minimum Order
+              </span>
+              <span className="text-2xl sm:text-3xl font-bold text-[#181411] font-heading block">
+                ₹{location.pricing?.minOrder}
+              </span>
+              <span className="text-xs text-[#574F4A] mt-1 block">
+                Smallest order for delivery
+              </span>
+            </div>
+
+            <div className="p-5 sm:p-6 text-center">
+              <span className="text-[11px] uppercase tracking-wider font-semibold text-[#8C827A] block mb-1">
+                Delivery Fee
+              </span>
+              <span className="text-2xl sm:text-3xl font-bold text-[#B84A1C] font-heading block">
+                ₹{location.pricing?.deliveryFee}
+              </span>
+              <span className="text-xs text-[#574F4A] mt-1 block">
+                On orders below ₹{location.pricing?.freeAbove}
+              </span>
+            </div>
+
+            <div className="p-5 sm:p-6 text-center">
+              <span className="text-[11px] uppercase tracking-wider font-semibold text-[#8C827A] block mb-1">
+                Free Delivery
+              </span>
+              <span className="text-2xl sm:text-3xl font-bold text-[#181411] font-heading block">
+                ₹{location.pricing?.freeAbove}+
+              </span>
+              <span className="text-xs text-[#574F4A] mt-1 block">
+                Free doorstep delivery
+              </span>
+            </div>
+          </div>
+
+          {/* How the Cart Calculates Your Bill */}
+          <div className="border border-[#EAE4DC] rounded-2xl p-6 sm:p-8 bg-white">
+            <h3 className="text-base sm:text-lg font-bold text-[#181411] font-heading mb-1.5">
+              How Your Cart Calculates the Bill
+            </h3>
+            <p className="text-xs sm:text-sm text-[#574F4A] mb-6">
+              When you select <span className="font-semibold text-[#181411]">{location.name}</span> in the cart or checkout, your bill is calculated automatically based on your order subtotal:
+            </p>
+
+            <div className="grid md:grid-cols-2 gap-5">
+              {/* Below Free Delivery Limit */}
+              <div className="p-5 rounded-xl bg-[#FAF7F2] border border-[#EAE4DC]">
+                <div className="flex items-center justify-between pb-3 mb-3 border-b border-[#EAE4DC]">
+                  <span className="text-xs font-bold text-[#181411]">
+                    Orders below ₹{location.pricing?.freeAbove}
+                  </span>
+                  <span className="text-xs text-[#574F4A]">
+                    ₹{location.pricing?.deliveryFee} delivery
+                  </span>
+                </div>
+                <div className="space-y-2 text-xs text-[#574F4A] mb-4">
+                  <div className="flex justify-between">
+                    <span>{location.pricing?.standardOrderName}</span>
+                    <span className="text-[#181411] font-medium">₹{location.pricing?.standardSubtotal}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span>Delivery Fee ({location.name})</span>
+                    <span className="text-[#B84A1C] font-medium">+₹{location.pricing?.deliveryFee}</span>
+                  </div>
+                  <div className="flex justify-between text-[#8C827A]">
+                    <span>Packaging & Taxes</span>
+                    <span>₹0 (Included)</span>
+                  </div>
+                </div>
+                <div className="pt-3 border-t border-[#EAE4DC] flex justify-between items-center text-sm font-bold text-[#181411]">
+                  <span>Total Amount</span>
+                  <span className="text-base">₹{location.pricing?.standardTotal}</span>
+                </div>
+              </div>
+
+              {/* Free Delivery Unlocked */}
+              <div className="p-5 rounded-xl bg-[#FAF7F2] border border-[#EAE4DC]">
+                <div className="flex items-center justify-between pb-3 mb-3 border-b border-[#EAE4DC]">
+                  <span className="text-xs font-bold text-[#181411]">
+                    Orders ₹{location.pricing?.freeAbove} and above
+                  </span>
+                  <span className="text-xs font-semibold text-[#B84A1C]">
+                    Free Delivery
+                  </span>
+                </div>
+                <div className="space-y-2 text-xs text-[#574F4A] mb-4">
+                  <div className="flex justify-between">
+                    <span>{location.pricing?.freeOrderName}</span>
+                    <span className="text-[#181411] font-medium">₹{location.pricing?.freeSubtotal}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span>Delivery Fee ({location.name})</span>
+                    <span className="text-[#181411] font-medium">₹0 (Free)</span>
+                  </div>
+                  <div className="flex justify-between text-[#8C827A]">
+                    <span>Packaging & Taxes</span>
+                    <span>₹0 (Included)</span>
+                  </div>
+                </div>
+                <div className="pt-3 border-t border-[#EAE4DC] flex justify-between items-center text-sm font-bold text-[#181411]">
+                  <span>Total Amount</span>
+                  <span className="text-base">₹{location.pricing?.freeTotal}</span>
+                </div>
+              </div>
+            </div>
+
+            <p className="text-xs text-[#8C827A] mt-5 pt-4 border-t border-[#EAE4DC]/70 leading-relaxed">
+              <span className="font-semibold text-[#574F4A]">Delivery Tip:</span> {location.pricing?.tip}
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════════
+          ABOUT THIS AREA — Crisp & Food-First
+      ═══════════════════════════════════════════════════ */}
+      <section className="py-12 sm:py-16 bg-[#FAF7F2] border-b border-[#EAE4DC]">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6">
+          <div className="text-center max-w-xl mx-auto mb-9">
+            <span className="text-[11px] uppercase tracking-[0.2em] font-bold text-[#B84A1C] block mb-2">
+              Fresh & Homestyle
+            </span>
+            <h2 className="text-2xl sm:text-3xl font-bold text-[#181411] font-heading tracking-tight">
+              Cooked Fresh for {location.name}
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            {location.sections.map((section, idx) => (
+              <div
+                key={idx}
+                className="bg-white rounded-2xl border border-[#EAE4DC] p-6"
+              >
+                <h3 className="text-base font-bold text-[#181411] font-heading mb-2">
+                  {section.heading}
+                </h3>
+                <p className="text-xs sm:text-sm text-[#574F4A] leading-relaxed">
+                  {section.text}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -232,8 +401,7 @@ const LocationPage = () => {
                       {qty === 0 ? (
                         <button
                           onClick={() => addToCart(item)}
-                          disabled={!isKitchenOpen}
-                          className="flex items-center gap-1.5 bg-[#B84A1C] text-white text-[10px] font-bold uppercase tracking-wider px-3 py-2 rounded-full hover:bg-[#9A3D15] transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+                          className="flex items-center gap-1.5 bg-[#B84A1C] text-white text-[10px] font-bold uppercase tracking-wider px-3.5 py-2 rounded-full hover:bg-[#9A3D15] transition-colors cursor-pointer active:scale-95 shadow-2xs"
                         >
                           <FaPlus size={8} /> Add
                         </button>
@@ -325,7 +493,7 @@ const LocationPage = () => {
                 </div>
                 <div>
                   <h3 className="text-sm font-bold text-[#181411] mb-1">Free Delivery</h3>
-                  <p className="text-xs text-[#574F4A]">Free delivery on orders above ₹299 to {location.name}.</p>
+                  <p className="text-xs text-[#574F4A]">Free delivery on orders of ₹{freeThreshold}+ to {location.name} (Min order ₹{location.pricing?.minOrder || 199}).</p>
                 </div>
               </div>
             </div>
@@ -528,7 +696,7 @@ const LocationPage = () => {
           </div>
 
           <p className="text-[11px] text-[#8C827A] mt-6">
-            Daily slots: 11:00 AM – 3:15 PM & 7:00 PM – 9:15 PM · Free delivery on ₹299+ to {location.name}
+            Daily slots: 11:00 AM – 3:15 PM & 7:00 PM – 9:15 PM · Free delivery on ₹{freeThreshold}+ to {location.name}
           </p>
         </div>
       </section>
