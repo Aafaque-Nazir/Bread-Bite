@@ -68,6 +68,9 @@ const About = () => {
                 <img
                   src="/images/chicken-keema.webp"
                   alt="Bread and Bite Chicken Keema and Pav Preparation"
+                  onError={(e) => {
+                    e.target.src = '/images/chicken-korma.webp';
+                  }}
                   loading="lazy"
                   decoding="async"
                   className="w-full h-full object-cover"
@@ -259,6 +262,9 @@ const About = () => {
                   <img
                     src={item.img}
                     alt={item.label}
+                    onError={(e) => {
+                      e.target.src = '/images/chicken-korma.webp';
+                    }}
                     loading="lazy"
                     decoding="async"
                     className="w-full h-full object-cover transition-transform duration-500 hover:scale-106"

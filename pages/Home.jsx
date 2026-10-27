@@ -188,6 +188,9 @@ const Home = () => {
                     alt="Chicken Keema Boneless 500g"
                     fetchPriority="high"
                     decoding="async"
+                    onError={(e) => {
+                      e.target.src = '/images/chicken-korma.webp';
+                    }}
                     className="w-full h-full object-cover"
                   />
                 </div>
