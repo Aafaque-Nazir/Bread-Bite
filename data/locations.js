@@ -400,7 +400,7 @@ export const LOCATIONS = [
       },
       {
         question: 'Can I pick up my order directly from the kitchen?',
-        answer: 'Yes! Walk-in takeaway is available at Shop 12, Ground Floor, Sector 11, Taloja Phase 1. Open daily: 11:00 AM – 3:15 PM & 7:00 PM – 9:15 PM.',
+        answer: 'Yes! Walk-in takeaway is available at Shop 12, Ground Floor, Sector 11, Taloja Phase 1. Open daily: 11:15 AM – 3:30 PM & 7:00 PM – 9:45 PM.',
       },
     ],
 

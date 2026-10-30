@@ -21,7 +21,7 @@ export const FAQS = [
   },
   {
     question: "What are your kitchen timings and how do I place an order?",
-    answer: "Our kitchen operates daily in 2 slots: Lunch (11:00 AM to 3:15 PM) and Dinner (7:00 PM to 9:15 PM IST). You can order directly on WhatsApp (+91 93256 29256) or add dishes to your cart on this website and checkout directly to WhatsApp for instant confirmation."
+    answer: "Our kitchen operates daily in 2 slots: Lunch (11:15 AM to 3:30 PM) and Dinner (7:00 PM to 9:45 PM IST). You can order directly on WhatsApp (+91 93256 29256) or add dishes to your cart on this website and checkout directly to WhatsApp for instant confirmation."
   },
   {
     question: "How long does food delivery take?",

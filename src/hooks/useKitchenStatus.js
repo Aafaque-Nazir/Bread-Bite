@@ -2,28 +2,28 @@ import { useState, useEffect } from 'react';
 
 /**
  * Bread & Bite Kitchen Operational Slots:
- * Slot 1 (Lunch):  11:00 AM – 3:15 PM (11:00 to 15:15 IST)
- * Slot 2 (Dinner): 7:00 PM – 9:15 PM (19:00 to 21:15 IST)
+ * Slot 1 (Lunch):  11:15 AM – 3:30 PM (11:15 to 15:30 IST)
+ * Slot 2 (Dinner): 7:00 PM – 9:45 PM (19:00 to 21:45 IST)
  */
 export const SLOT_1 = {
   startHour: 11,
-  startMinute: 0,
+  startMinute: 15,
   endHour: 15,
-  endMinute: 15,
+  endMinute: 30,
   name: 'Lunch',
-  label: '11:00 AM – 3:15 PM'
+  label: '11:15 AM – 3:30 PM'
 };
 
 export const SLOT_2 = {
   startHour: 19,
   startMinute: 0,
   endHour: 21,
-  endMinute: 15,
+  endMinute: 45,
   name: 'Dinner',
-  label: '7:00 PM – 9:15 PM'
+  label: '7:00 PM – 9:45 PM'
 };
 
-export const KITCHEN_SCHEDULE_STRING = '11:00 AM – 3:15 PM & 7:00 PM – 9:15 PM';
+export const KITCHEN_SCHEDULE_STRING = '11:15 AM – 3:30 PM & 7:00 PM – 9:45 PM';
 
 /**
  * Returns current Indian Standard Time (IST) kitchen operational status.
@@ -47,10 +47,10 @@ export const getKitchenStatus = () => {
           activeSlot: null,
           statusText: 'Kitchen Closed',
           shortStatus: 'Closed Now',
-          subText: 'Lunch: 11:00 AM – 3:15 PM · Dinner: 7:00 PM – 9:15 PM',
+          subText: 'Lunch: 11:15 AM – 3:30 PM · Dinner: 7:00 PM – 9:45 PM',
           scheduleText: KITCHEN_SCHEDULE_STRING,
-          reopenTimeStr: '11:00 AM',
-          nextSlot: '11:00 AM – 3:15 PM'
+          reopenTimeStr: '11:15 AM',
+          nextSlot: '11:15 AM – 3:30 PM'
         };
       }
     } catch {
@@ -76,10 +76,10 @@ export const getKitchenStatus = () => {
     const currentMinute = parseInt(minutePart?.value || '0', 10);
     const currentMinutes = currentHour * 60 + currentMinute;
 
-    const s1Start = 11 * 60; // 660 mins (11:00 AM)
-    const s1End = 15 * 60 + 15; // 915 mins (3:15 PM)
+    const s1Start = 11 * 60 + 15; // 675 mins (11:15 AM)
+    const s1End = 15 * 60 + 30; // 930 mins (3:30 PM)
     const s2Start = 19 * 60; // 1140 mins (7:00 PM)
-    const s2End = 21 * 60 + 15; // 1275 mins (9:15 PM)
+    const s2End = 21 * 60 + 45; // 1305 mins (9:45 PM)
 
     // Check if in Slot 1 (Lunch)
     if (currentMinutes >= s1Start && currentMinutes < s1End) {
@@ -90,8 +90,8 @@ export const getKitchenStatus = () => {
         currentMinute,
         statusText: 'Open Now · Lunch Slot',
         shortStatus: 'Lunch Open',
-        subText: 'Lunch slot closes at 3:15 PM (Dinner: 7:00 PM)',
-        closeTimeStr: '3:15 PM',
+        subText: 'Lunch slot closes at 3:30 PM (Dinner: 7:00 PM)',
+        closeTimeStr: '3:30 PM',
         scheduleText: KITCHEN_SCHEDULE_STRING
       };
     }
@@ -105,35 +105,35 @@ export const getKitchenStatus = () => {
         currentMinute,
         statusText: 'Open Now · Dinner Slot',
         shortStatus: 'Dinner Open',
-        subText: 'Dinner slot closes at 9:15 PM',
-        closeTimeStr: '9:15 PM',
+        subText: 'Dinner slot closes at 9:45 PM',
+        closeTimeStr: '9:45 PM',
         scheduleText: KITCHEN_SCHEDULE_STRING
       };
     }
 
     // Otherwise Kitchen is Closed
-    let subText = 'Opens at 11:00 AM';
-    let nextSlot = 'Lunch: 11:00 AM – 3:15 PM';
-    let reopenTimeStr = '11:00 AM';
-    let shortStatus = 'Opens 11:00 AM';
+    let subText = 'Opens at 11:15 AM';
+    let nextSlot = 'Lunch: 11:15 AM – 3:30 PM';
+    let reopenTimeStr = '11:15 AM';
+    let shortStatus = 'Opens 11:15 AM';
 
     if (currentMinutes < s1Start) {
       // Early morning before lunch
-      subText = 'Lunch slot opens today at 11:00 AM';
-      nextSlot = 'Lunch: 11:00 AM – 3:15 PM';
-      reopenTimeStr = '11:00 AM';
-      shortStatus = 'Opens 11:00 AM';
+      subText = 'Lunch slot opens today at 11:15 AM';
+      nextSlot = 'Lunch: 11:15 AM – 3:30 PM';
+      reopenTimeStr = '11:15 AM';
+      shortStatus = 'Opens 11:15 AM';
     } else if (currentMinutes >= s1End && currentMinutes < s2Start) {
-      // Afternoon break between 3:15 PM and 7:00 PM
+      // Afternoon break between 3:30 PM and 7:00 PM
       subText = 'Dinner slot opens today at 7:00 PM';
-      nextSlot = 'Dinner: 7:00 PM – 9:15 PM';
+      nextSlot = 'Dinner: 7:00 PM – 9:45 PM';
       reopenTimeStr = '7:00 PM';
       shortStatus = 'Opens 7:00 PM';
     } else {
-      // Night after 9:15 PM
-      subText = 'Opens tomorrow at 11:00 AM (Lunch Slot)';
-      nextSlot = 'Lunch: 11:00 AM – 3:15 PM';
-      reopenTimeStr = '11:00 AM';
+      // Night after 9:45 PM
+      subText = 'Opens tomorrow at 11:15 AM (Lunch Slot)';
+      nextSlot = 'Lunch: 11:15 AM – 3:30 PM';
+      reopenTimeStr = '11:15 AM';
       shortStatus = 'Opens Tomorrow';
     }
 

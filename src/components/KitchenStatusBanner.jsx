@@ -8,12 +8,12 @@ const KitchenStatusBanner = () => {
   const timingItems = [
     {
       label: "Lunch Slot",
-      val: "11:00 AM – 3:15 PM",
+      val: "11:15 AM – 3:30 PM",
       icon: <FaClock className="text-[#B84A1C]" size={11} />
     },
     {
       label: "Dinner Slot",
-      val: "7:00 PM – 9:15 PM",
+      val: "7:00 PM – 9:45 PM",
       icon: <FaClock className="text-[#B84A1C]" size={11} />
     },
     {

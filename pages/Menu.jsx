@@ -160,7 +160,7 @@ const Menu = () => {
               <strong className="text-[#181411] font-semibold">Kitchen resting ({shortStatus}):</strong> Explore our menu and prepare your bag; online orders reopen during operational slots.
             </p>
             <span className="text-[11px] font-bold text-[#8C827A] uppercase tracking-wider shrink-0 self-start sm:self-auto">
-              Slots: 11am–3:15pm & 7pm–9:15pm
+              Slots: 11:15am–3:30pm & 7pm–9:45pm
             </span>
           </div>
         )}

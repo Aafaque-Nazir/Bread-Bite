@@ -125,7 +125,7 @@ const Contact = () => {
                     </span>
                     <p className="text-base font-bold text-[#181411]">2 Daily Slots (Mon–Sun)</p>
                     <p className="text-xs text-[#574F4A] mt-0.5">
-                      Lunch: <strong className="text-[#181411]">11:00 AM – 3:15 PM</strong> · Dinner: <strong className="text-[#181411]">7:00 PM – 9:15 PM</strong>
+                      Lunch: <strong className="text-[#181411]">11:15 AM – 3:30 PM</strong> · Dinner: <strong className="text-[#181411]">7:00 PM – 9:45 PM</strong>
                     </p>
                   </div>
                 </div>

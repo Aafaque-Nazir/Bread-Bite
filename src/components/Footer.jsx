@@ -139,8 +139,8 @@ const Footer = () => {
                 <FaClock className="text-[#B84A1C] mt-0.5 shrink-0" size={13} />
                 <div>
                   <span className="text-white font-medium block">2 Daily Operational Slots:</span>
-                  <span>Lunch: 11:00 AM – 3:15 PM</span>
-                  <span className="block">Dinner: 7:00 PM – 9:15 PM</span>
+                  <span>Lunch: 11:15 AM – 3:30 PM</span>
+                  <span className="block">Dinner: 7:00 PM – 9:45 PM</span>
                 </div>
               </li>
               <li className="flex items-center gap-2.5">

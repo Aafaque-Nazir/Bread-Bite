@@ -195,7 +195,7 @@ const contactBody = `
     </div>
     <div style="background:#fff;border:1px solid #EAE4DC;border-radius:1.5rem;padding:2rem;line-height:1.6;color:#574F4A;">
       <h2 style="font-family:'DM Serif Display',Georgia,serif;font-size:1.5rem;color:#181411;margin:0 0 1rem;">Operating Hours</h2>
-      <p style="margin:0 0 1rem;"><strong>2 Daily Operational Slots:</strong><br/>Lunch: 11:00 AM – 3:15 PM<br/>Dinner: 7:00 PM – 9:15 PM IST</p>
+      <p style="margin:0 0 1rem;"><strong>2 Daily Operational Slots:</strong><br/>Lunch: 11:15 AM – 3:30 PM<br/>Dinner: 7:00 PM – 9:45 PM IST</p>
       <h2 style="font-family:'DM Serif Display',Georgia,serif;font-size:1.5rem;color:#181411;margin:1.5rem 0 0.5rem;">Delivery Locations</h2>
       <p style="margin:0;">Fast local delivery across Taloja Phase 1, Taloja Phase 2, Kharghar, Panvel, Kamothe, Kalamboli, and CBD Belapur.</p>
     </div>
@@ -205,7 +205,7 @@ const contactBody = `
 const cartBody = `
   <section style="background:#fff;border:1px solid #EAE4DC;border-radius:1.5rem;padding:2.5rem 2rem;margin-bottom:2.5rem;text-align:center;line-height:1.6;color:#574F4A;">
     <h2 style="font-family:'DM Serif Display',Georgia,serif;font-size:1.5rem;color:#181411;margin:0 0 0.75rem;">Your Order Bag</h2>
-    <p style="margin:0 0 1.5rem;">Review your selected items and complete your order. Kitchen operational slots are 11:00 AM to 3:15 PM &amp; 7:00 PM to 9:15 PM IST.</p>
+    <p style="margin:0 0 1.5rem;">Review your selected items and complete your order. Kitchen operational slots are 11:15 AM to 3:30 PM &amp; 7:00 PM to 9:45 PM IST.</p>
     <a href="/menu/" style="display:inline-block;background:#B84A1C;color:#FAF7F2;padding:0.75rem 1.75rem;border-radius:9999px;text-decoration:none;font-weight:700;font-size:0.85rem;text-transform:uppercase;">Browse Menu &amp; Add Items</a>
   </section>
 `;

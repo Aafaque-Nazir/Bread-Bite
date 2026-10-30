@@ -484,7 +484,7 @@ const LocationPage = () => {
                 </div>
                 <div>
                   <h3 className="text-sm font-bold text-[#181411] mb-1">Kitchen Hours</h3>
-                  <p className="text-xs text-[#574F4A]">2 Daily Slots: 11:00 AM – 3:15 PM & 7:00 PM – 9:15 PM IST. Order on WhatsApp or via our website.</p>
+                  <p className="text-xs text-[#574F4A]">2 Daily Slots: 11:15 AM – 3:30 PM & 7:00 PM – 9:45 PM IST. Order on WhatsApp or via our website.</p>
                 </div>
               </div>
 
@@ -697,7 +697,7 @@ const LocationPage = () => {
           </div>
 
           <p className="text-[11px] text-[#8C827A] mt-6">
-            Daily slots: 11:00 AM – 3:15 PM & 7:00 PM – 9:15 PM · Free delivery on ₹{freeThreshold}+ to {location.name}
+            Daily slots: 11:15 AM – 3:30 PM & 7:00 PM – 9:45 PM · Free delivery on ₹{freeThreshold}+ to {location.name}
           </p>
         </div>
       </section>
