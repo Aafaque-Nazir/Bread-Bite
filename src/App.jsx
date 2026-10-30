@@ -3,6 +3,8 @@ import Home from '../pages/Home';
 import About from '../pages/About';
 import Menu from '../pages/Menu';
 import Contact from '../pages/Contact';
+import Privacy from '../pages/Privacy';
+import Terms from '../pages/Terms';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import TQ from '../pages/TQ';
@@ -45,6 +47,10 @@ function App() {
             <Route path="/contact/" element={<Contact />} />
             <Route path="/thank-you" element={<TQ />} />
             <Route path="/thank-you/" element={<TQ />} />
+            <Route path="/privacy" element={<Privacy />} />
+            <Route path="/privacy/" element={<Privacy />} />
+            <Route path="/terms" element={<Terms />} />
+            <Route path="/terms/" element={<Terms />} />
 
             {/* Location Landing Pages for Navi Mumbai Local SEO */}
             {LOCATION_SLUGS.map((slug) => (

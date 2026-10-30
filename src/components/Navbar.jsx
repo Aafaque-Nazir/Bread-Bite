@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
-import { FaBars, FaTimes, FaShoppingBag, FaWhatsapp, FaChevronDown, FaArrowRight } from "react-icons/fa";
+import { FaBars, FaTimes, FaShoppingBag, FaWhatsapp, FaChevronDown, FaArrowRight, FaSun, FaMoon } from "react-icons/fa";
 import { NavLink, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { useCart } from "../context/CartContext";
@@ -348,11 +348,11 @@ function Navbar() {
                       </div>
                       <div className="grid grid-cols-2 gap-2.5 text-xs text-[#181411]">
                         <div className="bg-[#FAF7F2] p-2.5 rounded-xl border border-[#EAE4DC]/60">
-                          <span className="font-bold text-[#181411] block text-[11.5px]">☀️ Lunch Slot</span>
+                          <span className="font-bold text-[#181411] flex items-center gap-1.5 text-[11.5px]"><FaSun className="text-[#D97706]" size={11} /> Lunch Slot</span>
                           <span className="text-[11px] text-[#574F4A] mt-0.5 block">11:15 AM – 3:30 PM</span>
                         </div>
                         <div className="bg-[#FAF7F2] p-2.5 rounded-xl border border-[#EAE4DC]/60">
-                          <span className="font-bold text-[#181411] block text-[11.5px]">🌙 Dinner Slot</span>
+                          <span className="font-bold text-[#181411] flex items-center gap-1.5 text-[11.5px]"><FaMoon className="text-[#7C3AED]" size={11} /> Dinner Slot</span>
                           <span className="text-[11px] text-[#574F4A] mt-0.5 block">7:00 PM – 9:45 PM</span>
                         </div>
                       </div>

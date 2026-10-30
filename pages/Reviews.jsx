@@ -67,9 +67,6 @@ const Reviews = () => {
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           className="relative max-w-2xl mx-auto mb-14 sm:mb-20"
         >
-          {/* Glow border ring */}
-          <div className="absolute -inset-1.5 rounded-3xl bg-gradient-to-r from-[#B84A1C]/20 via-[#FDF3ED] to-[#2A6A4E]/20 blur-md opacity-70" />
-
           <div className="relative rounded-3xl bg-white border border-[#EAE4DC] p-6 sm:p-10 shadow-tactile-lg text-center overflow-hidden">
             {/* Steady Gold Stars */}
             <div className="flex items-center justify-center gap-2 text-[#D97706] text-xl sm:text-2xl mb-4 pt-2">

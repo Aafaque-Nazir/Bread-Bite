@@ -181,7 +181,14 @@ const Footer = () => {
 
         {/* Bottom Bar */}
         <div className="pt-6 border-t border-[#26211D] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#8C827A]">
-          <p>© {new Date().getFullYear()} Bread & Bite. All rights reserved.</p>
+          <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4">
+            <p>© {new Date().getFullYear()} Bread & Bite. All rights reserved.</p>
+            <div className="flex items-center gap-3 text-[11px]">
+              <NavLink to="/privacy/" className="hover:text-white transition-colors">Privacy Policy</NavLink>
+              <span>·</span>
+              <NavLink to="/terms/" className="hover:text-white transition-colors">Terms of Service</NavLink>
+            </div>
+          </div>
           <div className="flex items-center gap-6">
             <span>FSSAI Certified Cloud Kitchen · 100% Halal Fresh Chicken</span>
           </div>

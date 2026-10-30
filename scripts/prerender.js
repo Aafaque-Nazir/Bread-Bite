@@ -70,32 +70,32 @@ const homeBody = `
       <a href="/kharghar/" style="background:#fff;border:1px solid #EAE4DC;border-radius:1rem;padding:1.25rem;text-decoration:none;color:#181411;display:block;">
         <h3 style="font-size:1.1rem;margin:0 0 0.25rem;color:#B84A1C;">Kharghar Delivery</h3>
         <p style="font-size:0.8rem;color:#574F4A;margin:0 0 0.5rem;">Sectors 1-35 · Central Park · Station</p>
-        <strong style="font-size:0.8rem;color:#181411;">⚡ 20–30 Min Delivery &rarr;</strong>
+        <strong style="font-size:0.8rem;color:#181411;">20–30 Min Delivery &rarr;</strong>
       </a>
       <a href="/panvel/" style="background:#fff;border:1px solid #EAE4DC;border-radius:1rem;padding:1.25rem;text-decoration:none;color:#181411;display:block;">
         <h3 style="font-size:1.1rem;margin:0 0 0.25rem;color:#B84A1C;">Panvel Delivery</h3>
         <p style="font-size:0.8rem;color:#574F4A;margin:0 0 0.5rem;">Old &amp; New Panvel · Khandeshwar</p>
-        <strong style="font-size:0.8rem;color:#181411;">⚡ 25–35 Min Delivery &rarr;</strong>
+        <strong style="font-size:0.8rem;color:#181411;">25–35 Min Delivery &rarr;</strong>
       </a>
       <a href="/kamothe/" style="background:#fff;border:1px solid #EAE4DC;border-radius:1rem;padding:1.25rem;text-decoration:none;color:#181411;display:block;">
         <h3 style="font-size:1.1rem;margin:0 0 0.25rem;color:#B84A1C;">Kamothe Delivery</h3>
         <p style="font-size:0.8rem;color:#574F4A;margin:0 0 0.5rem;">All Sectors · Mansarovar Area</p>
-        <strong style="font-size:0.8rem;color:#181411;">⚡ 20–30 Min Delivery &rarr;</strong>
+        <strong style="font-size:0.8rem;color:#181411;">20–30 Min Delivery &rarr;</strong>
       </a>
       <a href="/kalamboli/" style="background:#fff;border:1px solid #EAE4DC;border-radius:1rem;padding:1.25rem;text-decoration:none;color:#181411;display:block;">
         <h3 style="font-size:1.1rem;margin:0 0 0.25rem;color:#B84A1C;">Kalamboli Delivery</h3>
         <p style="font-size:0.8rem;color:#574F4A;margin:0 0 0.5rem;">Steel Market · APMC · Residential</p>
-        <strong style="font-size:0.8rem;color:#181411;">⚡ 25–35 Min Delivery &rarr;</strong>
+        <strong style="font-size:0.8rem;color:#181411;">25–35 Min Delivery &rarr;</strong>
       </a>
       <a href="/taloja/" style="background:#fff;border:1px solid #EAE4DC;border-radius:1rem;padding:1.25rem;text-decoration:none;color:#181411;display:block;">
         <h3 style="font-size:1.1rem;margin:0 0 0.25rem;color:#B84A1C;">Taloja Delivery</h3>
         <p style="font-size:0.8rem;color:#574F4A;margin:0 0 0.5rem;">Phase 1 &amp; 2 · MIDC · Kitchen Base</p>
-        <strong style="font-size:0.8rem;color:#181411;">⚡ 10–20 Min Delivery &rarr;</strong>
+        <strong style="font-size:0.8rem;color:#181411;">10–20 Min Delivery &rarr;</strong>
       </a>
       <a href="/cbd-belapur/" style="background:#fff;border:1px solid #EAE4DC;border-radius:1rem;padding:1.25rem;text-decoration:none;color:#181411;display:block;">
         <h3 style="font-size:1.1rem;margin:0 0 0.25rem;color:#B84A1C;">CBD Belapur Delivery</h3>
         <p style="font-size:0.8rem;color:#574F4A;margin:0 0 0.5rem;">Sectors 1-15 · NMMC · Palm Beach</p>
-        <strong style="font-size:0.8rem;color:#181411;">⚡ 30–40 Min Delivery &rarr;</strong>
+        <strong style="font-size:0.8rem;color:#181411;">30–40 Min Delivery &rarr;</strong>
       </a>
     </div>
   </section>
@@ -221,6 +221,26 @@ const notFoundBody = `
   </section>
 `;
 
+const privacyBody = `
+  <section style="background:#fff;border:1px solid #EAE4DC;border-radius:1.5rem;padding:2.5rem 2rem;margin-bottom:2.5rem;line-height:1.7;color:#574F4A;">
+    <h2 style="font-family:'DM Serif Display',Georgia,serif;font-size:1.45rem;color:#181411;margin:0 0 0.75rem;">Privacy &amp; Order Data Protection</h2>
+    <p style="margin:0 0 1rem;">Bread &amp; Bite is a dedicated cloud kitchen in Taloja Phase 1, Navi Mumbai. We collect customer names, phone numbers, and delivery addresses strictly to cook, pack, and route food delivery orders.</p>
+    <h3 style="font-size:1.15rem;color:#181411;margin:1.5rem 0 0.5rem;">Zero Data Selling Guarantee</h3>
+    <p style="margin:0 0 1rem;">We never sell, rent, or monetize your contact or address information. Payments are accepted via Cash on Delivery or UPI QR on delivery; no financial card numbers are stored.</p>
+    <p style="margin:0;font-size:0.85rem;color:#8C827A;">Kitchen Hotline: +91 93256 29256 · Email: breadandbite777@gmail.com</p>
+  </section>
+`;
+
+const termsBody = `
+  <section style="background:#fff;border:1px solid #EAE4DC;border-radius:1.5rem;padding:2.5rem 2rem;margin-bottom:2.5rem;line-height:1.7;color:#574F4A;">
+    <h2 style="font-family:'DM Serif Display',Georgia,serif;font-size:1.45rem;color:#181411;margin:0 0 0.75rem;">Terms of Service &amp; Delivery Policies</h2>
+    <p style="margin:0 0 1rem;">Operating from Shop 12, Ground Floor, Sector 11, Taloja Phase 1, Navi Mumbai 410208. We cook fresh on order during 2 daily operational slots: Lunch (11:15 AM – 3:30 PM) and Dinner (7:00 PM – 9:45 PM IST).</p>
+    <h3 style="font-size:1.15rem;color:#181411;margin:1.5rem 0 0.5rem;">Delivery Zones &amp; Minimums</h3>
+    <p style="margin:0 0 1rem;">Taloja (Min ₹199, Free ₹299+), Kharghar/Kamothe/Kalamboli (Min ₹249, Free ₹399+), Panvel/Belapur (Min ₹499, Free ₹699+). 100% Halal fresh chicken sourced daily.</p>
+    <p style="margin:0;font-size:0.85rem;color:#8C827A;">Order Hotline: +91 93256 29256</p>
+  </section>
+`;
+
 const ROUTES = [
   {
     path: '/menu/',
@@ -287,6 +307,28 @@ const ROUTES = [
     subtitle: 'The recipe or page you requested could not be located in our kitchen pantry.',
     bodyHtml: notFoundBody,
     robots: 'noindex, follow'
+  },
+  {
+    path: '/privacy/',
+    outDir: path.join(DIST_DIR, 'privacy'),
+    title: 'Privacy Policy | Bread & Bite Cloud Kitchen',
+    description: 'Privacy Policy for Bread & Bite Cloud Kitchen, Navi Mumbai. How we collect, handle, and protect your order details.',
+    canonical: `${SITE_URL}/privacy/`,
+    h1: 'Privacy Policy',
+    subtitle: 'Transparent policies regarding customer data, order routing, and zero third-party sharing.',
+    bodyHtml: privacyBody,
+    robots: 'index, follow'
+  },
+  {
+    path: '/terms/',
+    outDir: path.join(DIST_DIR, 'terms'),
+    title: 'Terms of Service | Bread & Bite Cloud Kitchen',
+    description: 'Terms and conditions for placing orders, delivery timelines, and kitchen policies at Bread & Bite Cloud Kitchen, Navi Mumbai.',
+    canonical: `${SITE_URL}/terms/`,
+    h1: 'Terms of Service',
+    subtitle: 'Operational guidelines covering kitchen slots, delivery thresholds, and quality guarantees.',
+    bodyHtml: termsBody,
+    robots: 'index, follow'
   }
 ];
 
@@ -299,7 +341,7 @@ function renderLocationBody(loc) {
   `).join('');
 
   const landmarksHtml = (loc.landmarks || []).map(l => `
-    <span style="background:#FAF7F2;border:1px solid #EAE4DC;padding:0.35rem 0.75rem;border-radius:9999px;font-size:0.8rem;color:#574F4A;">📍 ${l}</span>
+    <span style="background:#FAF7F2;border:1px solid #EAE4DC;padding:0.35rem 0.75rem;border-radius:9999px;font-size:0.8rem;color:#574F4A;">${l}</span>
   `).join('');
 
   const faqsHtml = (loc.faqs || []).map(f => `
@@ -314,7 +356,7 @@ function renderLocationBody(loc) {
   return `
     <div style="margin-bottom:2.5rem;text-align:center;">
       <span style="display:inline-block;background:#fff;border:1px solid #EAE4DC;border-radius:9999px;padding:0.45rem 1.25rem;font-size:0.85rem;font-weight:700;color:#574F4A;margin-bottom:1.5rem;">
-        ⚡ ${loc.deliveryTime} Min Doorstep Delivery to ${loc.name}
+        ${loc.deliveryTime} Min Doorstep Delivery to ${loc.name}
       </span>
       <p style="font-size:1.05rem;color:#574F4A;max-width:700px;margin:0 auto 1.5rem;line-height:1.6;">${loc.heroSubtitle}</p>
       <div style="display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;">

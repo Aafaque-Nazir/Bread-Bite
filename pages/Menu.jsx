@@ -5,7 +5,7 @@ import { useSearchParams, Link } from "react-router-dom";
 import menuItems, { CATEGORIES_DATA } from "../data/MenuItems";
 import { LOCATIONS } from "../data/locations";
 import { ORDER_LINKS } from "../data/orderLinks";
-import { FaPlus, FaMinus, FaTrash, FaSearch, FaTimes, FaClock } from "react-icons/fa";
+import { FaPlus, FaMinus, FaTrash, FaSearch, FaTimes, FaClock, FaMotorcycle } from "react-icons/fa";
 import { SiSwiggy, SiZomato } from "react-icons/si";
 import ProductModal from '../src/components/ProductModal';
 import SEO from '../src/components/SEO';
@@ -472,8 +472,9 @@ const Menu = () => {
                 Delivering Fresh to Your Area in Navi Mumbai
               </h3>
             </div>
-            <span className="text-xs text-[#2A6A4E] font-bold bg-[#EEF6F2] px-3 py-1 rounded-full border border-[#2A6A4E]/20 self-start md:self-auto">
-              ⚡ 20–35 Min Doorstep Delivery
+            <span className="inline-flex items-center gap-1.5 text-xs text-[#2A6A4E] font-semibold bg-[#EEF6F2] px-3 py-1 rounded-full border border-[#2A6A4E]/20 self-start md:self-auto">
+              <FaMotorcycle size={12} className="text-[#2A6A4E]" />
+              <span>20–35 Min Doorstep Delivery</span>
             </span>
           </div>
 
