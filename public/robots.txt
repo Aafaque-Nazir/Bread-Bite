@@ -4,11 +4,17 @@
 User-agent: *
 Allow: /
 Disallow: /cart
+Disallow: /cart/
 Disallow: /thank-you
+Disallow: /thank-you/
 
 # AEO & GEO - AI Search Crawlers (ChatGPT, Google Gemini, Perplexity, Claude, Applebot)
 User-agent: GPTBot
 Allow: /
+Disallow: /cart
+Disallow: /cart/
+Disallow: /thank-you
+Disallow: /thank-you/
 
 User-agent: ChatGPT-User
 Allow: /
@@ -18,17 +24,19 @@ Allow: /
 
 User-agent: PerplexityBot
 Allow: /
+Disallow: /cart
+Disallow: /cart/
+Disallow: /thank-you
+Disallow: /thank-you/
 
 User-agent: ClaudeBot
 Allow: /
+Disallow: /cart
+Disallow: /cart/
+Disallow: /thank-you
+Disallow: /thank-you/
 
 User-agent: Applebot-Extended
-Allow: /
-
-User-agent: Bingbot
-Allow: /
-
-User-agent: Googlebot
 Allow: /
 
 # Sitemap Index

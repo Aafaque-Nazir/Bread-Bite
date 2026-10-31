@@ -306,7 +306,7 @@ const Cart = () => {
 
     // Clear active cart & navigate
     clearCart();
-    navigate('/thank-you', {
+    navigate('/thank-you/', {
       state: {
         orderId,
         grandTotal,

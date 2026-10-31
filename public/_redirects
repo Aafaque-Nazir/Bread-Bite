@@ -11,5 +11,21 @@ https://www.breadandbite.in/*         https://breadandbite.in/:splat  301!
 http://www.breadandbite.in/*          https://breadandbite.in/:splat  301!
 http://breadandbite.in/*              https://breadandbite.in/:splat  301!
 
-# 3. SPA Client-Side Routing Fallback
+# 3. Trailing-Slash Canonicalization (SEO — prevents redirect chains)
+/menu         /menu/         301
+/about        /about/        301
+/reviews      /reviews/      301
+/contact      /contact/      301
+/cart         /cart/         301
+/thank-you    /thank-you/    301
+/kharghar     /kharghar/     301
+/panvel       /panvel/       301
+/kamothe      /kamothe/      301
+/kalamboli    /kalamboli/    301
+/taloja       /taloja/       301
+/cbd-belapur  /cbd-belapur/  301
+/privacy      /privacy/      301
+/terms        /terms/        301
+
+# 4. SPA Client-Side Routing Fallback
 /*                                    /index.html                     200
