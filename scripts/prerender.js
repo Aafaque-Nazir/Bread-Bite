@@ -541,6 +541,22 @@ function prerender() {
   }
 
   console.log(`[prerender] Successfully generated static shells for all routes.`);
+
+  // Auto-update sitemap lastmod to today's date during build
+  const today = new Date().toISOString().split('T')[0];
+  const sitemapPaths = [
+    path.resolve(__dirname, '../public/sitemap.xml'),
+    path.resolve(DIST_DIR, 'sitemap.xml')
+  ];
+
+  for (const sPath of sitemapPaths) {
+    if (fs.existsSync(sPath)) {
+      let sitemapContent = fs.readFileSync(sPath, 'utf-8');
+      sitemapContent = sitemapContent.replace(/<lastmod>\d{4}-\d{2}-\d{2}<\/lastmod>/g, `<lastmod>${today}</lastmod>`);
+      fs.writeFileSync(sPath, sitemapContent, 'utf-8');
+      console.log(`[prerender] Updated sitemap lastmod to ${today} in ${path.basename(sPath)}`);
+    }
+  }
 }
 
 prerender();

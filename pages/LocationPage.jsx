@@ -520,7 +520,7 @@ const LocationPage = () => {
               <div className="mt-5 rounded-xl overflow-hidden border border-[#EAE4DC] aspect-[16/9]">
                 <iframe
                   title={`${location.name} delivery area map`}
-                  src={`https://www.google.com/maps?q=${location.mapEmbedQuery}&output=embed`}
+                  src={`https://maps.google.com/maps?q=${location.mapEmbedQuery}&t=&z=13&ie=UTF8&iwloc=&output=embed`}
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}

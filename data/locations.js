@@ -267,7 +267,7 @@ export const LOCATIONS = [
     mapEmbedQuery: 'Kalamboli+Navi+Mumbai+Maharashtra+410218',
 
     title: 'Food Delivery in Kalamboli | Bread & Bite Navi Mumbai',
-    description: 'Order 500g Chicken Keema, Korma & Tandoori Roti delivered to Kalamboli. Hot meals in 25-35 min from Bread & Bite cloud kitchen.',
+    description: 'Order 500g Chicken Keema, Korma & hot Tandoori Roti in Kalamboli. Fast 25-35m food delivery near Steel Market from Bread & Bite.',
     keywords: 'food delivery kalamboli, chicken keema kalamboli, order food online kalamboli, cloud kitchen kalamboli, keema pav kalamboli, food delivery near kalamboli steel market, halal food kalamboli navi mumbai',
 
     heroTagline: 'Filling Meals Delivered Fast to Kalamboli',
@@ -343,7 +343,7 @@ export const LOCATIONS = [
     mapEmbedQuery: 'Taloja+Phase+1+Navi+Mumbai+Maharashtra+410208',
 
     title: 'Food Delivery in Taloja | Bread & Bite Cloud Kitchen',
-    description: 'Bread & Bite cloud kitchen is located IN Taloja Phase 1. Get 500g Chicken Keema, Korma & Roti delivered in just 10-20 minutes. Fastest delivery guaranteed.',
+    description: 'Order 500g Chicken Keema, Korma & hot Tandoori Roti in Taloja Phase 1 & 2. Fresh cloud kitchen food delivery in 10-20m by Bread & Bite.',
     keywords: 'food delivery taloja, chicken keema taloja, order food online taloja, cloud kitchen taloja phase 1, keema pav taloja, chicken korma taloja, food delivery taloja phase 2, halal food taloja navi mumbai, best cloud kitchen taloja',
 
     heroTagline: 'Our Kitchen Is Right Here. Your Food Arrives in Minutes.',

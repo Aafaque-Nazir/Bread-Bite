@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useCart } from '../src/context/CartContext';
-import { FaTrash, FaMinus, FaPlus, FaWhatsapp, FaArrowLeft, FaShoppingBag, FaMapMarkerAlt, FaMotorcycle, FaClock, FaChevronDown } from 'react-icons/fa';
+import { FaTrash, FaMinus, FaPlus, FaWhatsapp, FaArrowLeft, FaShoppingBag, FaMapMarkerAlt, FaMotorcycle, FaClock, FaChevronDown, FaTimes } from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import { useKitchenStatus } from '../src/hooks/useKitchenStatus';
@@ -187,6 +187,7 @@ const Cart = () => {
 
   const [autoDetectedCity, setAutoDetectedCity] = useState(null);
   const [errors, setErrors] = useState({});
+  const [showPreOrderConfirm, setShowPreOrderConfirm] = useState(false);
 
   // Dynamic Individual City Delivery Logic
   const selectedCity = DELIVERY_CITIES[details.city] || DELIVERY_CITIES[details.location] || DELIVERY_CITIES.taloja;
@@ -238,6 +239,22 @@ const Cart = () => {
       newErrors.address = 'Complete delivery address (min 5 characters) is required';
     }
     return newErrors;
+  };
+
+  const handlePreOrderClick = () => {
+    if (!isMinOrderMet) {
+      toast.error(`Minimum order for ${selectedCity.name} is ₹${selectedCity.minOrder}. Add ₹${selectedCity.minOrder - cartTotal} more.`);
+      return;
+    }
+
+    const formErrors = validateForm();
+    if (Object.keys(formErrors).length > 0) {
+      setErrors(formErrors);
+      toast.error('Please complete your delivery details before placing advance order.');
+      return;
+    }
+
+    setShowPreOrderConfirm(true);
   };
 
   const handleCheckout = () => {
@@ -724,7 +741,7 @@ const Cart = () => {
                 ) : (
                   <div className="space-y-2">
                     <button
-                      onClick={handleCheckout}
+                      onClick={handlePreOrderClick}
                       className="btn-primary w-full py-4 text-xs sm:text-sm uppercase tracking-wider bg-[#B84A1C] hover:bg-[#9C3B12]"
                     >
                       <FaWhatsapp size={18} />
@@ -743,6 +760,94 @@ const Cart = () => {
           </div>
         </div>
       </div>
+
+      {/* Advance Pre-Order Confirmation Modal */}
+      <AnimatePresence>
+        {showPreOrderConfirm && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 10 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 10 }}
+              transition={{ duration: 0.2 }}
+              className="bg-white rounded-2xl max-w-md w-full p-6 sm:p-7 border border-[#EAE4DC] shadow-tactile-lg relative text-[#181411]"
+            >
+              <button
+                type="button"
+                onClick={() => setShowPreOrderConfirm(false)}
+                className="absolute top-4 right-4 text-[#8C827A] hover:text-[#181411] transition-colors p-1"
+                aria-label="Close"
+              >
+                <FaTimes size={16} />
+              </button>
+
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-10 h-10 rounded-xl bg-[#FAF0EB] text-[#B84A1C] flex items-center justify-center shrink-0">
+                  <FaClock size={18} />
+                </div>
+                <div>
+                  <span className="text-[11px] font-bold uppercase tracking-wider text-[#B84A1C] block">
+                    Advance Order Confirmation
+                  </span>
+                  <h3 className="text-lg font-bold font-heading text-[#181411]">
+                    Kitchen Currently Closed
+                  </h3>
+                </div>
+              </div>
+
+              <div className="bg-[#FAF7F2] border border-[#EAE4DC] rounded-xl p-3.5 mb-4 text-xs space-y-1.5 text-[#574F4A]">
+                <p className="font-semibold text-[#181411]">
+                  Aapka order next operational slot me cook hoga:
+                </p>
+                <p className="flex items-center gap-2 text-[#B84A1C] font-bold text-sm">
+                  <span>Next Slot: {reopenTimeStr || '7:00 PM'}</span>
+                </p>
+                <p className="text-[11px] text-[#8C827A] leading-relaxed pt-1 border-t border-[#EAE4DC]">
+                  Hum daily 2 slots me freshly cook karte hain:<br />
+                  • Lunch: 11:15 AM – 3:30 PM<br />
+                  • Dinner: 7:00 PM – 9:45 PM
+                </p>
+              </div>
+
+              <div className="text-xs text-[#574F4A] mb-5 space-y-1">
+                <div className="flex justify-between py-1 border-b border-[#F0EAE1]">
+                  <span>Delivery to:</span>
+                  <span className="font-semibold text-[#181411]">{selectedCity.name}</span>
+                </div>
+                <div className="flex justify-between py-1 border-b border-[#F0EAE1]">
+                  <span>Total Amount:</span>
+                  <span className="font-bold text-[#B84A1C]">₹{grandTotal}</span>
+                </div>
+                <div className="flex justify-between py-1">
+                  <span>Payment:</span>
+                  <span className="text-[#181411]">Pay on Delivery (Cash / UPI)</span>
+                </div>
+              </div>
+
+              <div className="flex flex-col sm:flex-row gap-2.5">
+                <button
+                  type="button"
+                  onClick={() => setShowPreOrderConfirm(false)}
+                  className="w-full sm:w-1/2 py-3 rounded-xl border border-[#D5CCC1] text-xs font-bold uppercase tracking-wider text-[#574F4A] hover:bg-[#FAF7F2] hover:text-[#181411] transition-colors"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setShowPreOrderConfirm(false);
+                    handleCheckout();
+                  }}
+                  className="btn-primary w-full sm:w-1/2 py-3 text-xs uppercase tracking-wider justify-center"
+                >
+                  <FaWhatsapp size={15} />
+                  <span>Confirm Order</span>
+                </button>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };

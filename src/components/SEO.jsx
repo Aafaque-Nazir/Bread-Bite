@@ -52,7 +52,7 @@ const SEO = ({
   const schemaGraph = [
     // 1. Restaurant / Cloud Kitchen Local Business Schema
     {
-      '@type': 'Restaurant',
+      '@type': ['Restaurant', 'FoodEstablishment'],
       '@id': `${SITE_URL}/#restaurant`,
       name: 'Bread & Bite',
       alternateName: ['Bread & Bite Cloud Kitchen', 'Bread and Bite Taloja', 'Bread and Bite Navi Mumbai'],
@@ -83,6 +83,7 @@ const SEO = ({
         latitude: 19.0647,
         longitude: 73.1209,
       },
+      hasMap: 'https://maps.google.com/?q=Bread+and+Bite+Taloja+Navi+Mumbai+410208',
       openingHoursSpecification: [
         {
           '@type': 'OpeningHoursSpecification',
@@ -118,7 +119,7 @@ const SEO = ({
       hasMenu: {
         '@type': 'Menu',
         name: 'Bread & Bite Kitchen Menu',
-        url: `${SITE_URL}/menu`,
+        url: `${SITE_URL}/menu/`,
         hasMenuSection: [
           {
             '@type': 'MenuSection',
@@ -190,19 +191,48 @@ const SEO = ({
           }
         ]
       },
-      potentialAction: {
-        '@type': 'OrderAction',
-        target: {
-          '@type': 'EntryPoint',
-          urlTemplate: `${SITE_URL}/menu`,
-          inLanguage: 'en-IN',
-          actionPlatform: [
-            'https://schema.org/DesktopWebPlatform',
-            'https://schema.org/MobileWebPlatform'
-          ]
+      potentialAction: [
+        {
+          '@type': 'OrderAction',
+          target: {
+            '@type': 'EntryPoint',
+            urlTemplate: `${SITE_URL}/menu/`,
+            inLanguage: 'en-IN',
+            actionPlatform: [
+              'https://schema.org/DesktopWebPlatform',
+              'https://schema.org/MobileWebPlatform'
+            ]
+          },
+          deliveryMethod: 'https://schema.org/DeliveryModeOwnFleet'
         },
-        deliveryMethod: 'https://schema.org/DeliveryModeOwnFleet'
-      },
+        {
+          '@type': 'OrderAction',
+          name: 'Order on WhatsApp',
+          target: {
+            '@type': 'EntryPoint',
+            urlTemplate: 'https://wa.me/919325629256',
+            actionPlatform: ['https://schema.org/MobileWebPlatform']
+          }
+        },
+        {
+          '@type': 'OrderAction',
+          name: 'Order on Zomato',
+          target: {
+            '@type': 'EntryPoint',
+            urlTemplate: 'https://link.zomato.com/xqzv/rshare?id=10960061830563279',
+            actionPlatform: ['https://schema.org/DesktopWebPlatform', 'https://schema.org/MobileWebPlatform']
+          }
+        },
+        {
+          '@type': 'OrderAction',
+          name: 'Order on Swiggy',
+          target: {
+            '@type': 'EntryPoint',
+            urlTemplate: 'https://www.swiggy.com/direct/brand/675246?source=swiggy-direct&subSource=generic',
+            actionPlatform: ['https://schema.org/DesktopWebPlatform', 'https://schema.org/MobileWebPlatform']
+          }
+        }
+      ],
       speakable: {
         '@type': 'SpeakableSpecification',
         cssSelector: ['h1', 'p', '.faq-answer']
