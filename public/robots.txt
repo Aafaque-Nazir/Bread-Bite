@@ -7,6 +7,7 @@ Disallow: /cart
 Disallow: /cart/
 Disallow: /thank-you
 Disallow: /thank-you/
+Disallow: /out/
 
 # AEO & GEO - AI Search Crawlers (ChatGPT, Google Gemini, Perplexity, Claude, Applebot)
 User-agent: GPTBot
@@ -15,6 +16,7 @@ Disallow: /cart
 Disallow: /cart/
 Disallow: /thank-you
 Disallow: /thank-you/
+Disallow: /out/
 
 User-agent: ChatGPT-User
 Allow: /
@@ -28,6 +30,7 @@ Disallow: /cart
 Disallow: /cart/
 Disallow: /thank-you
 Disallow: /thank-you/
+Disallow: /out/
 
 User-agent: ClaudeBot
 Allow: /
@@ -35,6 +38,7 @@ Disallow: /cart
 Disallow: /cart/
 Disallow: /thank-you
 Disallow: /thank-you/
+Disallow: /out/
 
 User-agent: Applebot-Extended
 Allow: /

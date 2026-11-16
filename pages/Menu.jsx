@@ -90,6 +90,15 @@ const Menu = () => {
           <li><a href="/menu/?category=Burgers">Crispy Chicken Burgers</a></li>
           <li><a href="/menu/?category=Dessert">Warm Desserts & Choco Lava Cake</a></li>
         </ul>
+        <h3>Delivery Locations</h3>
+        <ul>
+          <li><a href="/kharghar/">Food Delivery in Kharghar</a></li>
+          <li><a href="/panvel/">Food Delivery in Panvel</a></li>
+          <li><a href="/kamothe/">Food Delivery in Kamothe</a></li>
+          <li><a href="/kalamboli/">Food Delivery in Kalamboli</a></li>
+          <li><a href="/taloja/">Food Delivery in Taloja</a></li>
+          <li><a href="/cbd-belapur/">Food Delivery in CBD Belapur</a></li>
+        </ul>
       </nav>
 
       <div className="max-w-7xl mx-auto">

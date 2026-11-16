@@ -2,16 +2,20 @@
 # BREAD & BITE - SEO CANONICAL REDIRECTS & ROUTING RULES
 # ==============================================================================
 
-# 1. Force 301 Permanent Redirect from Netlify default subdomain to Custom Domain
+# 1. Partner Outbound Redirects (302 temporary, masked from crawlers via robots.txt)
+/out/zomato       https://link.zomato.com/xqzv/rshare?id=10960061830563279                                302!
+/out/swiggy       https://www.swiggy.com/direct/brand/675246?source=swiggy-direct&subSource=generic       302!
+
+# 2. Force 301 Permanent Redirect from Netlify default subdomain to Custom Domain
 https://bread-and-bite.netlify.app/*  https://breadandbite.in/:splat  301!
 http://bread-and-bite.netlify.app/*   https://breadandbite.in/:splat  301!
 
-# 2. Canonicalize www to apex domain
+# 3. Canonicalize www to apex domain
 https://www.breadandbite.in/*         https://breadandbite.in/:splat  301!
 http://www.breadandbite.in/*          https://breadandbite.in/:splat  301!
 http://breadandbite.in/*              https://breadandbite.in/:splat  301!
 
-# 3. Trailing-Slash Canonicalization (SEO — prevents redirect chains)
+# 4. Trailing-Slash Canonicalization (SEO — prevents redirect chains)
 /menu         /menu/         301
 /about        /about/        301
 /reviews      /reviews/      301
@@ -27,5 +31,5 @@ http://breadandbite.in/*              https://breadandbite.in/:splat  301!
 /privacy      /privacy/      301
 /terms        /terms/        301
 
-# 4. SPA Client-Side Routing Fallback
+# 5. SPA Client-Side Routing Fallback
 /*                                    /index.html                     200
