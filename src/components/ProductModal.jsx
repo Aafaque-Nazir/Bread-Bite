@@ -73,7 +73,7 @@ const ProductModal = ({ item, isOpen, onClose }) => {
             <div className="w-full sm:w-1/2 h-44 sm:h-auto relative overflow-hidden bg-[#FAF7F2] shrink-0">
               <img
                 src={item.image}
-                alt={item.name}
+                alt={item.seoAlt || `${item.name} - Bread & Bite Food Delivery Navi Mumbai`}
                 onError={(e) => {
                   e.target.src = '/images/chicken-korma.webp';
                 }}

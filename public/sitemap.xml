@@ -1,72 +1,297 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" 
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 
-        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd
+        http://www.google.com/schemas/sitemap-image/1.1
+        http://www.google.com/schemas/sitemap-image/1.1/sitemap-image.xsd">
   
   <!-- Homepage -->
   <url>
     <loc>https://breadandbite.in/</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://breadandbite.in/images/chicken-keema.webp</image:loc>
+      <image:title>Chicken Keema Boneless (500g) - Bread &amp; Bite Cloud Kitchen</image:title>
+      <image:caption>Slow-cooked 500g boneless chicken mince with whole spices, caramelized onions, and fresh coriander.</image:caption>
+      <image:geo_location>Taloja, Navi Mumbai, Maharashtra, India</image:geo_location>
+    </image:image>
+    <image:image>
+      <image:loc>https://breadandbite.in/images/chicken-korma.webp</image:loc>
+      <image:title>Chicken Korma (500g) - Bread &amp; Bite Navi Mumbai</image:title>
+      <image:caption>Rich cashew and fried onion gravy with tender chicken pieces in a full 500g family portion.</image:caption>
+      <image:geo_location>Taloja, Navi Mumbai, Maharashtra, India</image:geo_location>
+    </image:image>
+    <image:image>
+      <image:loc>https://breadandbite.in/images/keema-pav-meal.jpg</image:loc>
+      <image:title>Keema Pav Meal Combo (500g Keema + 4 Pav) - Bread &amp; Bite</image:title>
+      <image:caption>Full 500g Chicken Keema paired with 4 soft bakery ladi pavs for lunch or dinner.</image:caption>
+      <image:geo_location>Taloja, Navi Mumbai, Maharashtra, India</image:geo_location>
+    </image:image>
+    <image:image>
+      <image:loc>https://breadandbite.in/images/chicken-korma-roti-meal.jpg</image:loc>
+      <image:title>Chicken Korma &amp; Roti Meal - Bread &amp; Bite</image:title>
+      <image:caption>500g Chicken Korma served with 2 hot clay-oven tandoori rotis.</image:caption>
+      <image:geo_location>Taloja, Navi Mumbai, Maharashtra, India</image:geo_location>
+    </image:image>
+    <image:image>
+      <image:loc>https://breadandbite.in/images/crispy-chicken-burger.jpg</image:loc>
+      <image:title>Crispy Chicken Burger - Bread &amp; Bite</image:title>
+      <image:caption>Crispy spiced chicken patty burger with lettuce, onions, and creamy mayo in a toasted bun.</image:caption>
+      <image:geo_location>Taloja, Navi Mumbai, Maharashtra, India</image:geo_location>
+    </image:image>
+    <image:image>
+      <image:loc>https://breadandbite.in/images/choco-lava-cake.jpg</image:loc>
+      <image:title>Warm Choco Lava Cake - Bread &amp; Bite Desserts</image:title>
+      <image:caption>Warm decadent chocolate cake with a rich molten gooey chocolate fudge centre.</image:caption>
+      <image:geo_location>Taloja, Navi Mumbai, Maharashtra, India</image:geo_location>
+    </image:image>
+    <image:image>
+      <image:loc>https://breadandbite.in/images/tandoori-roti.webp</image:loc>
+      <image:title>Clay-Oven Tandoori Roti - Bread &amp; Bite</image:title>
+      <image:caption>Freshly baked whole wheat flatbread baked to order in a clay tandoor oven.</image:caption>
+      <image:geo_location>Taloja, Navi Mumbai, Maharashtra, India</image:geo_location>
+    </image:image>
+    <image:image>
+      <image:loc>https://breadandbite.in/images/pav.webp</image:loc>
+      <image:title>Soft Bakery Ladi Pav 4 Pcs - Bread &amp; Bite</image:title>
+      <image:caption>Soft golden Mumbai bakery ladi pavs, the classic pair with chicken gravies.</image:caption>
+      <image:geo_location>Taloja, Navi Mumbai, Maharashtra, India</image:geo_location>
+    </image:image>
   </url>
   
   <!-- Menu Page -->
   <url>
     <loc>https://breadandbite.in/menu/</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.95</priority>
+    <image:image>
+      <image:loc>https://breadandbite.in/images/chicken-keema.webp</image:loc>
+      <image:title>Chicken Keema Boneless 500g Menu Item - Bread &amp; Bite</image:title>
+      <image:caption>500g boneless chicken keema cooked fresh on order in Taloja, Navi Mumbai.</image:caption>
+      <image:geo_location>Taloja, Navi Mumbai, Maharashtra, India</image:geo_location>
+    </image:image>
+    <image:image>
+      <image:loc>https://breadandbite.in/images/chicken-korma.webp</image:loc>
+      <image:title>Chicken Korma 500g Menu Item - Bread &amp; Bite</image:title>
+      <image:caption>Rich Mughlai chicken korma with cashew nut and fried onion gravy.</image:caption>
+      <image:geo_location>Taloja, Navi Mumbai, Maharashtra, India</image:geo_location>
+    </image:image>
+    <image:image>
+      <image:loc>https://breadandbite.in/images/random-chicken-gravy.webp</image:loc>
+      <image:title>Chef's Daily Special Chicken Gravy 500g - Bread &amp; Bite</image:title>
+      <image:caption>500g chef's daily special chicken curry cooked homestyle with authentic Indian spices.</image:caption>
+      <image:geo_location>Taloja, Navi Mumbai, Maharashtra, India</image:geo_location>
+    </image:image>
+    <image:image>
+      <image:loc>https://breadandbite.in/images/keema-pav-meal.jpg</image:loc>
+      <image:title>Keema Pav Meal Combo - Bread &amp; Bite</image:title>
+      <image:caption>500g Chicken Keema served with 4 soft bakery ladi pavs.</image:caption>
+      <image:geo_location>Taloja, Navi Mumbai, Maharashtra, India</image:geo_location>
+    </image:image>
+    <image:image>
+      <image:loc>https://breadandbite.in/images/chicken-korma-roti-meal.jpg</image:loc>
+      <image:title>Chicken Korma &amp; Roti Meal Combo - Bread &amp; Bite</image:title>
+      <image:caption>500g Chicken Korma served with 2 hot clay-oven tandoori rotis.</image:caption>
+      <image:geo_location>Taloja, Navi Mumbai, Maharashtra, India</image:geo_location>
+    </image:image>
+    <image:image>
+      <image:loc>https://breadandbite.in/images/crispy-chicken-burger.jpg</image:loc>
+      <image:title>Crispy Chicken Burger - Bread &amp; Bite Burgers</image:title>
+      <image:caption>Crispy spiced chicken patty burger with lettuce, sliced onions, and creamy mayo.</image:caption>
+      <image:geo_location>Taloja, Navi Mumbai, Maharashtra, India</image:geo_location>
+    </image:image>
+    <image:image>
+      <image:loc>https://breadandbite.in/images/burger-fries-combo.jpg</image:loc>
+      <image:title>Burger &amp; Fries Combo - Bread &amp; Bite</image:title>
+      <image:caption>Crispy chicken burger served with 200g salted french fries.</image:caption>
+      <image:geo_location>Taloja, Navi Mumbai, Maharashtra, India</image:geo_location>
+    </image:image>
+    <image:image>
+      <image:loc>https://breadandbite.in/images/french-fries.webp</image:loc>
+      <image:title>French Fries 200g - Bread &amp; Bite Snacks</image:title>
+      <image:caption>200g crispy golden salted french fries served with ketchup.</image:caption>
+      <image:geo_location>Taloja, Navi Mumbai, Maharashtra, India</image:geo_location>
+    </image:image>
+    <image:image>
+      <image:loc>https://breadandbite.in/images/plain-maggi.webp</image:loc>
+      <image:title>Hot Masala Maggi - Bread &amp; Bite Snacks</image:title>
+      <image:caption>Hot classic masala Maggi noodles cooked fresh on order.</image:caption>
+      <image:geo_location>Taloja, Navi Mumbai, Maharashtra, India</image:geo_location>
+    </image:image>
+    <image:image>
+      <image:loc>https://breadandbite.in/images/choco-lava-cake.jpg</image:loc>
+      <image:title>Warm Choco Lava Cake - Bread &amp; Bite Desserts</image:title>
+      <image:caption>Decadent chocolate cake with warm molten fudge centre.</image:caption>
+      <image:geo_location>Taloja, Navi Mumbai, Maharashtra, India</image:geo_location>
+    </image:image>
   </url>
 
   <!-- Location Landing Pages (Local SEO Navi Mumbai) -->
   <url>
     <loc>https://breadandbite.in/kharghar/</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://breadandbite.in/images/chicken-keema.webp</image:loc>
+      <image:title>Chicken Keema Delivery in Kharghar - Bread &amp; Bite</image:title>
+      <image:caption>500g Chicken Keema Boneless delivered hot to Kharghar Sectors 1-35 in 20-30 minutes.</image:caption>
+      <image:geo_location>Kharghar, Navi Mumbai, Maharashtra, India</image:geo_location>
+    </image:image>
+    <image:image>
+      <image:loc>https://breadandbite.in/images/chicken-korma.webp</image:loc>
+      <image:title>Chicken Korma Gravy Delivery in Kharghar - Bread &amp; Bite</image:title>
+      <image:caption>Rich cashew chicken korma delivered fresh to homes and offices across Kharghar.</image:caption>
+      <image:geo_location>Kharghar, Navi Mumbai, Maharashtra, India</image:geo_location>
+    </image:image>
+    <image:image>
+      <image:loc>https://breadandbite.in/images/keema-pav-meal.jpg</image:loc>
+      <image:title>Keema Pav Meal Combo Delivery in Kharghar - Bread &amp; Bite</image:title>
+      <image:caption>500g Keema and 4 soft pavs delivered hot across all Kharghar sectors.</image:caption>
+      <image:geo_location>Kharghar, Navi Mumbai, Maharashtra, India</image:geo_location>
+    </image:image>
   </url>
 
   <url>
     <loc>https://breadandbite.in/panvel/</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://breadandbite.in/images/chicken-keema.webp</image:loc>
+      <image:title>Chicken Keema Delivery in Panvel - Bread &amp; Bite</image:title>
+      <image:caption>Fresh 500g boneless chicken keema delivered to Old Panvel, New Panvel, and Khandeshwar.</image:caption>
+      <image:geo_location>Panvel, Navi Mumbai, Maharashtra, India</image:geo_location>
+    </image:image>
+    <image:image>
+      <image:loc>https://breadandbite.in/images/chicken-korma.webp</image:loc>
+      <image:title>Chicken Korma Delivery in Panvel - Bread &amp; Bite</image:title>
+      <image:caption>Creamy cashew chicken korma delivered to Old &amp; New Panvel in 25-35 minutes.</image:caption>
+      <image:geo_location>Panvel, Navi Mumbai, Maharashtra, India</image:geo_location>
+    </image:image>
+    <image:image>
+      <image:loc>https://breadandbite.in/images/tandoori-roti.webp</image:loc>
+      <image:title>Fresh Tandoori Roti Delivery in Panvel - Bread &amp; Bite</image:title>
+      <image:caption>Clay-oven tandoori rotis packed warm for delivery across Panvel.</image:caption>
+      <image:geo_location>Panvel, Navi Mumbai, Maharashtra, India</image:geo_location>
+    </image:image>
   </url>
 
   <url>
     <loc>https://breadandbite.in/kamothe/</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://breadandbite.in/images/chicken-keema.webp</image:loc>
+      <image:title>Chicken Keema Delivery in Kamothe - Bread &amp; Bite</image:title>
+      <image:caption>500g Chicken Keema Boneless delivered across Kamothe sectors in 20-30 minutes.</image:caption>
+      <image:geo_location>Kamothe, Navi Mumbai, Maharashtra, India</image:geo_location>
+    </image:image>
+    <image:image>
+      <image:loc>https://breadandbite.in/images/keema-pav-meal.jpg</image:loc>
+      <image:title>Keema Pav Meal Delivery in Kamothe - Bread &amp; Bite</image:title>
+      <image:caption>Hearty 500g keema with 4 fresh pavs delivered fast to Kamothe residences.</image:caption>
+      <image:geo_location>Kamothe, Navi Mumbai, Maharashtra, India</image:geo_location>
+    </image:image>
+    <image:image>
+      <image:loc>https://breadandbite.in/images/choco-lava-cake.jpg</image:loc>
+      <image:title>Choco Lava Cake Delivery in Kamothe - Bread &amp; Bite</image:title>
+      <image:caption>Warm decadent choco lava cake delivered fresh to your door in Kamothe.</image:caption>
+      <image:geo_location>Kamothe, Navi Mumbai, Maharashtra, India</image:geo_location>
+    </image:image>
   </url>
 
   <url>
     <loc>https://breadandbite.in/kalamboli/</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://breadandbite.in/images/chicken-keema.webp</image:loc>
+      <image:title>Chicken Keema Delivery in Kalamboli - Bread &amp; Bite</image:title>
+      <image:caption>Filling 500g boneless chicken keema delivered to Kalamboli Steel Market and residences.</image:caption>
+      <image:geo_location>Kalamboli, Navi Mumbai, Maharashtra, India</image:geo_location>
+    </image:image>
+    <image:image>
+      <image:loc>https://breadandbite.in/images/chicken-korma.webp</image:loc>
+      <image:title>Chicken Korma Delivery in Kalamboli - Bread &amp; Bite</image:title>
+      <image:caption>Homestyle chicken korma delivered hot to Kalamboli in 25-35 minutes.</image:caption>
+      <image:geo_location>Kalamboli, Navi Mumbai, Maharashtra, India</image:geo_location>
+    </image:image>
+    <image:image>
+      <image:loc>https://breadandbite.in/images/french-fries.webp</image:loc>
+      <image:title>French Fries Snacks Delivery in Kalamboli - Bread &amp; Bite</image:title>
+      <image:caption>Hot salted french fries delivered across Kalamboli markets and homes.</image:caption>
+      <image:geo_location>Kalamboli, Navi Mumbai, Maharashtra, India</image:geo_location>
+    </image:image>
   </url>
 
   <url>
     <loc>https://breadandbite.in/taloja/</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://breadandbite.in/images/chicken-keema.webp</image:loc>
+      <image:title>Chicken Keema Food Delivery in Taloja - Bread &amp; Bite Kitchen</image:title>
+      <image:caption>Fastest 10-20 min delivery of 500g boneless chicken keema from Sector 11 kitchen.</image:caption>
+      <image:geo_location>Taloja Phase 1, Navi Mumbai, Maharashtra, India</image:geo_location>
+    </image:image>
+    <image:image>
+      <image:loc>https://breadandbite.in/images/chicken-korma.webp</image:loc>
+      <image:title>Chicken Korma Delivery in Taloja Phase 1 &amp; 2 - Bread &amp; Bite</image:title>
+      <image:caption>500g chicken korma curry delivered hot across Taloja Phase 1, 2, and MIDC.</image:caption>
+      <image:geo_location>Taloja Phase 1, Navi Mumbai, Maharashtra, India</image:geo_location>
+    </image:image>
+    <image:image>
+      <image:loc>https://breadandbite.in/images/keema-pav-meal.jpg</image:loc>
+      <image:title>Keema Pav Meal Combo in Taloja - Bread &amp; Bite</image:title>
+      <image:caption>500g Keema and 4 pavs delivered in 10-20 minutes across Taloja.</image:caption>
+      <image:geo_location>Taloja Phase 1, Navi Mumbai, Maharashtra, India</image:geo_location>
+    </image:image>
+    <image:image>
+      <image:loc>https://breadandbite.in/images/crispy-chicken-burger.jpg</image:loc>
+      <image:title>Crispy Chicken Burger Delivery in Taloja - Bread &amp; Bite</image:title>
+      <image:caption>Crispy chicken burger prepared fresh in Sector 11 kitchen, delivered hot in Taloja.</image:caption>
+      <image:geo_location>Taloja Phase 1, Navi Mumbai, Maharashtra, India</image:geo_location>
+    </image:image>
   </url>
 
   <url>
     <loc>https://breadandbite.in/cbd-belapur/</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://breadandbite.in/images/chicken-keema.webp</image:loc>
+      <image:title>Chicken Keema Food Delivery in CBD Belapur - Bread &amp; Bite</image:title>
+      <image:caption>Generous 500g boneless chicken keema delivered to Belapur offices and residences in 30-40m.</image:caption>
+      <image:geo_location>CBD Belapur, Navi Mumbai, Maharashtra, India</image:geo_location>
+    </image:image>
+    <image:image>
+      <image:loc>https://breadandbite.in/images/chicken-korma.webp</image:loc>
+      <image:title>Chicken Korma Office Lunch Delivery in CBD Belapur - Bread &amp; Bite</image:title>
+      <image:caption>Mughlai chicken korma gravy packed in microwave-safe containers for office lunch in Belapur.</image:caption>
+      <image:geo_location>CBD Belapur, Navi Mumbai, Maharashtra, India</image:geo_location>
+    </image:image>
+    <image:image>
+      <image:loc>https://breadandbite.in/images/burger-fries-combo.jpg</image:loc>
+      <image:title>Burger &amp; Fries Combo in CBD Belapur - Bread &amp; Bite</image:title>
+      <image:caption>Team lunch burger and fries delivered to Belapur commercial hubs.</image:caption>
+      <image:geo_location>CBD Belapur, Navi Mumbai, Maharashtra, India</image:geo_location>
+    </image:image>
   </url>
   
   <!-- Customer Reviews Page -->
   <url>
     <loc>https://breadandbite.in/reviews/</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
@@ -74,15 +299,21 @@
   <!-- About Page -->
   <url>
     <loc>https://breadandbite.in/about/</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.80</priority>
+    <image:image>
+      <image:loc>https://breadandbite.in/images/chicken-keema.webp</image:loc>
+      <image:title>Bread &amp; Bite Chicken Keema and Pav Preparation</image:title>
+      <image:caption>Fresh Halal chicken gravies prepared in Sector 11, Taloja Phase 1 kitchen.</image:caption>
+      <image:geo_location>Taloja Phase 1, Navi Mumbai, Maharashtra, India</image:geo_location>
+    </image:image>
   </url>
   
   <!-- Contact Page -->
   <url>
     <loc>https://breadandbite.in/contact/</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.80</priority>
   </url>
@@ -90,14 +321,14 @@
   <!-- Legal Pages -->
   <url>
     <loc>https://breadandbite.in/privacy/</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.50</priority>
   </url>
 
   <url>
     <loc>https://breadandbite.in/terms/</loc>
-    <lastmod>2026-11-16</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.50</priority>
   </url>

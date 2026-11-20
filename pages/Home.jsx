@@ -256,7 +256,7 @@ const Home = () => {
                   <div className="w-full sm:w-48 h-48 rounded-2xl overflow-hidden relative shrink-0 border border-[#EAE4DC] shadow-tactile-sm">
                     <ImageWithLoader
                       src={combo.image}
-                      alt={combo.name}
+                      alt={combo.seoAlt || `${combo.name} - Bread & Bite Food Delivery Navi Mumbai`}
                       className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
                     />
                     <div className="absolute top-2.5 left-2.5">
@@ -346,7 +346,7 @@ const Home = () => {
               { name: "Chicken Gravies", id: "Gravy", img: "/images/chicken-korma.webp", count: "500g Portions", note: "Keema & Korma" },
               { name: "Roti & Pav", id: "Roti", img: "/images/tandoori-roti.webp", count: "Fresh Baked", note: "Tandoori & Ladi Pav" },
               { name: "Snacks", id: "Snacks", img: "/images/french-fries.webp", count: "Fries & Maggi", note: "Crispy & Hot" },
-              { name: "Burgers", id: "Burgers", img: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=600&auto=format&fit=crop", count: "Juicy Patty", note: "Crispy Chicken" },
+              { name: "Burgers", id: "Burgers", img: "/images/crispy-chicken-burger.jpg", count: "Juicy Patty", note: "Crispy Chicken" },
               { name: "Warm Desserts", id: "Dessert", img: "/images/choco-lava-cake.jpg", count: "Molten Center", note: "Choco Lava Cake" }
             ].map((cat, i) => (
               <NavLink
@@ -357,7 +357,7 @@ const Home = () => {
                 <div className="relative aspect-square rounded-xl overflow-hidden mb-3 bg-[#F4EFE6] shadow-tactile-sm">
                   <ImageWithLoader
                     src={cat.img}
-                    alt={cat.name}
+                    alt={`${cat.name} - Bread & Bite Cloud Kitchen Taloja Navi Mumbai`}
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-106"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#181411]/75 via-transparent to-transparent" />
@@ -424,7 +424,7 @@ const Home = () => {
                   <div className="relative aspect-[4/3] overflow-hidden bg-[#FAF7F2]">
                     <ImageWithLoader
                       src={item.image}
-                      alt={item.name}
+                      alt={item.seoAlt || `${item.name} - Bread & Bite Food Delivery Navi Mumbai`}
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     />
                     <div className="absolute top-2.5 left-2.5">

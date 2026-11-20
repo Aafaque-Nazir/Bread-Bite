@@ -380,7 +380,7 @@ const LocationPage = () => {
                   <div className="relative aspect-[4/3] overflow-hidden">
                     <ImageWithLoader
                       src={item.image}
-                      alt={item.name}
+                      alt={`${item.name} delivery in ${location.name}, Navi Mumbai - Bread & Bite`}
                       priority={true}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />

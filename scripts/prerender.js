@@ -24,26 +24,31 @@ const homeBody = `
     <h2 style="font-family:'DM Serif Display',Georgia,serif;font-size:1.75rem;color:#181411;text-align:center;margin-bottom:1.5rem;">Popular Dishes &amp; Value Combos</h2>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.25rem;">
       <div style="background:#fff;border:1px solid #EAE4DC;border-radius:1rem;padding:1.25rem;">
+        <img src="/images/chicken-keema.webp" alt="Chicken Keema Boneless 500g Portion - Bread &amp; Bite Food Delivery Taloja Navi Mumbai" width="300" height="200" loading="lazy" style="width:100%;height:160px;object-fit:cover;border-radius:0.75rem;margin-bottom:0.75rem;display:block;" />
         <h3 style="font-size:1.1rem;margin:0 0 0.5rem;color:#181411;">Chicken Keema Boneless (500g)</h3>
         <p style="font-size:0.85rem;color:#574F4A;line-height:1.5;margin:0 0 0.75rem;">Generous 500g portion of tender minced chicken simmered with whole spices, caramelized onions, ginger-garlic, and fresh coriander.</p>
         <strong style="color:#B84A1C;font-size:1rem;">₹199 · Serves 2</strong>
       </div>
       <div style="background:#fff;border:1px solid #EAE4DC;border-radius:1rem;padding:1.25rem;">
+        <img src="/images/chicken-korma.webp" alt="Chicken Korma 500g Cashew Gravy - Bread &amp; Bite Food Delivery Taloja Navi Mumbai" width="300" height="200" loading="lazy" style="width:100%;height:160px;object-fit:cover;border-radius:0.75rem;margin-bottom:0.75rem;display:block;" />
         <h3 style="font-size:1.1rem;margin:0 0 0.5rem;color:#181411;">Chicken Korma (500g)</h3>
         <p style="font-size:0.85rem;color:#574F4A;line-height:1.5;margin:0 0 0.75rem;">Rich cashew and fried onion gravy with tender chicken pieces. Mildly spiced and delicious with hot rotis.</p>
         <strong style="color:#B84A1C;font-size:1rem;">₹199 · Serves 2</strong>
       </div>
       <div style="background:#fff;border:1px solid #EAE4DC;border-radius:1rem;padding:1.25rem;">
+        <img src="/images/keema-pav-meal.jpg" alt="Keema Pav Meal Combo (500g Keema + 4 Pav) - Bread &amp; Bite Food Delivery Navi Mumbai" width="300" height="200" loading="lazy" style="width:100%;height:160px;object-fit:cover;border-radius:0.75rem;margin-bottom:0.75rem;display:block;" />
         <h3 style="font-size:1.1rem;margin:0 0 0.5rem;color:#181411;">Keema Pav Meal Combo</h3>
         <p style="font-size:0.85rem;color:#574F4A;line-height:1.5;margin:0 0 0.75rem;">Generous 500g Chicken Keema served with 4 soft bakery ladi pavs. The ultimate hearty meal combo for lunch or dinner.</p>
         <strong style="color:#B84A1C;font-size:1rem;">₹219 · Combo Deal</strong>
       </div>
       <div style="background:#fff;border:1px solid #EAE4DC;border-radius:1rem;padding:1.25rem;">
+        <img src="/images/chicken-korma-roti-meal.jpg" alt="Chicken Korma and Roti Meal (500g Korma + 2 Roti) - Bread &amp; Bite Food Delivery Navi Mumbai" width="300" height="200" loading="lazy" style="width:100%;height:160px;object-fit:cover;border-radius:0.75rem;margin-bottom:0.75rem;display:block;" />
         <h3 style="font-size:1.1rem;margin:0 0 0.5rem;color:#181411;">Chicken Korma &amp; Roti Meal</h3>
         <p style="font-size:0.85rem;color:#574F4A;line-height:1.5;margin:0 0 0.75rem;">500g rich Chicken Korma paired with 2 hot, whole wheat tandoori rotis fresh from our clay oven.</p>
         <strong style="color:#B84A1C;font-size:1rem;">₹249 · Combo Deal</strong>
       </div>
       <div style="background:#fff;border:1px solid #EAE4DC;border-radius:1rem;padding:1.25rem;">
+        <img src="/images/choco-lava-cake.jpg" alt="Warm Choco Lava Cake with Molten Fudge Centre - Bread &amp; Bite Food Delivery Navi Mumbai" width="300" height="200" loading="lazy" style="width:100%;height:160px;object-fit:cover;border-radius:0.75rem;margin-bottom:0.75rem;display:block;" />
         <h3 style="font-size:1.1rem;margin:0 0 0.5rem;color:#181411;">Warm Choco Lava Cake</h3>
         <p style="font-size:0.85rem;color:#574F4A;line-height:1.5;margin:0 0 0.75rem;">Decadent chocolate cake with a rich molten gooey chocolate fudge centre. Served fresh and warm.</p>
         <strong style="color:#B84A1C;font-size:1rem;">₹89 · Dessert</strong>
@@ -115,36 +120,49 @@ const menuBody = `
 
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;">
       <article style="background:#fff;border:1px solid #EAE4DC;border-radius:1rem;padding:1.5rem;">
+        <img src="/images/chicken-keema.webp" alt="Chicken Keema Boneless 500g - Bread &amp; Bite Kitchen Menu" width="300" height="200" loading="lazy" style="width:100%;height:160px;object-fit:cover;border-radius:0.75rem;margin-bottom:0.75rem;display:block;" />
         <h2 style="font-size:1.2rem;margin:0 0 0.5rem;color:#181411;">Chicken Keema Boneless (500g)</h2>
         <p style="font-size:0.875rem;color:#574F4A;line-height:1.5;margin:0 0 0.75rem;">Boneless chicken mince cooked with traditional whole spices, onions, and fresh coriander. Full 500g meal serving.</p>
         <span style="font-weight:700;color:#B84A1C;font-size:1.1rem;">₹199</span>
       </article>
       <article style="background:#fff;border:1px solid #EAE4DC;border-radius:1rem;padding:1.5rem;">
+        <img src="/images/chicken-korma.webp" alt="Chicken Korma 500g - Bread &amp; Bite Kitchen Menu" width="300" height="200" loading="lazy" style="width:100%;height:160px;object-fit:cover;border-radius:0.75rem;margin-bottom:0.75rem;display:block;" />
         <h2 style="font-size:1.2rem;margin:0 0 0.5rem;color:#181411;">Chicken Korma (500g)</h2>
         <p style="font-size:0.875rem;color:#574F4A;line-height:1.5;margin:0 0 0.75rem;">Traditional rich Mughlai chicken curry slow-cooked with curd, fried onions, and whole spices in a generous 500g bowl.</p>
         <span style="font-weight:700;color:#B84A1C;font-size:1.1rem;">₹199</span>
       </article>
       <article style="background:#fff;border:1px solid #EAE4DC;border-radius:1rem;padding:1.5rem;">
+        <img src="/images/keema-pav-meal.jpg" alt="Keema Pav Meal Combo - Bread &amp; Bite Kitchen Menu" width="300" height="200" loading="lazy" style="width:100%;height:160px;object-fit:cover;border-radius:0.75rem;margin-bottom:0.75rem;display:block;" />
         <h2 style="font-size:1.2rem;margin:0 0 0.5rem;color:#181411;">Keema Pav Meal Combo</h2>
         <p style="font-size:0.875rem;color:#574F4A;line-height:1.5;margin:0 0 0.75rem;">A hearty 500g portion of Chicken Keema paired with 4 soft bakery ladi pavs. Freshly prepared comfort food.</p>
         <span style="font-weight:700;color:#B84A1C;font-size:1.1rem;">₹219</span>
       </article>
       <article style="background:#fff;border:1px solid #EAE4DC;border-radius:1rem;padding:1.5rem;">
+        <img src="/images/chicken-korma-roti-meal.jpg" alt="Chicken Korma and Roti Meal - Bread &amp; Bite Kitchen Menu" width="300" height="200" loading="lazy" style="width:100%;height:160px;object-fit:cover;border-radius:0.75rem;margin-bottom:0.75rem;display:block;" />
         <h2 style="font-size:1.2rem;margin:0 0 0.5rem;color:#181411;">Chicken Korma &amp; Roti Meal</h2>
         <p style="font-size:0.875rem;color:#574F4A;line-height:1.5;margin:0 0 0.75rem;">Rich 500g Chicken Korma served with 2 freshly made tandoori rotis. Complete lunch and dinner value deal.</p>
         <span style="font-weight:700;color:#B84A1C;font-size:1.1rem;">₹249</span>
       </article>
       <article style="background:#fff;border:1px solid #EAE4DC;border-radius:1rem;padding:1.5rem;">
+        <img src="/images/crispy-chicken-burger.jpg" alt="Crispy Chicken Burger - Bread &amp; Bite Kitchen Menu" width="300" height="200" loading="lazy" style="width:100%;height:160px;object-fit:cover;border-radius:0.75rem;margin-bottom:0.75rem;display:block;" />
+        <h2 style="font-size:1.2rem;margin:0 0 0.5rem;color:#181411;">Crispy Chicken Burger</h2>
+        <p style="font-size:0.875rem;color:#574F4A;line-height:1.5;margin:0 0 0.75rem;">Crispy spiced chicken patty with shredded lettuce, sliced onions, and creamy mayo in a toasted bun.</p>
+        <span style="font-weight:700;color:#B84A1C;font-size:1.1rem;">₹149</span>
+      </article>
+      <article style="background:#fff;border:1px solid #EAE4DC;border-radius:1rem;padding:1.5rem;">
+        <img src="/images/tandoori-roti.webp" alt="Tandoori Roti - Bread &amp; Bite Kitchen Menu" width="300" height="200" loading="lazy" style="width:100%;height:160px;object-fit:cover;border-radius:0.75rem;margin-bottom:0.75rem;display:block;" />
         <h2 style="font-size:1.2rem;margin:0 0 0.5rem;color:#181411;">Tandoori Roti</h2>
         <p style="font-size:0.875rem;color:#574F4A;line-height:1.5;margin:0 0 0.75rem;">Freshly baked whole wheat flatbread made to order in our clay tandoor oven.</p>
         <span style="font-weight:700;color:#B84A1C;font-size:1.1rem;">₹30</span>
       </article>
       <article style="background:#fff;border:1px solid #EAE4DC;border-radius:1rem;padding:1.5rem;">
+        <img src="/images/pav.webp" alt="Soft Bakery Ladi Pav (4 pcs) - Bread &amp; Bite Kitchen Menu" width="300" height="200" loading="lazy" style="width:100%;height:160px;object-fit:cover;border-radius:0.75rem;margin-bottom:0.75rem;display:block;" />
         <h2 style="font-size:1.2rem;margin:0 0 0.5rem;color:#181411;">Soft Bakery Ladi Pav (4 pcs)</h2>
         <p style="font-size:0.875rem;color:#574F4A;line-height:1.5;margin:0 0 0.75rem;">Set of 4 soft golden Mumbai ladi pavs, perfect for scooping up keema and korma gravies.</p>
         <span style="font-weight:700;color:#B84A1C;font-size:1.1rem;">₹30</span>
       </article>
       <article style="background:#fff;border:1px solid #EAE4DC;border-radius:1rem;padding:1.5rem;">
+        <img src="/images/choco-lava-cake.jpg" alt="Warm Choco Lava Cake - Bread &amp; Bite Kitchen Menu" width="300" height="200" loading="lazy" style="width:100%;height:160px;object-fit:cover;border-radius:0.75rem;margin-bottom:0.75rem;display:block;" />
         <h2 style="font-size:1.2rem;margin:0 0 0.5rem;color:#181411;">Warm Choco Lava Cake</h2>
         <p style="font-size:0.875rem;color:#574F4A;line-height:1.5;margin:0 0 0.75rem;">Decadent chocolate cake with a rich, molten gooey chocolate fudge centre. Served fresh and warm.</p>
         <span style="font-weight:700;color:#B84A1C;font-size:1.1rem;">₹89</span>
@@ -373,21 +391,25 @@ function renderLocationBody(loc) {
       <h2 style="font-family:'DM Serif Display',Georgia,serif;font-size:1.75rem;color:#181411;text-align:center;margin-bottom:1.5rem;">Popular Dishes Delivered to ${loc.name}</h2>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.25rem;">
         <div style="background:#fff;border:1px solid #EAE4DC;border-radius:1rem;padding:1.25rem;">
+          <img src="/images/chicken-keema.webp" alt="Chicken Keema Boneless 500g delivery in ${loc.name}, Navi Mumbai - Bread &amp; Bite" width="300" height="200" loading="lazy" style="width:100%;height:160px;object-fit:cover;border-radius:0.75rem;margin-bottom:0.75rem;display:block;" />
           <h3 style="font-size:1.1rem;margin:0 0 0.5rem;color:#181411;">Chicken Keema Boneless (500g)</h3>
           <p style="font-size:0.85rem;color:#574F4A;line-height:1.5;margin:0 0 0.75rem;">Rich 500g slow-cooked boneless chicken mince with whole spices and fresh coriander. Serves 2.</p>
           <strong style="color:#B84A1C;font-size:1rem;">₹199 · Serves 2</strong>
         </div>
         <div style="background:#fff;border:1px solid #EAE4DC;border-radius:1rem;padding:1.25rem;">
+          <img src="/images/chicken-korma.webp" alt="Chicken Korma 500g delivery in ${loc.name}, Navi Mumbai - Bread &amp; Bite" width="300" height="200" loading="lazy" style="width:100%;height:160px;object-fit:cover;border-radius:0.75rem;margin-bottom:0.75rem;display:block;" />
           <h3 style="font-size:1.1rem;margin:0 0 0.5rem;color:#181411;">Chicken Korma (500g)</h3>
           <p style="font-size:0.85rem;color:#574F4A;line-height:1.5;margin:0 0 0.75rem;">Rich cashew and onion gravy with tender chicken pieces.</p>
           <strong style="color:#B84A1C;font-size:1rem;">₹199 · Serves 2</strong>
         </div>
         <div style="background:#fff;border:1px solid #EAE4DC;border-radius:1rem;padding:1.25rem;">
+          <img src="/images/keema-pav-meal.jpg" alt="Keema Pav Meal Combo delivery in ${loc.name}, Navi Mumbai - Bread &amp; Bite" width="300" height="200" loading="lazy" style="width:100%;height:160px;object-fit:cover;border-radius:0.75rem;margin-bottom:0.75rem;display:block;" />
           <h3 style="font-size:1.1rem;margin:0 0 0.5rem;color:#181411;">Keema Pav Meal Combo</h3>
           <p style="font-size:0.85rem;color:#574F4A;line-height:1.5;margin:0 0 0.75rem;">500g Chicken Keema + 4 soft bakery ladi pavs. The favorite comfort meal combo.</p>
           <strong style="color:#B84A1C;font-size:1rem;">₹219 · Value Deal</strong>
         </div>
         <div style="background:#fff;border:1px solid #EAE4DC;border-radius:1rem;padding:1.25rem;">
+          <img src="/images/chicken-korma-roti-meal.jpg" alt="Chicken Korma &amp; Roti Meal delivery in ${loc.name}, Navi Mumbai - Bread &amp; Bite" width="300" height="200" loading="lazy" style="width:100%;height:160px;object-fit:cover;border-radius:0.75rem;margin-bottom:0.75rem;display:block;" />
           <h3 style="font-size:1.1rem;margin:0 0 0.5rem;color:#181411;">Chicken Korma &amp; Roti Meal</h3>
           <p style="font-size:0.85rem;color:#574F4A;line-height:1.5;margin:0 0 0.75rem;">500g rich Chicken Korma + 2 hot clay-oven tandoori rotis. Complete lunch or dinner.</p>
           <strong style="color:#B84A1C;font-size:1rem;">₹249 · Value Deal</strong>

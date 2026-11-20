@@ -286,7 +286,7 @@ const Menu = () => {
                         <div className="w-22 h-22 rounded-xl overflow-hidden relative border border-[#EAE4DC] bg-[#FAF7F2]">
                           <ImageWithLoader
                             src={item.image}
-                            alt={item.name}
+                            alt={item.seoAlt || `${item.name} - Bread & Bite Food Delivery Navi Mumbai`}
                             className="w-full h-full object-cover"
                           />
                         </div>
@@ -361,7 +361,7 @@ const Menu = () => {
                       <div className="relative aspect-[4/3] overflow-hidden bg-[#FAF7F2]">
                         <ImageWithLoader
                           src={item.image}
-                          alt={item.name}
+                          alt={item.seoAlt || `${item.name} - Bread & Bite Food Delivery Navi Mumbai`}
                           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-104"
                         />
 

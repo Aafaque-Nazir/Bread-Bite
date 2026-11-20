@@ -9,6 +9,7 @@ const menuItems = [
     type: "Non-Veg",
     portion: "500gms",
     image: "/images/chicken-keema.webp",
+    seoAlt: "Chicken Keema Boneless 500g Portion - Fresh Food Delivery in Taloja, Navi Mumbai | Bread & Bite",
     isBestSeller: true,
     isNew: false,
     tags: ["500g", "Boneless", "Halal"]
@@ -22,6 +23,7 @@ const menuItems = [
     type: "Non-Veg",
     portion: "500gms",
     image: "/images/chicken-korma.webp",
+    seoAlt: "Chicken Korma 500g Cashew Gravy - Fresh Mughlai Chicken Delivery Navi Mumbai | Bread & Bite",
     isBestSeller: true,
     isNew: false,
     tags: ["500g", "Halal"]
@@ -35,6 +37,7 @@ const menuItems = [
     type: "Non-Veg",
     portion: "500gms",
     image: "/images/random-chicken-gravy.webp",
+    seoAlt: "Chef's Daily Special Chicken Gravy 500g - Homestyle Curry Delivery Taloja | Bread & Bite",
     isBestSeller: false,
     isNew: true,
     tags: ["500g", "Daily Special", "Halal"]
@@ -49,6 +52,7 @@ const menuItems = [
     category: "Roti",
     type: "Veg",
     image: "/images/tandoori-roti.webp",
+    seoAlt: "Hot Clay-Oven Tandoori Roti - Whole Wheat Flatbread Delivery Navi Mumbai | Bread & Bite",
     isBestSeller: true,
     isNew: false,
     tags: ["Fresh Baked"]
@@ -62,6 +66,7 @@ const menuItems = [
     type: "Veg",
     portion: "4 pcs",
     image: "/images/pav.webp",
+    seoAlt: "Soft Bakery Ladi Pav 4 Pcs - Fresh Pav Delivery Taloja | Bread & Bite",
     isBestSeller: true,
     isNew: false,
     tags: ["4 Pcs", "Soft & Fresh"]
@@ -77,6 +82,7 @@ const menuItems = [
     type: "Veg",
     portion: "200g",
     image: "/images/french-fries.webp",
+    seoAlt: "Crispy Golden French Fries 200g - Hot Snacks Delivery Navi Mumbai | Bread & Bite",
     isBestSeller: true,
     isNew: false,
     tags: ["200g", "Crispy"]
@@ -89,6 +95,7 @@ const menuItems = [
     category: "Snacks",
     type: "Veg",
     image: "/images/plain-maggi.webp",
+    seoAlt: "Classic Hot Masala Maggi - Quick Snacks Delivery Taloja Phase 1 | Bread & Bite",
     isBestSeller: false,
     isNew: false,
     tags: ["Hot & Fast"]
@@ -102,7 +109,8 @@ const menuItems = [
     price: 149,
     category: "Burgers",
     type: "Non-Veg",
-    image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=800&auto=format&fit=crop",
+    image: "/images/crispy-chicken-burger.jpg",
+    seoAlt: "Crispy Chicken Burger - Fresh Halal Burger Delivery Taloja & Kharghar | Bread & Bite",
     isBestSeller: true,
     isNew: false,
     tags: ["Halal", "Juicy"]
@@ -119,6 +127,7 @@ const menuItems = [
     category: "Combos",
     type: "Non-Veg",
     image: "/images/keema-pav-meal.jpg",
+    seoAlt: "Keema Pav Meal Combo (500g Keema + 4 Pav) - Bestseller Food Delivery Navi Mumbai | Bread & Bite",
     isBestSeller: true,
     isNew: true,
     tags: ["Bestseller Meal", "500g Keema + 4 Pav"]
@@ -133,6 +142,7 @@ const menuItems = [
     category: "Combos",
     type: "Non-Veg",
     image: "/images/chicken-korma-roti-meal.jpg?v=2",
+    seoAlt: "Chicken Korma and Roti Meal (500g Korma + 2 Roti) - Value Meal Delivery Taloja | Bread & Bite",
     isBestSeller: true,
     isNew: false,
     tags: ["500g Korma + 2 Roti"]
@@ -146,7 +156,8 @@ const menuItems = [
     discount: "Save ₹19",
     category: "Combos",
     type: "Non-Veg",
-    image: "https://images.unsplash.com/photo-1550547660-d9450f859349?q=80&w=800&auto=format&fit=crop",
+    image: "/images/burger-fries-combo.jpg",
+    seoAlt: "Crispy Chicken Burger and 200g Fries Combo - Value Fast Food Delivery Navi Mumbai | Bread & Bite",
     isBestSeller: false,
     isNew: false,
     tags: ["Burger + 200g Fries"]
@@ -162,6 +173,7 @@ const menuItems = [
     type: "Veg",
     portion: "1 pc",
     image: "/images/choco-lava-cake.jpg",
+    seoAlt: "Warm Choco Lava Cake with Molten Fudge Centre - Fresh Dessert Delivery Navi Mumbai | Bread & Bite",
     isBestSeller: true,
     isNew: true,
     tags: ["Molten Chocolate", "Warm & Gooey", "Veg"]
@@ -173,11 +185,9 @@ export const CATEGORIES_DATA = [
   { id: "Gravy", name: "Gravy (500g)", image: "/images/chicken-korma.webp", description: "500g Chicken Gravies" },
   { id: "Roti", name: "Roti & Pav", image: "/images/tandoori-roti.webp", description: "Tandoori Roti & Fresh Pav" },
   { id: "Snacks", name: "Snacks", image: "/images/french-fries.webp", description: "Fries & Hot Maggi" },
-  { id: "Burgers", name: "Burgers", image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=400&auto=format&fit=crop", description: "Crispy Chicken Burgers" },
+  { id: "Burgers", name: "Burgers", image: "/images/crispy-chicken-burger.jpg", description: "Crispy Chicken Burgers" },
   { id: "Dessert", name: "Dessert", image: "/images/choco-lava-cake.jpg", description: "Warm Cakes & Desserts" },
   { id: "Combos", name: "Combos", image: "/images/keema-pav-meal.jpg", description: "Meals & Combos" }
 ];
-
-export const CATEGORIES = CATEGORIES_DATA.map(cat => cat.id);
 
 export default menuItems;
