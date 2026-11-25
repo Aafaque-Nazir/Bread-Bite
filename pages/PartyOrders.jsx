@@ -49,7 +49,7 @@ const PartyOrders = () => {
     phone: cartDraft?.customerPhone || '',
     city: cartDraft?.city || getInitialPreferredCity('kharghar'),
     eventDate: '',
-    eventSlot: 'Dinner Slot (7:00 PM – 9:45 PM)',
+    eventSlot: 'Dinner Slot (7:00 PM – 10:15 PM)',
     notes: ''
   }));
   const [submittedUrl, setSubmittedUrl] = useState('');
@@ -451,7 +451,7 @@ const PartyOrders = () => {
                         className="w-full bg-[#FAF7F2] border border-[#EAE4DC] rounded-xl px-3.5 py-2.5 text-sm focus:outline-none focus:border-[#B84A1C]"
                       >
                         <option>Lunch Slot (11:15 AM – 3:30 PM)</option>
-                        <option>Dinner Slot (7:00 PM – 9:45 PM)</option>
+                        <option>Dinner Slot (7:00 PM – 10:15 PM)</option>
                         <option>Custom Event Timing</option>
                       </select>
                     </div>
@@ -533,7 +533,7 @@ const PartyOrders = () => {
               ))}
             </ul>
             <div className="pt-3 border-t border-[#EAE4DC] text-xs text-[#574F4A] space-y-1.5">
-              <p><strong className="text-[#181411]">Daily Slots:</strong> 11:15 AM – 3:30 PM &amp; 7:00 PM – 9:45 PM IST</p>
+              <p><strong className="text-[#181411]">Daily Slots:</strong> 11:15 AM – 3:30 PM &amp; 7:00 PM – 10:15 PM IST</p>
               <p><strong className="text-[#181411]">Advance Notice:</strong> 3 hrs (5–15 portions) · 24 hrs (16+ portions)</p>
               <p><strong className="text-[#181411]">Booking Terms:</strong> Cash / UPI on delivery; large quotes (₹3,000+) confirmed with advance UPI token</p>
             </div>

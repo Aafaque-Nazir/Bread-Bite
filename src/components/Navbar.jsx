@@ -358,7 +358,7 @@ function Navbar() {
                         </div>
                         <div className="bg-[#FAF7F2] p-2.5 rounded-xl border border-[#EAE4DC]/60">
                           <span className="font-bold text-[#181411] flex items-center gap-1.5 text-[11.5px]"><FaMoon className="text-[#7C3AED]" size={11} /> Dinner Slot</span>
-                          <span className="text-[11px] text-[#574F4A] mt-0.5 block">7:00 PM – 9:45 PM</span>
+                          <span className="text-[11px] text-[#574F4A] mt-0.5 block">7:00 PM – 10:15 PM</span>
                         </div>
                       </div>
                     </div>

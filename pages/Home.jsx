@@ -699,7 +699,7 @@ const Home = () => {
           </div>
 
           <p className="text-[11px] text-[#8C827A] mt-6">
-            Daily slots: 11:15 AM – 3:30 PM &amp; 7:00 PM – 9:45 PM · Free delivery starting ₹299+ across Navi Mumbai ·{' '}
+            Daily slots: 11:15 AM – 3:30 PM &amp; 7:00 PM – 10:15 PM · Free delivery starting ₹299+ across Navi Mumbai ·{' '}
             <Link to="/party-orders/" className="text-[#B84A1C] font-semibold hover:underline">
               Party &amp; Bulk Orders
             </Link>

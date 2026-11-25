@@ -311,7 +311,7 @@ const Cart = () => {
                 Kitchen Currently Resting
               </h3>
               <p className="text-xs text-[#574F4A] mt-1 leading-relaxed">
-                Daily slots: <strong>Lunch: 11:15 AM – 3:30 PM</strong> & <strong>Dinner: 7:00 PM – 9:45 PM IST</strong>. Your items remain saved in your bag; checkout unlocks during open slots ({shortStatus}).
+                Daily slots: <strong>Lunch: 11:15 AM – 3:30 PM</strong> &amp; <strong>Dinner: 7:00 PM – 10:15 PM IST</strong>. Your items remain saved in your bag; checkout unlocks during open slots ({shortStatus}).
               </p>
             </div>
             <a
@@ -711,7 +711,7 @@ const Cart = () => {
                       <span>Pre-Order on WhatsApp ({reopenTimeStr || 'Next Slot'})</span>
                     </button>
                     <p className="text-center text-[10px] text-[#A89E94] leading-relaxed">
-                      Kitchen resting. Daily slots: 11:15 AM – 3:30 PM & 7:00 PM – 9:45 PM. Advance orders get priority dispatch!
+                      Kitchen resting. Daily slots: 11:15 AM – 3:30 PM &amp; 7:00 PM – 10:15 PM. Advance orders get priority dispatch!
                     </p>
                   </div>
                 )}
@@ -768,7 +768,7 @@ const Cart = () => {
                 <p className="text-[11px] text-[#8C827A] leading-relaxed pt-1 border-t border-[#EAE4DC]">
                   Hum daily 2 slots me freshly cook karte hain:<br />
                   • Lunch: 11:15 AM – 3:30 PM<br />
-                  • Dinner: 7:00 PM – 9:45 PM
+                  • Dinner: 7:00 PM – 10:15 PM
                 </p>
               </div>
 

@@ -59,7 +59,7 @@
    - No screaming neon logos. Monochromatic, refined aesthetic.
 
 3. **Status & Operating Hours:**
-   - State hours calmly and factually: `Lunch Slot: 11:15 AM – 3:30 PM · Dinner Slot: 7:00 PM – 9:45 PM`.
+   - State hours calmly and factually: `Lunch Slot: 11:15 AM – 3:30 PM · Dinner Slot: 7:00 PM – 10:15 PM`.
    - Never use urgency hacks, false countdowns, or glowing beacon dots.
 
 ---

@@ -145,7 +145,7 @@ const DishPage = () => {
                   <strong className="text-[#181411]">Fresh Sourcing:</strong> 100% Halal fresh chicken sourced daily; vegetarian sides cooked in separate cookware.
                 </p>
                 <p>
-                  <strong className="text-[#181411]">Daily Kitchen Hours:</strong> Lunch 11:15 AM – 3:30 PM · Dinner 7:00 PM – 9:45 PM IST.
+                  <strong className="text-[#181411]">Daily Kitchen Hours:</strong> Lunch 11:15 AM – 3:30 PM · Dinner 7:00 PM – 10:15 PM IST.
                 </p>
               </div>
             </div>

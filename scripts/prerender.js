@@ -225,7 +225,7 @@ const contactBody = `
     </div>
     <div style="background:#fff;border:1px solid #EAE4DC;border-radius:1.5rem;padding:2rem;line-height:1.6;color:#574F4A;">
       <h2 style="font-family:'DM Serif Display',Georgia,serif;font-size:1.5rem;color:#181411;margin:0 0 1rem;">Operating Hours</h2>
-      <p style="margin:0 0 1rem;"><strong>2 Daily Operational Slots:</strong><br/>Lunch: 11:15 AM – 3:30 PM<br/>Dinner: 7:00 PM – 9:45 PM IST</p>
+      <p style="margin:0 0 1rem;"><strong>2 Daily Operational Slots:</strong><br/>Lunch: 11:15 AM – 3:30 PM<br/>Dinner: 7:00 PM – 10:15 PM IST</p>
       <h3 style="font-family:'DM Serif Display',Georgia,serif;font-size:1.3rem;color:#181411;margin:1.5rem 0 0.5rem;">Delivery Locations</h3>
       <p style="margin:0;">Fast local delivery across Taloja Phase 1 &amp; 2, Kharghar, Panvel, Kamothe, Kalamboli, and CBD Belapur.</p>
     </div>
@@ -236,7 +236,7 @@ const contactBody = `
 const cartBody = `
   <section style="background:#fff;border:1px solid #EAE4DC;border-radius:1.5rem;padding:2.5rem 2rem;margin-bottom:2.5rem;text-align:center;line-height:1.6;color:#574F4A;">
     <h2 style="font-family:'DM Serif Display',Georgia,serif;font-size:1.5rem;color:#181411;margin:0 0 0.75rem;">Your Order Bag</h2>
-    <p style="margin:0 0 1.5rem;">Review your selected items and complete your order. Kitchen operational slots are 11:15 AM to 3:30 PM &amp; 7:00 PM to 9:45 PM IST.</p>
+    <p style="margin:0 0 1.5rem;">Review your selected items and complete your order. Kitchen operational slots are 11:15 AM to 3:30 PM &amp; 7:00 PM to 10:15 PM IST.</p>
     <a href="/menu/" style="display:inline-block;background:#B84A1C;color:#FAF7F2;padding:0.75rem 1.75rem;border-radius:9999px;text-decoration:none;font-weight:700;font-size:0.85rem;text-transform:uppercase;">Browse Menu &amp; Add Items</a>
   </section>
 `;
@@ -273,7 +273,7 @@ const privacyBody = `
 const termsBody = `
   <section style="background:#fff;border:1px solid #EAE4DC;border-radius:1.5rem;padding:2.5rem 2rem;margin-bottom:2.5rem;line-height:1.7;color:#574F4A;">
     <h2 style="font-family:'DM Serif Display',Georgia,serif;font-size:1.45rem;color:#181411;margin:0 0 0.75rem;">Terms of Service &amp; Delivery Policies</h2>
-    <p style="margin:0 0 1rem;">Operating from Shop 12, Ground Floor, Sector 11, Taloja Phase 1, Navi Mumbai 410208. We cook fresh on order during 2 daily operational slots: Lunch (11:15 AM – 3:30 PM) and Dinner (7:00 PM – 9:45 PM IST).</p>
+    <p style="margin:0 0 1rem;">Operating from Shop 12, Ground Floor, Sector 11, Taloja Phase 1, Navi Mumbai 410208. We cook fresh on order during 2 daily operational slots: Lunch (11:15 AM – 3:30 PM) and Dinner (7:00 PM – 10:15 PM IST).</p>
     <h3 style="font-size:1.15rem;color:#181411;margin:1.5rem 0 0.5rem;">Delivery Zones &amp; Minimums</h3>
     <p style="margin:0 0 1rem;">Taloja (Min ₹199, Free ₹299+), Kharghar/Kamothe/Kalamboli (Min ₹249, Free ₹399+), Panvel/Belapur (Min ₹499, Free ₹699+). 100% Halal fresh chicken sourced daily.</p>
     <p style="margin:0;font-size:0.85rem;color:#8C827A;">Order Hotline: +91 93256 29256</p>

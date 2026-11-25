@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 /**
  * Bread & Bite Kitchen Operational Slots:
  * Slot 1 (Lunch):  11:15 AM – 3:30 PM (11:15 to 15:30 IST)
- * Slot 2 (Dinner): 7:00 PM – 9:45 PM (19:00 to 21:45 IST)
+ * Slot 2 (Dinner): 7:00 PM – 10:15 PM (19:00 to 22:15 IST)
  */
 export const SLOT_1 = {
   startHour: 11,
@@ -17,13 +17,13 @@ export const SLOT_1 = {
 export const SLOT_2 = {
   startHour: 19,
   startMinute: 0,
-  endHour: 21,
-  endMinute: 45,
+  endHour: 22,
+  endMinute: 15,
   name: 'Dinner',
-  label: '7:00 PM – 9:45 PM'
+  label: '7:00 PM – 10:15 PM'
 };
 
-export const KITCHEN_SCHEDULE_STRING = '11:15 AM – 3:30 PM & 7:00 PM – 9:45 PM';
+export const KITCHEN_SCHEDULE_STRING = '11:15 AM – 3:30 PM & 7:00 PM – 10:15 PM';
 
 /**
  * Returns current Indian Standard Time (IST) kitchen operational status.
@@ -47,7 +47,7 @@ export const getKitchenStatus = () => {
           activeSlot: null,
           statusText: 'Kitchen Closed',
           shortStatus: 'Closed Now',
-          subText: 'Lunch: 11:15 AM – 3:30 PM · Dinner: 7:00 PM – 9:45 PM',
+          subText: 'Lunch: 11:15 AM – 3:30 PM · Dinner: 7:00 PM – 10:15 PM',
           scheduleText: KITCHEN_SCHEDULE_STRING,
           reopenTimeStr: '11:15 AM',
           nextSlot: '11:15 AM – 3:30 PM'
@@ -79,7 +79,7 @@ export const getKitchenStatus = () => {
     const s1Start = 11 * 60 + 15; // 675 mins (11:15 AM)
     const s1End = 15 * 60 + 30; // 930 mins (3:30 PM)
     const s2Start = 19 * 60; // 1140 mins (7:00 PM)
-    const s2End = 21 * 60 + 45; // 1305 mins (9:45 PM)
+    const s2End = 22 * 60 + 15; // 1335 mins (10:15 PM)
 
     // Check if in Slot 1 (Lunch)
     if (currentMinutes >= s1Start && currentMinutes < s1End) {
@@ -105,8 +105,8 @@ export const getKitchenStatus = () => {
         currentMinute,
         statusText: 'Open Now · Dinner Slot',
         shortStatus: 'Dinner Open',
-        subText: 'Dinner slot closes at 9:45 PM',
-        closeTimeStr: '9:45 PM',
+        subText: 'Dinner slot closes at 10:15 PM',
+        closeTimeStr: '10:15 PM',
         scheduleText: KITCHEN_SCHEDULE_STRING
       };
     }
@@ -126,11 +126,11 @@ export const getKitchenStatus = () => {
     } else if (currentMinutes >= s1End && currentMinutes < s2Start) {
       // Afternoon break between 3:30 PM and 7:00 PM
       subText = 'Dinner slot opens today at 7:00 PM';
-      nextSlot = 'Dinner: 7:00 PM – 9:45 PM';
+      nextSlot = 'Dinner: 7:00 PM – 10:15 PM';
       reopenTimeStr = '7:00 PM';
       shortStatus = 'Opens 7:00 PM';
     } else {
-      // Night after 9:45 PM
+      // Night after 10:15 PM
       subText = 'Opens tomorrow at 11:15 AM (Lunch Slot)';
       nextSlot = 'Lunch: 11:15 AM – 3:30 PM';
       reopenTimeStr = '11:15 AM';

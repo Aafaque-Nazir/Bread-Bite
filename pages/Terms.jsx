@@ -63,7 +63,7 @@ const Terms = () => {
             </div>
             <div className="p-3 rounded-xl bg-[#FAF7F2] border border-[#EAE4DC]">
               <strong className="block text-[#181411] text-xs font-semibold mb-0.5">Dinner Operational Slot:</strong>
-              <span className="text-[#574F4A]">7:00 PM – 9:45 PM IST</span>
+              <span className="text-[#574F4A]">7:00 PM – 10:15 PM IST</span>
             </div>
           </div>
           <p className="text-xs text-[#8C827A]">

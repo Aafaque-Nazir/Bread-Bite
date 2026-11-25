@@ -143,7 +143,7 @@ export const PARTY_FAQS = [
   },
   {
     question: 'How far in advance should I request a party or office lunch quote?',
-    answer: 'Orders of 5–15 portions (8–30 guests) need at least 3 hours advance notice around our daily kitchen slots (11:15 AM – 3:30 PM & 7:00 PM – 9:45 PM IST). Large events of 16+ portions (30–100+ guests) require 24 hours (1 day) advance notice so fresh Halal chicken and bakery pavs can be sourced.'
+    answer: 'Orders of 5–15 portions (8–30 guests) need at least 3 hours advance notice around our daily kitchen slots (11:15 AM – 3:30 PM & 7:00 PM – 10:15 PM IST). Large events of 16+ portions (30–100+ guests) require 24 hours (1 day) advance notice so fresh Halal chicken and bakery pavs can be sourced.'
   },
   {
     question: 'How does pricing and delivery work on separate party quotes?',
@@ -339,7 +339,7 @@ export function buildRestaurantSchema(pageImage = DEFAULT_IMAGE) {
         '@type': 'OpeningHoursSpecification',
         dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
         opens: '19:00',
-        closes: '21:45'
+        closes: '22:15'
       }
     ],
     areaServed: [
