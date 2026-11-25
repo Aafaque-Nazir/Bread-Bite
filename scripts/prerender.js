@@ -10,6 +10,7 @@ import {
   DEFAULT_IMAGE,
   DEFAULT_GEO,
   LASTMOD_DATE,
+  PARTY_PACKAGES,
   PARTY_FAQS,
   STATIC_ROUTES_META,
   normalizeCanonicalUrl,
@@ -147,8 +148,8 @@ const menuBody = `
 
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem;">
       ${menuItems.map((item) => {
-        const cleanImg = item.image.split('?')[0];
-        return `
+  const cleanImg = item.image.split('?')[0];
+  return `
         <article style="background:#fff;border:1px solid #EAE4DC;border-radius:1rem;padding:1.25rem;">
           <a href="/menu/${item.slug}/" style="display:block;text-decoration:none;color:inherit;">
             <img src="${cleanImg}" alt="${escapeAttr(item.seoAlt || item.name)}" width="400" height="300" loading="lazy" style="width:100%;height:170px;object-fit:cover;border-radius:0.75rem;margin-bottom:0.75rem;display:block;" />
@@ -160,7 +161,7 @@ const menuBody = `
             <a href="/menu/${item.slug}/" style="font-size:0.8rem;font-weight:600;color:#181411;text-decoration:underline;">Details &rarr;</a>
           </div>
         </article>`;
-      }).join('')}
+}).join('')}
     </div>
   </section>
 `;
@@ -168,19 +169,15 @@ const menuBody = `
 const partyOrdersBody = `
   <section style="margin-bottom:3rem;">
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem;margin-bottom:2rem;">
+      ${PARTY_PACKAGES.map((pkg) => `
       <div style="background:#fff;border:1px solid #EAE4DC;border-radius:1.25rem;padding:1.5rem;">
-        <h2 style="font-size:1.25rem;color:#181411;margin:0 0 0.5rem;">Small House Gathering (8–10 Guests)</h2>
-        <p style="font-size:0.875rem;color:#574F4A;line-height:1.6;">5× 500g Chicken Keema or Korma tubs (2.5 kg total gravy) + 20 soft Ladi Pavs or 15 Tandoori Rotis. Starting ₹1,095.</p>
-      </div>
-      <div style="background:#fff;border:1px solid #EAE4DC;border-radius:1.25rem;padding:1.5rem;">
-        <h2 style="font-size:1.25rem;color:#181411;margin:0 0 0.5rem;">Office Team Lunch (15–20 Guests)</h2>
-        <p style="font-size:0.875rem;color:#574F4A;line-height:1.6;">10× 500g Chicken Gravies (Keema + Korma mix), 30 Tandoori Rotis / 40 Pavs, and Crispy Fries boxes. Starting ₹2,190.</p>
-      </div>
-      <div style="background:#fff;border:1px solid #EAE4DC;border-radius:1.25rem;padding:1.5rem;">
-        <h2 style="font-size:1.25rem;color:#181411;margin:0 0 0.5rem;">Celebration Feast (30–50+ Guests)</h2>
-        <p style="font-size:0.875rem;color:#574F4A;line-height:1.6;">Bulk Keema &amp; Korma handis, fresh clay-oven rotis, Crispy Chicken Burgers, and Warm Choco Lava Cakes.</p>
-      </div>
+        <p style="font-size:0.75rem;font-weight:700;text-transform:uppercase;color:#B84A1C;margin:0 0 0.25rem;">${escapeHtmlText(pkg.serves)}</p>
+        <h2 style="font-size:1.25rem;color:#181411;margin:0 0 0.5rem;">${escapeHtmlText(pkg.title)}</h2>
+        <p style="font-size:0.875rem;color:#574F4A;line-height:1.6;margin:0 0 0.75rem;">${escapeHtmlText(pkg.details)}</p>
+        <strong style="font-size:0.95rem;color:#181411;">${escapeHtmlText(pkg.price)}</strong>
+      </div>`).join('')}
     </div>
+    <p style="text-align:center;font-size:0.875rem;color:#574F4A;margin:0 0 1.25rem;">Separate direct-kitchen quotes for 5+ portions (8–100+ guests) with ₹0 packaging fees, ₹0 delivery above ₹699 across all 6 Navi Mumbai areas, 3 hrs notice (5–15 portions) or 24 hrs (16+ portions).</p>
     <div style="text-align:center;">
       <a href="https://wa.me/919325629256?text=${encodeURIComponent('Hi Bread & Bite, I want to inquire about a party or bulk order.')}" style="display:inline-block;background:#B84A1C;color:#FAF7F2;padding:0.85rem 1.75rem;border-radius:9999px;text-decoration:none;font-weight:700;font-size:0.85rem;text-transform:uppercase;">Inquire on WhatsApp</a>
     </div>
@@ -417,7 +414,7 @@ function buildRoutes() {
       ...STATIC_ROUTES_META['/party-orders/'],
       breadcrumbs: [{ name: 'Party & Bulk Orders', path: '/party-orders/' }],
       h1: 'Party &amp; Bulk Chicken Orders in Navi Mumbai',
-      subtitle: 'Honest 500g portions scaled up for house parties, corporate team lunches, and family gatherings across Taloja, Kharghar, Panvel, and CBD Belapur.',
+      subtitle: 'Honest 500g portions scaled up from 5 portions (8–10 guests) to 100+ guests across Taloja, Kharghar, Panvel, and CBD Belapur.',
       bodyHtml: partyOrdersBody,
       priority: '0.85',
       changefreq: 'weekly'

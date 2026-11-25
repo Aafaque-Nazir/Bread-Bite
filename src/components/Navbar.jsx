@@ -111,13 +111,13 @@ function Navbar() {
 
             {/* DESKTOP NAV LINKS */}
             <nav className="hidden lg:flex items-center">
-              <ul className="flex items-center gap-6 xl:gap-7 text-[12.5px] font-medium tracking-wider uppercase">
+              <ul className="flex items-center gap-5 xl:gap-7 text-[12px] xl:text-[12.5px] font-medium tracking-wider uppercase whitespace-nowrap">
                 {navLinks.map(({ name, path }) => (
-                  <li key={name} className="relative">
+                  <li key={name} className="relative shrink-0">
                     <NavLink
                       to={path}
                       className={({ isActive }) =>
-                        `transition-colors duration-200 py-1 flex items-center ${
+                        `transition-colors duration-200 py-1 flex items-center whitespace-nowrap ${
                           isActive
                             ? "text-[#B84A1C] font-semibold"
                             : "text-[#574F4A] hover:text-[#181411]"

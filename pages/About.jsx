@@ -160,12 +160,18 @@ const About = () => {
               </p>
             </div>
 
-            <div className="pt-2">
+            <div className="pt-2 flex flex-wrap items-center gap-3">
               <Link
                 to="/menu/"
                 className="btn-primary inline-flex py-3 px-6 text-xs uppercase tracking-wider font-bold"
               >
                 <span>Explore Our Full Menu</span>
+              </Link>
+              <Link
+                to="/party-orders/"
+                className="btn-outline inline-flex py-3 px-6 text-xs uppercase tracking-wider font-bold"
+              >
+                <span>Party &amp; Bulk Orders</span>
               </Link>
             </div>
           </div>

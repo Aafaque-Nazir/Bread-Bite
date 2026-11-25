@@ -8,109 +8,13 @@ import { useKitchenStatus } from '../src/hooks/useKitchenStatus';
 import SEO from '../src/components/SEO';
 import ImageWithLoader from '../src/components/ImageWithLoader';
 import { sanitizeText, sanitizeSafeUrl, isValidIndianPhone, sanitizePhone } from '../src/utils/security';
-export { sanitizePhone };
-
-// 6 Individual Delivery Cities across Navi Mumbai
-export const DELIVERY_CITIES = {
-  taloja: {
-    id: 'taloja',
-    slug: 'taloja',
-    name: 'Taloja Phase 1 & 2',
-    shortName: 'Taloja',
-    subLabel: 'Kitchen Base · 10–20m',
-    time: '10–20 min',
-    minOrder: 199,
-    freeAbove: 299,
-    fee: 39,
-    keywords: ['taloja phase 1', 'taloja phase 2', 'taloja phase', 'taloja midc', 'panchanand', 'taloja 1', 'taloja 2', 'taloja']
-  },
-  kharghar: {
-    id: 'kharghar',
-    slug: 'kharghar',
-    name: 'Kharghar',
-    shortName: 'Kharghar',
-    subLabel: '5–8 km · 20–30m',
-    time: '20–30 min',
-    minOrder: 249,
-    freeAbove: 399,
-    fee: 49,
-    keywords: ['hiranandani', 'central park', 'utsav chowk', 'dy patil', 'oves', 'kharghar']
-  },
-  kamothe: {
-    id: 'kamothe',
-    slug: 'kamothe',
-    name: 'Kamothe',
-    shortName: 'Kamothe',
-    subLabel: '5–8 km · 20–30m',
-    time: '20–30 min',
-    minOrder: 249,
-    freeAbove: 399,
-    fee: 49,
-    keywords: ['mansarovar', 'khandeshwar', 'raghunath nagar', 'kamothe']
-  },
-  kalamboli: {
-    id: 'kalamboli',
-    slug: 'kalamboli',
-    name: 'Kalamboli',
-    shortName: 'Kalamboli',
-    subLabel: '6–9 km · 25–35m',
-    time: '25–35 min',
-    minOrder: 249,
-    freeAbove: 399,
-    fee: 49,
-    keywords: ['steel market', 'roadpali', 'furniture market', 'kalamboli']
-  },
-  panvel: {
-    id: 'panvel',
-    slug: 'panvel',
-    name: 'Panvel (Old & New)',
-    shortName: 'Panvel',
-    subLabel: '10–14 km · 25–35m',
-    time: '25–35 min',
-    minOrder: 499,
-    freeAbove: 699,
-    fee: 79,
-    keywords: ['new panvel', 'old panvel', 'khanda colony', 'palaspe', 'orion mall', 'panvel']
-  },
-  belapur: {
-    id: 'belapur',
-    slug: 'cbd-belapur',
-    name: 'CBD Belapur',
-    shortName: 'CBD Belapur',
-    subLabel: '12–15 km · 30–40m',
-    time: '30–40 min',
-    minOrder: 499,
-    freeAbove: 699,
-    fee: 79,
-    keywords: ['cbd belapur', 'artist village', 'kille gaothan', 'saket', 'belapur', 'cbd']
-  }
-};
-
-// Aliases for backwards compatibility
-export const DELIVERY_ZONES = DELIVERY_CITIES;
-
-// Auto-detect city from address or landmark text
-export const detectCityFromText = (text) => {
-  if (!text || text.trim().length < 3) return null;
-  const lower = text.toLowerCase();
-
-  const allKws = [];
-  for (const city of Object.values(DELIVERY_CITIES)) {
-    for (const kw of city.keywords) {
-      allKws.push({ kw, cityId: city.id, length: kw.length });
-    }
-  }
-  // Sort longest keyword first to avoid greedy substring collisions
-  allKws.sort((a, b) => b.length - a.length);
-
-  for (const item of allKws) {
-    const regex = new RegExp(`\\b${item.kw}\\b`, 'i');
-    if (regex.test(lower)) {
-      return item.cityId;
-    }
-  }
-  return null;
-};
+import {
+  DELIVERY_CITIES,
+  detectCityFromText,
+  getInitialPreferredCity,
+  savePreferredCity
+} from '../data/deliveryCities';
+import { PARTY_RULES } from '../data/seoConfig';
 
 const QUICK_ADDONS = [
   {
@@ -150,36 +54,13 @@ const Cart = () => {
 
   // Smart initial city: read URL query or persisted browsing preference
   const [details, setDetails] = useState(() => {
-    let initialCity = 'taloja';
-    if (typeof window !== 'undefined') {
-      try {
-        const params = new URLSearchParams(window.location.search);
-        const queryCity = params.get('city') || params.get('area') || params.get('zone');
-        if (queryCity && DELIVERY_CITIES[queryCity]) {
-          initialCity = queryCity;
-        } else if (queryCity === 'mid') {
-          initialCity = 'kharghar';
-        } else if (queryCity === 'far') {
-          initialCity = 'panvel';
-        } else {
-          const savedCity = sessionStorage.getItem('preferred_delivery_city') || sessionStorage.getItem('preferred_delivery_zone');
-          if (savedCity && DELIVERY_CITIES[savedCity]) {
-            initialCity = savedCity;
-          } else if (savedCity === 'mid') {
-            initialCity = 'kharghar';
-          } else if (savedCity === 'far') {
-            initialCity = 'panvel';
-          }
-        }
-      } catch {
-        // ignore
-      }
-    }
+    const initialCity = getInitialPreferredCity('taloja');
     return {
       name: '',
       phone: '',
       address: '',
       landmark: '',
+      bulkSchedule: '',
       city: initialCity,
       location: initialCity
     };
@@ -191,11 +72,38 @@ const Cart = () => {
 
   // Dynamic Individual City Delivery Logic
   const selectedCity = DELIVERY_CITIES[details.city] || DELIVERY_CITIES[details.location] || DELIVERY_CITIES.taloja;
-  const selectedZone = selectedCity; // Alias for any zone-based consumers
+  const selectedZone = selectedCity;
   const isMinOrderMet = cartTotal >= selectedCity.minOrder;
   const isFreeDeliveryEligible = cartTotal >= selectedCity.freeAbove;
   const deliveryCharge = isFreeDeliveryEligible ? 0 : selectedCity.fee;
   const grandTotal = cartTotal + deliveryCharge;
+
+  // Bulk / Party Order Detection (matches PartyOrders.jsx threshold: 5+ main dishes or ₹1,200+)
+  const mainMealCount = cart.reduce((sum, item) => {
+    if (['Gravy', 'Combos', 'Burgers'].includes(item.category)) {
+      return sum + item.quantity;
+    }
+    return sum;
+  }, 0);
+  const isBulkCart = mainMealCount >= PARTY_RULES.bulkCartMinMeals || cartTotal >= PARTY_RULES.bulkCartMinTotal;
+  const requiredNoticeHours = mainMealCount > PARTY_RULES.largeGroupPortionsThreshold
+    ? PARTY_RULES.largeNoticeHours
+    : PARTY_RULES.shortNoticeHours;
+
+  const handleOpenPartyQuote = () => {
+    try {
+      sessionStorage.setItem('bread_and_bite_party_draft', JSON.stringify({
+        items: cart,
+        cartTotal,
+        city: selectedCity.id,
+        customerName: sanitizeText(details.name, 60),
+        customerPhone: sanitizePhone(details.phone)
+      }));
+    } catch {
+      // ignore storage errors
+    }
+    navigate('/party-orders/');
+  };
 
   // Real-time Address Change & City Auto-detection
   const handleAddressChange = (e) => {
@@ -208,6 +116,7 @@ const Cart = () => {
         next.city = detectedCityId;
         next.location = detectedCityId;
         setAutoDetectedCity(detectedCityId);
+        savePreferredCity(detectedCityId);
       }
       return next;
     });
@@ -221,6 +130,7 @@ const Cart = () => {
     const newCity = e.target.value;
     setDetails(prev => ({ ...prev, city: newCity, location: newCity }));
     setAutoDetectedCity(null);
+    savePreferredCity(newCity);
   };
 
   const validateForm = () => {
@@ -274,24 +184,30 @@ const Cart = () => {
     const cleanPhone = sanitizePhone(details.phone);
     const cleanAddress = sanitizeText(details.address, 200);
     const cleanLandmark = sanitizeText(details.landmark, 100);
+    const cleanBulkSchedule = sanitizeText(details.bulkSchedule, 100);
 
     const orderId = 'BB-' + Math.floor(100000 + Math.random() * 900000);
     const orderTime = new Date().toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' });
 
     const itemsList = cart.map(item => `• ${sanitizeText(item.name, 60)} (x${item.quantity}) - ₹${item.price * item.quantity}`).join('\n');
     const cityName = selectedCity.name;
-    const customerInfo = `\n\n👤 *Customer Details:*\nName: ${cleanName}\nPhone: +91 ${cleanPhone}\nDelivery City: *${cityName}* (${selectedCity.time})\nAddress: ${cleanAddress}${cleanLandmark ? `, Landmark: ${cleanLandmark}` : ''}`;
+    const scheduleStr = cleanBulkSchedule ? `\nPreferred Event/Slot: ${cleanBulkSchedule}` : '';
+    const customerInfo = `\n\n👤 *Customer Details:*\nName: ${cleanName}\nPhone: +91 ${cleanPhone}\nDelivery City: *${cityName}* (${isBulkCart ? `${requiredNoticeHours}h advance bulk prep` : selectedCity.time})\nAddress: ${cleanAddress}${cleanLandmark ? `, Landmark: ${cleanLandmark}` : ''}${scheduleStr}`;
 
     const deliveryStr = deliveryCharge === 0 ? 'FREE' : `₹${deliveryCharge} (${selectedCity.shortName})`;
     const totalStr = `\n\n💰 *Bill Summary:*\nSubtotal: ₹${cartTotal}\nDelivery Fee: ${deliveryStr}\n*Grand Total: ₹${grandTotal}*`;
 
-    const headerTitle = isKitchenOpen
-      ? `🍛 *NEW ORDER - BREAD & BITE*\nOrder ID: *${orderId}* (Time: ${orderTime})`
-      : `🍛 *ADVANCE PRE-ORDER (NEXT SLOT: ${reopenTimeStr || '7:00 PM'}) - BREAD & BITE*\nOrder ID: *${orderId}* (Time: ${orderTime})`;
+    const headerTitle = isBulkCart
+      ? `🎉 *BULK / PARTY CART ORDER (${requiredNoticeHours}h PREP) - BREAD & BITE*\nOrder ID: *${orderId}* (Time: ${orderTime})`
+      : isKitchenOpen
+        ? `🍛 *NEW ORDER - BREAD & BITE*\nOrder ID: *${orderId}* (Time: ${orderTime})`
+        : `🍛 *ADVANCE PRE-ORDER (NEXT SLOT: ${reopenTimeStr || '7:00 PM'}) - BREAD & BITE*\nOrder ID: *${orderId}* (Time: ${orderTime})`;
 
-    const footerNote = isKitchenOpen
-      ? `_Please confirm my order and share estimated delivery time!_`
-      : `_Please confirm my advance pre-order for the ${reopenTimeStr || 'upcoming'} slot and share estimated dispatch time!_`;
+    const footerNote = isBulkCart
+      ? `_Please confirm bulk stock availability, final pricing, and scheduled dispatch time!_`
+      : isKitchenOpen
+        ? `_Please confirm my order and share estimated delivery time!_`
+        : `_Please confirm my advance pre-order for the ${reopenTimeStr || 'upcoming'} slot and share estimated dispatch time!_`;
 
     const fullMessage = `${headerTitle}${customerInfo}\n\n🛒 *Order Items:*\n${itemsList}${totalStr}\n\n${footerNote}`;
 
@@ -694,8 +610,42 @@ const Cart = () => {
                   onChange={(e) => setDetails({ ...details, landmark: e.target.value })}
                   className="w-full bg-[#FAF7F2] border border-[#EAE4DC] rounded-xl px-3.5 py-2.5 text-xs sm:text-sm focus:outline-none focus:border-[#B84A1C] transition-colors"
                 />
+
+                {isBulkCart && (
+                  <div className="pt-1 space-y-2">
+                    <label className="block text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-[#B84A1C]">
+                      Preferred Date &amp; Time (Bulk Prep: {requiredNoticeHours}h Notice)
+                    </label>
+                    <input
+                      type="text"
+                      placeholder="e.g. Today 8:30 PM or Tomorrow Lunch 1 PM"
+                      maxLength={100}
+                      value={details.bulkSchedule}
+                      onChange={(e) => setDetails({ ...details, bulkSchedule: e.target.value })}
+                      className="w-full bg-[#FAF7F2] border border-[#EAE4DC] rounded-xl px-3.5 py-2.5 text-xs sm:text-sm focus:outline-none focus:border-[#B84A1C] transition-colors"
+                    />
+                  </div>
+                )}
               </div>
             </div>
+
+            {isBulkCart && (
+              <div className="artisan-card rounded-3xl p-5 bg-[#FAF7F2] border border-[#EAE4DC] space-y-2.5">
+                <span className="text-[10px] font-bold uppercase tracking-wider text-[#B84A1C] block">
+                  Bulk / Party Order Detected
+                </span>
+                <p className="text-xs text-[#574F4A] leading-relaxed">
+                  Orders of {PARTY_RULES.bulkCartMinMeals}+ main meals or ₹{PARTY_RULES.bulkCartMinTotal.toLocaleString('en-IN')}+ need <strong>{requiredNoticeHours} hrs fresh prep notice</strong> (free delivery applied). Want a custom party quote or package pricing first?
+                </p>
+                <button
+                  type="button"
+                  onClick={handleOpenPartyQuote}
+                  className="text-xs font-bold text-[#181411] hover:text-[#B84A1C] underline cursor-pointer"
+                >
+                  Request Separate Party Quote Instead &rarr;
+                </button>
+              </div>
+            )}
 
 
             {/* Order Summary & WhatsApp Dispatch */}
@@ -730,6 +680,19 @@ const Cart = () => {
                   >
                     <span>Add ₹{selectedZone.minOrder - cartTotal} More to {isKitchenOpen ? 'Place Order' : 'Pre-Order'}</span>
                   </button>
+                ) : isBulkCart ? (
+                  <div className="space-y-2">
+                    <button
+                      onClick={handleCheckout}
+                      className="btn-primary w-full py-4 text-xs sm:text-sm uppercase tracking-wider"
+                    >
+                      <FaWhatsapp size={18} />
+                      <span>Send Bulk Order ({requiredNoticeHours}h Prep)</span>
+                    </button>
+                    <p className="text-center text-[10px] text-[#A89E94] leading-relaxed">
+                      Kitchen confirms fresh stock &amp; timing on WhatsApp. Larger bulk quotes (₹3,000+) may request UPI token confirmation.
+                    </p>
+                  </div>
                 ) : isKitchenOpen ? (
                   <button
                     onClick={handleCheckout}

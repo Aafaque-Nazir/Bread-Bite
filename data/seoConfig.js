@@ -22,22 +22,136 @@ export const DEFAULT_GEO = {
   icbm: '19.0647, 73.1209'
 };
 
+export const PARTY_RULES = {
+  minPortions: 5,
+  minGuests: 8,
+  maxGuests: 150,
+  bulkCartMinMeals: 5,
+  bulkCartMinTotal: 1200,
+  shortNoticeHours: 3,
+  largeGroupPortionsThreshold: 15,
+  largeNoticeHours: 24,
+  advanceTokenThreshold: 3000
+};
+
+export const PARTY_STYLES = [
+  {
+    id: 'keema-pav',
+    label: 'Chicken Keema & Ladi Pav',
+    shortLabel: 'Keema Pav Party',
+    note: '500g boneless Chicken Keema + 4 soft Ladi Pavs per 2 guests'
+  },
+  {
+    id: 'korma-roti',
+    label: 'Chicken Korma & Tandoori Roti',
+    shortLabel: 'Korma & Roti Party',
+    note: '500g Chicken Korma + 2 clay-oven Tandoori Rotis per 2 guests (add extra rotis if needed)'
+  },
+  {
+    id: 'mixed-feast',
+    label: 'Mixed Feast (Keema + Korma + Snacks)',
+    shortLabel: 'Mixed Party Feast',
+    note: 'Balanced 500g Keema & Korma mix, Ladi Pavs, Tandoori Rotis & Crispy Fries'
+  }
+];
+
+export function calculatePartyEstimate({ guests = 10, styleId = 'keema-pav', extraRotiPerGuest = false } = {}) {
+  const safeGuests = Math.max(PARTY_RULES.minGuests, Math.min(PARTY_RULES.maxGuests, Number(guests) || PARTY_RULES.minGuests));
+  const portions = Math.max(PARTY_RULES.minPortions, Math.ceil(safeGuests / 2));
+
+  const keemaPavPrice = menuItems.find((m) => m.slug === 'keema-pav-meal')?.price || 219;
+  const kormaRotiPrice = menuItems.find((m) => m.slug === 'chicken-korma-roti-meal')?.price || 249;
+  const rotiPrice = menuItems.find((m) => m.slug === 'tandoori-roti')?.price || 30;
+  const friesPrice = menuItems.find((m) => m.slug === 'french-fries-200g')?.price || 99;
+
+  let menuEstimate = 0;
+  let breakdownLines = [];
+
+  if (styleId === 'korma-roti') {
+    const extraRotis = extraRotiPerGuest ? safeGuests : 0;
+    menuEstimate = portions * kormaRotiPrice + extraRotis * rotiPrice;
+    breakdownLines = [
+      `${portions}× Chicken Korma & Roti Meals (${(portions * 0.5).toFixed(1)} kg Korma + ${portions * 2 + extraRotis} Tandoori Rotis)`
+    ];
+  } else if (styleId === 'mixed-feast') {
+    const keemaCount = Math.ceil(portions / 2);
+    const kormaCount = Math.max(1, portions - keemaCount);
+    const friesCount = Math.max(2, Math.ceil(safeGuests / 4));
+    menuEstimate = keemaCount * keemaPavPrice + kormaCount * kormaRotiPrice + friesCount * friesPrice;
+    breakdownLines = [
+      `${keemaCount}× Keema Pav Meals (${(keemaCount * 0.5).toFixed(1)} kg Keema + ${keemaCount * 4} Ladi Pavs)`,
+      `${kormaCount}× Korma & Roti Meals (${(kormaCount * 0.5).toFixed(1)} kg Korma + ${kormaCount * 2} Tandoori Rotis)`,
+      `${friesCount}× Crispy French Fries (200g boxes)`
+    ];
+  } else {
+    menuEstimate = portions * keemaPavPrice;
+    breakdownLines = [
+      `${portions}× Keema Pav Meals (${(portions * 0.5).toFixed(1)} kg boneless Keema + ${portions * 4} soft Ladi Pavs)`
+    ];
+  }
+
+  const isLargeOrder = portions > PARTY_RULES.largeGroupPortionsThreshold;
+  const noticeHours = isLargeOrder ? PARTY_RULES.largeNoticeHours : PARTY_RULES.shortNoticeHours;
+  const needsAdvanceToken = menuEstimate >= PARTY_RULES.advanceTokenThreshold || isLargeOrder;
+
+  return {
+    guests: safeGuests,
+    portions,
+    totalGravyKg: Number((portions * 0.5).toFixed(1)),
+    menuEstimate,
+    breakdownLines,
+    isLargeOrder,
+    noticeHours,
+    noticeLabel: isLargeOrder ? '24 hrs (1 day) advance notice' : '3 hrs advance notice',
+    needsAdvanceToken
+  };
+}
+
+export const PARTY_PACKAGES = (() => {
+  const keemaPavMeal = menuItems.find((m) => m.slug === 'keema-pav-meal')?.price || 219;
+  const kormaRotiMeal = menuItems.find((m) => m.slug === 'chicken-korma-roti-meal')?.price || 249;
+  const burgerPrice = menuItems.find((m) => m.slug === 'crispy-chicken-burger')?.price || 149;
+  const friesPrice = menuItems.find((m) => m.slug === 'french-fries-200g')?.price || 99;
+  const lavaCakePrice = menuItems.find((m) => m.slug === 'choco-lava-cake')?.price || 89;
+
+  return [
+    {
+      title: 'Small House Gathering',
+      serves: '8–10 Guests · 5 Portions',
+      price: `From ₹${(keemaPavMeal * 5).toLocaleString('en-IN')}`,
+      details: `5× Keema Pav Meals (2.5 kg boneless Chicken Keema + 20 soft Ladi Pavs) for ₹${(keemaPavMeal * 5).toLocaleString('en-IN')}, or 5× Korma & Roti Meals (2.5 kg Korma + 10 Tandoori Rotis) for ₹${(kormaRotiMeal * 5).toLocaleString('en-IN')}.`
+    },
+    {
+      title: 'Office Team Lunch',
+      serves: '15–20 Guests · 10 Portions',
+      price: `From ₹${(keemaPavMeal * 10).toLocaleString('en-IN')}`,
+      details: `10× Keema Pav Meals (5 kg boneless Chicken Keema + 40 soft Ladi Pavs) for ₹${(keemaPavMeal * 10).toLocaleString('en-IN')}, or 10× Korma & Roti Meals (5 kg Korma + 20 Tandoori Rotis) for ₹${(kormaRotiMeal * 10).toLocaleString('en-IN')}.`
+    },
+    {
+      title: 'Celebration Feast',
+      serves: '30–100+ Guests · 16+ Portions',
+      price: 'Custom Bulk Quote',
+      details: `Custom bulk quote on 500g Chicken Keema & Korma tubs, Tandoori Rotis, Ladi Pavs, Crispy Chicken Burgers (₹${burgerPrice}), French Fries (₹${friesPrice}), and Warm Choco Lava Cakes (₹${lavaCakePrice}).`
+    }
+  ];
+})();
+
 export const PARTY_FAQS = [
   {
-    question: 'What is the minimum group size for Bread & Bite party or bulk orders?',
-    answer: 'We accept bulk and party orders starting from 5 portions (e.g. 2.5 kg of Chicken Keema or Chicken Korma with Pav/Roti) up to 100+ guests across Navi Mumbai.'
+    question: 'What is the minimum size for Bread & Bite party or bulk orders?',
+    answer: 'Party quotes start from 5 main portions (2.5 kg of Chicken Keema or Chicken Korma, serving 8–10 guests, from ₹1,095) up to 100+ guests across Navi Mumbai. Smaller orders under 5 portions can be placed directly via our Menu & Cart.'
   },
   {
-    question: 'How far in advance should I book a party or office lunch order?',
-    answer: 'For orders up to 15 people, 2 to 3 hours notice works. For larger house parties, birthday gatherings, or corporate team lunches of 20+ people, please message us on WhatsApp at least 1 day in advance.'
+    question: 'How far in advance should I request a party or office lunch quote?',
+    answer: 'Orders of 5–15 portions (8–30 guests) need at least 3 hours advance notice around our daily kitchen slots (11:15 AM – 3:30 PM & 7:00 PM – 9:45 PM IST). Large events of 16+ portions (30–100+ guests) require 24 hours (1 day) advance notice so fresh Halal chicken and bakery pavs can be sourced.'
   },
   {
-    question: 'Which Navi Mumbai areas do you deliver bulk and catering trays to?',
-    answer: 'We deliver bulk trays and meal boxes from our Taloja Phase 1 kitchen to Taloja Phase 1 & 2, Kharghar, Kamothe, Kalamboli (including Steel Market & APMC), Panvel, and CBD Belapur offices.'
+    question: 'How does pricing and delivery work on separate party quotes?',
+    answer: 'Direct kitchen party orders have zero aggregator commissions, zero packaging fees, and 100% free doorstep delivery across Taloja, Kharghar, Kamothe, Kalamboli, Panvel, and CBD Belapur (above ₹699). We share your final custom bulk quote directly on WhatsApp.'
   },
   {
-    question: 'How is bulk food packed so it stays hot for parties?',
-    answer: 'Gravies are packed in heavy-duty sealed 500g and bulk food-grade containers, while Tandoori Rotis and Ladi Pavs are insulated separately so breads stay soft and warm on arrival.'
+    question: 'What are the payment and booking confirmation terms for party orders?',
+    answer: 'After confirming availability on WhatsApp, smaller bulk orders can pay on delivery via Cash or UPI QR. Large custom orders (₹3,000+ or 16+ portions) may require a small advance booking confirmation via UPI once your quote is approved.'
   }
 ];
 

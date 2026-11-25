@@ -12,6 +12,7 @@ import ImageWithLoader from '../src/components/ImageWithLoader';
 import menuItems from '../data/MenuItems';
 import { LOCATIONS, getLocationBySlug } from '../data/locations';
 import { getLocationMeta } from '../data/seoConfig';
+import { savePreferredCity } from '../data/deliveryCities';
 
 /**
  * LocationPage — Reusable, SEO-optimized landing page for each delivery area.
@@ -30,22 +31,7 @@ const LocationPage = () => {
   // Store preferred delivery city for checkout (always called unconditionally)
   React.useEffect(() => {
     if (typeof window !== 'undefined' && location?.slug) {
-      const cityMap = {
-        taloja: 'taloja',
-        kharghar: 'kharghar',
-        kamothe: 'kamothe',
-        kalamboli: 'kalamboli',
-        panvel: 'panvel',
-        'cbd-belapur': 'belapur',
-        belapur: 'belapur'
-      };
-      const city = cityMap[location.slug] || 'taloja';
-      try {
-        sessionStorage.setItem('preferred_delivery_city', city);
-        sessionStorage.setItem('preferred_delivery_zone', city);
-      } catch {
-        // ignore
-      }
+      savePreferredCity(location.slug);
     }
   }, [location?.slug]);
 
