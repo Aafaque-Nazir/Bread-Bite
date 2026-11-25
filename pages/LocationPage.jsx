@@ -11,6 +11,7 @@ import { useKitchenStatus } from '../src/hooks/useKitchenStatus';
 import ImageWithLoader from '../src/components/ImageWithLoader';
 import menuItems from '../data/MenuItems';
 import { LOCATIONS, getLocationBySlug } from '../data/locations';
+import { getLocationMeta } from '../data/seoConfig';
 
 /**
  * LocationPage — Reusable, SEO-optimized landing page for each delivery area.
@@ -25,6 +26,28 @@ const LocationPage = () => {
   const { addToCart, updateQuantity, cart } = useCart();
   const { isOpen: isKitchenOpen } = useKitchenStatus();
   const [openFaq, setOpenFaq] = useState(null);
+
+  // Store preferred delivery city for checkout (always called unconditionally)
+  React.useEffect(() => {
+    if (typeof window !== 'undefined' && location?.slug) {
+      const cityMap = {
+        taloja: 'taloja',
+        kharghar: 'kharghar',
+        kamothe: 'kamothe',
+        kalamboli: 'kalamboli',
+        panvel: 'panvel',
+        'cbd-belapur': 'belapur',
+        belapur: 'belapur'
+      };
+      const city = cityMap[location.slug] || 'taloja';
+      try {
+        sessionStorage.setItem('preferred_delivery_city', city);
+        sessionStorage.setItem('preferred_delivery_zone', city);
+      } catch {
+        // ignore
+      }
+    }
+  }, [location?.slug]);
 
   // Get bestseller items to showcase
   const bestsellers = useMemo(() => {
@@ -51,6 +74,7 @@ const LocationPage = () => {
     );
   }
 
+  const locMeta = getLocationMeta(location);
   const whatsappLink = isKitchenOpen
     ? `https://wa.me/919325629256?text=${encodeURIComponent(`Hi, I want to order food for delivery to ${location.name}!`)}`
     : `https://wa.me/919325629256?text=${encodeURIComponent(`Hi Bread & Bite, I have an inquiry about delivery to ${location.name}.`)}`;
@@ -58,28 +82,6 @@ const LocationPage = () => {
   const nearbyLocations = location.nearbyLocations
     .map(s => LOCATIONS.find(l => l.slug === s))
     .filter(Boolean);
-
-  // Store preferred delivery city for checkout
-  React.useEffect(() => {
-    if (typeof window !== 'undefined' && location?.slug) {
-      const cityMap = {
-        taloja: 'taloja',
-        kharghar: 'kharghar',
-        kamothe: 'kamothe',
-        kalamboli: 'kalamboli',
-        panvel: 'panvel',
-        'cbd-belapur': 'belapur',
-        belapur: 'belapur'
-      };
-      const city = cityMap[location.slug] || 'taloja';
-      try {
-        sessionStorage.setItem('preferred_delivery_city', city);
-        sessionStorage.setItem('preferred_delivery_zone', city);
-      } catch {
-        // ignore
-      }
-    }
-  }, [location?.slug]);
 
   const fadeIn = {
     hidden: { opacity: 0, y: 16 },
@@ -99,12 +101,14 @@ const LocationPage = () => {
   return (
     <>
       <SEO
-        title={location.title}
-        description={location.description}
-        url={`/${location.slug}/`}
-        keywords={location.keywords}
+        title={locMeta.title}
+        description={locMeta.description}
+        url={locMeta.path}
+        keywords={locMeta.keywords}
         breadcrumbs={breadcrumbs}
-        faqs={location.faqs}
+        faqs={locMeta.faqs}
+        geo={locMeta.geo}
+        areaServed={location}
       />
 
       {/* ═══════════════════════════════════════════════════
@@ -393,7 +397,11 @@ const LocationPage = () => {
 
                   {/* Content */}
                   <div className="p-4">
-                    <h3 className="text-sm font-bold text-[#181411] mb-1 line-clamp-1">{item.name}</h3>
+                    <h3 className="text-sm font-bold text-[#181411] mb-1 line-clamp-1">
+                      <Link to={`/menu/${item.slug}/`} className="hover:text-[#B84A1C] transition-colors">
+                        {item.name}
+                      </Link>
+                    </h3>
                     <p className="text-[11px] text-[#574F4A] leading-relaxed mb-3 line-clamp-2">{item.description}</p>
 
                     <div className="flex items-center justify-between">
@@ -697,7 +705,10 @@ const LocationPage = () => {
           </div>
 
           <p className="text-[11px] text-[#8C827A] mt-6">
-            Daily slots: 11:15 AM – 3:30 PM & 7:00 PM – 9:45 PM · Free delivery on ₹{freeThreshold}+ to {location.name}
+            Daily slots: 11:15 AM – 3:30 PM &amp; 7:00 PM – 9:45 PM · Free delivery on ₹{freeThreshold}+ to {location.name} ·{' '}
+            <Link to="/party-orders/" className="text-[#B84A1C] font-semibold hover:underline">
+              Party &amp; Bulk Orders
+            </Link>
           </p>
         </div>
       </section>

@@ -14,7 +14,7 @@ const Footer = () => {
           <div className="lg:col-span-4 space-y-6">
             <div className="flex items-center gap-3.5">
               <div className="w-11 h-11 bg-white rounded-xl flex items-center justify-center p-2 shadow-xs border border-[#26211D]">
-                <img src="/Logo.png" alt="Bread & Bite" className="w-full h-full object-contain" />
+                <img src="/Logo.png" alt="Bread & Bite" width={44} height={44} className="w-full h-full object-contain" />
               </div>
               <div className="flex flex-col">
                 <span className="text-2xl font-bold tracking-tight text-white font-heading">
@@ -89,6 +89,7 @@ const Footer = () => {
               {[
                 { name: 'Home', path: '/' },
                 { name: 'Kitchen Menu', path: '/menu/' },
+                { name: 'Party & Bulk Orders', path: '/party-orders/' },
                 { name: 'Customer Reviews', path: '/reviews/' },
                 { name: 'About Our Kitchen', path: '/about/' },
                 { name: 'Contact & Orders', path: '/contact/' }
@@ -163,7 +164,7 @@ const Footer = () => {
         <div className="pt-6 pb-6 border-t border-[#26211D]">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 text-xs text-[#A89E94]">
             <span className="text-white font-semibold uppercase tracking-wider text-[11px] shrink-0">
-              Doorstep Delivery Hubs:
+              Navi Mumbai Delivery Areas:
             </span>
             <div className="flex flex-wrap items-center gap-2 text-[11px]">
               {LOCATIONS.map((loc) => (

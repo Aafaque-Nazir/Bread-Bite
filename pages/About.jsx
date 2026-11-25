@@ -3,6 +3,9 @@ import { motion } from "framer-motion";
 import { FaCheckCircle, FaTruck, FaHandsWash, FaRupeeSign, FaFireAlt, FaUtensils, FaDrumstickBite, FaBreadSlice } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import SEO from "../src/components/SEO";
+import { STATIC_ROUTES_META } from "../data/seoConfig";
+
+const ABOUT_META = STATIC_ROUTES_META['/about/'];
 
 const About = () => {
   const fadeIn = {
@@ -15,10 +18,10 @@ const About = () => {
   return (
     <section className="relative min-h-screen bg-[#FAF7F2] pt-6 sm:pt-10 pb-24 px-4 sm:px-6 overflow-hidden text-[#181411]">
       <SEO
-        title="About Bread & Bite | Cloud Kitchen in Navi Mumbai"
-        description="Learn about Bread & Bite cloud kitchen in Taloja Phase 1. Honest 500g chicken portions, authentic homestyle recipes, and quick local delivery."
+        title={ABOUT_META.title}
+        description={ABOUT_META.description}
         url="/about/"
-        keywords="about bread and bite, cloud kitchen taloja, chicken keema navi mumbai, halal chicken kharghar, tandoori roti panvel"
+        keywords={ABOUT_META.keywords}
       />
 
       <div className="relative z-10 max-w-7xl mx-auto">
@@ -35,8 +38,8 @@ const About = () => {
               Taloja Phase 1 · Navi Mumbai
             </span>
             <h1 className="text-3xl sm:text-5xl lg:text-6xl font-normal tracking-tight font-heading leading-tight">
-              Good food, <br />
-              <span className="font-italic-accent text-[#B84A1C]">honest portions</span> every day.
+              Fresh 500g Chicken Meals, <br />
+              <span className="font-italic-accent text-[#B84A1C]">cooked honest in Taloja.</span>
             </h1>
             <p className="text-xs sm:text-base lg:text-lg text-[#574F4A] leading-relaxed max-w-xl">
               At <strong className="text-[#181411]">Bread & Bite</strong>, our goal is simple: serve delicious, homestyle food in generous quantities at fair rates. We make hearty chicken gravies like Chicken Keema and Chicken Korma in full 500-gram portions, paired with hot tandoori rotis, soft pavs, burgers, and crispy fries.
@@ -68,6 +71,8 @@ const About = () => {
                 <img
                   src="/images/chicken-keema.webp"
                   alt="Bread and Bite Chicken Keema and Pav Preparation"
+                  width={600}
+                  height={600}
                   onError={(e) => {
                     e.target.src = '/images/chicken-korma.webp';
                   }}
@@ -262,6 +267,8 @@ const About = () => {
                   <img
                     src={item.img}
                     alt={item.label}
+                    width={400}
+                    height={500}
                     onError={(e) => {
                       e.target.src = '/images/chicken-korma.webp';
                     }}

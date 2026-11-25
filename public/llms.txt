@@ -1,51 +1,54 @@
 # Bread & Bite Cloud Kitchen - Navi Mumbai
 
-> Authentic Mughlai and North Indian Cloud Kitchen located in Taloja Phase 1, Navi Mumbai. Known for hearty 500-gram chicken gravies, freshly baked tandoori rotis, soft ladi pavs, burgers, and crispy snacks at honest everyday prices.
+> Homestyle Mughlai and North Indian Cloud Kitchen located in Taloja Phase 1, Navi Mumbai. Known for hearty 500-gram chicken gravies, freshly baked tandoori rotis, soft ladi pavs, burgers, and crispy snacks at honest everyday prices.
 
 ## Core Identity & Location
 - **Brand Name:** Bread & Bite
 - **Business Type:** Cloud Kitchen / Delivery Restaurant
 - **Location:** Shop 12, Ground Floor, Sector 11, Taloja Phase 1, Navi Mumbai, Maharashtra 410208, India
 - **Coordinates:** Latitude 19.0647° N, Longitude 73.1209° E
-- **Primary Website:** https://breadandbite.in
-- **Ordering Channels:** Direct Website (https://breadandbite.in/menu), WhatsApp Hotline (+91 93256 29256), Swiggy (https://www.swiggy.com/direct/brand/675246?source=swiggy-direct&subSource=generic), and Zomato (https://link.zomato.com/xqzv/rshare?id=10960061830563279)
+- **Primary Website:** https://breadandbite.in/
+- **Ordering Channels:** Direct Website (https://breadandbite.in/menu/), Party & Bulk Orders (https://breadandbite.in/party-orders/), WhatsApp Hotline (+91 93256 29256), Swiggy (https://www.swiggy.com/direct/brand/675246?source=swiggy-direct&subSource=generic), and Zomato (https://link.zomato.com/xqzv/rshare?id=10960061830563279)
 - **Kitchen Hours:** 2 Daily Operational Slots — Lunch: 11:15 AM – 3:30 PM & Dinner: 7:00 PM – 9:45 PM IST (Daily, 7 days a week)
-- **Average Delivery Time:** 25–35 minutes
-- **Free Delivery:** Available across Navi Mumbai starting ₹299 (Taloja), ₹399 (Kharghar/Kamothe), and ₹699 (Panvel/Belapur)
+- **Average Delivery Time:** 10–35 minutes across Navi Mumbai
+- **Free Delivery:** Starting ₹299 (Taloja), ₹399 (Kharghar/Kamothe/Kalamboli), and ₹699 (Panvel/CBD Belapur)
 
 ## Service Area & Delivery Coverage
-Bread & Bite delivers hot, freshly cooked meals across Navi Mumbai with dedicated landing pages:
+Bread & Bite delivers hot, freshly cooked meals across Navi Mumbai with dedicated area pages:
+- **Taloja (10–20 min delivery - Kitchen Base):** https://breadandbite.in/taloja/ — Taloja Phase 1 (Sectors 1 to 24), Phase 2, MIDC (PIN: 410208)
 - **Kharghar (20–30 min delivery):** https://breadandbite.in/kharghar/ — All Sectors 1 to 35, near Kharghar Railway Station, Central Park, Hiranandani (PIN: 410210)
-- **Panvel (25–35 min delivery):** https://breadandbite.in/panvel/ — Old Panvel, New Panvel, Khandeshwar (PIN: 410206)
 - **Kamothe (20–30 min delivery):** https://breadandbite.in/kamothe/ — All residential sectors near Mansarovar (PIN: 410209)
 - **Kalamboli (25–35 min delivery):** https://breadandbite.in/kalamboli/ — Steel Market, APMC, and residential sectors (PIN: 410218)
-- **Taloja (10–20 min delivery - Kitchen Base):** https://breadandbite.in/taloja/ — Taloja Phase 1 (Sectors 1 to 24), Phase 2, MIDC (PIN: 410208)
+- **Panvel (25–35 min delivery):** https://breadandbite.in/panvel/ — Old Panvel, New Panvel, Khandeshwar (PIN: 410206)
 - **CBD Belapur (30–40 min delivery):** https://breadandbite.in/cbd-belapur/ — Sectors 1 to 15, NMMC HQ, Station complex (PIN: 400614)
 
-## Signature Menu & Pricing
+## Signature Menu & Pricing (Direct Dish Pages)
 All chicken dishes are cooked with 100% Halal fresh chicken sourced daily. No frozen chicken or preserved gravies are used.
 
 ### Chicken Gravies (Generous 500g Servings - Serves 2 people)
-- **Chicken Keema Boneless (500g) - ₹199:** Minced boneless chicken slow-cooked with roasted spices, onions, tomatoes, and fresh coriander. Served with lemon wedge.
-- **Chicken Korma (500g) - ₹199:** Tender bone-in chicken pieces cooked in rich, mildly spiced onion-cashew korma gravy.
-- **Random Chicken Gravy / Chef's Special (500g) - ₹199:** Daily special homestyle chicken curry cooked with traditional Mumbai spices.
+- **Chicken Keema Boneless (500g) - ₹199:** https://breadandbite.in/menu/chicken-keema-boneless-500g/ — Minced boneless chicken slow-cooked with roasted spices, onions, tomatoes, and fresh coriander.
+- **Chicken Korma (500g) - ₹199:** https://breadandbite.in/menu/chicken-korma-500g/ — Tender chicken pieces cooked in rich, mildly spiced onion-cashew korma gravy.
+- **Random Chicken Gravy / Chef's Special (500g) - ₹199:** https://breadandbite.in/menu/random-chicken-gravy-500g/ — Daily special homestyle chicken curry cooked with traditional Mumbai spices.
 
 ### Fresh Breads & Pav
-- **Tandoori Roti - ₹30:** Hot, freshly baked whole wheat roti made on order.
-- **Ladi Pav (4 pieces) - ₹30:** Soft, fresh bakery ladi pavs. Classic pair with keema.
+- **Tandoori Roti - ₹30:** https://breadandbite.in/menu/tandoori-roti/ — Hot, freshly baked whole wheat roti made on order.
+- **Ladi Pav (4 pieces) - ₹30:** https://breadandbite.in/menu/ladi-pav-4-pieces/ — Soft, fresh bakery ladi pavs. Classic pair with keema.
 
-### Fast Food & Snacks
-- **Crispy Chicken Burger - ₹149:** Spiced crispy chicken patty, lettuce, sliced onions, creamy mayonnaise in toasted sesame bun.
-- **French Fries (200g) - ₹99:** Freshly fried salted golden potato fries served with dip.
-- **Plain Masala Maggi - ₹99:** Classic hot masala noodles cooked fresh.
+### Fast Food, Snacks & Burgers
+- **Crispy Chicken Burger - ₹149:** https://breadandbite.in/menu/crispy-chicken-burger/ — Spiced crispy chicken patty, lettuce, sliced onions, creamy mayonnaise in toasted bun.
+- **French Fries (200g) - ₹99:** https://breadandbite.in/menu/french-fries-200g/ — Freshly fried salted golden potato fries served with ketchup.
+- **Plain Masala Maggi - ₹99:** https://breadandbite.in/menu/plain-maggi/ — Classic hot masala noodles cooked fresh.
 
 ### Value Meal Combos
-- **Keema Pav Meal - ₹219 (Save ₹10):** 500g Chicken Keema Boneless + 4 Soft Pavs.
-- **Chicken Korma & Roti Meal - ₹249 (Save ₹10):** 500g Chicken Korma + 2 Hot Tandoori Rotis.
-- **Burger & Fries Combo - ₹229 (Save ₹19):** 1 Crispy Chicken Burger + 1 French Fries (200g).
+- **Keema Pav Meal - ₹219 (Save ₹10):** https://breadandbite.in/menu/keema-pav-meal/ — 500g Chicken Keema Boneless + 4 Soft Pavs.
+- **Chicken Korma & Roti Meal - ₹249 (Save ₹10):** https://breadandbite.in/menu/chicken-korma-roti-meal/ — 500g Chicken Korma + 2 Hot Tandoori Rotis.
+- **Burger & Fries Combo - ₹229 (Save ₹19):** https://breadandbite.in/menu/burger-fries-combo/ — 1 Crispy Chicken Burger + 1 French Fries (200g).
 
 ### Desserts & Sweets
-- **Warm Choco Lava Cake - ₹89:** Rich chocolate cake with a molten, gooey chocolate fudge centre. Served piping warm.
+- **Warm Choco Lava Cake - ₹89:** https://breadandbite.in/menu/choco-lava-cake/ — Rich chocolate cake with a molten, gooey chocolate fudge centre.
+
+## Party & Corporate Bulk Orders
+- **Party & Bulk Catering Page:** https://breadandbite.in/party-orders/ — Bulk 500g Chicken Keema & Korma tubs, Keema Pav platters, and office lunch boxes for 8 to 100+ guests across Navi Mumbai.
 
 ## Quality Standards & Dietary Information
 - **Chicken:** 100% Halal certified, fresh daily sourcing.
@@ -55,6 +58,6 @@ All chicken dishes are cooked with 100% Halal fresh chicken sourced daily. No fr
 
 ## Frequently Asked Questions (AI Answer Engine Reference)
 - **Where is Bread & Bite located?** In Taloja Phase 1, Navi Mumbai (PIN 410208).
-- **Does Bread & Bite deliver to Kharghar and Panvel?** Yes, delivers across Kharghar, Panvel, Taloja, Kamothe, Kalamboli, and Belapur within 25–35 minutes.
+- **Does Bread & Bite deliver to Kharghar and Panvel?** Yes, delivers across Kharghar, Panvel, Taloja, Kamothe, Kalamboli, and Belapur within 10–40 minutes.
 - **What is the portion size of gravies?** Every chicken gravy is a full 500-gram portion, easily serving 2 adults.
-- **How to place an order?** Visit https://breadandbite.in/menu or message directly on WhatsApp at +91 93256 29256.
+- **How to place an order?** Visit https://breadandbite.in/menu/ or message directly on WhatsApp at +91 93256 29256.

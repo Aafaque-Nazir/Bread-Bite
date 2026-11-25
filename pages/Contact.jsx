@@ -7,8 +7,11 @@ import SEO from "../src/components/SEO";
 import { FAQS } from '../data/faqs';
 import { LOCATIONS } from '../data/locations';
 import { ORDER_LINKS } from '../data/orderLinks';
+import { STATIC_ROUTES_META } from '../data/seoConfig';
 import { sanitizeText, sanitizeSafeUrl, isValidIndianPhone, sanitizePhone } from '../src/utils/security';
 import toast from 'react-hot-toast';
+
+const CONTACT_META = STATIC_ROUTES_META['/contact/'];
 
 const Contact = () => {
   const [formData, setFormData] = useState({ name: '', phone: '', message: '' });
@@ -53,10 +56,10 @@ const Contact = () => {
   return (
     <section className="relative min-h-screen bg-[#FAF7F2] pt-6 sm:pt-10 pb-24 px-4 sm:px-6 overflow-hidden text-[#181411]">
       <SEO
-        title="Contact Bread & Bite | Order Food in Navi Mumbai"
-        description="Get in touch with Bread & Bite. Order via WhatsApp at +91 93256 29256 or find our cloud kitchen in Taloja Phase 1. Fast Navi Mumbai delivery."
+        title={CONTACT_META.title}
+        description={CONTACT_META.description}
         url="/contact/"
-        keywords="bread and bite contact, food delivery taloja phase 1, whatsapp food order navi mumbai, restaurant contact kharghar, cloud kitchen address taloja, tiffin service taloja navi mumbai, panvel food delivery hotline"
+        keywords={CONTACT_META.keywords}
         faqs={FAQS}
       />
 
@@ -64,13 +67,17 @@ const Contact = () => {
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
           <span className="text-[11px] uppercase tracking-[0.2em] font-bold text-[#B84A1C] block mb-2">
-            We're Here To Help
+            Taloja Phase 1 · Navi Mumbai
           </span>
           <h1 className="text-3xl sm:text-5xl lg:text-6xl font-normal tracking-tight mb-3 font-heading leading-tight">
-            Get In <span className="font-italic-accent text-[#B84A1C]">Touch</span>
+            Contact <span className="font-italic-accent text-[#B84A1C]">Bread &amp; Bite</span>
           </h1>
           <p className="text-[#574F4A] text-xs sm:text-base leading-relaxed max-w-lg mx-auto">
-            Have questions about an order, party bookings, or custom meals? We are always happy to help.
+            Order directly on WhatsApp, check kitchen slots, or reach out for{' '}
+            <Link to="/party-orders/" className="text-[#B84A1C] font-semibold hover:underline">
+              party and bulk food orders
+            </Link>{' '}
+            across Navi Mumbai.
           </p>
         </div>
 
@@ -79,7 +86,7 @@ const Contact = () => {
           {/* Information Column (5 cols) */}
           <div className="lg:col-span-5 space-y-5">
             <div className="artisan-card p-5 sm:p-7 rounded-3xl bg-white space-y-5">
-              <h3 className="text-lg sm:text-xl font-bold font-heading text-[#181411]">Quick Access</h3>
+              <h2 className="text-lg sm:text-xl font-bold font-heading text-[#181411]">Quick Access</h2>
 
               <div className="space-y-6">
                 <div className="flex items-start gap-4">
@@ -169,7 +176,7 @@ const Contact = () => {
             {/* Delivery Hubs Links */}
             <div className="artisan-card p-6 rounded-3xl bg-white border border-[#EAE4DC] space-y-3">
               <div className="flex items-center justify-between">
-                <h4 className="text-sm font-bold text-[#181411] font-heading">Navi Mumbai Delivery Areas</h4>
+                <h2 className="text-sm font-bold text-[#181411] font-heading">Navi Mumbai Delivery Areas</h2>
                 <span className="text-xs text-[#2A6A4E] font-semibold">20–35 mins</span>
               </div>
               <div className="grid grid-cols-2 gap-2 text-xs">
@@ -200,9 +207,9 @@ const Contact = () => {
                   className="space-y-5"
                 >
                   <div>
-                    <h3 className="text-xl sm:text-2xl font-bold font-heading text-[#181411] mb-1">
+                    <h2 className="text-xl sm:text-2xl font-bold font-heading text-[#181411] mb-1">
                       Send a Direct Message
-                    </h3>
+                    </h2>
                     <p className="text-xs text-[#574F4A]">
                       Fill out the form below and we'll format your inquiry directly on WhatsApp.
                     </p>

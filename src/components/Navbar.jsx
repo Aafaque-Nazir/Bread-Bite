@@ -66,6 +66,7 @@ function Navbar() {
   const navLinks = [
     { name: "Home", path: "/" },
     { name: "Menu", path: "/menu/" },
+    { name: "Party Orders", path: "/party-orders/" },
     { name: "About", path: "/about/" },
     { name: "Reviews", path: "/reviews/" },
     { name: "Contact", path: "/contact/" }
@@ -77,7 +78,7 @@ function Navbar() {
 
   return (
     <>
-      <nav
+      <header
         className={`sticky top-0 left-0 w-full z-40 transition-all duration-300 ${
           scrolled
             ? "bg-[#FAF7F2]/95 backdrop-blur-md py-2.5 shadow-xs border-b border-[#EAE4DC]"
@@ -93,6 +94,8 @@ function Navbar() {
                 <img
                   src="/Logo.png"
                   alt="Bread & Bite"
+                  width={36}
+                  height={36}
                   className="w-full h-full object-contain"
                 />
               </div>
@@ -246,7 +249,7 @@ function Navbar() {
             </button>
           </div>
         </div>
-      </nav>
+      </header>
 
       {/* MOBILE MENU DRAWER (RENDERED VIA PORTAL TO PREVENT CONTAINING-BLOCK CLIPPING) */}
       {mounted &&
@@ -285,6 +288,8 @@ function Navbar() {
                         <img
                           src="/Logo.png"
                           alt="Bread & Bite"
+                          width={32}
+                          height={32}
                           className="w-full h-full object-contain"
                         />
                       </div>

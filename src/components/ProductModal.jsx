@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaTimes, FaShoppingBag, FaCheckCircle, FaClock } from 'react-icons/fa';
+import { FaTimes, FaShoppingBag, FaCheckCircle, FaArrowRight } from 'react-icons/fa';
 import { useCart } from '../context/CartContext';
 import { useKitchenStatus } from '../hooks/useKitchenStatus';
 
@@ -124,6 +125,17 @@ const ProductModal = ({ item, isOpen, onClose }) => {
                     <span>Delivered hot in 25–35 mins across Navi Mumbai</span>
                   </div>
                 </div>
+
+                {item.slug && (
+                  <Link
+                    to={`/menu/${item.slug}/`}
+                    onClick={onClose}
+                    className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#B84A1C] hover:underline mb-4"
+                  >
+                    <span>View Full Dish Details &amp; Pairings</span>
+                    <FaArrowRight size={9} />
+                  </Link>
+                )}
               </div>
 
               {/* Sticky Action Footer */}

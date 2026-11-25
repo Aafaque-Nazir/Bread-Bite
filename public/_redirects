@@ -16,20 +16,33 @@ http://www.breadandbite.in/*          https://breadandbite.in/:splat  301!
 http://breadandbite.in/*              https://breadandbite.in/:splat  301!
 
 # 4. Trailing-Slash Canonicalization (SEO — prevents redirect chains)
-/menu         /menu/         301
-/about        /about/        301
-/reviews      /reviews/      301
-/contact      /contact/      301
-/cart         /cart/         301
-/thank-you    /thank-you/    301
-/kharghar     /kharghar/     301
-/panvel       /panvel/       301
-/kamothe      /kamothe/      301
-/kalamboli    /kalamboli/    301
-/taloja       /taloja/       301
-/cbd-belapur  /cbd-belapur/  301
-/privacy      /privacy/      301
-/terms        /terms/        301
+/menu                                 /menu/                                 301
+/menu/chicken-keema-boneless-500g     /menu/chicken-keema-boneless-500g/     301
+/menu/chicken-korma-500g              /menu/chicken-korma-500g/              301
+/menu/random-chicken-gravy-500g       /menu/random-chicken-gravy-500g/       301
+/menu/tandoori-roti                   /menu/tandoori-roti/                   301
+/menu/ladi-pav-4-pieces               /menu/ladi-pav-4-pieces/               301
+/menu/french-fries-200g               /menu/french-fries-200g/               301
+/menu/plain-maggi                     /menu/plain-maggi/                     301
+/menu/crispy-chicken-burger           /menu/crispy-chicken-burger/           301
+/menu/keema-pav-meal                  /menu/keema-pav-meal/                  301
+/menu/chicken-korma-roti-meal         /menu/chicken-korma-roti-meal/         301
+/menu/burger-fries-combo              /menu/burger-fries-combo/              301
+/menu/choco-lava-cake                 /menu/choco-lava-cake/                 301
+/party-orders                         /party-orders/                         301
+/about                                /about/                                301
+/reviews                              /reviews/                              301
+/contact                              /contact/                              301
+/cart                                 /cart/                                 301
+/thank-you                            /thank-you/                            301
+/kharghar                             /kharghar/                             301
+/panvel                               /panvel/                               301
+/kamothe                              /kamothe/                              301
+/kalamboli                            /kalamboli/                            301
+/taloja                               /taloja/                               301
+/cbd-belapur                          /cbd-belapur/                          301
+/privacy                              /privacy/                              301
+/terms                                /terms/                                301
 
 # 5. SPA Client-Side Routing Fallback
-/*                                    /index.html                     200
+/*                                    /index.html                            200

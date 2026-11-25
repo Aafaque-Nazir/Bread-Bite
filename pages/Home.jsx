@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { FaWhatsapp, FaUtensils, FaCheckCircle, FaFire, FaMotorcycle, FaArrowRight, FaPlus, FaMinus, FaTrash, FaChevronDown, FaInfoCircle, FaMapMarkerAlt, FaClock, FaStar } from "react-icons/fa";
 import { SiSwiggy, SiZomato } from "react-icons/si";
 import { useKitchenStatus } from "../src/hooks/useKitchenStatus";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import SEO from "../src/components/SEO";
 import ImageWithLoader from "../src/components/ImageWithLoader";
 import menuItems from "../data/MenuItems";
@@ -12,10 +12,14 @@ import ProductModal from '../src/components/ProductModal';
 import { FAQS } from '../data/faqs';
 import { LOCATIONS } from '../data/locations';
 import { ORDER_LINKS } from '../data/orderLinks';
+import { STATIC_ROUTES_META } from '../data/seoConfig';
+
+const HOME_META = STATIC_ROUTES_META['/'];
 
 const HOME_COMBOS = [
   {
     id: 9,
+    slug: 'keema-pav-meal',
     name: 'Keema Pav Meal',
     description: 'Chicken Keema Boneless (500g) + 4 Fresh Soft Pavs. The classic Mumbai comfort pairing.',
     price: 219,
@@ -27,6 +31,7 @@ const HOME_COMBOS = [
   },
   {
     id: 10,
+    slug: 'chicken-korma-roti-meal',
     name: 'Chicken Korma & Roti Meal',
     description: 'Chicken Korma (500g) + 2 Fresh Tandoori Rotis. Complete, satisfying lunch or dinner.',
     price: 249,
@@ -64,10 +69,10 @@ const Home = () => {
   return (
     <>
       <SEO
-        title="Bread & Bite | Online Food Delivery in Navi Mumbai"
-        description="Order fresh 500g Chicken Keema, Chicken Korma, hot Tandoori Roti & soft Pav. Delivered hot across Taloja, Kharghar & Panvel by Bread & Bite."
+        title={HOME_META.title}
+        description={HOME_META.description}
         url="/"
-        keywords="bread and bite, bread and bite taloja, chicken keema 500g, keema pav taloja, chicken korma kharghar, cloud kitchen taloja phase 1, food delivery navi mumbai, tandoori roti delivery panvel, halal chicken gravy kamothe"
+        keywords={HOME_META.keywords}
         faqs={FAQS}
       />
 
@@ -90,9 +95,9 @@ const Home = () => {
 
               {/* Main Headline */}
               <motion.h1 variants={fadeUp} className="text-3xl sm:text-5xl lg:text-[3.25rem] font-bold text-[#181411] leading-[1.12] font-heading">
-                Homestyle Taste, <br />
+                Homestyle Chicken Keema &amp; Korma, <br />
                 <span className="font-italic-accent text-[#B84A1C]">
-                  Full 500g Portions.
+                  Full 500g Portions in Navi Mumbai.
                 </span>
               </motion.h1>
 
@@ -185,7 +190,9 @@ const Home = () => {
                 <div className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-[#F4EFE6]">
                   <img
                     src="/images/chicken-keema.webp"
-                    alt="Chicken Keema Boneless 500g"
+                    alt="Chicken Keema Boneless 500g delivered hot in Navi Mumbai"
+                    width={800}
+                    height={600}
                     fetchPriority="high"
                     decoding="async"
                     onError={(e) => {
@@ -197,9 +204,11 @@ const Home = () => {
 
                 <div className="p-3 sm:p-3.5 flex items-center justify-between">
                   <div>
-                    <h3 className="font-heading text-base sm:text-lg font-bold text-[#181411]">
-                      Chicken Keema Boneless (500g)
-                    </h3>
+                    <h2 className="font-heading text-base sm:text-lg font-bold text-[#181411]">
+                      <Link to="/menu/chicken-keema-boneless-500g/" className="hover:text-[#B84A1C] transition-colors">
+                        Chicken Keema Boneless (500g)
+                      </Link>
+                    </h2>
                     <p className="text-[11px] sm:text-xs text-[#574F4A] mt-0.5">
                       Slow-cooked chicken mince with onions &amp; fresh lemon
                     </p>
@@ -273,7 +282,9 @@ const Home = () => {
                   <div className="flex flex-col justify-between flex-1 w-full h-full">
                     <div>
                       <h3 className="text-xl font-bold text-[#181411] font-heading mb-1.5 leading-snug">
-                        {combo.name}
+                        <Link to={`/menu/${combo.slug}/`} className="hover:text-[#B84A1C] transition-colors">
+                          {combo.name}
+                        </Link>
                       </h3>
                       <p className="text-[#574F4A] text-xs sm:text-sm leading-relaxed mb-4">
                         {combo.description}
@@ -441,7 +452,13 @@ const Home = () => {
                         {item.category}
                       </span>
                       <h3 className="text-sm sm:text-base font-bold text-[#181411] font-heading line-clamp-1 mb-1.5">
-                        {item.name}
+                        <Link
+                          to={`/menu/${item.slug}/`}
+                          onClick={(e) => e.stopPropagation()}
+                          className="hover:text-[#B84A1C] transition-colors"
+                        >
+                          {item.name}
+                        </Link>
                       </h3>
                       <p className="text-xs text-[#574F4A] line-clamp-2 leading-relaxed mb-4">
                         {item.description}
@@ -682,7 +699,10 @@ const Home = () => {
           </div>
 
           <p className="text-[11px] text-[#8C827A] mt-6">
-            Daily slots: 11:15 AM – 3:30 PM & 7:00 PM – 9:45 PM · Free delivery starting ₹299+ across Navi Mumbai
+            Daily slots: 11:15 AM – 3:30 PM &amp; 7:00 PM – 9:45 PM · Free delivery starting ₹299+ across Navi Mumbai ·{' '}
+            <Link to="/party-orders/" className="text-[#B84A1C] font-semibold hover:underline">
+              Party &amp; Bulk Orders
+            </Link>
           </p>
         </div>
       </section>

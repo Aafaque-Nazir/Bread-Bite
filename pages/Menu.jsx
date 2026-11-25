@@ -5,12 +5,15 @@ import { useSearchParams, Link } from "react-router-dom";
 import menuItems, { CATEGORIES_DATA } from "../data/MenuItems";
 import { LOCATIONS } from "../data/locations";
 import { ORDER_LINKS } from "../data/orderLinks";
-import { FaPlus, FaMinus, FaTrash, FaSearch, FaTimes, FaClock, FaMotorcycle } from "react-icons/fa";
+import { STATIC_ROUTES_META } from "../data/seoConfig";
+import { FaPlus, FaMinus, FaTrash, FaSearch, FaTimes, FaMotorcycle } from "react-icons/fa";
 import { SiSwiggy, SiZomato } from "react-icons/si";
 import ProductModal from '../src/components/ProductModal';
 import SEO from '../src/components/SEO';
 import ImageWithLoader from '../src/components/ImageWithLoader';
 import { useKitchenStatus } from '../src/hooks/useKitchenStatus';
+
+const MENU_META = STATIC_ROUTES_META['/menu/'];
 
 const Menu = () => {
   const { addToCart, updateQuantity, cart } = useCart();
@@ -20,23 +23,23 @@ const Menu = () => {
 
   const [selectedCategory, setSelectedCategory] = useState(() => {
     if (categoryParam) {
-      const match = CATEGORIES_DATA.find(c => 
+      const match = CATEGORIES_DATA.find(c =>
         c.id.toLowerCase() === categoryParam.toLowerCase() ||
         (c.id === "Dessert" && categoryParam.toLowerCase() === "desserts")
       );
       if (match) return match.id;
     }
-    return "Gravy";
+    return "ALL";
   });
 
-  const [dietaryFilter, setDietaryFilter] = useState("ALL"); // "ALL", "Veg", "Non-Veg"
+  const [dietaryFilter, setDietaryFilter] = useState("ALL");
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedItem, setSelectedItem] = useState(null);
 
   // Sync category state when URL search param changes
   useEffect(() => {
     if (categoryParam) {
-      const match = CATEGORIES_DATA.find(c => 
+      const match = CATEGORIES_DATA.find(c =>
         c.id.toLowerCase() === categoryParam.toLowerCase() ||
         (c.id === "Dessert" && categoryParam.toLowerCase() === "desserts")
       );
@@ -48,7 +51,11 @@ const Menu = () => {
 
   const handleCategoryChange = (catId) => {
     setSelectedCategory(catId);
-    setSearchParams({ category: catId }, { replace: true });
+    if (catId === "ALL") {
+      setSearchParams({}, { replace: true });
+    } else {
+      setSearchParams({ category: catId }, { replace: true });
+    }
   };
 
   const filteredItems = useMemo(() => {
@@ -59,7 +66,7 @@ const Menu = () => {
         item.description.toLowerCase().includes(query) ||
         item.category.toLowerCase().includes(query);
 
-      const matchCategory = query !== "" || item.category === selectedCategory;
+      const matchCategory = query !== "" || selectedCategory === "ALL" || item.category === selectedCategory;
 
       const matchDietary =
         dietaryFilter === "ALL" ||
@@ -73,47 +80,25 @@ const Menu = () => {
   return (
     <section className="min-h-screen bg-[#FAF7F2] pt-6 sm:pt-10 lg:pt-14 pb-28 px-4 sm:px-6">
       <SEO
-        title="Our Menu & Online Order | Bread & Bite Navi Mumbai"
-        description="Explore our menu of 500g Chicken Keema, Korma gravies, tandoori rotis, burgers & warm Choco Lava Cake. Freshly cooked & delivered hot across Navi Mumbai."
+        title={MENU_META.title}
+        description={MENU_META.description}
         url="/menu/"
-        keywords="bread and bite menu, chicken keema taloja, choco lava cake navi mumbai, dessert delivery taloja, chicken korma kharghar, keema pav navi mumbai, tandoori roti delivery, chicken burger taloja phase 1, food delivery panvel, cloud kitchen menu navi mumbai"
+        keywords={MENU_META.keywords}
       />
-
-      {/* Semantic Directory for Search Engines (Phase 4) */}
-      <nav aria-label="Menu Directory" className="sr-only">
-        <ul>
-          <li><a href="/menu/?category=all">All Items</a></li>
-          <li><a href="/menu/?category=Combos">Value Meal Combos</a></li>
-          <li><a href="/menu/?category=Gravy">Chicken Gravies (500g)</a></li>
-          <li><a href="/menu/?category=Roti">Tandoori Roti & Fresh Pav</a></li>
-          <li><a href="/menu/?category=Snacks">Crispy Snacks & Fries</a></li>
-          <li><a href="/menu/?category=Burgers">Crispy Chicken Burgers</a></li>
-          <li><a href="/menu/?category=Dessert">Warm Desserts & Choco Lava Cake</a></li>
-        </ul>
-        <h3>Delivery Locations</h3>
-        <ul>
-          <li><a href="/kharghar/">Food Delivery in Kharghar</a></li>
-          <li><a href="/panvel/">Food Delivery in Panvel</a></li>
-          <li><a href="/kamothe/">Food Delivery in Kamothe</a></li>
-          <li><a href="/kalamboli/">Food Delivery in Kalamboli</a></li>
-          <li><a href="/taloja/">Food Delivery in Taloja</a></li>
-          <li><a href="/cbd-belapur/">Food Delivery in CBD Belapur</a></li>
-        </ul>
-      </nav>
 
       <div className="max-w-7xl mx-auto">
         {/* Page Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8 sm:mb-12 border-b border-[#EAE4DC] pb-6 sm:pb-8">
           <div>
             <h1 className="text-3xl sm:text-5xl lg:text-6xl font-normal text-[#181411] tracking-tight font-heading leading-tight">
-              Our Kitchen <span className="font-italic-accent text-[#B84A1C]">Menu</span>
+              Chicken Keema, Korma &amp; <span className="font-italic-accent text-[#B84A1C]">Kitchen Menu</span>
             </h1>
             <p className="text-[#574F4A] mt-2 text-xs sm:text-base max-w-xl leading-relaxed">
-              Chicken gravies in full 500g portions, freshly baked tandoori roti, soft ladi pav, and crispy snacks.
+              Full 500g chicken gravies, freshly baked tandoori roti, soft ladi pav, burgers, and warm desserts delivered across Navi Mumbai.
             </p>
           </div>
 
-          {/* Search Bar with Tactile Shadow */}
+          {/* Search Bar */}
           <div className="w-full md:w-80 relative">
             <FaSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-[#8C827A] text-xs pointer-events-none" />
             <input
@@ -169,12 +154,12 @@ const Menu = () => {
               <strong className="text-[#181411] font-semibold">Kitchen resting ({shortStatus}):</strong> Explore our menu and prepare your bag; online orders reopen during operational slots.
             </p>
             <span className="text-[11px] font-bold text-[#8C827A] uppercase tracking-wider shrink-0 self-start sm:self-auto">
-              Slots: 11:15am–3:30pm & 7pm–9:45pm
+              Slots: 11:15am–3:30pm &amp; 7pm–9:45pm
             </span>
           </div>
         )}
 
-        {/* Sticky Filters Bar: Categories & Dietary */}
+        {/* Sticky Filters Bar */}
         <div className="sticky top-[61px] sm:top-[69px] z-30 bg-[#FAF7F2] py-3 -mx-4 px-4 sm:-mx-6 sm:px-6 border-b border-[#EAE4DC] shadow-xs mb-8 transition-all">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 max-w-7xl mx-auto">
             {/* Category Pills */}
@@ -233,7 +218,7 @@ const Menu = () => {
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.2 }}
             >
-              {/* MOBILE HORIZONTAL COMPACT CARDS (sm:hidden) */}
+              {/* MOBILE HORIZONTAL COMPACT CARDS */}
               <div className="flex flex-col gap-3 sm:hidden">
                 {filteredItems.map(item => {
                   const cartItem = cart.find(c => c.id === item.id);
@@ -251,7 +236,6 @@ const Menu = () => {
                       }}
                       className="artisan-card rounded-2xl p-3.5 flex gap-3.5 items-center justify-between cursor-pointer active:bg-[#FAF7F2]/50 border border-[#EAE4DC]"
                     >
-                      {/* Left Info */}
                       <div className="flex-1 min-w-0 pr-1">
                         <div className="flex items-center gap-1.5 mb-1">
                           <span className={item.type === 'Veg' ? 'badge-veg text-[8px] py-0.5 px-1.5' : 'badge-nonveg text-[8px] py-0.5 px-1.5'}>
@@ -263,9 +247,15 @@ const Menu = () => {
                             </span>
                           )}
                         </div>
-                        <h3 className="text-sm font-bold text-[#181411] font-heading line-clamp-1 mb-1">
-                          {item.name}
-                        </h3>
+                        <h2 className="text-sm font-bold text-[#181411] font-heading line-clamp-1 mb-1">
+                          <Link
+                            to={`/menu/${item.slug}/`}
+                            onClick={(e) => e.stopPropagation()}
+                            className="hover:text-[#B84A1C] transition-colors"
+                          >
+                            {item.name}
+                          </Link>
+                        </h2>
                         <p className="text-[11px] text-[#574F4A] line-clamp-2 leading-snug mb-2">
                           {item.description}
                         </p>
@@ -281,17 +271,17 @@ const Menu = () => {
                         </div>
                       </div>
 
-                      {/* Right Photo & Action */}
                       <div className="relative shrink-0 flex flex-col items-center">
                         <div className="w-22 h-22 rounded-xl overflow-hidden relative border border-[#EAE4DC] bg-[#FAF7F2]">
                           <ImageWithLoader
                             src={item.image}
                             alt={item.seoAlt || `${item.name} - Bread & Bite Food Delivery Navi Mumbai`}
+                            width={240}
+                            height={240}
                             className="w-full h-full object-cover"
                           />
                         </div>
 
-                        {/* Interactive Stepper / Add Button */}
                         <div className="-mt-3 z-10">
                           {cartItem ? (
                             <div className="flex items-center bg-white border border-[#B84A1C] rounded-lg shadow-tactile-sm p-0.5">
@@ -339,7 +329,7 @@ const Menu = () => {
                 })}
               </div>
 
-              {/* TABLET & DESKTOP MULTI-COLUMN GRID (hidden sm:grid) */}
+              {/* TABLET & DESKTOP MULTI-COLUMN GRID */}
               <div className="hidden sm:grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 lg:gap-7">
                 {filteredItems.map(item => {
                   const cartItem = cart.find(c => c.id === item.id);
@@ -357,15 +347,15 @@ const Menu = () => {
                       }}
                       className="artisan-card rounded-2xl overflow-hidden flex flex-col group cursor-pointer"
                     >
-                      {/* Photo container */}
                       <div className="relative aspect-[4/3] overflow-hidden bg-[#FAF7F2]">
                         <ImageWithLoader
                           src={item.image}
                           alt={item.seoAlt || `${item.name} - Bread & Bite Food Delivery Navi Mumbai`}
+                          width={400}
+                          height={300}
                           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-104"
                         />
 
-                        {/* Badges */}
                         <div className="absolute top-3 left-3 flex flex-wrap gap-1.5">
                           <span className={item.type === 'Veg' ? 'badge-veg' : 'badge-nonveg'}>
                             {item.type}
@@ -378,12 +368,17 @@ const Menu = () => {
                         </div>
                       </div>
 
-                      {/* Content */}
                       <div className="p-5 flex flex-col flex-1 justify-between">
                         <div>
-                          <h3 className="text-base font-bold text-[#181411] font-heading group-hover:text-[#B84A1C] transition-colors line-clamp-1 mb-1.5">
-                            {item.name}
-                          </h3>
+                          <h2 className="text-base font-bold text-[#181411] font-heading group-hover:text-[#B84A1C] transition-colors line-clamp-1 mb-1.5">
+                            <Link
+                              to={`/menu/${item.slug}/`}
+                              onClick={(e) => e.stopPropagation()}
+                              className="hover:underline"
+                            >
+                              {item.name}
+                            </Link>
+                          </h2>
                           <p className="text-xs text-[#574F4A] line-clamp-2 leading-relaxed mb-4">
                             {item.description}
                           </p>
@@ -453,7 +448,7 @@ const Menu = () => {
 
         {filteredItems.length === 0 && (
           <div className="text-center py-20 artisan-card rounded-3xl p-8 max-w-lg mx-auto my-8 bg-white">
-            <h3 className="text-xl font-bold font-heading text-[#181411] mb-2">No Matching Dishes Found</h3>
+            <h2 className="text-xl font-bold font-heading text-[#181411] mb-2">No Matching Dishes Found</h2>
             <p className="text-xs sm:text-sm text-[#574F4A] mb-6">
               Try adjusting your search query or dietary filter to see available options.
             </p>
@@ -477,9 +472,9 @@ const Menu = () => {
               <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#B84A1C] block">
                 Local Delivery Coverage
               </span>
-              <h3 className="text-xl font-bold font-heading text-[#181411]">
+              <h2 className="text-xl font-bold font-heading text-[#181411]">
                 Delivering Fresh to Your Area in Navi Mumbai
-              </h3>
+              </h2>
             </div>
             <span className="inline-flex items-center gap-1.5 text-xs text-[#2A6A4E] font-semibold bg-[#EEF6F2] px-3 py-1 rounded-full border border-[#2A6A4E]/20 self-start md:self-auto">
               <FaMotorcycle size={12} className="text-[#2A6A4E]" />
